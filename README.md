@@ -142,7 +142,15 @@ python .\code_model\run_shap_explainability.py `
 
 The raw inputs are public data sources, subject to their own licensing and availability:
 
-- NYC Open Data 311 Service Requests
-- NOAA GHCN-Daily weather data
-- OpenStreetMap contributors
-- NYC Planning PLUTO/MapPLUTO
+- NYC Open Data 311 Service Requests: https://opendata.cityofnewyork.us/
+- NOAA GHCN-Daily weather data: https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily
+- OpenStreetMap contributors: https://www.openstreetmap.org/copyright
+- NYC Planning PLUTO/MapPLUTO: https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page
+
+## Full Data Access
+
+Large raw files, the full processed modeling table, row-level scores, and model binaries are not stored in this Git repository. They can be regenerated from the public sources above using the provided scripts.
+
+For questions or requests for the complete local data bundle, please contact:
+
+Tran Dai Phong Lam, `phonglam2599@gmail.com`
