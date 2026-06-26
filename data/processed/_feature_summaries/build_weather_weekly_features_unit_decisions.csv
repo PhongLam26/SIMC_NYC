@@ -1,0 +1,8 @@
+family,requested_unit,inferred_unit,conversion,n_valid,min_value_before,p50_before,p99_before,max_value_before
+tmax,auto,celsius,none_celsius,4018,-10.5,18.3,33.9,37.2
+tmin,auto,celsius,none_celsius,4018,-18.2,10.0,25.0,27.8
+tavg,auto,celsius,none_celsius,4018,-13.75,14.15,29.45,32.2
+prcp,auto,mm,none_mm,4018,0.0,0.0,45.11499999999997,181.1
+snow,auto,tenths_mm,divide_by_10_to_mm,4018,0.0,0.0,46.0,693.0
+snwd,auto,mm,none_mm,4015,0.0,0.0,200.0,560.0
+awnd,auto,mps,none_mps,3794,0.0,2.1,5.3,8.2

@@ -1,0 +1,2 @@
+﻿status,files_requested,files_done,files_skipped,files_error,rows_read,rows_used,bad_date_rows,missing_nta_rows,observed_rows,dense_rows,unique_ntas,unique_weeks,min_week_start,max_week_start,total_complaint_count_observed,elapsed_seconds,elapsed_minutes
+done,682,682,0,0,30947026,30940129,0,6897,1030778,1355850,262,575,2014-12-29,2025-12-29,30940129,158.449,2.641

@@ -1,0 +1,201 @@
+{
+  "script": "build_weather_weekly_features",
+  "status": "done",
+  "input_file": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\raw\\noaa_weather\\noaa_nyc_daily_weather_2015_2025.csv.gz",
+  "output_file": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\feature_tables\\noaa_weather_weekly_features.csv",
+  "summary_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries",
+  "input_rows_raw": 4018,
+  "input_columns_raw": [
+    "date",
+    "station_name",
+    "station_id",
+    "year",
+    "AWND",
+    "PRCP",
+    "SNOW",
+    "SNWD",
+    "TMAX",
+    "TMIN",
+    "TAVG_est",
+    "hot_day_30c",
+    "hot_day_35c",
+    "cold_day_0c",
+    "rain_day",
+    "heavy_rain_day_25mm",
+    "snow_day"
+  ],
+  "date_col": "date",
+  "bad_date_rows": 0,
+  "valid_daily_dates": 4018,
+  "daily_rows_after_city_aggregation": 4018,
+  "min_daily_date": "2015-01-01",
+  "max_daily_date": "2025-12-31",
+  "output_rows": 575,
+  "output_columns": [
+    "week_start",
+    "week_end",
+    "weather_days_observed",
+    "weather_days_missing_in_week",
+    "weather_complete_week_flag",
+    "weather_min_days_ok_flag",
+    "weather_source_rows",
+    "weather_tmax_mean",
+    "weather_tmax_max",
+    "weather_tmax_min",
+    "weather_tmax_station_max",
+    "weather_tmin_mean",
+    "weather_tmin_min",
+    "weather_tmin_max",
+    "weather_tavg_mean",
+    "weather_prcp_sum",
+    "weather_prcp_mean",
+    "weather_prcp_max",
+    "weather_prcp_station_max",
+    "weather_snow_sum",
+    "weather_snow_mean",
+    "weather_snow_max",
+    "weather_snwd_mean",
+    "weather_snwd_max",
+    "weather_awnd_mean",
+    "weather_awnd_max",
+    "hot_day_30c_count",
+    "hot_day_35c_count",
+    "ice_day_tmax_0c_count",
+    "cold_day_0c_count",
+    "very_cold_day_minus5c_count",
+    "rain_day_count",
+    "moderate_rain_day_10mm_count",
+    "heavy_rain_day_25mm_count",
+    "very_heavy_rain_day_50mm_count",
+    "snow_day_count",
+    "heavy_snow_day_25mm_count",
+    "weather_year",
+    "weather_month",
+    "weather_quarter",
+    "weather_week_of_year",
+    "weather_iso_year"
+  ],
+  "output_min_week_start": "2014-12-29",
+  "output_max_week_start": "2025-12-29",
+  "duplicate_week_start_rows": 0,
+  "min_days_per_week": 4,
+  "densify_weeks": true,
+  "complete_week_count": 573,
+  "incomplete_week_count": 2,
+  "min_days_ok_week_count": 574,
+  "weather_days_observed_min": 3,
+  "weather_days_observed_max": 7,
+  "detected_columns": {
+    "tmax": [
+      "TMAX"
+    ],
+    "tmin": [
+      "TMIN"
+    ],
+    "tavg": [
+      "TAVG_est"
+    ],
+    "prcp": [
+      "PRCP"
+    ],
+    "snow": [
+      "SNOW"
+    ],
+    "snwd": [
+      "SNWD"
+    ],
+    "awnd": [
+      "AWND"
+    ]
+  },
+  "unit_decisions": [
+    {
+      "family": "tmax",
+      "requested_unit": "auto",
+      "inferred_unit": "celsius",
+      "conversion": "none_celsius",
+      "n_valid": 4018,
+      "min_value_before": -10.5,
+      "p50_before": 18.3,
+      "p99_before": 33.9,
+      "max_value_before": 37.2
+    },
+    {
+      "family": "tmin",
+      "requested_unit": "auto",
+      "inferred_unit": "celsius",
+      "conversion": "none_celsius",
+      "n_valid": 4018,
+      "min_value_before": -18.2,
+      "p50_before": 10.0,
+      "p99_before": 25.0,
+      "max_value_before": 27.8
+    },
+    {
+      "family": "tavg",
+      "requested_unit": "auto",
+      "inferred_unit": "celsius",
+      "conversion": "none_celsius",
+      "n_valid": 4018,
+      "min_value_before": -13.75,
+      "p50_before": 14.15,
+      "p99_before": 29.45,
+      "max_value_before": 32.2
+    },
+    {
+      "family": "prcp",
+      "requested_unit": "auto",
+      "inferred_unit": "mm",
+      "conversion": "none_mm",
+      "n_valid": 4018,
+      "min_value_before": 0.0,
+      "p50_before": 0.0,
+      "p99_before": 45.11499999999997,
+      "max_value_before": 181.1
+    },
+    {
+      "family": "snow",
+      "requested_unit": "auto",
+      "inferred_unit": "tenths_mm",
+      "conversion": "divide_by_10_to_mm",
+      "n_valid": 4018,
+      "min_value_before": 0.0,
+      "p50_before": 0.0,
+      "p99_before": 46.0,
+      "max_value_before": 693.0
+    },
+    {
+      "family": "snwd",
+      "requested_unit": "auto",
+      "inferred_unit": "mm",
+      "conversion": "none_mm",
+      "n_valid": 4015,
+      "min_value_before": 0.0,
+      "p50_before": 0.0,
+      "p99_before": 200.0,
+      "max_value_before": 560.0
+    },
+    {
+      "family": "awnd",
+      "requested_unit": "auto",
+      "inferred_unit": "mps",
+      "conversion": "none_mps",
+      "n_valid": 3794,
+      "min_value_before": 0.0,
+      "p50_before": 2.1,
+      "p99_before": 5.3,
+      "max_value_before": 8.2
+    }
+  ],
+  "all_missing_weather_features": [],
+  "elapsed_seconds": 2.098,
+  "elapsed_minutes": 0.035,
+  "summary_files": {
+    "summary_json": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_summary.json",
+    "missing_values": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_missing_values.csv",
+    "column_detection": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_column_detection.csv",
+    "unit_decisions": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_unit_decisions.csv",
+    "weekly_coverage": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_weekly_coverage.csv",
+    "weather_profile": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_feature_summaries\\build_weather_weekly_features_weather_profile.csv"
+  }
+}

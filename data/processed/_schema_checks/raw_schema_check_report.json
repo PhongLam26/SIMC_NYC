@@ -1,0 +1,6329 @@
+[
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2015_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2188,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2015-01-01 00:00:00",
+        "max": "2015-12-31 00:00:00",
+        "non_null_sample_rows": 2188
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2015_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2015-01-01 00:00:00",
+        "max": "2015-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -7.1,
+        "max": 36.1,
+        "mean": 17.95260273972603
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -16.6,
+        "max": 27.8,
+        "mean": 9.666849315068493
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 53.3,
+        "mean": 2.852054794520548
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 191.0,
+        "mean": 3.4164383561643836
+      },
+      "AWND": {
+        "non_null": 363,
+        "min": 0.4,
+        "max": 6.5,
+        "mean": 2.34297520661157
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2016_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2186,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2016-01-01 00:00:00",
+        "max": "2016-12-31 00:00:00",
+        "non_null_sample_rows": 2186
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2016_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 366,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2016-01-01 00:00:00",
+        "max": "2016-12-31 00:00:00",
+        "non_null_sample_rows": 366
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 366,
+        "min": -9.3,
+        "max": 35.6,
+        "mean": 18.128415300546447
+      },
+      "TMIN": {
+        "non_null": 366,
+        "min": -18.2,
+        "max": 27.2,
+        "mean": 9.9051912568306
+      },
+      "PRCP": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 58.7,
+        "mean": 2.9295081967213115
+      },
+      "SNOW": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 693.0,
+        "mean": 2.5
+      },
+      "AWND": {
+        "non_null": 356,
+        "min": 0.5,
+        "max": 7.0,
+        "mean": 2.387921348314607
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2017_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2190,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2017-01-01 00:00:00",
+        "max": "2017-12-31 00:00:00",
+        "non_null_sample_rows": 2190
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2017_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2017-01-01 00:00:00",
+        "max": "2017-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -7.7,
+        "max": 34.4,
+        "mean": 17.366301369863013
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -12.7,
+        "max": 25.0,
+        "mean": 9.774246575342465
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 77.0,
+        "mean": 3.1361643835616433
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 239.0,
+        "mean": 2.410958904109589
+      },
+      "AWND": {
+        "non_null": 365,
+        "min": 0.5,
+        "max": 8.2,
+        "mean": 2.358082191780822
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2018_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2106,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2018-01-01 00:00:00",
+        "max": "2018-12-31 00:00:00",
+        "non_null_sample_rows": 2106
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2018_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2018-01-01 00:00:00",
+        "max": "2018-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -10.5,
+        "max": 35.6,
+        "mean": 17.027397260273972
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -14.9,
+        "max": 27.2,
+        "mean": 9.606849315068493
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 73.7,
+        "mean": 4.562465753424658
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 249.0,
+        "mean": 2.758904109589041
+      },
+      "AWND": {
+        "non_null": 281,
+        "min": 0.0,
+        "max": 5.8,
+        "mean": 2.0281138790035587
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2019_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2121,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2019-01-01 00:00:00",
+        "max": "2019-12-31 00:00:00",
+        "non_null_sample_rows": 2121
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2019_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2019-01-01 00:00:00",
+        "max": "2019-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -9.9,
+        "max": 35.0,
+        "mean": 17.033972602739723
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -16.6,
+        "max": 27.8,
+        "mean": 9.332328767123286
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 46.5,
+        "mean": 3.6926027397260275
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 102.0,
+        "mean": 1.158904109589041
+      },
+      "AWND": {
+        "non_null": 296,
+        "min": 0.5,
+        "max": 5.7,
+        "mean": 2.081418918918919
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2020_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2159,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2020-01-01 00:00:00",
+        "max": "2020-12-31 00:00:00",
+        "non_null_sample_rows": 2159
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2020_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 366,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2020-01-01 00:00:00",
+        "max": "2020-12-31 00:00:00",
+        "non_null_sample_rows": 366
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 366,
+        "min": -0.5,
+        "max": 35.6,
+        "mean": 17.94535519125683
+      },
+      "TMIN": {
+        "non_null": 366,
+        "min": -9.9,
+        "max": 27.2,
+        "mean": 10.201912568306012
+      },
+      "PRCP": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 64.5,
+        "mean": 3.149726775956284
+      },
+      "SNOW": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 165.0,
+        "mean": 0.8879781420765027
+      },
+      "AWND": {
+        "non_null": 329,
+        "min": 0.4,
+        "max": 5.7,
+        "mean": 2.364741641337386
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2021_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2173,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2021-01-01 00:00:00",
+        "max": "2021-12-31 00:00:00",
+        "non_null_sample_rows": 2173
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2021_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2021-01-01 00:00:00",
+        "max": "2021-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -3.8,
+        "max": 36.7,
+        "mean": 17.679178082191783
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -9.9,
+        "max": 26.1,
+        "mean": 10.11123287671233
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 181.1,
+        "mean": 4.15945205479452
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 376.0,
+        "mean": 1.9671232876712328
+      },
+      "AWND": {
+        "non_null": 348,
+        "min": 0.4,
+        "max": 6.4,
+        "mean": 2.2574712643678163
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2022_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2190,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2022-01-01 00:00:00",
+        "max": "2022-12-31 00:00:00",
+        "non_null_sample_rows": 2190
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2022_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2022-01-01 00:00:00",
+        "max": "2022-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -9.3,
+        "max": 36.1,
+        "mean": 17.636164383561646
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -13.8,
+        "max": 26.1,
+        "mean": 9.515616438356163
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 47.0,
+        "mean": 3.2213698630136984
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 185.0,
+        "mean": 1.2273972602739727
+      },
+      "AWND": {
+        "non_null": 365,
+        "min": 0.4,
+        "max": 5.6,
+        "mean": 2.3558904109589043
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2023_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2189,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2023-01-01 00:00:00",
+        "max": "2023-12-31 00:00:00",
+        "non_null_sample_rows": 2189
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2023_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2023-01-01 00:00:00",
+        "max": "2023-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -2.7,
+        "max": 33.9,
+        "mean": 18.296986301369863
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -16.0,
+        "max": 25.0,
+        "mean": 10.60082191780822
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 139.2,
+        "mean": 4.127671232876712
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 23.0,
+        "mean": 0.16164383561643836
+      },
+      "AWND": {
+        "non_null": 364,
+        "min": 0.3,
+        "max": 5.8,
+        "mean": 2.071703296703297
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2024_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2192,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2024-01-01 00:00:00",
+        "max": "2024-12-31 00:00:00",
+        "non_null_sample_rows": 2192
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2024_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 366,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2024-01-01 00:00:00",
+        "max": "2024-12-31 00:00:00",
+        "non_null_sample_rows": 366
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 366,
+        "min": -6.0,
+        "max": 35.0,
+        "mean": 18.317759562841527
+      },
+      "TMIN": {
+        "non_null": 366,
+        "min": -10.5,
+        "max": 26.1,
+        "mean": 10.537431693989072
+      },
+      "PRCP": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 93.0,
+        "mean": 3.2185792349726774
+      },
+      "SNOW": {
+        "non_null": 366,
+        "min": 0.0,
+        "max": 81.0,
+        "mean": 0.7131147540983607
+      },
+      "AWND": {
+        "non_null": 362,
+        "min": 0.4,
+        "max": 6.3,
+        "mean": 2.188121546961326
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2025_long.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2187,
+    "num_columns": 8,
+    "columns": [
+      "date",
+      "datatype",
+      "station",
+      "attributes",
+      "value",
+      "station_name",
+      "station_id",
+      "year"
+    ],
+    "required_found": [
+      "date"
+    ],
+    "required_missing": [
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2025-01-01 00:00:00",
+        "max": "2025-12-31 00:00:00",
+        "non_null_sample_rows": 2187
+      }
+    },
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_central_park_2025_wide.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 365,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2025-01-01 00:00:00",
+        "max": "2025-12-31 00:00:00",
+        "non_null_sample_rows": 365
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 365,
+        "min": -7.1,
+        "max": 37.2,
+        "mean": 17.067945205479454
+      },
+      "TMIN": {
+        "non_null": 365,
+        "min": -12.1,
+        "max": 27.2,
+        "mean": 9.307671232876713
+      },
+      "PRCP": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 67.1,
+        "mean": 2.7564383561643835
+      },
+      "SNOW": {
+        "non_null": 365,
+        "min": 0.0,
+        "max": 76.0,
+        "mean": 1.2054794520547945
+      },
+      "AWND": {
+        "non_null": 365,
+        "min": 0.3,
+        "max": 6.4,
+        "mean": 2.3657534246575342
+      }
+    }
+  },
+  {
+    "dataset": "noaa_weather",
+    "file": "data\\raw\\noaa_weather\\noaa_nyc_daily_weather_2015_2025.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 4018,
+    "num_columns": 17,
+    "columns": [
+      "date",
+      "station_name",
+      "station_id",
+      "year",
+      "AWND",
+      "PRCP",
+      "SNOW",
+      "SNWD",
+      "TMAX",
+      "TMIN",
+      "TAVG_est",
+      "hot_day_30c",
+      "hot_day_35c",
+      "cold_day_0c",
+      "rain_day",
+      "heavy_rain_day_25mm",
+      "snow_day"
+    ],
+    "required_found": [
+      "date",
+      "TMAX",
+      "TMIN",
+      "PRCP",
+      "SNOW"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "date": {
+        "min": "2015-01-01 00:00:00",
+        "max": "2025-12-31 00:00:00",
+        "non_null_sample_rows": 4018
+      }
+    },
+    "numeric_ranges_detected": {
+      "TMAX": {
+        "non_null": 4018,
+        "min": -10.5,
+        "max": 37.2,
+        "mean": 17.677799900447983
+      },
+      "TMIN": {
+        "non_null": 4018,
+        "min": -18.2,
+        "max": 27.8,
+        "mean": 9.869362867098058
+      },
+      "PRCP": {
+        "non_null": 4018,
+        "min": 0.0,
+        "max": 181.1,
+        "mean": 3.436660029865605
+      },
+      "SNOW": {
+        "non_null": 4018,
+        "min": 0.0,
+        "max": 693.0,
+        "mean": 1.6732205077152813
+      },
+      "AWND": {
+        "non_null": 3794,
+        "min": 0.0,
+        "max": 8.2,
+        "mean": 2.261597258829731
+      }
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\download_summary.csv",
+    "status": "OK",
+    "sample_rows_read": 24,
+    "num_columns": 4,
+    "columns": [
+      "month",
+      "start_date",
+      "end_exclusive",
+      "rows"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_01_part000.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-01-01 00:00:00",
+        "max": "2015-01-02 00:00:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-01-01 00:00:00",
+        "max": "2020-12-14 00:00:00",
+        "non_null_sample_rows": 4961
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50791835737893,
+        "max": 40.91068567420105,
+        "mean": 40.75031033029289
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24690131426355,
+        "max": -73.71030176134117,
+        "mean": -73.92127624023489
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1635,
+      "Noise - Residential": 983,
+      "Blocked Driveway": 287,
+      "UNSANITARY CONDITION": 197,
+      "Noise - Commercial": 162,
+      "PAINT/PLASTER": 143,
+      "PLUMBING": 138,
+      "Illegal Parking": 112,
+      "Street Condition": 106,
+      "WATER LEAK": 98,
+      "DOOR/WINDOW": 87,
+      "ELECTRIC": 71,
+      "Water System": 66,
+      "Taxi Complaint": 54,
+      "New Tree Request": 54,
+      "SAFETY": 50,
+      "Rodent": 48,
+      "Dirty Conditions": 47,
+      "GENERAL": 41,
+      "FLOORING/STAIRS": 40
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1478,
+      "BRONX": 1309,
+      "MANHATTAN": 1190,
+      "QUEENS": 904,
+      "STATEN ISLAND": 119
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_01_part001.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-01-09 00:00:00",
+        "max": "2015-01-09 15:58:34",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-01-08 00:15:00",
+        "max": "2025-11-26 00:00:00",
+        "non_null_sample_rows": 4921
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50201255742182,
+        "max": 40.91013023416746,
+        "mean": 40.73940918551106
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24848985784412,
+        "max": -73.70365097687628,
+        "mean": -73.92458207370761
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 2012,
+      "PLUMBING": 224,
+      "PAINT/PLASTER": 190,
+      "UNSANITARY CONDITION": 182,
+      "Street Light Condition": 172,
+      "Blocked Driveway": 169,
+      "Noise - Residential": 144,
+      "Water System": 115,
+      "WATER LEAK": 114,
+      "DOOR/WINDOW": 112,
+      "FLOORING/STAIRS": 106,
+      "Traffic Signal Condition": 99,
+      "Illegal Parking": 90,
+      "Missed Collection (All Materials)": 82,
+      "ELECTRIC": 79,
+      "Street Condition": 77,
+      "GENERAL": 64,
+      "General Construction/Plumbing": 51,
+      "Building/Use": 47,
+      "Broken Muni Meter": 46
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1658,
+      "BRONX": 1127,
+      "MANHATTAN": 1082,
+      "QUEENS": 959,
+      "STATEN ISLAND": 174
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_01_part002.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-01-18 00:00:00",
+        "max": "2015-01-19 00:00:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-01-18 00:00:00",
+        "max": "2018-07-18 11:15:54",
+        "non_null_sample_rows": 4979
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50440082180456,
+        "max": 40.91184169529484,
+        "mean": 40.74131386374019
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24717940410038,
+        "max": -73.70579412239948,
+        "mean": -73.92223593995908
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1083,
+      "Noise - Residential": 760,
+      "Sewer": 300,
+      "Noise - Commercial": 220,
+      "UNSANITARY CONDITION": 210,
+      "WATER LEAK": 198,
+      "Blocked Driveway": 196,
+      "PAINT/PLASTER": 190,
+      "Snow": 177,
+      "Water System": 154,
+      "PLUMBING": 137,
+      "Illegal Parking": 112,
+      "Traffic Signal Condition": 104,
+      "DOOR/WINDOW": 104,
+      "Street Condition": 89,
+      "ELECTRIC": 83,
+      "Missed Collection (All Materials)": 76,
+      "Noise": 61,
+      "Rodent": 54,
+      "FLOORING/STAIRS": 53
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1584,
+      "BRONX": 1199,
+      "MANHATTAN": 1041,
+      "QUEENS": 986,
+      "STATEN ISLAND": 190
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_01_part003.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "community_board",
+      "open_data_channel_type",
+      "location_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-01-27 18:49:00",
+        "max": "2015-01-28 12:10:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-01-23 01:55:00",
+        "max": "2023-09-22 00:00:00",
+        "non_null_sample_rows": 4947
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50413745669522,
+        "max": 40.9102650190026,
+        "mean": 40.7354292265546
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.25312613523893,
+        "max": -73.70282012997491,
+        "mean": -73.91959239676672
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1591,
+      "Snow": 755,
+      "Noise - Residential": 291,
+      "PAINT/PLASTER": 230,
+      "UNSANITARY CONDITION": 229,
+      "PLUMBING": 177,
+      "Blocked Driveway": 140,
+      "Street Condition": 131,
+      "DOOR/WINDOW": 127,
+      "WATER LEAK": 120,
+      "ELECTRIC": 106,
+      "Illegal Parking": 82,
+      "FLOORING/STAIRS": 75,
+      "Traffic Signal Condition": 73,
+      "GENERAL": 64,
+      "Sewer": 52,
+      "Water System": 52,
+      "Graffiti": 46,
+      "Rodent": 43,
+      "Street Light Condition": 40
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1545,
+      "BRONX": 1171,
+      "QUEENS": 1145,
+      "MANHATTAN": 885,
+      "STATEN ISLAND": 254
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_02_part000.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-02-01 00:00:00",
+        "max": "2015-02-02 00:00:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-02-01 00:00:00",
+        "max": "2024-05-07 00:00:00",
+        "non_null_sample_rows": 4964
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50501453529818,
+        "max": 40.912827652752576,
+        "mean": 40.74543464363054
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.23801882402218,
+        "max": -73.70563601662029,
+        "mean": -73.92272793949867
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1407,
+      "Noise - Residential": 881,
+      "Blocked Driveway": 318,
+      "Noise - Commercial": 208,
+      "Illegal Parking": 181,
+      "UNSANITARY CONDITION": 160,
+      "Water System": 139,
+      "PLUMBING": 124,
+      "PAINT/PLASTER": 109,
+      "Street Condition": 106,
+      "WATER LEAK": 102,
+      "DOOR/WINDOW": 94,
+      "Snow": 93,
+      "ELECTRIC": 84,
+      "Noise": 69,
+      "Traffic Signal Condition": 54,
+      "Sewer": 53,
+      "FLOORING/STAIRS": 52,
+      "GENERAL": 51,
+      "Sanitation Condition": 51
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1544,
+      "BRONX": 1227,
+      "MANHATTAN": 1145,
+      "QUEENS": 926,
+      "STATEN ISLAND": 158
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_02_part001.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-02-09 00:00:00",
+        "max": "2015-02-09 22:24:44",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2014-12-21 15:24:00",
+        "max": "2023-09-13 00:00:00",
+        "non_null_sample_rows": 4930
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50918070920647,
+        "max": 40.912115567502006,
+        "mean": 40.73329548552117
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.25179811792579,
+        "max": -73.71198291630711,
+        "mean": -73.91957700631643
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1045,
+      "Street Condition": 447,
+      "Noise - Residential": 264,
+      "Blocked Driveway": 244,
+      "Street Light Condition": 209,
+      "UNSANITARY CONDITION": 201,
+      "Illegal Parking": 194,
+      "PAINT/PLASTER": 186,
+      "PLUMBING": 183,
+      "Traffic Signal Condition": 118,
+      "Water System": 116,
+      "DOOR/WINDOW": 113,
+      "WATER LEAK": 98,
+      "Noise": 93,
+      "FLOORING/STAIRS": 85,
+      "ELECTRIC": 79,
+      "Building/Use": 67,
+      "GENERAL": 66,
+      "Sewer": 65,
+      "Sidewalk Condition": 55
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1548,
+      "QUEENS": 1233,
+      "BRONX": 1067,
+      "MANHATTAN": 909,
+      "STATEN ISLAND": 243
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_02_part002.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-02-16 22:20:19",
+        "max": "2015-02-17 09:31:41",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-02-04 15:52:20",
+        "max": "2024-12-13 00:00:00",
+        "non_null_sample_rows": 4979
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.51474559429881,
+        "max": 40.90549825618726,
+        "mean": 40.75236325349767
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.23511168581581,
+        "max": -73.70273065992728,
+        "mean": -73.92319166151432
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 2294,
+      "PLUMBING": 392,
+      "UNSANITARY CONDITION": 317,
+      "PAINT/PLASTER": 282,
+      "DOOR/WINDOW": 208,
+      "WATER LEAK": 179,
+      "Noise - Residential": 166,
+      "FLOORING/STAIRS": 142,
+      "ELECTRIC": 121,
+      "Water System": 111,
+      "GENERAL": 95,
+      "Blocked Driveway": 89,
+      "Street Condition": 72,
+      "APPLIANCE": 48,
+      "Illegal Parking": 48,
+      "Water Conservation": 47,
+      "Rodent": 44,
+      "Noise": 37,
+      "SAFETY": 36,
+      "Noise - Commercial": 26
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1543,
+      "BRONX": 1395,
+      "MANHATTAN": 1203,
+      "QUEENS": 724,
+      "STATEN ISLAND": 135
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_02_part003.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-02-24 00:00:00",
+        "max": "2015-02-24 11:41:39",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-02-24 00:00:00",
+        "max": "2019-01-31 16:17:11",
+        "non_null_sample_rows": 4946
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.519024190692434,
+        "max": 40.90486555142916,
+        "mean": 40.738573716076836
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.221538267915,
+        "max": -73.70460370684123,
+        "mean": -73.92419066329482
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 2037,
+      "PAINT/PLASTER": 258,
+      "Street Condition": 248,
+      "PLUMBING": 246,
+      "UNSANITARY CONDITION": 201,
+      "Snow": 170,
+      "Water System": 168,
+      "DOOR/WINDOW": 148,
+      "Blocked Driveway": 131,
+      "WATER LEAK": 129,
+      "ELECTRIC": 97,
+      "FLOORING/STAIRS": 85,
+      "Illegal Parking": 84,
+      "Noise - Residential": 81,
+      "Street Light Condition": 80,
+      "GENERAL": 74,
+      "Missed Collection (All Materials)": 64,
+      "Rodent": 41,
+      "Sewer": 40,
+      "Noise": 37
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1682,
+      "BRONX": 1169,
+      "MANHATTAN": 1046,
+      "QUEENS": 916,
+      "STATEN ISLAND": 187
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2015_03_part000.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2015-03-01 00:00:00",
+        "max": "2015-03-02 00:00:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2015-03-01 00:00:00",
+        "max": "2019-01-31 16:17:11",
+        "non_null_sample_rows": 4961
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.51495143373052,
+        "max": 40.90542132315432,
+        "mean": 40.74128823797436
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24010912235507,
+        "max": -73.70583276749498,
+        "mean": -73.91925083825193
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1273,
+      "Noise - Residential": 764,
+      "Blocked Driveway": 360,
+      "Street Condition": 332,
+      "Illegal Parking": 186,
+      "UNSANITARY CONDITION": 160,
+      "Noise - Commercial": 150,
+      "PAINT/PLASTER": 136,
+      "PLUMBING": 135,
+      "DOOR/WINDOW": 94,
+      "Noise": 90,
+      "Water System": 88,
+      "WATER LEAK": 86,
+      "Rodent": 78,
+      "Traffic Signal Condition": 70,
+      "Missed Collection (All Materials)": 69,
+      "ELECTRIC": 62,
+      "Dirty Conditions": 53,
+      "Sewer": 49,
+      "Taxi Complaint": 43
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1534,
+      "BRONX": 1160,
+      "QUEENS": 1122,
+      "MANHATTAN": 1013,
+      "STATEN ISLAND": 171
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_11_part004.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-11-20 11:09:28",
+        "max": "2025-11-20 19:16:31",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-11-17 07:00:00",
+        "max": "2026-06-17 02:08:32",
+        "non_null_sample_rows": 4864
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50011030859235,
+        "max": 40.90874677264633,
+        "mean": 40.74571086016157
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24946355032117,
+        "max": -73.70334523891631,
+        "mean": -73.91666422996043
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 642,
+      "Illegal Parking": 608,
+      "Noise - Residential": 605,
+      "UNSANITARY CONDITION": 211,
+      "Blocked Driveway": 192,
+      "PLUMBING": 135,
+      "PAINT/PLASTER": 120,
+      "DOOR/WINDOW": 96,
+      "Abandoned Vehicle": 91,
+      "Graffiti": 89,
+      "Dirty Condition": 82,
+      "Sidewalk Condition": 79,
+      "ELECTRIC": 77,
+      "GENERAL": 75,
+      "Street Condition": 74,
+      "Water System": 66,
+      "Street Light Condition": 66,
+      "Noise - Street/Sidewalk": 64,
+      "Noise": 64,
+      "FLOORING/STAIRS": 64
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1511,
+      "BRONX": 1272,
+      "QUEENS": 1096,
+      "MANHATTAN": 972,
+      "STATEN ISLAND": 148,
+      "Unspecified": 1
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_11_part005.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-11-25 13:50:15",
+        "max": "2025-11-26 06:14:00",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-11-25 13:57:50",
+        "max": "2026-06-22 10:01:21",
+        "non_null_sample_rows": 4930
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50090101789754,
+        "max": 40.91090552692373,
+        "mean": 40.73551663589694
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24408455678825,
+        "max": -73.70127761473603,
+        "mean": -73.92319524818855
+      }
+    },
+    "top_complaint_type_sample": {
+      "Illegal Parking": 860,
+      "Noise - Residential": 633,
+      "HEAT/HOT WATER": 589,
+      "Blocked Driveway": 304,
+      "UNSANITARY CONDITION": 169,
+      "PLUMBING": 117,
+      "PAINT/PLASTER": 110,
+      "Noise - Commercial": 101,
+      "Noise - Street/Sidewalk": 93,
+      "Abandoned Vehicle": 81,
+      "Noise": 79,
+      "Traffic Signal Condition": 79,
+      "DOOR/WINDOW": 77,
+      "WATER LEAK": 75,
+      "Noise - Vehicle": 67,
+      "Traffic": 66,
+      "ELECTRIC": 66,
+      "Lead": 64,
+      "GENERAL": 63,
+      "Street Condition": 60
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1532,
+      "QUEENS": 1199,
+      "BRONX": 1077,
+      "MANHATTAN": 999,
+      "STATEN ISLAND": 192,
+      "Unspecified": 1
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_11_part006.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2045,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-11-30 19:21:39",
+        "max": "2025-11-30 23:59:52",
+        "non_null_sample_rows": 2045
+      },
+      "closed_date": {
+        "min": "2025-11-30 19:37:28",
+        "max": "2026-06-18 00:00:00",
+        "non_null_sample_rows": 2018
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 2045,
+        "min": 40.51541386564111,
+        "max": 40.90665461288989,
+        "mean": 40.77663682571723
+      },
+      "longitude": {
+        "non_null": 2045,
+        "min": -74.21361011197307,
+        "max": -73.71057128542677,
+        "mean": -73.90654982102225
+      }
+    },
+    "top_complaint_type_sample": {
+      "Noise - Residential": 749,
+      "HEAT/HOT WATER": 332,
+      "Illegal Parking": 307,
+      "Blocked Driveway": 94,
+      "Noise - Street/Sidewalk": 50,
+      "Noise - Commercial": 42,
+      "UNSANITARY CONDITION": 40,
+      "Dirty Condition": 26,
+      "Noise - Vehicle": 21,
+      "PLUMBING": 21,
+      "DOOR/WINDOW": 21,
+      "Abandoned Vehicle": 20,
+      "Encampment": 19,
+      "WATER LEAK": 19,
+      "PAINT/PLASTER": 13,
+      "Street Condition": 13,
+      "Street Light Condition": 13,
+      "Non-Emergency Police Matter": 12,
+      "GENERAL": 12,
+      "Rodent": 10
+    },
+    "borough_sample_counts": {
+      "BRONX": 805,
+      "BROOKLYN": 456,
+      "QUEENS": 390,
+      "MANHATTAN": 351,
+      "STATEN ISLAND": 43
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part000.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-01 00:00:01",
+        "max": "2025-12-01 11:54:39",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-11-26 08:51:00",
+        "max": "2026-06-23 14:30:14",
+        "non_null_sample_rows": 4908
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50527427800876,
+        "max": 40.909627709134185,
+        "mean": 40.76636710335481
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24373373310323,
+        "max": -73.70410567903858,
+        "mean": -73.91103642648027
+      }
+    },
+    "top_complaint_type_sample": {
+      "Noise - Residential": 1204,
+      "HEAT/HOT WATER": 702,
+      "Illegal Parking": 632,
+      "Blocked Driveway": 196,
+      "UNSANITARY CONDITION": 183,
+      "PAINT/PLASTER": 130,
+      "PLUMBING": 120,
+      "Abandoned Vehicle": 98,
+      "Encampment": 90,
+      "DOOR/WINDOW": 88,
+      "Noise": 76,
+      "Dirty Condition": 72,
+      "GENERAL": 66,
+      "Street Condition": 63,
+      "WATER LEAK": 57,
+      "FLOORING/STAIRS": 55,
+      "Noise - Street/Sidewalk": 53,
+      "Illegal Dumping": 53,
+      "ELECTRIC": 48,
+      "APPLIANCE": 44
+    },
+    "borough_sample_counts": {
+      "BRONX": 1830,
+      "BROOKLYN": 1251,
+      "QUEENS": 911,
+      "MANHATTAN": 872,
+      "STATEN ISLAND": 136
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part001.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-05 00:52:54",
+        "max": "2025-12-05 11:27:51",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-04 08:28:00",
+        "max": "2026-06-18 08:29:46",
+        "non_null_sample_rows": 4945
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50281126180399,
+        "max": 40.91087656726079,
+        "mean": 40.7639259229357
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24536741550259,
+        "max": -73.71410227778074,
+        "mean": -73.91306867529971
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1489,
+      "Noise - Residential": 870,
+      "Illegal Parking": 555,
+      "Blocked Driveway": 186,
+      "Missed Collection": 149,
+      "UNSANITARY CONDITION": 111,
+      "PLUMBING": 102,
+      "Noise": 85,
+      "PAINT/PLASTER": 73,
+      "Encampment": 69,
+      "Abandoned Vehicle": 66,
+      "Water System": 63,
+      "DOOR/WINDOW": 57,
+      "Dirty Condition": 49,
+      "WATER LEAK": 44,
+      "Homeless Person Assistance": 43,
+      "Noise - Street/Sidewalk": 40,
+      "Traffic Signal Condition": 40,
+      "Derelict Vehicles": 40,
+      "Street Condition": 40
+    },
+    "borough_sample_counts": {
+      "BRONX": 1749,
+      "BROOKLYN": 1347,
+      "MANHATTAN": 964,
+      "QUEENS": 841,
+      "STATEN ISLAND": 99
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part002.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-09 08:19:52",
+        "max": "2025-12-09 14:26:33",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-09 08:25:00",
+        "max": "2026-06-22 10:00:59",
+        "non_null_sample_rows": 4889
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.51223557748644,
+        "max": 40.90768803436268,
+        "mean": 40.75330539460784
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.2499232340609,
+        "max": -73.70548271672033,
+        "mean": -73.91797590113563
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 1247,
+      "Noise - Residential": 568,
+      "Illegal Parking": 484,
+      "UNSANITARY CONDITION": 201,
+      "Blocked Driveway": 166,
+      "PLUMBING": 147,
+      "DOOR/WINDOW": 126,
+      "PAINT/PLASTER": 116,
+      "Water System": 102,
+      "Missed Collection": 94,
+      "Abandoned Vehicle": 80,
+      "Dirty Condition": 74,
+      "General Construction/Plumbing": 73,
+      "Street Light Condition": 68,
+      "ELECTRIC": 67,
+      "FLOORING/STAIRS": 64,
+      "WATER LEAK": 63,
+      "Encampment": 62,
+      "GENERAL": 60,
+      "Traffic Signal Condition": 53
+    },
+    "borough_sample_counts": {
+      "BRONX": 1578,
+      "BROOKLYN": 1435,
+      "MANHATTAN": 926,
+      "QUEENS": 886,
+      "STATEN ISLAND": 175
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part003.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-13 10:37:30",
+        "max": "2025-12-13 20:41:12",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-13 10:37:45",
+        "max": "2026-06-22 00:00:00",
+        "non_null_sample_rows": 4881
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.502878053705736,
+        "max": 40.910115242813816,
+        "mean": 40.76561099862169
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.25136255092438,
+        "max": -73.70291254198106,
+        "mean": -73.9124244030768
+      }
+    },
+    "top_complaint_type_sample": {
+      "Noise - Residential": 1271,
+      "HEAT/HOT WATER": 882,
+      "Illegal Parking": 727,
+      "Blocked Driveway": 231,
+      "UNSANITARY CONDITION": 95,
+      "Noise - Street/Sidewalk": 90,
+      "Abandoned Vehicle": 80,
+      "Missed Collection": 78,
+      "Dirty Condition": 72,
+      "PLUMBING": 68,
+      "Noise - Commercial": 65,
+      "Water System": 65,
+      "Noise": 60,
+      "Non-Emergency Police Matter": 51,
+      "DOOR/WINDOW": 49,
+      "Encampment": 46,
+      "Illegal Dumping": 41,
+      "Noise - Vehicle": 41,
+      "WATER LEAK": 40,
+      "PAINT/PLASTER": 39
+    },
+    "borough_sample_counts": {
+      "BRONX": 1738,
+      "BROOKLYN": 1215,
+      "MANHATTAN": 990,
+      "QUEENS": 937,
+      "STATEN ISLAND": 120
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part004.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-17 08:17:15",
+        "max": "2025-12-17 15:56:06",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-16 10:07:00",
+        "max": "2026-06-19 11:21:59",
+        "non_null_sample_rows": 4831
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.502728978409856,
+        "max": 40.90756373115768,
+        "mean": 40.732936926690876
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.25219646357304,
+        "max": -73.70410888308356,
+        "mean": -73.92743665427973
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 741,
+      "Illegal Parking": 612,
+      "Snow or Ice": 363,
+      "UNSANITARY CONDITION": 247,
+      "Blocked Driveway": 241,
+      "PLUMBING": 176,
+      "Noise - Residential": 162,
+      "PAINT/PLASTER": 155,
+      "DOOR/WINDOW": 120,
+      "Missed Collection": 111,
+      "Traffic Signal Condition": 99,
+      "WATER LEAK": 97,
+      "Graffiti": 95,
+      "Water System": 87,
+      "Abandoned Vehicle": 80,
+      "FLOORING/STAIRS": 75,
+      "GENERAL": 74,
+      "ELECTRIC": 72,
+      "Street Condition": 70,
+      "General Construction/Plumbing": 61
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1640,
+      "QUEENS": 1103,
+      "MANHATTAN": 1062,
+      "BRONX": 972,
+      "STATEN ISLAND": 223
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part005.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "community_board",
+      "open_data_channel_type",
+      "location_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-22 14:30:00",
+        "max": "2025-12-23 05:47:51",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-22 14:41:00",
+        "max": "2026-06-23 14:32:44",
+        "non_null_sample_rows": 4869
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50173519612772,
+        "max": 40.91106112184899,
+        "mean": 40.73804409731146
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.25292180449975,
+        "max": -73.70946264553787,
+        "mean": -73.92175087395601
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 936,
+      "Illegal Parking": 897,
+      "Noise - Residential": 512,
+      "Blocked Driveway": 306,
+      "UNSANITARY CONDITION": 181,
+      "PLUMBING": 126,
+      "Noise - Street/Sidewalk": 121,
+      "PAINT/PLASTER": 94,
+      "DOOR/WINDOW": 91,
+      "Water System": 90,
+      "Abandoned Vehicle": 68,
+      "WATER LEAK": 67,
+      "Street Light Condition": 65,
+      "Noise - Helicopter": 61,
+      "Noise - Commercial": 58,
+      "GENERAL": 55,
+      "Noise": 55,
+      "Dirty Condition": 54,
+      "FLOORING/STAIRS": 53,
+      "ELECTRIC": 51
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1553,
+      "QUEENS": 1160,
+      "BRONX": 1135,
+      "MANHATTAN": 985,
+      "STATEN ISLAND": 167
+    }
+  },
+  {
+    "dataset": "nyc_311",
+    "file": "data\\raw\\nyc_311\\nyc_311_2025_12_part006.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 15,
+    "columns": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "descriptor",
+      "agency",
+      "agency_name",
+      "borough",
+      "incident_zip",
+      "status",
+      "latitude",
+      "longitude",
+      "location_type",
+      "community_board",
+      "open_data_channel_type"
+    ],
+    "required_found": [
+      "unique_key",
+      "created_date",
+      "closed_date",
+      "complaint_type",
+      "borough",
+      "latitude",
+      "longitude"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {
+      "created_date": {
+        "min": "2025-12-28 21:06:48",
+        "max": "2025-12-29 12:35:08",
+        "non_null_sample_rows": 5000
+      },
+      "closed_date": {
+        "min": "2025-12-28 21:21:08",
+        "max": "2026-06-22 15:33:05",
+        "non_null_sample_rows": 4936
+      }
+    },
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.50251224501063,
+        "max": 40.90987228347662,
+        "mean": 40.73815950493183
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.24286535169621,
+        "max": -73.70273065992728,
+        "mean": -73.9198454847228
+      }
+    },
+    "top_complaint_type_sample": {
+      "HEAT/HOT WATER": 833,
+      "Illegal Parking": 726,
+      "Noise - Residential": 605,
+      "Blocked Driveway": 276,
+      "UNSANITARY CONDITION": 203,
+      "Snow or Ice": 150,
+      "PLUMBING": 145,
+      "Traffic Signal Condition": 124,
+      "PAINT/PLASTER": 119,
+      "DOOR/WINDOW": 99,
+      "WATER LEAK": 93,
+      "Noise - Commercial": 89,
+      "Noise - Street/Sidewalk": 73,
+      "Abandoned Vehicle": 73,
+      "Dirty Condition": 65,
+      "Noise": 61,
+      "Street Condition": 59,
+      "GENERAL": 56,
+      "ELECTRIC": 54,
+      "Water System": 53
+    },
+    "borough_sample_counts": {
+      "BROOKLYN": 1569,
+      "QUEENS": 1153,
+      "BRONX": 1120,
+      "MANHATTAN": 987,
+      "STATEN ISLAND": 171
+    }
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\nyc_nta\\nyc_nta_2020_clean.geojson",
+    "status": "OK",
+    "sample_rows_read": 262,
+    "num_columns": 8,
+    "columns": [
+      "nta2020",
+      "ntaname",
+      "boroname",
+      "borocode",
+      "cdta2020",
+      "cdtaname",
+      "ntatype",
+      "has_geometry"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {},
+    "nta2020_non_null_sample": 262
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\nyc_nta\\nyc_nta_2020_metadata.csv",
+    "status": "OK",
+    "sample_rows_read": 262,
+    "num_columns": 7,
+    "columns": [
+      "nta2020",
+      "ntaname",
+      "boroname",
+      "borocode",
+      "cdta2020",
+      "cdtaname",
+      "ntatype"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {},
+    "nta2020_non_null_sample": 262
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\nyc_nta\\nyc_nta_2020_raw.geojson",
+    "status": "OK",
+    "sample_rows_read": 262,
+    "num_columns": 12,
+    "columns": [
+      "shape_area",
+      "ntaname",
+      "cdtaname",
+      "shape_leng",
+      "boroname",
+      "ntatype",
+      "nta2020",
+      "borocode",
+      "countyfips",
+      "ntaabbrev",
+      "cdta2020",
+      "has_geometry"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {},
+    "nta2020_non_null_sample": 262
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\nyc_pluto_clean.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 43,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version",
+      "borough_name",
+      "landuse_code",
+      "land_use_type",
+      "land_use_group",
+      "building_to_lot_area_ratio",
+      "residential_area_ratio",
+      "commercial_area_ratio",
+      "office_area_ratio",
+      "retail_area_ratio",
+      "has_valid_coord"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4947,
+        "min": 40.6876026,
+        "max": 40.7300223,
+        "mean": 40.71809762369112
+      },
+      "longitude": {
+        "non_null": 4947,
+        "min": -74.0453371,
+        "max": -73.9720537,
+        "mean": -73.99403686545381
+      }
+    },
+    "borough_sample_counts": {
+      "MN": 5000
+    },
+    "landuse_sample_counts": {
+      "4.0": 2382,
+      "2.0": 711,
+      "5.0": 709,
+      "3.0": 400,
+      "8.0": 286,
+      "9.0": 179,
+      "11.0": 74,
+      "10.0": 74,
+      "7.0": 66,
+      "1.0": 62,
+      "nan": 30,
+      "6.0": 27
+    }
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\nyc_pluto\\nyc_pluto_nta_landuse_features.csv",
+    "status": "OK",
+    "sample_rows_read": 260,
+    "num_columns": 53,
+    "columns": [
+      "nta2020",
+      "pluto_lot_count",
+      "total_lot_area",
+      "total_building_area",
+      "total_residential_area",
+      "total_commercial_area",
+      "total_office_area",
+      "total_retail_area",
+      "total_garage_area",
+      "total_storage_area",
+      "total_factory_area",
+      "total_other_area",
+      "total_buildings",
+      "total_residential_units",
+      "total_units",
+      "avg_num_floors",
+      "ntaname",
+      "boroname",
+      "residential_area_ratio",
+      "commercial_area_ratio",
+      "office_area_ratio",
+      "retail_area_ratio",
+      "building_area_to_lot_area_ratio",
+      "lot_count_commercial",
+      "lot_count_industrial",
+      "lot_count_mixed_use",
+      "lot_count_open_space",
+      "lot_count_parking",
+      "lot_count_public_facility",
+      "lot_count_residential",
+      "lot_count_transportation_utility",
+      "lot_count_unknown",
+      "lot_count_vacant",
+      "lot_area_commercial",
+      "lot_area_industrial",
+      "lot_area_mixed_use",
+      "lot_area_open_space",
+      "lot_area_parking",
+      "lot_area_public_facility",
+      "lot_area_residential",
+      "lot_area_transportation_utility",
+      "lot_area_unknown",
+      "lot_area_vacant",
+      "lot_area_ratio_commercial",
+      "lot_area_ratio_industrial",
+      "lot_area_ratio_mixed_use",
+      "lot_area_ratio_open_space",
+      "lot_area_ratio_parking",
+      "lot_area_ratio_public_facility",
+      "lot_area_ratio_residential",
+      "lot_area_ratio_transportation_utility",
+      "lot_area_ratio_unknown",
+      "lot_area_ratio_vacant"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {},
+    "nta2020_non_null_sample": 260
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\nyc_pluto_raw.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4947,
+        "min": 40.6876026,
+        "max": 40.7300223,
+        "mean": 40.71809762369112
+      },
+      "longitude": {
+        "non_null": 4947,
+        "min": -74.0453371,
+        "max": -73.9720537,
+        "mean": -73.99403686545381
+      }
+    },
+    "borough_sample_counts": {
+      "MN": 5000
+    },
+    "landuse_sample_counts": {
+      "4.0": 2382,
+      "2.0": 711,
+      "5.0": 709,
+      "3.0": 400,
+      "8.0": 286,
+      "9.0": 179,
+      "11.0": 74,
+      "10.0": 74,
+      "7.0": 66,
+      "1.0": 62,
+      "nan": 30,
+      "6.0": 27
+    }
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\nyc_pluto\\nyc_pluto_with_nta.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 50,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version",
+      "borough_name",
+      "landuse_code",
+      "land_use_type",
+      "land_use_group",
+      "building_to_lot_area_ratio",
+      "residential_area_ratio",
+      "commercial_area_ratio",
+      "office_area_ratio",
+      "retail_area_ratio",
+      "has_valid_coord",
+      "nta2020",
+      "ntaname",
+      "boroname",
+      "borocode",
+      "cdta2020",
+      "cdtaname",
+      "ntatype"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.6876026,
+        "max": 40.7304207,
+        "mean": 40.71821319638
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.0453371,
+        "max": -73.9720537,
+        "mean": -73.99391903217999
+      }
+    },
+    "borough_sample_counts": {
+      "MN": 5000
+    },
+    "nta2020_non_null_sample": 4979,
+    "landuse_sample_counts": {
+      "4.0": 2414,
+      "2.0": 718,
+      "5.0": 705,
+      "3.0": 384,
+      "8.0": 284,
+      "9.0": 179,
+      "10.0": 74,
+      "11.0": 64,
+      "1.0": 63,
+      "7.0": 60,
+      "nan": 28,
+      "6.0": 27
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part000.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4947,
+        "min": 40.6876026,
+        "max": 40.7300223,
+        "mean": 40.71809762369112
+      },
+      "longitude": {
+        "non_null": 4947,
+        "min": -74.0453371,
+        "max": -73.9720537,
+        "mean": -73.99403686545381
+      }
+    },
+    "borough_sample_counts": {
+      "MN": 5000
+    },
+    "landuse_sample_counts": {
+      "4.0": 2382,
+      "2.0": 711,
+      "5.0": 709,
+      "3.0": 400,
+      "8.0": 286,
+      "9.0": 179,
+      "11.0": 74,
+      "10.0": 74,
+      "7.0": 66,
+      "1.0": 62,
+      "nan": 30,
+      "6.0": 27
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part001.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4968,
+        "min": 40.7998358,
+        "max": 40.8545289,
+        "mean": 40.827603144343804
+      },
+      "longitude": {
+        "non_null": 4968,
+        "min": -73.9216477,
+        "max": -73.8695131,
+        "mean": -73.89866670597826
+      }
+    },
+    "borough_sample_counts": {
+      "BX": 5000
+    },
+    "landuse_sample_counts": {
+      "2.0": 1413,
+      "1.0": 1290,
+      "4.0": 430,
+      "3.0": 351,
+      "6.0": 331,
+      "5.0": 237,
+      "11.0": 236,
+      "8.0": 217,
+      "10.0": 186,
+      "7.0": 138,
+      "9.0": 91,
+      "nan": 80
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part002.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4998,
+        "min": 40.8635966,
+        "max": 40.8935177,
+        "mean": 40.875950235994395
+      },
+      "longitude": {
+        "non_null": 4998,
+        "min": -73.8649669,
+        "max": -73.8295771,
+        "mean": -73.84769712412965
+      }
+    },
+    "borough_sample_counts": {
+      "BX": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3874,
+      "2.0": 673,
+      "11.0": 131,
+      "5.0": 78,
+      "4.0": 74,
+      "10.0": 51,
+      "8.0": 46,
+      "7.0": 34,
+      "3.0": 19,
+      "6.0": 10,
+      "9.0": 5,
+      "nan": 5
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part003.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4988,
+        "min": 40.6440276,
+        "max": 40.6844369,
+        "mean": 40.66753815196471
+      },
+      "longitude": {
+        "non_null": 4988,
+        "min": -74.004775,
+        "max": -73.9733211,
+        "mean": -73.98429026784282
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "2.0": 2096,
+      "1.0": 1928,
+      "4.0": 610,
+      "5.0": 68,
+      "6.0": 65,
+      "11.0": 57,
+      "8.0": 50,
+      "3.0": 44,
+      "10.0": 29,
+      "7.0": 25,
+      "9.0": 17,
+      "nan": 11
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part004.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4957,
+        "min": 40.6985323,
+        "max": 40.7386935,
+        "mean": 40.71962839142627
+      },
+      "longitude": {
+        "non_null": 4957,
+        "min": -73.9695237,
+        "max": -73.9414557,
+        "mean": -73.95643666340528
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "2.0": 1908,
+      "4.0": 1239,
+      "1.0": 579,
+      "3.0": 268,
+      "5.0": 249,
+      "6.0": 225,
+      "11.0": 137,
+      "10.0": 122,
+      "8.0": 99,
+      "nan": 64,
+      "7.0": 57,
+      "9.0": 53
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part005.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4999,
+        "min": 40.646404,
+        "max": 40.666016,
+        "mean": 40.65525162358472
+      },
+      "longitude": {
+        "non_null": 4999,
+        "min": -73.9340658,
+        "max": -73.9123792,
+        "mean": -73.924912344989
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 2312,
+      "2.0": 1904,
+      "4.0": 430,
+      "5.0": 124,
+      "8.0": 82,
+      "11.0": 69,
+      "3.0": 24,
+      "7.0": 21,
+      "10.0": 16,
+      "6.0": 8,
+      "nan": 7,
+      "9.0": 3
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part006.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.6187716,
+        "max": 40.6344896,
+        "mean": 40.62719036098
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.0403729,
+        "max": -74.0103172,
+        "mean": -74.02435717066
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3843,
+      "4.0": 523,
+      "2.0": 469,
+      "8.0": 39,
+      "11.0": 38,
+      "3.0": 34,
+      "5.0": 32,
+      "10.0": 8,
+      "nan": 7,
+      "9.0": 4,
+      "7.0": 3
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part007.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4999,
+        "min": 40.5756305,
+        "max": 40.60528,
+        "mean": 40.596224255111025
+      },
+      "longitude": {
+        "non_null": 4999,
+        "min": -73.9828516,
+        "max": -73.9355179,
+        "mean": -73.955534710002
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3652,
+      "2.0": 546,
+      "4.0": 294,
+      "5.0": 109,
+      "11.0": 109,
+      "3.0": 85,
+      "8.0": 59,
+      "7.0": 50,
+      "10.0": 40,
+      "6.0": 23,
+      "nan": 19,
+      "9.0": 14
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part008.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4982,
+        "min": 40.5720088,
+        "max": 40.6178836,
+        "mean": 40.59053006730228
+      },
+      "longitude": {
+        "non_null": 4982,
+        "min": -73.9807739,
+        "max": -73.9018913,
+        "mean": -73.93740404668807
+      }
+    },
+    "borough_sample_counts": {
+      "BK": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3691,
+      "2.0": 488,
+      "4.0": 285,
+      "5.0": 148,
+      "3.0": 129,
+      "11.0": 116,
+      "9.0": 47,
+      "8.0": 42,
+      "10.0": 20,
+      "nan": 19,
+      "7.0": 12,
+      "6.0": 3
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part009.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4996,
+        "min": 40.7345316,
+        "max": 40.7669411,
+        "mean": 40.7546549728783
+      },
+      "longitude": {
+        "non_null": 4996,
+        "min": -73.8773841,
+        "max": -73.8372617,
+        "mean": -73.86436473923138
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 2318,
+      "2.0": 1649,
+      "4.0": 494,
+      "11.0": 124,
+      "5.0": 117,
+      "10.0": 88,
+      "8.0": 84,
+      "7.0": 49,
+      "6.0": 28,
+      "3.0": 21,
+      "nan": 18,
+      "9.0": 10
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part010.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "numbldgs",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numfloors"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.6848111,
+        "max": 40.7130742,
+        "mean": 40.70412433879999
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -73.9024888,
+        "max": -73.8620534,
+        "mean": -73.88121708334
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3558,
+      "2.0": 751,
+      "4.0": 268,
+      "11.0": 96,
+      "6.0": 82,
+      "10.0": 71,
+      "5.0": 58,
+      "7.0": 40,
+      "8.0": 34,
+      "9.0": 33,
+      "nan": 7,
+      "3.0": 2
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part011.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.7175371,
+        "max": 40.7670895,
+        "mean": 40.739256132920005
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -73.8357187,
+        "max": -73.7542083,
+        "mean": -73.81942469834001
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 4525,
+      "2.0": 282,
+      "4.0": 57,
+      "5.0": 53,
+      "8.0": 32,
+      "11.0": 29,
+      "10.0": 10,
+      "7.0": 5,
+      "9.0": 3,
+      "3.0": 3,
+      "nan": 1
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part012.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4998,
+        "min": 40.6746889,
+        "max": 40.7066248,
+        "mean": 40.68678668359343
+      },
+      "longitude": {
+        "non_null": 4998,
+        "min": -73.8628964,
+        "max": -73.8278967,
+        "mean": -73.84643226930773
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3771,
+      "2.0": 519,
+      "4.0": 344,
+      "11.0": 85,
+      "5.0": 83,
+      "10.0": 62,
+      "8.0": 52,
+      "7.0": 35,
+      "6.0": 30,
+      "3.0": 13,
+      "9.0": 5,
+      "nan": 1
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part013.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4997,
+        "min": 40.6919716,
+        "max": 40.7156066,
+        "mean": 40.70132752385431
+      },
+      "longitude": {
+        "non_null": 4997,
+        "min": -73.7636669,
+        "max": -73.7361319,
+        "mean": -73.75152430746448
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 4655,
+      "4.0": 133,
+      "5.0": 50,
+      "2.0": 40,
+      "11.0": 39,
+      "8.0": 39,
+      "7.0": 19,
+      "10.0": 11,
+      "6.0": 8,
+      "nan": 4,
+      "9.0": 2
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part014.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4996,
+        "min": 40.6600926,
+        "max": 40.6788784,
+        "mean": 40.670149427001604
+      },
+      "longitude": {
+        "non_null": 4996,
+        "min": -73.7793523,
+        "max": -73.7276524,
+        "mean": -73.74852129423539
+      }
+    },
+    "borough_sample_counts": {
+      "QN": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 4543,
+      "11.0": 129,
+      "5.0": 70,
+      "2.0": 54,
+      "4.0": 51,
+      "7.0": 46,
+      "10.0": 45,
+      "8.0": 33,
+      "6.0": 21,
+      "nan": 6,
+      "9.0": 2
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part015.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 5000,
+        "min": 40.6019968,
+        "max": 40.638168,
+        "mean": 40.61814138482
+      },
+      "longitude": {
+        "non_null": 5000,
+        "min": -74.1220846,
+        "max": -74.0740197,
+        "mean": -74.09493775998
+      }
+    },
+    "borough_sample_counts": {
+      "SI": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 4184,
+      "11.0": 281,
+      "2.0": 163,
+      "4.0": 129,
+      "8.0": 73,
+      "5.0": 65,
+      "10.0": 43,
+      "9.0": 18,
+      "6.0": 16,
+      "7.0": 15,
+      "3.0": 12,
+      "nan": 1
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part016.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4992,
+        "min": 40.5662676,
+        "max": 40.5856608,
+        "mean": 40.576213595312495
+      },
+      "longitude": {
+        "non_null": 4992,
+        "min": -74.1191877,
+        "max": -74.0787048,
+        "mean": -74.0960738028045
+      }
+    },
+    "borough_sample_counts": {
+      "SI": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3790,
+      "11.0": 849,
+      "5.0": 149,
+      "2.0": 69,
+      "4.0": 33,
+      "9.0": 28,
+      "8.0": 28,
+      "10.0": 26,
+      "7.0": 23,
+      "nan": 3,
+      "6.0": 2
+    }
+  },
+  {
+    "dataset": "nyc_pluto",
+    "file": "data\\raw\\nyc_pluto\\parts\\nyc_pluto_part017.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 33,
+    "columns": [
+      "bbl",
+      "borough",
+      "block",
+      "lot",
+      "address",
+      "zipcode",
+      "landuse",
+      "bldgclass",
+      "zonedist1",
+      "lotarea",
+      "bldgarea",
+      "resarea",
+      "comarea",
+      "officearea",
+      "retailarea",
+      "garagearea",
+      "strgearea",
+      "factryarea",
+      "otherarea",
+      "numbldgs",
+      "numfloors",
+      "unitsres",
+      "unitstotal",
+      "yearbuilt",
+      "yearalter1",
+      "yearalter2",
+      "builtfar",
+      "residfar",
+      "commfar",
+      "facilfar",
+      "latitude",
+      "longitude",
+      "version"
+    ],
+    "required_found": [
+      "latitude",
+      "longitude",
+      "landuse",
+      "lotarea",
+      "bldgarea"
+    ],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {
+      "latitude": {
+        "non_null": 4990,
+        "min": 40.496841,
+        "max": 40.5583127,
+        "mean": 40.52839307218437
+      },
+      "longitude": {
+        "non_null": 4990,
+        "min": -74.2465491,
+        "max": -74.2121268,
+        "mean": -74.22636567885772
+      }
+    },
+    "borough_sample_counts": {
+      "SI": 5000
+    },
+    "landuse_sample_counts": {
+      "1.0": 3475,
+      "11.0": 615,
+      "9.0": 445,
+      "6.0": 124,
+      "5.0": 116,
+      "7.0": 59,
+      "nan": 54,
+      "10.0": 43,
+      "4.0": 42,
+      "8.0": 22,
+      "2.0": 5
+    }
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\osm_nyc_pois_raw.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "nyc_nta",
+    "file": "data\\raw\\osm_poi\\osm_nyc_pois_with_nta.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 31,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags",
+      "nta2020",
+      "ntaname",
+      "boroname",
+      "borocode",
+      "cdta2020",
+      "cdtaname",
+      "ntatype"
+    ],
+    "required_found": [],
+    "required_missing": [],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {},
+    "nta2020_non_null_sample": 4510
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_amenity.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2987,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_highway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1683,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_leisure.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1139,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_public_transport.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2907,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_railway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 411,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_shop.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 440,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_bronx_tourism.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 63,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_amenity.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_highway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_leisure.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_public_transport.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_railway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1245,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_shop.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 4315,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_brooklyn_tourism.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 598,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_amenity.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_highway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 3660,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_leisure.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_public_transport.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_railway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1595,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_shop.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 4228,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_manhattan_tourism.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1129,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_amenity.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_highway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_leisure.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 3645,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_public_transport.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 5000,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_railway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 989,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_shop.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 3968,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_queens_tourism.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 342,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_amenity.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 3570,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_highway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1105,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_leisure.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 2632,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_public_transport.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 1412,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_railway.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 37,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_shop.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 637,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  },
+  {
+    "dataset": "osm_poi",
+    "file": "data\\raw\\osm_poi\\parts\\osm_staten_island_tourism.csv.gz",
+    "status": "OK",
+    "sample_rows_read": 51,
+    "num_columns": 24,
+    "columns": [
+      "osm_type",
+      "osm_id",
+      "lat",
+      "lon",
+      "source_bbox",
+      "matched_tag_key",
+      "matched_tag_value",
+      "poi_group",
+      "name",
+      "amenity",
+      "leisure",
+      "shop",
+      "tourism",
+      "railway",
+      "public_transport",
+      "highway",
+      "operator",
+      "brand",
+      "opening_hours",
+      "addr_housenumber",
+      "addr_street",
+      "addr_city",
+      "addr_postcode",
+      "all_tags"
+    ],
+    "required_found": [],
+    "required_missing": [
+      "latitude",
+      "longitude"
+    ],
+    "date_ranges_detected": {},
+    "numeric_ranges_detected": {}
+  }
+]

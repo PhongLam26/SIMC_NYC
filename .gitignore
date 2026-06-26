@@ -1,0 +1,51 @@
+# Local environment and editor state
+.venv/
+venv/
+.vscode/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large or redistributable-source data. Use the public download scripts instead.
+data/raw/
+data/processed/final/
+data/processed/weekly_311/
+data/processed/nyc_311_with_nta/
+data/processed/feature_tables/nyc_311_weekly_temporal_features.csv.gz
+
+# Large model binaries and scored/prediction dumps
+data/processed/model_results/**/models/
+data/processed/model_results/**/model_*.joblib
+data/processed/model_results/**/preprocessor_*.joblib
+data/processed/model_results/**/predictions*.csv.gz
+data/processed/model_results/**/scored*.csv.gz
+data/processed/model_results/**/shap_sample_metadata.csv
+
+# LaTeX build byproducts
+*.aux
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Internal drafting/checklist files, not needed by reviewers
+SIMC_NYC_paper_strengths_and_must_have_checklist*.docx
+SIMC_NYC_30_references_verified_corrected.docx
+SIMC_NYC_Codex_paper_writing_plan.md
+Springer Template (Word + LaTeX).zip
+paper_springer/SUBMISSION_AUDIT.md
+paper_springer/bst/
+code_pulldata/pull_nyc_311_copy*.py
+
+# Superseded exploratory outputs kept locally but not part of the reviewer bundle
+data/processed/model_results/baselines/
+data/processed/model_results/baselines_e3_covid_ablation/
+data/processed/model_results/ensemble_category_thresholds/
+data/processed/model_results/gbm_hyperparam_tuning_*/
+data/processed/model_results/paper_tables/
+data/processed/model_results/shap_explainability_lgbm_smoke/
+data/processed/model_results/threshold_tuning_*/
+data/processed/model_results/tree_models_gpu_*/

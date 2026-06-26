@@ -1,0 +1,13 @@
+flag,value,rows,share
+weather_missing_flag,0,1355850,1.0
+weather_incomplete_week_flag,0,1351134,0.9965217391304347
+weather_incomplete_week_flag,1,4716,0.0034782608695652175
+osm_missing_flag,0,1355850,1.0
+osm_zero_poi_flag,0,1335150,0.9847328244274809
+osm_zero_poi_flag,1,20700,0.015267175572519083
+pluto_table_missing_flag,0,1355850,1.0
+pluto_source_missing_flag,0,1345500,0.9923664122137404
+pluto_source_missing_flag,1,10350,0.007633587786259542
+external_features_merged_flag,1,1355850,1.0
+final_train_ready_flag,1,1325196,0.9773913043478261
+final_train_ready_flag,0,30654,0.022608695652173914

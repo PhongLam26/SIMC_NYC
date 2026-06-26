@@ -1,0 +1,11 @@
+feature_group,column_count
+osm_poi,99
+pluto_landuse_built_environment,56
+weather,39
+temporal_demand,21
+id_metadata,13
+calendar_period,9
+quality_flag,7
+other,6
+target,3
+current_demand,1

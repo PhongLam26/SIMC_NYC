@@ -1,0 +1,17 @@
+﻿time_split,period_type,year,final_train_ready_flag,rows
+bad_date,post_covid,2025,0,2358
+test,post_covid,2023,1,2358
+test,post_covid,2024,1,124974
+test,post_covid,2025,1,120258
+train,pre_covid,2014,0,2358
+train,pre_covid,2015,0,25938
+train,pre_covid,2015,1,96678
+train,pre_covid,2016,1,122616
+train,pre_covid,2017,1,122616
+train,pre_covid,2018,1,124974
+train,pre_covid,2019,1,122616
+train,covid_disruption,2020,1,122616
+train,covid_disruption,2021,1,122616
+train,post_covid,2022,1,120258
+validation,post_covid,2022,1,2358
+validation,post_covid,2023,1,120258

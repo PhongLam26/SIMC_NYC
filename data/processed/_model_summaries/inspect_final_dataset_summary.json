@@ -1,0 +1,91 @@
+{
+  "script": "inspect_final_dataset",
+  "status": "done",
+  "input_file": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "model_ready_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_ready",
+  "summary_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_model_summaries",
+  "total_rows": 1355850,
+  "selected_feature_count": 215,
+  "numeric_feature_count": 211,
+  "categorical_feature_count": 4,
+  "excluded_column_count": 39,
+  "unique_weeks": 575,
+  "unique_nta2020": 262,
+  "unique_complaint_categories": 9,
+  "min_week_start": "2014-12-29",
+  "max_week_start": "2025-12-29",
+  "covid_periods": {
+    "pre_covid": "2015-2019",
+    "covid_disruption": "2020-2021",
+    "post_covid": "2022-2025"
+  },
+  "main_time_split": {
+    "train": "2015-01-01 <= target_week <= 2022-12-31",
+    "validation": "2023-01-01 <= target_week <= 2023-12-31",
+    "test": "2024-01-01 <= target_week <= 2025-12-31",
+    "note": "Use chronological split by target_week; do not split by feature week or random split."
+  },
+  "feature_group_counts": {
+    "osm_poi": 98,
+    "pluto_landuse_built_environment": 53,
+    "weather": 30,
+    "temporal_demand": 21,
+    "calendar_period": 9,
+    "categorical_context": 2,
+    "current_demand": 1,
+    "quality_flag": 1
+  },
+  "feature_sets": {
+    "historical_only": 24,
+    "historical_calendar_covid": 33,
+    "historical_calendar_no_covid_period": 31,
+    "historical_calendar_weather": 63,
+    "historical_calendar_weather_osm": 161,
+    "historical_calendar_weather_pluto": 116,
+    "full": 215,
+    "full_without_covid_period_features": 213,
+    "full_without_osm": 117,
+    "full_without_pluto": 162,
+    "external_context_only": 185
+  },
+  "experiments": [
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "purpose": "Main prospective forecasting model using all train-ready rows from normal, COVID-disruption, and post-COVID periods.",
+      "train_rule": "final_train_ready_flag == 1 and time_split == 'train'",
+      "validation_rule": "final_train_ready_flag == 1 and time_split == 'validation'",
+      "test_rule": "final_train_ready_flag == 1 and time_split == 'test'",
+      "recommended_feature_sets": "full; historical_only; historical_calendar_weather; ablations",
+      "paper_use": "Main result"
+    },
+    {
+      "experiment_id": "E2_without_covid_years",
+      "purpose": "Robustness check excluding the 2020–2021 COVID-disruption years.",
+      "train_rule": "final_train_ready_flag == 1 and time_split == 'train' and year not in [2020, 2021]",
+      "validation_rule": "final_train_ready_flag == 1 and time_split == 'validation'",
+      "test_rule": "final_train_ready_flag == 1 and time_split == 'test'",
+      "recommended_feature_sets": "full; full_without_covid_period_features",
+      "paper_use": "Robustness / COVID sensitivity"
+    },
+    {
+      "experiment_id": "E3_covid_period_feature_ablation",
+      "purpose": "Compare full model with and without explicit COVID-period features under the main 2015–2025 split.",
+      "train_rule": "same_as_E1",
+      "validation_rule": "same_as_E1",
+      "test_rule": "same_as_E1",
+      "recommended_feature_sets": "full vs full_without_covid_period_features",
+      "paper_use": "COVID as urban-disruption feature analysis"
+    },
+    {
+      "experiment_id": "E4_pre_to_post_generalization",
+      "purpose": "Stress test: learn pre-COVID and early post-COVID structure without COVID-disruption years, then test on 2024–2025.",
+      "train_rule": "final_train_ready_flag == 1 and year <= 2019",
+      "validation_rule": "final_train_ready_flag == 1 and year in [2022, 2023]",
+      "test_rule": "final_train_ready_flag == 1 and year >= 2024",
+      "recommended_feature_sets": "full; historical_calendar_weather; historical_only",
+      "paper_use": "Optional robustness if space allows"
+    }
+  ],
+  "elapsed_seconds": 55.289,
+  "elapsed_minutes": 0.921
+}

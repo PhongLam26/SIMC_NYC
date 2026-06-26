@@ -1,0 +1,51 @@
+{
+  "status": "done",
+  "files_requested": 682,
+  "files_done": 682,
+  "files_skipped": 0,
+  "files_error": 0,
+  "rows_read": 30947026,
+  "rows_used": 30940129,
+  "bad_date_rows": 0,
+  "missing_nta_rows": 6897,
+  "observed_rows": 1030778,
+  "dense_rows": 1355850,
+  "unique_ntas": 262,
+  "unique_weeks": 575,
+  "categories": [
+    "noise",
+    "parking_traffic",
+    "sanitation",
+    "housing",
+    "water_sewer",
+    "infrastructure",
+    "environment",
+    "public_safety",
+    "other"
+  ],
+  "category_labels": {
+    "noise": "Noise & Disturbance",
+    "parking_traffic": "Parking, Traffic & Mobility",
+    "sanitation": "Sanitation & Waste",
+    "housing": "Housing & Building Conditions",
+    "water_sewer": "Water & Sewer",
+    "infrastructure": "Street Infrastructure & Public Works",
+    "environment": "Environmental Health & Green Space",
+    "public_safety": "Public Safety & Regulatory Enforcement",
+    "other": "Other / Administrative & Unclassified"
+  },
+  "min_week_start": "2014-12-29",
+  "max_week_start": "2025-12-29",
+  "total_complaint_count_observed": 30940129,
+  "elapsed_seconds": 158.449,
+  "elapsed_minutes": 2.641,
+  "outputs": {
+    "dense_weekly": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\weekly_311\\nyc_311_weekly_by_nta_category.csv.gz",
+    "observed_weekly": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\weekly_311\\nyc_311_weekly_by_nta_category_observed.csv.gz",
+    "summary": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_aggregate_summaries\\aggregate_weekly_311_summary.csv",
+    "file_summary": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_aggregate_summaries\\aggregate_weekly_311_file_summary.csv",
+    "category_counts": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_aggregate_summaries\\weekly_311_category_counts.csv",
+    "other_top200": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_aggregate_summaries\\weekly_311_other_complaint_type_top200.csv",
+    "type_category_counts": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\_aggregate_summaries\\weekly_311_complaint_type_category_counts.csv"
+  }
+}

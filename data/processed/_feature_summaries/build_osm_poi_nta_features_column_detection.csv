@@ -1,0 +1,13 @@
+﻿field,detected_columns,n_detected
+nta2020,nta2020,1
+ntaname,ntaname,1
+boroname,boroname,1
+borocode,borocode,1
+cdta2020,cdta2020,1
+cdtaname,cdtaname,1
+name,name,1
+latitude,lat,1
+longitude,lon,1
+osm_id,osm_id,1
+tag_columns,amenity|shop|tourism|leisure|public_transport|railway|highway|osm_type,8
+tag_family_columns,amenity|shop|tourism|leisure|public_transport|railway|highway,7

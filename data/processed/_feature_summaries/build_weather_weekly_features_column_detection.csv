@@ -1,0 +1,8 @@
+family,display_name,detected_column_count,detected_columns
+tmax,maximum temperature,1,TMAX
+tmin,minimum temperature,1,TMIN
+tavg,average temperature,1,TAVG_est
+prcp,precipitation,1,PRCP
+snow,snowfall,1,SNOW
+snwd,snow depth,1,SNWD
+awnd,average wind speed,1,AWND

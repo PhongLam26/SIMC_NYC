@@ -1,0 +1,342 @@
+{
+  "script": "run_shap_explainability",
+  "status": "done",
+  "final_dataset": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "config": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_ready\\model_config.json",
+  "lgbm_tuning_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\gbm_hyperparam_tuning_lgbm_balanced_gpu",
+  "ensemble_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\ensemble_category_thresholds",
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm",
+  "experiment": "E1_main_2015_2025",
+  "feature_set": "full_without_covid_period_features",
+  "explained_model": "tuned_lightgbm",
+  "candidate": {
+    "candidate_id": "013_E1_main_2015_2025_lightgbm_lgbm_deeper_depth10_leaf127_lr003_pw_none",
+    "param_id": "lgbm_deeper_depth10_leaf127_lr003",
+    "pos_weight_mode": "none",
+    "pos_weight": 1.0,
+    "selected_threshold": 0.182273,
+    "params": {
+      "param_id": "lgbm_deeper_depth10_leaf127_lr003",
+      "n_estimators": 800,
+      "learning_rate": 0.03,
+      "num_leaves": 127,
+      "max_depth": 10,
+      "min_child_samples": 80,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 2.0
+    }
+  },
+  "train_info": {
+    "train_rows": 957348,
+    "train_positive_share": 0.12699248340206487,
+    "preprocess_seconds": 3.4380695819854736,
+    "fit_seconds": 104.84253001213074,
+    "warnings_count": 0,
+    "warnings_preview": ""
+  },
+  "validation_metrics_at_threshold": {
+    "rows": 122616,
+    "positive_rows": 15507,
+    "positive_share": 0.12646799765120376,
+    "threshold": 0.182273,
+    "predicted_positive_rows": 27451,
+    "predicted_positive_share": 0.2238777973510798,
+    "precision": 0.29656478816800846,
+    "recall": 0.524988714773973,
+    "f1": 0.37902136970994926,
+    "pr_auc": 0.3291171173719543,
+    "roc_auc": 0.764253915406418,
+    "tn": 87799,
+    "fp": 19310,
+    "fn": 7366,
+    "tp": 8141
+  },
+  "test_metrics_at_threshold": {
+    "rows": 245232,
+    "positive_rows": 31367,
+    "positive_share": 0.12790745090363412,
+    "threshold": 0.182273,
+    "predicted_positive_rows": 52924,
+    "predicted_positive_share": 0.21581196581196582,
+    "precision": 0.30485224094928576,
+    "recall": 0.5143622278190455,
+    "f1": 0.38281667081894866,
+    "pr_auc": 0.33526447429749767,
+    "roc_auc": 0.7688509293889717,
+    "tn": 177075,
+    "fp": 36790,
+    "fn": 15233,
+    "tp": 16134
+  },
+  "shap_sample_rows": 24999,
+  "shap_feature_count": 213,
+  "expected_value_log_odds": -2.4476075160092186,
+  "top_20_global_features": [
+    {
+      "importance_rank": 1,
+      "feature": "rolling_8w_std",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.7506653474324656,
+      "mean_signed_shap": 0.044227646202605726,
+      "mean_abs_shap_share": 0.21479668565276674
+    },
+    {
+      "importance_rank": 2,
+      "feature": "ratio_to_8w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.43349673416396667,
+      "mean_signed_shap": -0.017681305787220224,
+      "mean_abs_shap_share": 0.12404150805442049
+    },
+    {
+      "importance_rank": 3,
+      "feature": "complaint_category",
+      "feature_group": "semantic_category",
+      "mean_abs_shap": 0.2100585903811671,
+      "mean_signed_shap": 0.004872580888866198,
+      "mean_abs_shap_share": 0.060106529708734285
+    },
+    {
+      "importance_rank": 4,
+      "feature": "lag_52w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.12794532185878313,
+      "mean_signed_shap": -0.008512924300803793,
+      "mean_abs_shap_share": 0.03661049650692125
+    },
+    {
+      "importance_rank": 5,
+      "feature": "week_of_year",
+      "feature_group": "calendar",
+      "mean_abs_shap": 0.12298461961812288,
+      "mean_signed_shap": -0.0020262657234507457,
+      "mean_abs_shap_share": 0.03519103255610934
+    },
+    {
+      "importance_rank": 6,
+      "feature": "rolling_4w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.11312264853763647,
+      "mean_signed_shap": -0.06746117022518065,
+      "mean_abs_shap_share": 0.032369111030975284
+    },
+    {
+      "importance_rank": 7,
+      "feature": "rolling_12w_std",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.08535026345585889,
+      "mean_signed_shap": -0.04266164136089073,
+      "mean_abs_shap_share": 0.02442227255142917
+    },
+    {
+      "importance_rank": 8,
+      "feature": "complaint_count",
+      "feature_group": "current_demand",
+      "mean_abs_shap": 0.07422237690068285,
+      "mean_signed_shap": 0.0406847887705524,
+      "mean_abs_shap_share": 0.02123811977476615
+    },
+    {
+      "importance_rank": 9,
+      "feature": "lag_1w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.07349455049524115,
+      "mean_signed_shap": -0.021796912162559263,
+      "mean_abs_shap_share": 0.021029858263622518
+    },
+    {
+      "importance_rank": 10,
+      "feature": "history_weeks_available",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.07033199933127882,
+      "mean_signed_shap": 0.016855350326705248,
+      "mean_abs_shap_share": 0.020124920383447462
+    },
+    {
+      "importance_rank": 11,
+      "feature": "lag_12w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.053129467622790756,
+      "mean_signed_shap": 0.0117455808478885,
+      "mean_abs_shap_share": 0.015202558097166101
+    },
+    {
+      "importance_rank": 12,
+      "feature": "rolling_12w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.0508760865496771,
+      "mean_signed_shap": -0.018563023069977213,
+      "mean_abs_shap_share": 0.014557771725085655
+    },
+    {
+      "importance_rank": 13,
+      "feature": "poi_semantic_entropy",
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap": 0.04651934826937256,
+      "mean_signed_shap": 0.010462060072031456,
+      "mean_abs_shap_share": 0.013311127070358014
+    },
+    {
+      "importance_rank": 14,
+      "feature": "lag_8w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.043813182127938693,
+      "mean_signed_shap": -0.008492397192319574,
+      "mean_abs_shap_share": 0.012536779992803556
+    },
+    {
+      "importance_rank": 15,
+      "feature": "rolling_8w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.04230855165641977,
+      "mean_signed_shap": -0.00614723456440393,
+      "mean_abs_shap_share": 0.012106242417677911
+    },
+    {
+      "importance_rank": 16,
+      "feature": "poi_named_count",
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap": 0.040178999807362656,
+      "mean_signed_shap": 0.00820220007108308,
+      "mean_abs_shap_share": 0.011496888754733797
+    },
+    {
+      "importance_rank": 17,
+      "feature": "lag_2w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.03854392858839731,
+      "mean_signed_shap": -0.0076658090353086015,
+      "mean_abs_shap_share": 0.011029026637691577
+    },
+    {
+      "importance_rank": 18,
+      "feature": "pluto_lot_count",
+      "feature_group": "pluto_built_environment",
+      "mean_abs_shap": 0.0385349301903751,
+      "mean_signed_shap": -0.01010510147953276,
+      "mean_abs_shap_share": 0.011026451820460484
+    },
+    {
+      "importance_rank": 19,
+      "feature": "pluto_total_buildings",
+      "feature_group": "pluto_built_environment",
+      "mean_abs_shap": 0.03531656168548597,
+      "mean_signed_shap": -0.006055739764527109,
+      "mean_abs_shap_share": 0.010105542269454962
+    },
+    {
+      "importance_rank": 20,
+      "feature": "ratio_to_12w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.03466813847415374,
+      "mean_signed_shap": -0.006155412500206011,
+      "mean_abs_shap_share": 0.009920001326116003
+    }
+  ],
+  "feature_group_importance": [
+    {
+      "group_rank": 1,
+      "feature_group": "historical_temporal",
+      "mean_abs_shap_sum": 2.055716686908205,
+      "feature_count": 21,
+      "mean_abs_shap_share": 0.588226341470617
+    },
+    {
+      "group_rank": 2,
+      "feature_group": "pluto_built_environment",
+      "mean_abs_shap_sum": 0.4014524313962801,
+      "feature_count": 53,
+      "mean_abs_shap_share": 0.11487229563227379
+    },
+    {
+      "group_rank": 3,
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap_sum": 0.35262443931878995,
+      "feature_count": 99,
+      "mean_abs_shap_share": 0.10090056921490641
+    },
+    {
+      "group_rank": 4,
+      "feature_group": "weather",
+      "mean_abs_shap_sum": 0.21182381572182585,
+      "feature_count": 22,
+      "mean_abs_shap_share": 0.060611634352102546
+    },
+    {
+      "group_rank": 5,
+      "feature_group": "semantic_category",
+      "mean_abs_shap_sum": 0.2100585903811671,
+      "feature_count": 1,
+      "mean_abs_shap_share": 0.06010652970873429
+    },
+    {
+      "group_rank": 6,
+      "feature_group": "calendar",
+      "mean_abs_shap_sum": 0.16062158627874895,
+      "feature_count": 4,
+      "mean_abs_shap_share": 0.045960539533322624
+    },
+    {
+      "group_rank": 7,
+      "feature_group": "current_demand",
+      "mean_abs_shap_sum": 0.07422237690068285,
+      "feature_count": 1,
+      "mean_abs_shap_share": 0.021238119774766154
+    },
+    {
+      "group_rank": 8,
+      "feature_group": "other",
+      "mean_abs_shap_sum": 0.02409636506483341,
+      "feature_count": 11,
+      "mean_abs_shap_share": 0.0068949757304082575
+    },
+    {
+      "group_rank": 9,
+      "feature_group": "spatial_context",
+      "mean_abs_shap_sum": 0.004155264448947371,
+      "feature_count": 1,
+      "mean_abs_shap_share": 0.0011889945828689843
+    }
+  ],
+  "local_case_count": 20,
+  "plot_paths": {
+    "shap_summary_bar": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_summary_bar.png",
+    "shap_group_importance": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_group_importance.png",
+    "shap_beeswarm": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_beeswarm.png",
+    "shap_dependence_plots": [
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top01_rolling_8w_std.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top02_ratio_to_8w_mean.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top03_complaint_category.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top04_lag_52w_count.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top05_week_of_year.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top06_rolling_4w_mean.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top07_rolling_12w_std.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_dependence_top08_complaint_count.png"
+    ],
+    "shap_local_case_plots": [
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_001.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_002.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_003.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_004.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_005.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_006.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_007.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_008.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_009.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_010.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_011.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_012.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_013.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_014.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_015.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_016.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_017.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_018.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_019.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm\\shap_local_case_020.png"
+    ]
+  },
+  "elapsed_seconds": 383.062,
+  "elapsed_minutes": 6.384
+}

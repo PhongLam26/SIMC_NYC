@@ -1,0 +1,41 @@
+﻿rank_feature,nta2020,ntaname,boroname,pluto_parcel_count,pluto_parcel_density_per_km2
+pluto_parcel_count,SI0302,Great Kills-Eltingville,Staten Island,16400.0,
+pluto_parcel_count,QN1001,South Ozone Park,Queens,14716.0,
+pluto_parcel_count,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,Staten Island,12806.0,
+pluto_parcel_count,BK1803,Canarsie,Brooklyn,12740.0,
+pluto_parcel_count,QN1205,St. Albans,Queens,12224.0,
+pluto_parcel_count,QN1303,Queens Village,Queens,11916.0,
+pluto_parcel_count,BK1801,Flatlands,Brooklyn,11610.0,
+pluto_parcel_count,BK1101,Bensonhurst,Brooklyn,11168.0,
+pluto_parcel_count,BK1802,Marine Park-Mill Basin-Bergen Beach,Brooklyn,11162.0,
+pluto_parcel_count,BK1001,Bay Ridge,Brooklyn,10144.0,
+pluto_parcel_count,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,Brooklyn,9708.0,
+pluto_parcel_count,SI0202,New Dorp-Midland Beach,Staten Island,9244.0,
+pluto_parcel_count,SI0105,Westerleigh-Castleton Corners,Staten Island,9218.0,
+pluto_parcel_count,BK0302,Bedford-Stuyvesant (East),Brooklyn,9107.0,
+pluto_parcel_count,QN0501,Maspeth,Queens,9102.0,
+pluto_parcel_count,BK1202,Borough Park,Brooklyn,8811.0,
+pluto_parcel_count,SI0204,New Springville-Willowbrook-Bulls Head-Travis,Staten Island,8780.0,
+pluto_parcel_count,QN1203,Baisley Park,Queens,8715.0,
+pluto_parcel_count,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,Staten Island,8698.0,
+pluto_parcel_count,QN1102,Bayside,Queens,8632.0,
+pluto_parcel_density_per_km2,BK0602,Park Slope,Brooklyn,,2805.2392712847363
+pluto_parcel_density_per_km2,QN0905,Woodhaven,Queens,,2780.156208223819
+pluto_parcel_density_per_km2,BK1002,Dyker Heights,Brooklyn,,2524.459485694322
+pluto_parcel_density_per_km2,BK0402,Bushwick (East),Brooklyn,,2484.933311209785
+pluto_parcel_density_per_km2,BK1101,Bensonhurst,Brooklyn,,2473.251797244897
+pluto_parcel_density_per_km2,QN0903,South Richmond Hill,Queens,,2472.780933801526
+pluto_parcel_density_per_km2,QN0503,Glendale,Queens,,2422.3796742406953
+pluto_parcel_density_per_km2,QN0504,Middle Village,Queens,,2417.9457747564343
+pluto_parcel_density_per_km2,BK0703,Sunset Park (Central),Brooklyn,,2395.993574374039
+pluto_parcel_density_per_km2,QN0303,North Corona,Queens,,2384.4232707784968
+pluto_parcel_density_per_km2,BK0302,Bedford-Stuyvesant (East),Brooklyn,,2375.534802419471
+pluto_parcel_density_per_km2,BK1201,Sunset Park (East)-Borough Park (West),Brooklyn,,2348.6231055060525
+pluto_parcel_density_per_km2,BK1202,Borough Park,Brooklyn,,2344.285034370983
+pluto_parcel_density_per_km2,BK1702,East Flatbush-Farragut,Brooklyn,,2343.667714767543
+pluto_parcel_density_per_km2,BK0701,Windsor Terrace-South Slope,Brooklyn,,2315.567469091513
+pluto_parcel_density_per_km2,BK1502,Madison,Brooklyn,,2314.6595881415046
+pluto_parcel_density_per_km2,BK0501,Cypress Hills,Brooklyn,,2302.5498896327445
+pluto_parcel_density_per_km2,BK1703,East Flatbush-Rugby,Brooklyn,,2302.1146048931478
+pluto_parcel_density_per_km2,BK1801,Flatlands,Brooklyn,,2301.2592823577334
+pluto_parcel_density_per_km2,QN0904,Ozone Park (North),Queens,,2296.6231527206187

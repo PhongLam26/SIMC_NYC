@@ -1,0 +1,321 @@
+﻿complaint_type,complaint_category,complaint_count
+Noise - Residential,noise,3387786
+Illegal Parking,parking_traffic,3174076
+HEAT/HOT WATER,housing,2535546
+Blocked Driveway,parking_traffic,1562038
+Noise - Street/Sidewalk,noise,1373235
+Request Large Bulky Item Collection,sanitation,1072412
+UNSANITARY CONDITION,housing,992289
+Street Condition,infrastructure,800177
+Water System,water_sewer,703279
+PAINT/PLASTER,housing,600750
+PLUMBING,housing,590414
+Noise,noise,587133
+Noise - Commercial,noise,582671
+Noise - Vehicle,noise,517799
+Street Light Condition,infrastructure,472593
+DOOR/WINDOW,housing,413797
+Derelict Vehicles,parking_traffic,395810
+General Construction/Plumbing,housing,391382
+WATER LEAK,housing,384237
+Rodent,environment,377529
+Abandoned Vehicle,parking_traffic,367493
+Damaged Tree,infrastructure,337897
+Sewer,water_sewer,332488
+Homeless Person Assistance,public_safety,325920
+Traffic Signal Condition,parking_traffic,321070
+Sidewalk Condition,infrastructure,299269
+GENERAL,housing,289720
+ELECTRIC,housing,283515
+FLOORING/STAIRS,housing,256122
+Missed Collection (All Materials),sanitation,256060
+Building/Use,housing,244041
+Sanitation Condition,sanitation,239725
+Dirty Conditions,sanitation,235451
+Non-Emergency Police Matter,public_safety,233453
+Dirty Condition,sanitation,222763
+Missed Collection,sanitation,220153
+Consumer Complaint,public_safety,215042
+Encampment,other,191408
+Overgrown Tree/Branches,infrastructure,185001
+New Tree Request,infrastructure,180010
+APPLIANCE,housing,179779
+Noise - Helicopter,noise,178367
+Graffiti,sanitation,171621
+Elevator,housing,170152
+Illegal Dumping,sanitation,146263
+Maintenance or Facility,housing,143553
+Derelict Vehicle,sanitation,141347
+For Hire Vehicle Complaint,parking_traffic,135591
+Lead,housing,116479
+Food Establishment,public_safety,113997
+Illegal Fireworks,public_safety,112677
+SAFETY,housing,108585
+Taxi Complaint,parking_traffic,106208
+Root/Sewer/Sidewalk Condition,water_sewer,101102
+Dead/Dying Tree,infrastructure,100424
+Air Quality,environment,97881
+Drug Activity,other,93873
+Electronics Waste Appointment,sanitation,87943
+Noise - Park,noise,71371
+Obstruction,infrastructure,69866
+Curb Condition,infrastructure,69455
+Vendor Enforcement,public_safety,68681
+NonCompliance with Phased Reopening,public_safety,66221
+Street Sign - Damaged,parking_traffic,64053
+Traffic,parking_traffic,63678
+Indoor Air Quality,housing,61734
+Broken Parking Meter,parking_traffic,57338
+Broken Muni Meter,parking_traffic,55559
+Animal-Abuse,sanitation,53228
+Residential Disposal Complaint,sanitation,51549
+Street Sign - Missing,parking_traffic,50138
+Plumbing,housing,50073
+Other Enforcement,public_safety,47794
+Panhandling,public_safety,47402
+Special Projects Inspection Team (SPIT),housing,44609
+Snow,infrastructure,44542
+Water Conservation,water_sewer,44148
+Animal Abuse,sanitation,42059
+Lost Property,parking_traffic,41930
+Dead Animal,sanitation,41924
+Illegal Tree Damage,environment,41042
+Emergency Response Team (ERT),public_safety,39767
+Street Sign - Dangling,parking_traffic,34290
+Street Sweeping Complaint,infrastructure,31814
+Violation of Park Rules,public_safety,31385
+Food Poisoning,public_safety,31102
+Outdoor Dining,public_safety,30052
+Animal in a Park,other,29914
+Drinking,public_safety,29451
+Real Time Enforcement,public_safety,28477
+Electrical,housing,27921
+Boilers,housing,27870
+Vending,other,27575
+Snow or Ice,infrastructure,27454
+Mobile Food Vendor,public_safety,26894
+Smoking,public_safety,26592
+Hazardous Materials,environment,26571
+Electronics Waste,other,26487
+Homeless Encampment,public_safety,26423
+Unsanitary Animal Pvt Property,environment,23584
+Construction Safety Enforcement,housing,22370
+Standing Water,environment,22047
+Asbestos,housing,18458
+Bike/Roller/Skate Chronic,parking_traffic,17650
+Water Quality,water_sewer,17402
+School Maintenance,public_safety,17123
+Litter Basket / Request,sanitation,16934
+Illegal Posting,public_safety,16929
+ELEVATOR,housing,15840
+Homeless Street Condition,infrastructure,15441
+Litter Basket Request,sanitation,15235
+Taxi Report,parking_traffic,14843
+Noise - House of Worship,noise,14286
+Miscellaneous Categories,other,13752
+Vacant Lot,environment,13664
+Highway Condition,infrastructure,13609
+Derelict Bicycle,parking_traffic,12594
+Sanitation Worker or Vehicle Complaint,parking_traffic,12553
+BEST/Site Safety,housing,12127
+Unleashed Dog,other,11718
+Bus Stop Shelter Complaint,parking_traffic,11557
+DOF Property - Payment Issue,other,11414
+Non-Residential Heat,housing,11324
+OUTSIDE BUILDING,housing,11174
+Industrial Waste,environment,11075
+Day Care,public_safety,11039
+Commercial Disposal Complaint,sanitation,10683
+Dead Tree,infrastructure,10653
+Smoking or Vaping,public_safety,10030
+Unsanitary Pigeon Condition,sanitation,10010
+Indoor Sewage,water_sewer,9719
+Overflowing Litter Baskets,sanitation,9656
+Urinating in Public,public_safety,9256
+Abandoned Bike,parking_traffic,8791
+Borough Office,infrastructure,8079
+Dumpster Complaint,sanitation,7713
+Lot Condition,sanitation,7696
+Vaccine Mandate Non-Compliance,public_safety,7383
+COVID-19 Non-essential Construction,housing,7313
+Sweeping/Missed,sanitation,7245
+Construction,housing,7009
+Building Marshals office,housing,6834
+Unsanitary Condition,housing,6750
+Sustainability Enforcement,public_safety,6381
+Investigations and Discipline (IAD),public_safety,6285
+Litter Basket Complaint,sanitation,6142
+Construction Lead Dust,housing,5898
+Mosquitoes,environment,5005
+Illegal Animal Kept as Pet,sanitation,4451
+Recycling Enforcement,sanitation,4428
+For Hire Vehicle Report,parking_traffic,4428
+DRIE,other,4023
+Mold,housing,3731
+Mass Gathering Complaint,public_safety,3645
+Harboring Bees/Wasps,environment,3565
+Wood Pile Remaining,sanitation,3432
+Water Leak,housing,3072
+Storm,other,3003
+Sewer Maintenance,housing,2777
+Posting Advertisement,other,2745
+Snow Removal,infrastructure,2681
+Disorderly Youth,public_safety,2527
+DPR Internal,other,2520
+Drinking Water,water_sewer,2477
+Uprooted Stump,other,2343
+Adopt-A-Basket,other,2313
+Scaffold Safety,housing,2233
+Paint/Plaster,housing,2187
+Private or Charter School Reopening,other,2099
+Bus Stop Shelter Placement,parking_traffic,2098
+Beach/Pool/Sauna Complaint,water_sewer,2071
+Sweeping/Inadequate,sanitation,1972
+Public Payphone Complaint,public_safety,1893
+Cranes and Derricks,housing,1892
+E-Scooter,parking_traffic,1863
+Heat/Hot Water,housing,1814
+Face Covering Violation,other,1798
+General,housing,1792
+Green Taxi Complaint,parking_traffic,1787
+Facades,other,1769
+Found Property,infrastructure,1703
+Poison Ivy,environment,1642
+Bike Rack Condition,parking_traffic,1597
+Tattooing,public_safety,1580
+Plant,environment,1475
+LinkNYC,other,1406
+Quality of Life,other,1324
+Senior Center Complaint,public_safety,1289
+Executive Inspections,other,1289
+Pet Shop,other,1281
+Collection Truck Noise,noise,1274
+Request Xmas Tree Collection,sanitation,1265
+Door/Window,housing,1258
+Cannabis Retailer,other,1111
+DEP Street Condition,infrastructure,928
+Unsanitary Animal Facility,environment,893
+Animal Facility - No Permit,environment,847
+Illegal Animal Sold,other,817
+Seasonal Collection,sanitation,789
+Bike Rack,parking_traffic,754
+AHV Inspection Unit,other,749
+Special Natural Area District (SNAD),other,743
+City Vehicle Placard Complaint,parking_traffic,740
+Safety,housing,731
+Flooring/Stairs,housing,695
+Taxi Compliment,parking_traffic,565
+Appliance,housing,563
+Bridge Condition,infrastructure,537
+Special Operations,other,440
+Public Toilet,infrastructure,436
+FATF,other,435
+Municipal Parking Facility,infrastructure,407
+Water Maintenance,housing,382
+Recycling Basket Complaint,sanitation,372
+Incorrect Data,other,356
+Window Guard,housing,319
+Electric,housing,290
+Lifeguard,other,259
+Squeegee,other,244
+Institution Disposal Complaint,sanitation,241
+Cooling Tower,other,231
+Private School Vaccine Mandate Non-Compliance,public_safety,219
+Building Drinking Water Tank,housing,215
+X-Ray Machine/Equipment,other,204
+Green Taxi Report,parking_traffic,191
+Pet Sale,other,189
+Dept of Investigations,other,186
+FCST,other,180
+Literature Request,other,161
+Bench,other,156
+Water Drainage,water_sewer,136
+Radioactive Material,other,134
+Overflowing Recycling Baskets,sanitation,132
+Bike/Roller/Skate,parking_traffic,130
+Peeling Paint,housing,129
+Tobacco or Non-Tobacco Sale,other,123
+Bottled Water,water_sewer,117
+Calorie Labeling,environment,107
+Dispatched Taxi Complaint,parking_traffic,87
+Unstable Building,housing,85
+Foam Ban Enforcement,public_safety,82
+Forensic Engineering,other,78
+Unlicensed Dog,infrastructure,76
+ATF,other,73
+Building Condition,housing,72
+Transportation Provider Complaint,other,58
+Tanning,other,55
+Taxi Licensee Complaint,parking_traffic,55
+FHV Licensee Complaint,parking_traffic,54
+Retailer Complaint,other,53
+Stalled Sites,other,51
+OEM Disabled Vehicle,parking_traffic,43
+Unspecified,other,42
+Legal Services Provider Complaint,infrastructure,42
+Boiler,housing,41
+Single Occupancy Bathroom,other,39
+Transfer Station Complaint,other,39
+Wayfinding,other,32
+DOF Property - Reduction Issue,other,28
+Oil or Gas Spill,other,27
+Taxpayer Advocate Inquiry,other,23
+Ferry Inquiry,other,23
+Internal Code,other,22
+SRDE,other,22
+Ferry Complaint,other,21
+Interior Demo,other,20
+DEP Sidewalk Condition,infrastructure,20
+Highway Sign - Damaged,parking_traffic,17
+Special Enforcement,public_safety,17
+Fire Alarm - Reinspection,other,16
+Advocate - Lien,other,13
+Advocate-Commercial Exemptions,other,13
+DSNY Internal,other,13
+ZTESTINT,other,12
+SNW,other,12
+Trans Fat,other,11
+Public Assembly,public_safety,11
+Rangehood,other,9
+Fire Alarm - New System,other,9
+Leaning Bar,other,9
+Advocate-Business Tax,other,8
+Outside Building,housing,8
+Building Marshal's Office,housing,7
+Employee Behavior,other,6
+VACANT APARTMENT,other,6
+AGENCY,other,6
+DEP Highway Condition,infrastructure,5
+DOB Posted Notice or Order,infrastructure,5
+Fire Alarm - Modification,other,4
+Dispatched Taxi Compliment,parking_traffic,4
+DSNY Spillage,sanitation,4
+SRGOVG,other,4
+Highway Sign - Dangling,parking_traffic,3
+Sprinkler - Mechanical,other,3
+ZSYSTEST,other,2
+Advocate - Levy,other,2
+Facade Insp Safety Pgm,public_safety,2
+Gas Station Discharge Lines,other,2
+Highway Sign - Missing,parking_traffic,2
+MOLD,housing,2
+Homebound Evacuation 4,other,2
+Hazmat Storage/Use,environment,2
+ASBESTOS,housing,1
+Advocate - Other,other,1
+Asbestos/Garbage Nuisance,sanitation,1
+Request Changes - A.S.P.,parking_traffic,1
+Advocate-Foreclosure,other,1
+MSOTHER,other,1
+Fire Alarm - Replacement,public_safety,1
+Injured Wildlife,other,1
+Open Flame Permit,environment,1
+Advocate-Personal Exemptions,other,1
+Illegal Animal - Sold/Kept,other,1
+LEAD,housing,1
+Trapping Pigeon,sanitation,1
+Advocate-UBT,other,1
+Public Assembly - Temporary,public_safety,1
+Change Collection Schedule,sanitation,1
+Ferry Permit,other,1
+Tunnel Condition,infrastructure,1

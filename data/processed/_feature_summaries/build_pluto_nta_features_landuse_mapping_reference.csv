@@ -1,0 +1,13 @@
+﻿landuse_category,landuse_label,raw_pluto_codes
+residential_low_mid,One-/Two-Family and Low-Rise Residential,"01, 1"
+residential_multifamily_walkup,Multi-Family Walk-Up Residential,"02, 2"
+residential_multifamily_elevator,Multi-Family Elevator Residential,"03, 3"
+mixed_residential_commercial,Mixed Residential and Commercial,"04, 4"
+commercial_office,Commercial and Office,"05, 5"
+industrial_manufacturing,Industrial and Manufacturing,"06, 6"
+transportation_utility,Transportation and Utility,"07, 7"
+public_facility_institution,Public Facilities and Institutions,"08, 8"
+open_space_recreation,Open Space and Outdoor Recreation,"09, 9"
+parking_facility,Parking Facilities,10
+vacant_land,Vacant Land,11
+unknown,Unknown / Missing Land Use,

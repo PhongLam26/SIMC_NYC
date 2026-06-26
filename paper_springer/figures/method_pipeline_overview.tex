@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  font=\sffamily\small,
+  flow/.style={-Latex, line width=0.85pt, draw=black!75},
+  stage/.style={
+    draw=black!75,
+    line width=0.75pt,
+    rounded corners=2pt,
+    fill=white,
+    minimum width=2.85cm,
+    minimum height=1.55cm,
+    text width=2.52cm,
+    align=center,
+    inner sep=4pt
+  },
+  source/.style={stage, draw=blue!55, fill=blue!5},
+  target/.style={stage, draw=orange!70!black, fill=orange!8},
+  model/.style={stage, draw=green!45!black, fill=green!7},
+  output/.style={stage, draw=black!45, fill=black!3}
+]
+
+\node[source] (inputs) at (0,0)
+  {\textbf{Inputs}\\311 requests\\weather\\OSM + PLUTO};
+
+\node[target] (panel) at (3.25,0)
+  {\textbf{Leakage-safe panel}\\NTA-week-category\\shifted lags\\next-week label};
+
+\node[stage] (split) at (6.50,0)
+  {\textbf{Target-week split}\\train 2015--2022\\validation 2023\\test 2024--2025};
+
+\node[model] (decision) at (9.75,0)
+  {\textbf{Decision support}\\LightGBM + XGBoost\\category thresholds\\alerts + SHAP};
+
+\draw[flow] (inputs.east) -- (panel.west);
+\draw[flow] (panel.east) -- (split.west);
+\draw[flow] (split.east) -- (decision.west);
+
+\end{tikzpicture}

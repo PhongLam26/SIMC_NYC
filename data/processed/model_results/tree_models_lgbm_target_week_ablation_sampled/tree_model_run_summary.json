@@ -1,0 +1,86 @@
+{
+  "script": "train_tree_models",
+  "status": "done",
+  "final_dataset": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "config": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_ready\\model_config.json",
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\tree_models_lgbm_target_week_ablation_sampled",
+  "rows_loaded": 1355850,
+  "experiments": [
+    "E1_main_2015_2025"
+  ],
+  "feature_sets": [
+    "historical_only",
+    "historical_calendar_weather",
+    "full_without_covid_period_features"
+  ],
+  "requested_models": [
+    "lightgbm"
+  ],
+  "max_train_rows": 300000,
+  "n_estimators": 500,
+  "learning_rate": 0.05,
+  "max_depth": 8,
+  "num_leaves": 63,
+  "hgb_max_iter": 300,
+  "use_gpu": false,
+  "gpu_only": false,
+  "gpu_device_id": 0,
+  "xgboost_gpu_mode": "modern",
+  "lightgbm_gpu_platform_id": -1,
+  "save_models": false,
+  "metrics_rows": 9,
+  "model_info_rows": 3,
+  "skipped_models": [],
+  "elapsed_seconds": 189.807,
+  "elapsed_minutes": 3.163,
+  "top_validation_models": [
+    {
+      "validation_rank": 1,
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "lightgbm",
+      "feature_set": "full_without_covid_period_features",
+      "rows": 122616,
+      "train_rows": 300000,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.16475845683900894,
+      "recall": 0.9350841145498908,
+      "f1": 0.28015466892385826,
+      "balanced_accuracy": 0.6226914378918995,
+      "roc_auc": 0.7470483718272372,
+      "pr_auc": 0.30427144879157614,
+      "fit_seconds": 29.93108558654785
+    },
+    {
+      "validation_rank": 2,
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "lightgbm",
+      "feature_set": "historical_calendar_weather",
+      "rows": 122616,
+      "train_rows": 300000,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.1595392384452048,
+      "recall": 0.9311031205855914,
+      "f1": 0.2724036555928128,
+      "balanced_accuracy": 0.6087196625330379,
+      "roc_auc": 0.7404190599054759,
+      "pr_auc": 0.3025414113002758,
+      "fit_seconds": 11.763563632965088
+    },
+    {
+      "validation_rank": 3,
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "lightgbm",
+      "feature_set": "historical_only",
+      "rows": 122616,
+      "train_rows": 300000,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.1584506650342256,
+      "recall": 0.9140875818672146,
+      "f1": 0.27008414043009327,
+      "balanced_accuracy": 0.6038693360467404,
+      "roc_auc": 0.71671610200079,
+      "pr_auc": 0.2691756698643796,
+      "fit_seconds": 7.171945333480835
+    }
+  ]
+}

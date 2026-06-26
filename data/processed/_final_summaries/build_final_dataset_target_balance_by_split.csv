@@ -1,0 +1,9 @@
+time_split,abnormal_increase_next_week,rows
+bad_date,nan,2358
+test,0.0,216020
+test,1.0,31570
+train,0.0,841443
+train,1.0,122979
+train,nan,18864
+validation,0.0,107042
+validation,1.0,15574

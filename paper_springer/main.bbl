@@ -1,0 +1,395 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{20}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2017}]{Wang2017Structure311}
+\begin{barticle}
+\bauthor{\bsnm{Wang}, \binits{L.}},
+\bauthor{\bsnm{Qian}, \binits{C.}},
+\bauthor{\bsnm{Kats}, \binits{P.}},
+\bauthor{\bsnm{Kontokosta}, \binits{C.E.}},
+\bauthor{\bsnm{Sobolevsky}, \binits{S.}}:
+\batitle{Structure of 311 service requests as a signature of urban location}.
+\bjtitle{PLOS ONE}
+\bvolume{12}(\bissue{10}),
+\bfpage{0186314}
+(\byear{2017})
+\doiurl{10.1371/journal.pone.0186314}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Kontokosta and
+  Hong}{2021}]{KontokostaHong2021Bias}
+\begin{barticle}
+\bauthor{\bsnm{Kontokosta}, \binits{C.E.}},
+\bauthor{\bsnm{Hong}, \binits{B.}}:
+\batitle{Bias in smart city governance: How socio-spatial disparities in 311
+  complaint behavior impact the fairness of data-driven decisions}.
+\bjtitle{Sustainable Cities and Society}
+\bvolume{64},
+\bfpage{102503}
+(\byear{2021})
+\doiurl{10.1016/j.scs.2020.102503}
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Wu}{2020}]{Wu2020CitizenGeneratedData}
+\begin{barticle}
+\bauthor{\bsnm{Wu}, \binits{W.-N.}}:
+\batitle{Determinants of citizen-generated data in a smart city: Analysis of
+  311 system user behavior}.
+\bjtitle{Sustainable Cities and Society}
+\bvolume{59},
+\bfpage{102167}
+(\byear{2020})
+\doiurl{10.1016/j.scs.2020.102167}
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Zheng et~al.}{2014}]{Zheng2014UrbanComputing}
+\begin{barticle}
+\bauthor{\bsnm{Zheng}, \binits{Y.}},
+\bauthor{\bsnm{Capra}, \binits{L.}},
+\bauthor{\bsnm{Wolfson}, \binits{O.}},
+\bauthor{\bsnm{Yang}, \binits{H.}}:
+\batitle{Urban computing: Concepts, methodologies, and applications}.
+\bjtitle{ACM Transactions on Intelligent Systems and Technology}
+\bvolume{5}(\bissue{3}),
+\bfpage{38}--\blpage{13855}
+(\byear{2014})
+\doiurl{10.1145/2629592}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Agonafir
+  et~al.}{2022}]{Agonafir2022Flooding311}
+\begin{barticle}
+\bauthor{\bsnm{Agonafir}, \binits{C.}},
+\bauthor{\bsnm{Ramirez~Pabon}, \binits{A.}},
+\bauthor{\bsnm{Lakhankar}, \binits{T.}},
+\bauthor{\bsnm{Khanbilvardi}, \binits{R.}},
+\bauthor{\bsnm{Devineni}, \binits{N.}}:
+\batitle{Understanding {New York City} street flooding through 311 complaints}.
+\bjtitle{Journal of Hydrology}
+\bvolume{605},
+\bfpage{127300}
+(\byear{2022})
+\doiurl{10.1016/j.jhydrol.2021.127300}
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Haklay and Weber}{2008}]{HaklayWeber2008OSM}
+\begin{barticle}
+\bauthor{\bsnm{Haklay}, \binits{M.}},
+\bauthor{\bsnm{Weber}, \binits{P.}}:
+\batitle{{OpenStreetMap}: User-generated street maps}.
+\bjtitle{IEEE Pervasive Computing}
+\bvolume{7}(\bissue{4}),
+\bfpage{12}--\blpage{18}
+(\byear{2008})
+\doiurl{10.1109/MPRV.2008.80}
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Zhang and
+  Pfoser}{2019}]{ZhangPfoser2019OSMPOI}
+\begin{barticle}
+\bauthor{\bsnm{Zhang}, \binits{L.}},
+\bauthor{\bsnm{Pfoser}, \binits{D.}}:
+\batitle{Using {OpenStreetMap} point-of-interest data to model urban change---a
+  feasibility study}.
+\bjtitle{PLOS ONE}
+\bvolume{14}(\bissue{2}),
+\bfpage{0212606}
+(\byear{2019})
+\doiurl{10.1371/journal.pone.0212606}
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Psyllidis et~al.}{2022}]{Psyllidis2022POI}
+\begin{barticle}
+\bauthor{\bsnm{Psyllidis}, \binits{A.}},
+\bauthor{\bsnm{Gao}, \binits{S.}},
+\bauthor{\bsnm{Hu}, \binits{Y.}},
+\bauthor{\bsnm{Kim}, \binits{E.-K.}},
+\bauthor{\bsnm{McKenzie}, \binits{G.}},
+\bauthor{\bsnm{Purves}, \binits{R.}},
+\bauthor{\bsnm{Yuan}, \binits{M.}},
+\bauthor{\bsnm{Andris}, \binits{C.}}:
+\batitle{Points of interest ({POI}): A commentary on the state of the art,
+  challenges, and prospects for the future}.
+\bjtitle{Computational Urban Science}
+\bvolume{2}(\bissue{1}),
+\bfpage{20}
+(\byear{2022})
+\doiurl{10.1007/s43762-022-00047-w}
+\end{barticle}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Chen et~al.}{2021}]{Chen2021EULUC}
+\begin{barticle}
+\bauthor{\bsnm{Chen}, \binits{B.}},
+\bauthor{\bsnm{Tu}, \binits{Y.}},
+\bauthor{\bsnm{Song}, \binits{Y.}},
+\bauthor{\bsnm{Theobald}, \binits{D.M.}},
+\bauthor{\bsnm{Zhang}, \binits{T.}},
+\bauthor{\bsnm{Ren}, \binits{Z.}},
+\bauthor{\bsnm{Li}, \binits{X.}},
+\bauthor{\bsnm{Yang}, \binits{J.}},
+\bauthor{\bsnm{Wang}, \binits{J.}},
+\bauthor{\bsnm{Wang}, \binits{X.}},
+\bauthor{\bsnm{Gong}, \binits{P.}},
+\bauthor{\bsnm{Bai}, \binits{Y.}},
+\bauthor{\bsnm{Xu}, \binits{B.}}:
+\batitle{Mapping essential urban land use categories with open big data:
+  Results for five metropolitan areas in the {United States of America}}.
+\bjtitle{ISPRS Journal of Photogrammetry and Remote Sensing}
+\bvolume{178},
+\bfpage{203}--\blpage{218}
+(\byear{2021})
+\doiurl{10.1016/j.isprsjprs.2021.06.010}
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Du et~al.}{2024}]{Du2024UFZReview}
+\begin{barticle}
+\bauthor{\bsnm{Du}, \binits{S.}},
+\bauthor{\bsnm{Zhang}, \binits{X.}},
+\bauthor{\bsnm{Lei}, \binits{Y.}},
+\bauthor{\bsnm{Huang}, \binits{X.}},
+\bauthor{\bsnm{Tu}, \binits{W.}},
+\bauthor{\bsnm{Liu}, \binits{B.}},
+\bauthor{\bsnm{Meng}, \binits{Q.}},
+\bauthor{\bsnm{Du}, \binits{S.}}:
+\batitle{Mapping urban functional zones with remote sensing and geospatial big
+  data: A systematic review}.
+\bjtitle{GIScience \& Remote Sensing}
+\bvolume{61}(\bissue{1}),
+\bfpage{2404900}
+(\byear{2024})
+\doiurl{10.1080/15481603.2024.2404900}
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Chandola
+  et~al.}{2009}]{Chandola2009AnomalySurvey}
+\begin{barticle}
+\bauthor{\bsnm{Chandola}, \binits{V.}},
+\bauthor{\bsnm{Banerjee}, \binits{A.}},
+\bauthor{\bsnm{Kumar}, \binits{V.}}:
+\batitle{Anomaly detection: A survey}.
+\bjtitle{ACM Computing Surveys}
+\bvolume{41}(\bissue{3}),
+\bfpage{15}--\blpage{11558}
+(\byear{2009})
+\doiurl{10.1145/1541880.1541882}
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Saito and
+  Rehmsmeier}{2015}]{SaitoRehmsmeier2015PR}
+\begin{barticle}
+\bauthor{\bsnm{Saito}, \binits{T.}},
+\bauthor{\bsnm{Rehmsmeier}, \binits{M.}}:
+\batitle{The precision-recall plot is more informative than the {ROC} plot when
+  evaluating binary classifiers on imbalanced datasets}.
+\bjtitle{PLOS ONE}
+\bvolume{10}(\bissue{3}),
+\bfpage{0118432}
+(\byear{2015})
+\doiurl{10.1371/journal.pone.0118432}
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Breiman}{2001}]{Breiman2001RandomForests}
+\begin{barticle}
+\bauthor{\bsnm{Breiman}, \binits{L.}}:
+\batitle{Random forests}.
+\bjtitle{Machine Learning}
+\bvolume{45}(\bissue{1}),
+\bfpage{5}--\blpage{32}
+(\byear{2001})
+\doiurl{10.1023/A:1010933404324}
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Friedman}{2001}]{Friedman2001GBM}
+\begin{barticle}
+\bauthor{\bsnm{Friedman}, \binits{J.H.}}:
+\batitle{Greedy function approximation: A gradient boosting machine}.
+\bjtitle{The Annals of Statistics}
+\bvolume{29}(\bissue{5}),
+\bfpage{1189}--\blpage{1232}
+(\byear{2001})
+\doiurl{10.1214/aos/1013203451}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Chen and
+  Guestrin}{2016}]{ChenGuestrin2016XGBoost}
+\begin{bchapter}
+\bauthor{\bsnm{Chen}, \binits{T.}},
+\bauthor{\bsnm{Guestrin}, \binits{C.}}:
+\bctitle{{XGBoost}: A scalable tree boosting system}.
+In: \bbtitle{Proceedings of the 22nd ACM SIGKDD International Conference on
+  Knowledge Discovery and Data Mining},
+pp. \bfpage{785}--\blpage{794}.
+\bpublisher{ACM},
+\blocation{New York, NY, USA}
+(\byear{2016}).
+\doiurl{10.1145/2939672.2939785}
+\end{bchapter}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Ke et~al.}{2017}]{Ke2017LightGBM}
+\begin{bchapter}
+\bauthor{\bsnm{Ke}, \binits{G.}},
+\bauthor{\bsnm{Meng}, \binits{Q.}},
+\bauthor{\bsnm{Finley}, \binits{T.}},
+\bauthor{\bsnm{Wang}, \binits{T.}},
+\bauthor{\bsnm{Chen}, \binits{W.}},
+\bauthor{\bsnm{Ma}, \binits{W.}},
+\bauthor{\bsnm{Ye}, \binits{Q.}},
+\bauthor{\bsnm{Liu}, \binits{T.-Y.}}:
+\bctitle{{LightGBM}: A highly efficient gradient boosting decision tree}.
+In: \bbtitle{Advances in Neural Information Processing Systems},
+vol. \bseriesno{30},
+pp. \bfpage{3146}--\blpage{3154}
+(\byear{2017}).
+\burl{https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree}
+\end{bchapter}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Lundberg and Lee}{2017}]{LundbergLee2017SHAP}
+\begin{bchapter}
+\bauthor{\bsnm{Lundberg}, \binits{S.M.}},
+\bauthor{\bsnm{Lee}, \binits{S.-I.}}:
+\bctitle{A unified approach to interpreting model predictions}.
+In: \bbtitle{Advances in Neural Information Processing Systems},
+vol. \bseriesno{30}
+(\byear{2017}).
+\burl{https://arxiv.org/abs/1705.07874}
+\end{bchapter}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Lundberg et~al.}{2020}]{Lundberg2020TreeSHAP}
+\begin{barticle}
+\bauthor{\bsnm{Lundberg}, \binits{S.M.}},
+\bauthor{\bsnm{Erion}, \binits{G.}},
+\bauthor{\bsnm{Chen}, \binits{H.}},
+\bauthor{\bsnm{DeGrave}, \binits{A.}},
+\bauthor{\bsnm{Prutkin}, \binits{J.M.}},
+\bauthor{\bsnm{Nair}, \binits{B.}},
+\bauthor{\bsnm{Katz}, \binits{R.}},
+\bauthor{\bsnm{Himmelfarb}, \binits{J.}},
+\bauthor{\bsnm{Bansal}, \binits{N.}},
+\bauthor{\bsnm{Lee}, \binits{S.-I.}}:
+\batitle{From local explanations to global understanding with explainable {AI}
+  for trees}.
+\bjtitle{Nature Machine Intelligence}
+\bvolume{2},
+\bfpage{56}--\blpage{67}
+(\byear{2020})
+\doiurl{10.1038/s42256-019-0138-9}
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Arrieta et~al.}{2020}]{Arrieta2020XAI}
+\begin{barticle}
+\bauthor{\bsnm{Arrieta}, \binits{A.B.}},
+\bauthor{\bsnm{Diaz-Rodriguez}, \binits{N.}},
+\bauthor{\bsnm{Del~Ser}, \binits{J.}},
+\bauthor{\bsnm{Bennetot}, \binits{A.}},
+\bauthor{\bsnm{Tabik}, \binits{S.}},
+\bauthor{\bsnm{Barbado}, \binits{A.}},
+\bauthor{\bsnm{Garcia}, \binits{S.}},
+\bauthor{\bsnm{Gil-Lopez}, \binits{S.}},
+\bauthor{\bsnm{Molina}, \binits{D.}},
+\bauthor{\bsnm{Benjamins}, \binits{R.}},
+\bauthor{\bsnm{Chatila}, \binits{R.}},
+\bauthor{\bsnm{Herrera}, \binits{F.}}:
+\batitle{Explainable artificial intelligence ({XAI}): Concepts, taxonomies,
+  opportunities and challenges toward responsible {AI}}.
+\bjtitle{Information Fusion}
+\bvolume{58},
+\bfpage{82}--\blpage{115}
+(\byear{2020})
+\doiurl{10.1016/j.inffus.2019.12.012}
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Rudin}{2019}]{Rudin2019InterpretableML}
+\begin{barticle}
+\bauthor{\bsnm{Rudin}, \binits{C.}}:
+\batitle{Stop explaining black box machine learning models for high stakes
+  decisions and use interpretable models instead}.
+\bjtitle{Nature Machine Intelligence}
+\bvolume{1},
+\bfpage{206}--\blpage{215}
+(\byear{2019})
+\doiurl{10.1038/s42256-019-0048-x}
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}

@@ -1,0 +1,16 @@
+numpy
+pandas
+requests
+python-dateutil
+tqdm
+scikit-learn
+lightgbm
+xgboost
+shap
+matplotlib
+seaborn
+geopandas
+shapely
+pyproj
+pyogrio
+

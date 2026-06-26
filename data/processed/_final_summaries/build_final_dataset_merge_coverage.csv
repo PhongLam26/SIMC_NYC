@@ -1,0 +1,6 @@
+source,merge_key,dimension_rows,dimension_unique_keys,final_rows_missing_merge,unique_missing_keys,missing_keys_sample
+weather_weekly,week_start,575,575,0,0,
+osm_poi_nta,nta2020,262,262,0,0,
+pluto_nta_landuse,nta2020,262,262,0,0,
+pluto_source_coverage,nta2020,262,262,10350,2,BK5692; SI9591
+osm_zero_poi_coverage,nta2020,262,262,20700,4,BK1771; BK5692; QN1091; QN1371

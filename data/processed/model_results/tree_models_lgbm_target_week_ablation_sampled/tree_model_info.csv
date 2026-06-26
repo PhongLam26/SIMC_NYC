@@ -1,0 +1,4 @@
+﻿experiment_id,feature_set,model_name,train_rows,train_rows_before_sample,selected_feature_count,numeric_feature_count,categorical_feature_count,preprocess_seconds,fit_seconds,warnings_count,warning_messages_preview,model_path,preprocessor_path
+E1_main_2015_2025,full_without_covid_period_features,lightgbm,300000,954990,213,210,3,1.9913809299468994,29.93108558654785,0,,,
+E1_main_2015_2025,historical_calendar_weather,lightgbm,300000,954990,63,60,3,0.7001602649688721,11.763563632965088,0,,,
+E1_main_2015_2025,historical_only,lightgbm,300000,954990,24,22,2,0.2904980182647705,7.171945333480835,0,,,

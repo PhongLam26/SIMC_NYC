@@ -1,0 +1,124 @@
+{
+  "script": "train_baselines",
+  "status": "done",
+  "final_dataset": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "config": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_ready\\model_config.json",
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\baselines_target_week_sampled",
+  "rows_loaded": 1355850,
+  "experiments": [
+    "E1_main_2015_2025"
+  ],
+  "feature_sets": [
+    "historical_only",
+    "historical_calendar_weather",
+    "full_without_covid_period_features"
+  ],
+  "skip_logistic": false,
+  "only_logistic": false,
+  "threshold_multiplier": 1.5,
+  "logistic": {
+    "max_iter": 250,
+    "C": 1.0,
+    "class_weight": "balanced",
+    "sample_train": 300000,
+    "save_logistic_models": false
+  },
+  "metrics_rows": 21,
+  "confusion_matrix_rows": 21,
+  "model_info_rows": 3,
+  "elapsed_seconds": 502.628,
+  "elapsed_minutes": 8.377,
+  "top_validation_models": [
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "logistic_regression",
+      "feature_set": "full_without_covid_period_features",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.1984412360596492,
+      "recall": 0.6980865545139335,
+      "f1": 0.3090348346385071,
+      "balanced_accuracy": 0.6439135151075301,
+      "roc_auc": 0.7003398070768994,
+      "pr_auc": 0.2567450482940767
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "logistic_regression",
+      "feature_set": "historical_only",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.2292502983617229,
+      "recall": 0.5426993707461153,
+      "f1": 0.3223370580832157,
+      "balanced_accuracy": 0.6386167394266067,
+      "roc_auc": 0.680754297641935,
+      "pr_auc": 0.2425430606910985
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "logistic_regression",
+      "feature_set": "historical_calendar_weather",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.22341725090291056,
+      "recall": 0.5401951971234108,
+      "f1": 0.31609994364080407,
+      "balanced_accuracy": 0.6335016829397999,
+      "roc_auc": 0.6797740814940202,
+      "pr_auc": 0.24177216455028705
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "current_week_abnormal_persistence",
+      "feature_set": "historical_rule",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.3169968007623715,
+      "recall": 0.29902401438294596,
+      "f1": 0.30774822402114654,
+      "balanced_accuracy": 0.6026425540796103,
+      "roc_auc": 0.6378659380701486,
+      "pr_auc": 0.2339301578117731
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "recent_momentum_above_baseline",
+      "feature_set": "historical_rule",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.2088076443705858,
+      "recall": 0.4840760241428021,
+      "f1": 0.2917626115056406,
+      "balanced_accuracy": 0.6086044065707564,
+      "roc_auc": 0.6252081904545908,
+      "pr_auc": 0.2002815129582885
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "majority_class",
+      "feature_set": "none",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "balanced_accuracy": 0.5,
+      "roc_auc": 0.5,
+      "pr_auc": 0.12701441899915183
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "train_prevalence_probability",
+      "feature_set": "none",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "balanced_accuracy": 0.5,
+      "roc_auc": 0.5,
+      "pr_auc": 0.12701441899915183
+    }
+  ]
+}

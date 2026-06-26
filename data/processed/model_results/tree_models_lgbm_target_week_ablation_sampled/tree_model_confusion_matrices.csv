@@ -1,0 +1,10 @@
+﻿experiment_id,split,model_name,feature_set,tn,fp,fn,tp
+E1_main_2015_2025,test,lightgbm,full_without_covid_period_features,72789,143231,2125,29445
+E1_main_2015_2025,train,lightgbm,full_without_covid_period_features,237905,595779,3401,117905
+E1_main_2015_2025,validation,lightgbm,full_without_covid_period_features,33215,73827,1011,14563
+E1_main_2015_2025,test,lightgbm,historical_calendar_weather,68201,147819,2410,29160
+E1_main_2015_2025,train,lightgbm,historical_calendar_weather,195203,638481,3103,118203
+E1_main_2015_2025,validation,lightgbm,historical_calendar_weather,30650,76392,1073,14501
+E1_main_2015_2025,test,lightgbm,historical_only,66705,149315,2650,28920
+E1_main_2015_2025,train,lightgbm,historical_only,169285,664399,2760,118546
+E1_main_2015_2025,validation,lightgbm,historical_only,31433,75609,1338,14236

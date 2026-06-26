@@ -1,0 +1,10 @@
+complaint_category,complaint_category_label,rows_with_valid_label,positive_abnormal_rows,negative_normal_rows,positive_share,target_next_week_count_mean,target_next_week_count_median
+environment,Environmental Health & Green Space,148292,16270,132022,0.10971596579721091,4.1947308,3.0
+housing,Housing & Building Conditions,148292,18797,129495,0.12675666927413481,53.14696,27.0
+infrastructure,Street Infrastructure & Public Works,148292,19000,129292,0.12812559005205945,17.739473,14.0
+noise,Noise & Disturbance,148292,21484,126808,0.14487632508833923,44.972664,24.0
+other,Other / Administrative & Unclassified,148292,18355,129937,0.12377606344239743,2.9720821,1.0
+parking_traffic,"Parking, Traffic & Mobility",148292,20166,128126,0.1359884552099911,43.6851,32.0
+public_safety,Public Safety & Regulatory Enforcement,148292,19207,129085,0.1295214846384161,10.719048,5.0
+sanitation,Sanitation & Waste,148292,17941,130351,0.12098427426968414,20.728529,14.0
+water_sewer,Water & Sewer,148292,18903,129389,0.12747147519758315,8.040562,5.0
