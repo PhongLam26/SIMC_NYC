@@ -15,15 +15,18 @@
 \usetikzlibrary{arrows.meta,positioning}
 
 \raggedbottom
-\setlength{\textfloatsep}{8pt plus 1pt minus 2pt}
-\setlength{\floatsep}{8pt plus 1pt minus 2pt}
-\setlength{\intextsep}{8pt plus 1pt minus 2pt}
-\renewcommand{\bibfont}{\fontsize{6}{6}\selectfont}
+\setlength{\textfloatsep}{5pt plus 1pt minus 2pt}
+\setlength{\floatsep}{5pt plus 1pt minus 2pt}
+\setlength{\intextsep}{5pt plus 1pt minus 2pt}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{2pt}
+\renewcommand{\arraystretch}{0.92}
+\renewcommand{\bibfont}{\fontsize{5.4}{5.7}\selectfont}
 \setlength{\bibsep}{0pt}
 
 \begin{document}
 
-\title[Semantics-Aware Explainable ML for Urban Service Demand]{Semantics-Aware Explainable Machine Learning for Urban Service Demand Forecasting in Smart Cities}
+\title[Category-Aware Explainable ML for Urban Service Demand]{Category-Aware Explainable Machine Learning for Urban Service Demand Forecasting in Smart Cities}
 
 \author*[1]{\fnm{Tran Dai Phong} \sur{Lam}}\email{phonglam2599@gmail.com}
 \author[1]{\fnm{Thu} \sur{Le}}\email{thulvn@fpt.edu.vn}
@@ -32,7 +35,7 @@
 
 \affil*[1]{\orgname{FPT University}, \orgaddress{\city{Ho Chi Minh City}, \country{Vietnam}}}
 
-\abstract{Urban service platforms such as 311 systems create large-scale traces of reported municipal demand, but forecasting actionable demand surges remains difficult because requests are spatially uneven, semantically heterogeneous, temporally non-stationary, and affected by reporting behavior. This paper formulates reported urban service-demand forecasting as a spatiotemporal-semantic early-warning task at the neighborhood-week-complaint-category level. Using New York City as a case study, we integrate more than 30.9 million geocoded 311 requests with historical demand dynamics, calendar and COVID-period indicators, NOAA weather exposure, OpenStreetMap point-of-interest context, and PLUTO land-use and built-environment features. The target is a next-week abnormal increase in reported service demand, defined from shifted historical rolling statistics so that forecasting features do not leak future information. Models are evaluated with a target-week chronological protocol: target weeks in 2015--2022 for training, 2023 target weeks for validation, and 2024--2025 target weeks for held-out future testing; validation and test positive shares are approximately 12.7\%. The selected decision strategy averages LightGBM and XGBoost probability scores and applies complaint-category-specific thresholds selected only on the validation period. Under this target-week chronological evaluation, it achieves future-test F1 = 0.3800, precision = 0.3012, recall = 0.5146, PR-AUC = 0.3294, and ROC-AUC = 0.7661. SHAP analysis of the LightGBM component shows that historical temporal demand dynamics dominate prediction, while built-environment, POI, weather, semantic-category, and calendar features provide complementary signals. The results support a decision-support interpretation: the model identifies neighborhoods and service categories with elevated risk of abnormal reported demand, while recognizing that 311 data capture reported service demand rather than all underlying urban conditions.}
+\abstract{Urban service platforms such as 311 systems create large-scale traces of reported municipal demand, but forecasting operationally relevant reported-demand surges remains difficult because requests are spatially uneven, service categories are heterogeneous, temporal patterns are non-stationary, and reporting behavior affects observed counts. This paper formulates reported urban service-demand forecasting as a spatiotemporal early-warning task at the neighborhood-week-complaint-category level. Using New York City as a case study, we integrate more than 30.9 million geocoded 311 requests with historical demand dynamics, calendar timing, NOAA weather exposure, OpenStreetMap point-of-interest context, and PLUTO land-use and built-environment descriptors. The target is a next-week abnormal reported-demand event, defined from shifted historical rolling statistics so that forecasting features do not leak future information. Models are evaluated with a target-week chronological protocol: target weeks in 2015--2022 for training, 2023 target weeks for validation, and 2024--2025 target weeks for held-out future testing; validation and test positive shares are approximately 12.7\%. The selected decision strategy averages LightGBM and XGBoost probability scores and applies complaint-category-specific thresholds selected only on the validation period. Under this target-week chronological evaluation, it achieves future-test F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, and ROC-AUC = 0.7720. SHAP analysis of the LightGBM component shows that historical temporal demand dynamics dominate prediction, while built-environment, POI, weather, service-category, and calendar features provide complementary signals. The results support a decision-support interpretation: the model identifies neighborhoods and service categories with elevated risk of abnormal reported demand, while recognizing that 311 data capture reported service demand rather than all underlying urban conditions.}
 
 \keywords{urban computing, smart cities, 311 service requests, service-demand forecasting, explainable machine learning, SHAP, spatiotemporal modeling}
 
@@ -40,22 +43,22 @@
 
 \section{Introduction}\label{sec:introduction}
 
-Smart-city service systems increasingly rely on administrative data streams to understand where and when public needs emerge. Among these streams, 311 requests are valuable because they record resident-facing reports across municipal service domains. Prior work shows that 311 data contain spatial signatures of urban conditions \cite{Wang2017Structure311}, while also reflecting uneven participation and reporting behavior \cite{KontokostaHong2021Bias,Wu2020CitizenGeneratedData}. Thus, 311 data can support city operations and research, but should not be treated as a complete census of all urban problems.
+Smart-city service systems increasingly rely on administrative data streams to understand where and when public needs emerge. Among these streams, 311 requests are valuable because they record resident-facing reports across municipal service domains. Prior work shows that 311 data contain spatial signatures of urban conditions \cite{Wang2017Structure311}, while also reflecting uneven participation and reporting behavior \cite{KontokostaHong2021Bias}. Thus, 311 data can support city operations and research, but should not be treated as a complete census of all urban problems.
 
-This paper studies NYC 311 requests as a large-scale case study in reported urban service-demand forecasting. Rather than predicting raw complaint counts, we formulate an early-warning task: for each neighborhood, week, and semantic complaint category, estimate whether the following week will exhibit an abnormal increase in reported demand. This aligns with operations, where analysts need near-term category-specific signals rather than one citywide count.
+This paper studies NYC 311 requests as a large-scale case study in reported urban service-demand forecasting. Rather than predicting raw complaint counts, we formulate an early-warning task: for each neighborhood, week, and complaint category, estimate whether the following week will exhibit an abnormally high reported-demand event relative to local history. This aligns with operations, where analysts need near-term category-specific signals rather than one citywide count.
 
-We build a multi-source, leakage-safe, and explainable pipeline over a dense NTA-week-complaint-category panel. Historical 311 demand is combined with calendar timing, COVID-period indicators, weekly NOAA weather summaries, OSM POI functional context, and PLUTO land-use and built-environment features. Because the target is a next-week abnormal increase, all lag and rolling-window features are shifted so that only pre-prediction information is used.
+We build a multi-source, leakage-safe, and explainable pipeline over a dense NTA-week-complaint-category panel. Historical 311 demand is combined with calendar timing, weekly NOAA weather summaries, OSM POI functional context, and PLUTO land-use and built-environment descriptors. Because the target is a next-week abnormal reported-demand event, all lag and rolling-window features are shifted so that only pre-prediction information is used.
 
-The empirical evaluation follows a target-week chronological design. Models are trained using target weeks in 2015--2022, tuned using 2023 target weeks, and evaluated on a held-out future test period covering 2024--2025 target weeks. This split is central because random splits would mix future and past observations from the same neighborhood-category series and overstate forecasting validity. Since abnormal increases are relatively rare, the evaluation emphasizes F1, precision, recall, PR-AUC, ROC-AUC, balanced accuracy, and confusion matrices rather than raw accuracy.
+The empirical evaluation follows a target-week chronological design. Models are trained using target weeks in 2015--2022, tuned using 2023 target weeks, and evaluated on a held-out future test period covering 2024--2025 target weeks. This split is central because random splits would mix future and past observations from the same neighborhood-category series and overstate forecasting validity. Since next-week abnormal reported-demand events are relatively rare, the evaluation emphasizes F1, precision, recall, PR-AUC, ROC-AUC, balanced accuracy, and confusion matrices rather than raw accuracy.
 
-The final selected strategy averages tuned LightGBM and XGBoost scores and applies complaint-category-specific thresholds selected on validation. It is a decision-support layer, not an automated allocation system: it ranks potential abnormal demand increases while making false positives and false negatives visible. We explain a tuned LightGBM component using SHAP to identify whether predictions are driven by historical dynamics, weather, semantic category, POI context, land use, or calendar effects.
+The final selected strategy averages tuned LightGBM and XGBoost scores and applies complaint-category-specific thresholds selected on validation. It is a decision-support layer, not an automated allocation system: it ranks potential abnormal reported-demand events while making false positives and false negatives visible. We explain a tuned LightGBM component using SHAP to identify whether predictions are driven by historical dynamics, weather, service category, POI context, land use, or calendar effects.
 
-The study asks three research questions: (RQ1) can a leakage-safe multi-source panel forecast next-week abnormal reported demand under a future chronological test; (RQ2) do semantic service categories benefit from category-specific alert thresholds; and (RQ3) which temporal and urban-context feature groups drive the predictions? The contributions are: (1) a spatiotemporal-semantic early-warning formulation; (2) a large NYC panel built from 30,940,129 NTA-matched 311 requests and multi-source urban context; (3) a target-week chronological evaluation with validation-only threshold selection, baselines, and feature ablations; and (4) SHAP explanations that distinguish predictive associations from causal claims. Figure \ref{fig:pipeline_overview} summarizes this workflow.
+The study asks three research questions: (RQ1) can a leakage-safe multi-source panel forecast next-week abnormal reported demand under a future chronological test; (RQ2) how do category-specific thresholds alter precision-recall and alert-rate trade-offs across service categories; and (RQ3) which temporal and urban-context feature groups drive the predictions? The contributions are: (1) a category-aware early-warning formulation at the service-domain level; (2) a large NYC panel built from 30,940,129 NTA-matched 311 requests and multi-source urban context; (3) a target-week chronological evaluation with validation-only threshold selection, baselines, and feature ablations; and (4) SHAP explanations that distinguish predictive associations from causal claims. Figure \ref{fig:pipeline_overview} summarizes this workflow.
 
 \begin{figure}[t]
 \centering
 \resizebox{\linewidth}{!}{\input{figures/method_pipeline_overview.tex}}
-\caption{End-to-end leakage-safe workflow. Features predict the next target week, chronological periods are split by target week before fitting, and the final layer reports alerts, metrics, and SHAP drivers for reported demand rather than causal effects.}
+\caption{End-to-end leakage-safe workflow. Feature week \(t\) predicts target week \(t+1\); chronological periods are split by target week before fitting; thresholds are selected only on validation; and SHAP reports normalized summed mean absolute contribution patterns for reported demand rather than causal effects.}
 \label{fig:pipeline_overview}
 \end{figure}
 
@@ -63,83 +66,96 @@ The study asks three research questions: (RQ1) can a leakage-safe multi-source p
 
 \subsection{Urban computing and citizen-generated service data}
 
-Urban computing integrates sensing, administrative, and geographic data to understand city dynamics and support decision making \cite{Zheng2014UrbanComputing}. In this setting, 311 service requests link residents, reported concerns, and municipal response systems. Prior work shows that 311 request structure can serve as a signature of urban location \cite{Wang2017Structure311}, but citizen-generated data also reflect awareness, trust, access, reporting propensity, and governance processes \cite{KontokostaHong2021Bias,Wu2020CitizenGeneratedData}. These findings motivate the central caution in this paper: we forecast abnormal reported service demand, not all true urban problems. Domain studies such as NYC flooding analysis through 311 complaints \cite{Agonafir2022Flooding311} further show why weather and service reports can be linked, while our contribution is a citywide multi-category next-week warning task.
+Urban computing integrates sensing, administrative, and geographic data to understand city dynamics and support decision making \cite{Zheng2014UrbanComputing}. In this setting, 311 service requests link residents, reported concerns, and municipal response systems. Prior work shows that 311 request structure can serve as a signature of urban location \cite{Wang2017Structure311}, but citizen-generated data also reflect awareness, trust, access, reporting propensity, and governance processes \cite{KontokostaHong2021Bias}. These findings motivate the central caution in this paper: we forecast abnormal reported service demand, not the full set of underlying urban problems. Domain studies such as NYC flooding analysis through 311 complaints \cite{Agonafir2022Flooding311} further show why weather and service reports can be linked, while our contribution is a citywide multi-category next-week warning task.
 
 \subsection{Urban context from POIs and land use}
 
-Neighborhood function shapes reported service demand. OSM is a major volunteered geographic information source \cite{HaklayWeber2008OSM}; OSM POIs have been used to model urban change \cite{ZhangPfoser2019OSMPOI}, and POI research highlights both functional value and quality-control challenges \cite{Psyllidis2022POI}. Land-use and built-environment data provide complementary stable context. Open big data can map essential urban land-use categories \cite{Chen2021EULUC}, and functional-zone research emphasizes combining POIs, remote sensing, and geospatial data \cite{Du2024UFZReview}. We therefore use aggregate POI, diversity, and PLUTO features as contextual signals rather than as exact measurements of demand.
+Neighborhood function shapes reported service demand. OSM is a major volunteered geographic information source \cite{HaklayWeber2008OSM}, and OSM POIs have been used to model urban change \cite{ZhangPfoser2019OSMPOI}. Land-use and built-environment data provide complementary stable context, so we use aggregate POI, diversity, and PLUTO features as contextual signals rather than as exact measurements of demand.
 
 \subsection{Imbalanced forecasting, gradient boosting, and explainability}
 
-The target in this paper is an abnormal increase event. This connects to anomaly-detection literature \cite{Chandola2009AnomalySurvey}, but with a supervised and operationally defined next-week label. Since positive events are much less frequent than normal observations, PR-AUC and F1 are more informative than accuracy alone. Saito and Rehmsmeier \cite{SaitoRehmsmeier2015PR} show why precision-recall evaluation is especially useful for imbalanced classification.
+The target in this paper is a next-week abnormal reported-demand event: a supervised and operationally defined next-week label. Since positive events are much less frequent than normal observations, PR-AUC and F1 are more informative than accuracy alone. Saito and Rehmsmeier \cite{SaitoRehmsmeier2015PR} show why precision-recall evaluation is especially useful for imbalanced classification.
 
-Gradient-boosted tree methods are strong tabular-learning baselines and are well suited to nonlinear interactions between temporal and contextual features. The modeling stack in this study builds on the random forest and gradient boosting traditions \cite{Breiman2001RandomForests,Friedman2001GBM}, and uses XGBoost \cite{ChenGuestrin2016XGBoost} and LightGBM \cite{Ke2017LightGBM} as the main tuned models. Because operational use of such models requires interpretability, we apply SHAP \cite{LundbergLee2017SHAP} and TreeSHAP \cite{Lundberg2020TreeSHAP} to explain a tuned LightGBM component. We follow general XAI cautions \cite{Arrieta2020XAI,Rudin2019InterpretableML}: explanation values describe model behavior and should not be interpreted as causal effects.
+Gradient-boosted tree methods are strong tabular-learning baselines and are well suited to nonlinear interactions between temporal and contextual features. The modeling stack uses XGBoost \cite{ChenGuestrin2016XGBoost} and LightGBM \cite{Ke2017LightGBM} as the main tuned models. Because operational use of such models requires interpretability, we apply SHAP \cite{LundbergLee2017SHAP} and TreeSHAP \cite{Lundberg2020TreeSHAP} to explain a tuned LightGBM component. We follow XAI cautions \cite{Rudin2019InterpretableML}: explanation values describe model behavior and should not be interpreted as causal effects.
 
 \section{Data and Task Formulation}\label{sec:data}
 
 \subsection{Data sources and analytical unit}
 
-The project integrates five evidence sources from official public data portals\footnote{Official source pages: NYC Open Data 311, NOAA GHCN-Daily, OpenStreetMap copyright/license, and NYC Planning PLUTO/MapPLUTO.}: NYC Open Data 311 Service Requests from 2015--2025 spatially joined to 2020 NTAs; nine stable semantic complaint categories; NOAA Global Historical Climatology Network Daily weather aggregated to weekly exposure; OpenStreetMap POIs aggregated to NTA-level counts, density, entropy, and mixed-use indicators; and NYC Planning PLUTO/MapPLUTO land-use and built-environment summaries.
+The project integrates five evidence sources from official public data portals: NYC Open Data 311 Service Requests from 2015--2025 spatially joined to 2020 NTAs; nine stable complaint-category groups; NOAA Global Historical Climatology Network Daily weather aggregated to weekly exposure; OpenStreetMap POIs aggregated to NTA-level counts, density, entropy, and mixed-use indicators; and NYC Planning PLUTO/MapPLUTO land-use and built-environment summaries. Weekly 311 counts use the Created Date field and Monday week starts. Weather comes from NOAA GHCN-Daily Central Park station \texttt{GHCND:USW00094728} and is aggregated to weekly city-level exposure. NTA assignment uses NYC Planning 2020 NTA boundaries. OSM POI and PLUTO/MapPLUTO variables are generated from fixed extraction snapshots downloaded on 2026-06-25, so they are treated as static context descriptors rather than dynamic covariates.
 
 The resulting analytical unit is
 \[
 (n,t,c),
 \]
-where \(n\) denotes an NTA, \(t\) a week start date, and \(c\) a semantic complaint category. The dense panel contains 262 NTAs, 575 weekly periods, and nine complaint categories, yielding 1,355,850 rows. Table \ref{tab:data_summary} summarizes the most important construction facts.
+where \(n\) denotes an NTA, \(t\) a Monday week start date, and \(c\) a complaint category. The dense panel contains 262 NTAs, 575 weekly periods, and nine complaint categories, yielding 1,355,850 rows. After target construction, 1,334,628 rows have a valid next-week label, and 1,325,196 rows are model-ready after excluding 30,654 rows from the first 12 warm-up weeks per NTA-category series and the final week without an observable next-week target. Table \ref{tab:data_summary} summarizes the most important construction facts.
 
 \begin{table}[t]
 \caption{Dataset construction summary.}\label{tab:data_summary}
 \centering
-\begin{tabular}{@{}p{0.48\linewidth}p{0.33\linewidth}@{}}
+\begin{tabular}{@{}llll@{}}
 \toprule
-Item & Value \\
+Item & Value & Item & Value \\
 \midrule
-NTA-matched 311 requests & 30,940,129 \\
-Spatial match rate after cleaning & 99.9777\% \\
-Analytical unit & NTA \(\times\) week \(\times\) complaint category \\
-Dense panel rows & 1,355,850 \\
-NTAs & 262 \\
-Weeks & 575 \\
-Complaint categories & 9 \\
-Temporal coverage & 2014-12-29 to 2025-12-29 weekly panel \\
-NOAA daily observations & 4,018 daily rows, aggregated to 575 weeks \\
-OSM POIs after NTA assignment & 77,083 \\
-Final output columns & 252 \\
-Model-ready selected features & 215 \\
+NTA-matched 311 & 30,940,129 & Match rate & 99.9777\% \\
+Unit & NTA-week-category & Panel rows & 1,355,850 \\
+Valid-label rows & 1,334,628 & Model-ready rows & 1,325,196 \\
+Excluded rows & 30,654 & NTAs & 262 \\
+Weeks & 575 & Categories & 9 \\
+Coverage & 2014-12-29--2025-12-29 & NOAA days & 4,018 \\
+OSM POIs & 77,083 & Output columns & 252 \\
+Predefined schema & 215 inputs & Final feature subset & 213 inputs \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Semantic complaint categories}
+\subsection{Complaint-category mapping}
 
-NYC 311 complaint types are highly granular and can change over time. Modeling each raw type separately would create sparse series, while collapsing all requests would erase service meaning. We therefore use stable semantic categories: noise, housing, water and sewer, public safety, parking and traffic, environmental issues, infrastructure, sanitation, and a residual other category retained to avoid false precision. Representative raw types include Noise--Residential and Noise--Street/Sidewalk for noise, Heat/Hot Water and Plumbing for housing, Illegal Parking and Blocked Driveway for parking/traffic, Street Condition and Sidewalk Condition for infrastructure, and Missed Collection or Dirty Condition for sanitation.
+NYC 311 complaint types are highly granular and can change over time. Modeling each raw type separately would create sparse series, while collapsing all requests would erase service meaning. We therefore use stable service categories: noise, housing, water and sewer, public safety, parking and traffic, environmental issues, infrastructure, sanitation, and a residual other category retained to avoid false precision. Representative raw types include Noise--Residential and Noise--Street/Sidewalk for noise, Heat/Hot Water and Plumbing for housing, Illegal Parking and Blocked Driveway for parking/traffic, Street Condition and Sidewalk Condition for infrastructure, and Missed Collection or Dirty Condition for sanitation. In this paper, category-aware refers to modeling reported demand at this stable service-category level and applying category-specific alert thresholds, rather than using raw complaint types or a single citywide alert rule.
 
-\subsection{Next-week abnormal-increase target}
+\subsection{Next-week abnormal reported-demand target}
 
 For each neighborhood \(n\), week \(t\), and complaint category \(c\), the feature vector is
 \[
 x_{n,t,c} =
 [\text{historical demand}, \text{calendar}, \text{weather}, \text{OSM POI context}, \text{PLUTO context}].
 \]
-Here \(t\) is the feature week: all predictors are available after that week closes. The target week is \(t+1\), seven days after `week\_start'. The supervised target indicates whether this following week has an abnormal increase in reported service demand:
+Here \(t\) is the feature week: all predictors are available after that week closes. The target week is \(t+1\), seven days after \texttt{week\_start}. The supervised target indicates whether this following week has abnormally high reported service demand:
 \[
 y_{n,t,c} =
-\mathbb{1}\{\text{count}_{n,t+1,c} >
+\mathbf{1}\{\text{count}_{n,t+1,c} >
 \mu^{8w}_{n,t,c} + 1.5\sigma^{8w}_{n,t,c}\},
 \]
-where \(\mu^{8w}_{n,t,c}\) and \(\sigma^{8w}_{n,t,c}\) are computed from a shifted historical eight-week window. The shift ensures that rolling statistics and lag features use only information available before the prediction week. The target focuses on future surges relative to each local historical baseline rather than absolute volume alone.
+where \(\mu^{8w}_{n,t,c}\) and \(\sigma^{8w}_{n,t,c}\) are computed from a shifted historical eight-week window. The shift ensures that rolling statistics and lag features use only prior weeks available before the prediction week. The target focuses on future reported-demand events relative to each local historical baseline rather than absolute volume alone.
 
 \section{Methodology}\label{sec:method}
 
 \subsection{Feature groups}
 
-The model-ready configuration contains 215 selected features. Historical demand features include lag counts, rolling statistics, changes, ratios to historical baselines, current complaint count, and history-availability flags. Calendar and period features include seasonal timing and COVID-period indicators. Weather features summarize weekly temperature, precipitation, snow, wind, and extreme-day counts. OSM POI features describe functional context through semantic counts, densities, shares, entropy, diversity, and tag-family summaries. PLUTO features summarize built-environment and land-use composition, including lots, building area, residential and commercial area, land-use ratios, and parcel density.
+The model-ready configuration contains a predefined 215-input feature schema specified before model fitting; it is not selected using validation or test labels. The final tuned comparison uses a 213-input no-COVID-period feature subset, excluding two period-indicator fields so performance does not rely on COVID-era labels; this subset expands to 229 model columns after one-hot encoding categorical fields. Historical demand features include lag counts, rolling statistics, changes, ratios to historical baselines, current complaint count, and history-availability flags. Calendar features capture seasonality. Weather features summarize weekly temperature, precipitation, snow, wind, and extreme-day counts. OSM POI and PLUTO variables are static neighborhood-context descriptors rather than dynamic covariates; they support predictive association analysis but should not be read as contemporaneous measurements of changing neighborhood conditions.
 
 \subsection{Models}
 
-The pipeline compares simple baselines, logistic regression, gradient-boosted trees, and tuned LightGBM/XGBoost variants. Tuned gradient-boosted models provide the strongest validation performance and capture nonlinear tabular interactions. Hyperparameter tuning searches complexity, learning rate, regularization, and positive-class weighting. For reproducible final model selection under local runtime constraints, the validation-ranked LightGBM and XGBoost candidates used in the final decision comparison are trained on a stratified 300,000-row sample from the target-week training period, preserving the positive-class proportion. Scores are converted into hard alerts using thresholds selected only on validation.
+The pipeline compares rule baselines, logistic regression, gradient-boosted trees, and tuned LightGBM/XGBoost variants. Numeric preprocessing medians and categorical levels are fitted on the training period only. Categorical fields are one-hot encoded with train-fitted levels, and unseen validation or test categories map to all-zero one-hot indicators for that field. Tuned gradient-boosted models provide the strongest validation performance and capture nonlinear tabular interactions. Hyperparameters and class-weight settings are selected from stratified 300,000-row tuning runs for reproducibility; the final reported LightGBM and XGBoost scores are then rebuilt on all 954,990 target-week training rows using the selected candidates. Scores are converted into hard alerts using thresholds selected only on validation.
 
-\subsection{Semantics-aware ensemble decision layer}
+\begin{table}[t]
+\caption{Compact tuning and final-score protocol for gradient-boosted models.}\label{tab:tuning_protocol}
+\centering
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+\toprule
+Item & Setting \\
+\midrule
+Feature set & 213-input no-COVID-period subset; one-hot expansion to 229 model columns \\
+Tuning sample/seed & Stratified train sample, \(\texttt{max\_train\_rows}=300{,}000\), seed 42; selected candidates rebuilt on all 954,990 training rows for final reported scores \\
+LightGBM grid & Depth/leaf/lr: (8,63,0.05), (6,31,0.03), (10,127,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
+XGBoost grid & Depth/lr: (8,0.05), (6,0.03), (5,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
+Selection & Validation F1; selected LightGBM depth 6, 31 leaves, lr 0.03, sqrt weight; selected XGBoost depth 6, lr 0.03, sqrt weight \\
+Thresholds & Validation grid 0.01--0.99 step 0.005 plus score quantiles; category fallback to global threshold if validation positives \(<30\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Category-aware ensemble decision layer}
 
 Let \(s^{L}_{n,t,c}\) be the tuned LightGBM score and \(s^{X}_{n,t,c}\) the tuned XGBoost score. The ensemble score is
 \[
@@ -147,13 +163,13 @@ s^{E}_{n,t,c} = 0.5s^{L}_{n,t,c} + 0.5s^{X}_{n,t,c}.
 \]
 We compare global and complaint-category-specific thresholds. In the category-specific strategy, each category \(c\) receives a threshold \(\tau_c\) selected on the 2023 validation period to optimize F1. The final alert is
 \[
-\hat{y}_{n,t,c} = \mathbb{1}\{s^{E}_{n,t,c} \geq \tau_c\}.
+\hat{y}_{n,t,c} = \mathbf{1}\{s^{E}_{n,t,c} \geq \tau_c\}.
 \]
-This is semantics-aware at the decision layer: the same score can imply different alert decisions because score distributions and operational trade-offs differ by service domain.
+This is category-aware at the decision layer: the same score can imply different alert decisions because score distributions, precision-recall trade-offs, and alert rates differ by service domain.
 
 \subsection{Explainability}
 
-We use SHAP to explain the tuned LightGBM component. The final decision strategy is an ensemble with category-specific thresholds, so SHAP is interpreted as evidence about a representative tree component trained under the same feature design and chronological protocol, not as a direct explanation of every ensemble alert or as causal attribution.
+We use SHAP to explain the tuned LightGBM component. The final decision strategy is an ensemble with category-specific thresholds, so SHAP is interpreted as evidence about a representative tree component trained under the same one-hot feature design and chronological protocol, not as a direct explanation of every ensemble alert or as causal attribution. For reporting, one-hot complaint-category indicators are grouped back into the service-category feature group.
 
 \section{Experimental Setup}\label{sec:experiments}
 
@@ -165,7 +181,7 @@ The model-ready target-week split contains 954,990 train rows with 121,306 posit
 
 \subsection{Metrics and model selection}
 
-F1 is used as the primary validation-ranking metric because the task requires balancing alert precision and event detection. Precision measures how many alerts correspond to true abnormal increases, while recall measures how many true abnormal increases are captured. PR-AUC evaluates ranking quality under class imbalance, and ROC-AUC is reported as a complementary threshold-independent metric. Balanced accuracy is included to summarize sensitivity and specificity without letting the majority class dominate.
+F1 is used as the primary validation-ranking metric because the task requires balancing alert precision and event detection. Precision measures how many alerts correspond to observed positive events, while recall measures how many observed positive events are captured. PR-AUC evaluates ranking quality under class imbalance, and ROC-AUC is reported as a complementary threshold-independent metric. Balanced accuracy is included to summarize sensitivity and specificity without letting the majority class dominate.
 
 All reported thresholds are selected on the validation period only. Threshold tuning is treated as a method component rather than a cosmetic post-processing step because the default 0.5 threshold is poorly matched to an imbalanced early-warning task. Importantly, threshold tuning changes hard classification metrics such as F1, precision, recall, and predicted-positive share; it does not change the underlying PR-AUC or ROC-AUC for a fixed score vector.
 
@@ -173,42 +189,22 @@ All reported thresholds are selected on the validation period only. Threshold tu
 
 \subsection{Baselines, ablations, and final model comparison}
 
-Table \ref{tab:supporting_comparisons} gives compact baseline and feature-ablation evidence under the target-week split. It reports only ranking metrics, so the comparison is not affected by the mixed hard-threshold protocols used by the underlying checks.
+Baseline checks confirm that the task is not solved by simple historical rules. On the 2024--2025 target-week test period, current-week persistence obtains F1 = 0.3111 and PR-AUC = 0.2359, a seasonal lag-52 margin obtains F1 = 0.2423 and PR-AUC = 0.1773, and the strongest rule baseline, a rolling z-score rule, obtains F1 = 0.3332 and PR-AUC = 0.2658. Logistic regression with historical features obtains F1 = 0.3256 and PR-AUC = 0.2598. Feature-ablation checks also show that LightGBM ranking quality improves from PR-AUC = 0.2770 with historical features alone to 0.3158 with full context. Final hard-alert performance additionally depends on model tuning, ensemble averaging, and validation-selected thresholds, which are compared in Table \ref{tab:model_comparison}.
 
-\begin{table*}[t]
-\caption{Compact baseline and feature-ablation ranking checks on the 2024--2025 target-week test period. The table reports threshold-independent score quality; final validation-selected hard-alert performance is reported in Table \ref{tab:model_comparison}.}\label{tab:supporting_comparisons}
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}llrr@{}}
-\toprule
-Evidence & Model/setting & PR-AUC & ROC-AUC \\
-\midrule
-Baseline & Current-week persistence & 0.2359 & 0.6389 \\
-Baseline & Logistic, historical only & 0.2582 & 0.6943 \\
-\midrule
-Ablation & LightGBM, historical only & 0.2770 & 0.7261 \\
-Ablation & LightGBM, full context & 0.3158 & 0.7549 \\
-\bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table*}
-
-Table \ref{tab:supporting_comparisons} indicates that learned models and full-context features improve ranking quality, particularly PR-AUC. Final hard-alert performance additionally depends on model tuning, ensemble averaging, and validation-selected thresholds, which are compared in Table \ref{tab:model_comparison}.
-
-Table \ref{tab:model_comparison} compares the final decision strategies. The selected model is the ensemble of LightGBM and XGBoost with complaint-category-specific thresholds. On the held-out 2024--2025 target-week test period, it achieves F1 = 0.3800, precision = 0.3012, recall = 0.5146, PR-AUC = 0.3294, ROC-AUC = 0.7661, and balanced accuracy = 0.6701.
+Table \ref{tab:model_comparison} compares the final decision strategies. Following the pre-specified validation-selection rule, the selected decision strategy is the LightGBM/XGBoost ensemble with complaint-category-specific thresholds. On the held-out 2024--2025 target-week test period, it achieves F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, ROC-AUC = 0.7720, and balanced accuracy = 0.6715. The global-threshold ensemble has slightly higher test F1, but uses one alert rule across service domains; we retain the validation-selected category-specific strategy for trade-off interpretation.
 
 \begin{table*}[t]
 \caption{Final decision-layer comparison. Thresholds are selected on validation and evaluated unchanged on the future test period.}\label{tab:model_comparison}
 \centering
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}llrrrrrr@{}}
+\begin{tabular}{@{}llrrrrrrrrr@{}}
 \toprule
-Model & Threshold & Val F1 & Val PR-AUC & Test F1 & Test Precision & Test Recall & Test PR-AUC \\
+Model & Threshold & Val F1 & Val PR-AUC & Test F1 & Prec. & Rec. & PR-AUC & ROC-AUC & Bal. acc. & Alert rate \\
 \midrule
-Ensemble LGBM(0.50)+XGB(0.50) & Per category & 0.3756 & 0.3137 & 0.3800 & 0.3012 & 0.5146 & 0.3294 \\
-Tuned LightGBM & Per category & 0.3744 & 0.3089 & 0.3789 & 0.3000 & 0.5140 & 0.3270 \\
-Ensemble LGBM(0.50)+XGB(0.50) & Global & 0.3720 & 0.3137 & 0.3797 & 0.2967 & 0.5269 & 0.3294 \\
-Tuned XGBoost & Per category & 0.3704 & 0.3119 & 0.3761 & 0.2901 & 0.5347 & 0.3247 \\
+Ensemble LGBM(0.50)+XGB(0.50) & Per category & 0.3809 & 0.3249 & 0.3839 & 0.3071 & 0.5117 & 0.3365 & 0.7720 & 0.6715 & 0.2124 \\
+Tuned XGBoost & Per category & 0.3806 & 0.3233 & 0.3845 & 0.3058 & 0.5175 & 0.3367 & 0.7722 & 0.6729 & 0.2158 \\
+Tuned LightGBM & Per category & 0.3802 & 0.3249 & 0.3836 & 0.3022 & 0.5249 & 0.3346 & 0.7709 & 0.6739 & 0.2214 \\
+Ensemble LGBM(0.50)+XGB(0.50) & Global & 0.3777 & 0.3249 & 0.3865 & 0.3001 & 0.5426 & 0.3365 & 0.7720 & 0.6788 & 0.2305 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -216,48 +212,33 @@ Tuned XGBoost & Per category & 0.3704 & 0.3119 & 0.3761 & 0.2901 & 0.5347 & 0.32
 
 \subsection{Alert interpretation}
 
-The final test confusion matrix contains 16,247 true positives, 37,694 false positives, 15,323 false negatives, and 178,326 true negatives. This means the model captures about half of true abnormal demand increases while roughly three out of ten alerts correspond to true abnormal increases. Such performance is realistic for an imbalanced reported-demand early-warning task and is most useful as a prioritization layer.
+The final test confusion matrix contains 16,154 true positives, 36,440 false positives, 15,416 false negatives, and 179,580 true negatives. This means the model captures about half of true next-week abnormal reported-demand events while roughly three out of ten alerts correspond to true events. Such performance is realistic for an imbalanced reported-demand early-warning task and is most useful as a prioritization layer.
 
-Because the operational use case is prioritization, Table \ref{tab:lift_at_k} evaluates concentration of true events among the highest-risk predictions. The top 1\% of scored test rows has precision 0.5727, corresponding to 4.49 times the test base rate, while the all-alert decision layer retains recall 0.5146 at 2.36 times the base rate.
+Because the operational use case is prioritization, we also evaluate concentration of true events among the highest-risk predictions. The top 1\% of scored test rows contains 2,476 rows with precision 0.5965, recall 0.0468, and 4.68-times lift over the test base rate. The top 5\% has precision 0.4548 and recall 0.1784, the top 10\% has precision 0.3866 and recall 0.3032, and the full threshold-based alert layer selects 52,594 rows with precision 0.3071, recall 0.5117, and 2.41-times lift.
 
-\begin{table}[t]
-\caption{Precision and lift for top-ranked risk sets on the 2024--2025 test period. Top-risk rows are selected by score rank; all alerts are selected by the threshold layer.}\label{tab:lift_at_k}
-\centering
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Risk set & Rows / selected cases & Precision & Recall & Lift \\
-\midrule
-Top 1\% risk & 2,476 & 0.5727 & 0.0449 & 4.49 \\
-Top 5\% risk & 12,380 & 0.4426 & 0.1736 & 3.47 \\
-Top 10\% risk & 24,759 & 0.3782 & 0.2966 & 2.97 \\
-All alerts & 53,941 & 0.3012 & 0.5146 & 2.36 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Compared with logistic-regression baselines, gradient-boosted models improve ranking quality and alert conversion: the best listed logistic-regression candidate obtains PR-AUC = 0.2582, whereas the selected ensemble obtains PR-AUC = 0.3294 and F1 = 0.3800 under the final validation-selected thresholds.
+Compared with logistic-regression and rule baselines, gradient-boosted models improve ranking quality and alert conversion: the rolling z-score rule obtains F1 = 0.3332 and PR-AUC = 0.2658, whereas the selected ensemble obtains F1 = 0.3839 and PR-AUC = 0.3365 under the final validation-selected thresholds.
 
 \subsection{Performance by complaint category}
 
-Table \ref{tab:category_performance} shows that performance varies across municipal service domains. Noise has the strongest test F1, followed by housing, public safety, and water/sewer. Sanitation, infrastructure, and environment are weaker by F1, although several retain moderate recall. This heterogeneity supports the paper's central argument that urban service-demand forecasting is not a single homogeneous time-series problem.
+Table \ref{tab:category_performance} shows that performance varies across municipal service domains. Noise has the strongest test F1, followed by public safety, housing, and water/sewer. Sanitation, infrastructure, and environment are weaker by F1, although several retain moderate recall. Category thresholds mainly change the alert conversion trade-off: relative to a global ensemble threshold, the per-category ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The point is explicit service-domain precision-recall and alert-volume choice, not aggregate F1 superiority.
 
 \begin{table*}[t]
-\caption{Category-specific thresholds and test performance. Base and alert rates are measured on the 2024--2025 target-week test period.}\label{tab:category_performance}
+\caption{Final model test performance by complaint category on the 2024--2025 target-week period.}\label{tab:category_performance}
 \centering
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Category & Threshold & Base rate & Alert rate & F1 & Precision & Recall \\
+Category & Positives & Alerts & PR-AUC & F1 & Precision & Recall \\
 \midrule
-Noise & 0.1700 & 0.1447 & 0.2593 & 0.4423 & 0.3446 & 0.6173 \\
-Housing & 0.1901 & 0.1352 & 0.1887 & 0.4049 & 0.3476 & 0.4849 \\
-Public safety & 0.1571 & 0.1285 & 0.2174 & 0.3968 & 0.3157 & 0.5339 \\
-Water/sewer & 0.2050 & 0.1258 & 0.1865 & 0.3964 & 0.3319 & 0.4919 \\
-Other & 0.1550 & 0.1316 & 0.2486 & 0.3725 & 0.2849 & 0.5381 \\
-Parking/traffic & 0.1650 & 0.1304 & 0.2403 & 0.3644 & 0.2810 & 0.5181 \\
-Environment & 0.1576 & 0.1053 & 0.2163 & 0.3585 & 0.2665 & 0.5477 \\
-Infrastructure & 0.1879 & 0.1307 & 0.2248 & 0.3495 & 0.2764 & 0.4753 \\
-Sanitation & 0.1773 & 0.1153 & 0.1790 & 0.3194 & 0.2625 & 0.4076 \\
+Noise & 3,982 & 5,729 & 0.4229 & 0.4578 & 0.3880 & 0.5583 \\
+Public safety & 3,536 & 6,482 & 0.3312 & 0.4097 & 0.3166 & 0.5803 \\
+Housing & 3,720 & 5,412 & 0.3860 & 0.4025 & 0.3396 & 0.4941 \\
+Water/sewer & 3,462 & 6,090 & 0.3642 & 0.3938 & 0.3089 & 0.5433 \\
+Other & 3,620 & 6,695 & 0.3237 & 0.3762 & 0.2898 & 0.5359 \\
+Parking/traffic & 3,586 & 5,811 & 0.3255 & 0.3708 & 0.2998 & 0.4858 \\
+Environment & 2,896 & 5,924 & 0.3105 & 0.3633 & 0.2704 & 0.5532 \\
+Infrastructure & 3,596 & 5,900 & 0.2764 & 0.3484 & 0.2803 & 0.4600 \\
+Sanitation & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -267,22 +248,22 @@ Sanitation & 0.1773 & 0.1153 & 0.1790 & 0.3194 & 0.2625 & 0.4076 \\
 
 \subsection{Global feature importance}
 
-SHAP analysis is performed on the tuned LightGBM component. Figure \ref{fig:shap_group} summarizes SHAP importance by feature group. Historical temporal features dominate, accounting for 58.82\% of summed mean absolute SHAP importance. This is expected: recent volatility, ratios to historical means, seasonal recurrence, and lag counts directly encode demand dynamics. However, contextual features are not negligible. PLUTO built-environment features account for 11.49\%, OSM POI context for 10.09\%, weather for 6.06\%, semantic category for 6.01\%, and calendar features for 4.60\%.
+SHAP analysis is performed on the tuned LightGBM component after one-hot categorical encoding. Figure \ref{fig:shap_group} summarizes SHAP importance by feature group, with one-hot complaint-category indicators grouped back into the service-category group. Historical temporal features dominate, accounting for 58.96\% of summed mean absolute SHAP importance. This is expected: recent volatility, ratios to historical means, seasonal recurrence, and lag counts directly encode demand dynamics. However, contextual features are not negligible. Service category accounts for 10.73\%, PLUTO built environment for 10.18\%, OSM POI context for 8.13\%, weather for 4.88\%, calendar features for 4.77\%, and current demand for 1.61\%.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/shap_group_importance.png}
-\caption{Feature-group SHAP importance for the tuned LightGBM explanation backbone. Historical temporal demand features dominate, while PLUTO, OSM POI, weather, semantic-category, and calendar features provide complementary predictive information.}
+\caption{Normalized summed mean absolute SHAP importance for the tuned LightGBM explanation backbone. Historical temporal demand features dominate, while service-category, PLUTO, OSM POI, weather, and calendar features provide complementary predictive information.}
 \label{fig:shap_group}
 \end{figure}
 
-The top individual features are also consistent with the abnormal-increase formulation. The leading features include `rolling\_8w\_std', `ratio\_to\_8w\_mean', `complaint\_category', `lag\_52w\_count', `week\_of\_year', `rolling\_4w\_mean', `rolling\_12w\_std', and current `complaint\_count'. These features combine short-term volatility, deviation from recent baseline, annual seasonality, service semantics, and current observed demand.
+The top individual features are also consistent with the next-week abnormal reported-demand formulation. The leading features include \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, one-hot service-category indicators such as \texttt{complaint\_category=environment}, and current \texttt{complaint\_count}. These features combine short-term volatility, deviation from recent baseline, annual seasonality, service domain, and current observed demand.
 
 \subsection{Category-specific interpretation}
 
-Category-specific SHAP summaries indicate that the highest-ranked features are broadly similar across categories, but their relative magnitudes differ. In every category, the top features include rolling eight-week standard deviation, ratio to the eight-week mean, complaint category, 52-week lag count, and week of year. This pattern supports two interpretations. First, the model is primarily learning temporal abnormality relative to local historical behavior. Second, semantic category remains important even after category-specific series are included, suggesting that service domains differ in baseline volatility, seasonality, and alertability.
+Category-specific SHAP summaries indicate that the highest-ranked features are broadly similar across categories, but their relative magnitudes differ. In every category, the top features include rolling eight-week standard deviation, ratio to the eight-week mean, complaint-category indicators, 52-week lag count, and week of year. This pattern supports two interpretations. First, the model is primarily learning temporal abnormality relative to local historical behavior. Second, service category remains important even after category-specific series are included, suggesting that service domains differ in baseline volatility, seasonality, and alertability.
 
-Two local SHAP examples further show how the explanation layer should be used. For target week 2025-10-13, a true-positive housing alert in Hamilton Heights--Sugar Hill (score 0.903, predicted alert, true label 1) is pushed upward by history length, 52-week lag demand, and residential-lot features. For the same target week, a false-positive housing alert in Morrisania (score 0.834, predicted alert, true label 0) is pushed upward by category, ratio to the eight-week mean, one-week lag demand, the four-week rolling mean, and current complaint count. These examples illustrate why explanations should support analyst review rather than automatic action.
+Two local SHAP examples further show how the explanation layer should be used. A true-positive housing alert in Inwood for feature week 2025-10-06 has a LightGBM score of 0.954 and is associated with eight-week volatility, seasonal timing, and residential built-environment features. A false-positive public-safety alert in the Lower East Side for feature week 2025-06-30 has a LightGBM score of 0.940; annual and recent lag counts and current reported demand push the score upward, while eight-week volatility and zero weekly precipitation push it downward. These examples illustrate why explanations should support analyst review rather than automatic action.
 
 The built-environment and POI contributions should be interpreted as contextual associations. PLUTO density or residential-area features may help distinguish neighborhoods with different housing-related demand dynamics, while POI entropy and named POI counts may reflect functional intensity or mixed-use conditions. These explanations do not prove that changing a POI or land-use feature would causally change 311 demand; they describe how the trained model uses observed context to estimate reported-demand risk.
 
@@ -290,36 +271,34 @@ The built-environment and POI contributions should be interpreted as contextual 
 
 \subsection{Operational meaning}
 
-The final model is best understood as early-warning decision support. On the future test period, recall of 0.5146 means it captures slightly more than half of true abnormal increases, while precision of 0.3012 means many alerts are false positives. In practice, the system should be used as a triage layer that narrows analyst attention to high-risk NTA-category weeks, with final decisions incorporating agency capacity, complaint severity, and local knowledge.
+The final model is best understood as early-warning decision support. On the future test period, recall of 0.5117 means it captures about half of true next-week abnormal reported-demand events, while precision of 0.3071 means many alerts are false positives. In practice, the system should be used as a triage layer that narrows analyst attention to high-risk NTA-category weeks, with final decisions incorporating agency capacity, complaint severity, and local knowledge.
 
-Complaint-category-specific thresholds make this interpretation more practical. A single global threshold assumes all domains share the same alert rule, but noise, housing, infrastructure, sanitation, and public-safety requests differ in baseline frequency, volatility, reporting behavior, and response costs. A semantics-aware threshold layer reflects these differences while retaining a common modeling framework.
+Complaint-category-specific thresholds make this interpretation more practical. A single global threshold assumes all domains share the same alert rule, but noise, housing, infrastructure, sanitation, and public-safety requests differ in baseline frequency, volatility, reporting behavior, and response costs. A category-aware threshold layer reflects these differences while retaining a common modeling framework. The observed F1 difference between global and category-specific thresholds is small, so the main claim is explicit precision-recall and alert-volume trade-off by service domain rather than aggregate performance superiority.
 
 \subsection{Methodological implications}
 
-The results reinforce three methodological points. First, temporal leakage control is essential; random splits are poorly aligned with prospective forecasting in repeated neighborhood-category panels. Second, threshold selection should be reported transparently in imbalanced early-warning tasks because the default 0.5 threshold can produce impractical alert rates. Third, context features should be evaluated as complements to, not replacements for, historical demand. SHAP shows that temporal dynamics dominate, but neighborhood function, built environment, weather, category semantics, and calendar timing still contribute information.
+The results reinforce three methodological points. First, temporal leakage control is essential; random splits are poorly aligned with prospective forecasting in repeated neighborhood-category panels. Second, threshold selection should be reported transparently in imbalanced early-warning tasks because the default 0.5 threshold can produce impractical alert rates. Third, context features should be evaluated as complements to, not replacements for, historical demand. SHAP shows that temporal dynamics dominate, but neighborhood function, built environment, weather, service category, and calendar timing still contribute information.
 
 \subsection{Limitations}
 
-Several limitations should guide interpretation. First, 311 data capture reported service demand, not all true urban problems, and reporting propensity may reproduce socio-spatial inequities. Second, OSM POI and PLUTO features are used as relatively stable neighborhood context and may not capture within-period changes over 2015--2025. Third, NOAA weather is aggregated as weekly city-level exposure and may not capture microclimatic variation across NTAs. Fourth, tuned LightGBM and XGBoost runs use stratified sampled training for local computational reproducibility; future work should verify robustness under repeated full-training runs. Fifth, the target depends on an eight-week historical baseline and a 1.5 standard-deviation threshold; alternative definitions may produce different alert behavior. Sixth, the model is evaluated in NYC only. Finally, SHAP explains predictive behavior, not causal effects of weather, POI density, or land-use characteristics.
+Several limitations should guide interpretation. NYC 311 data measure reported service demand, not all underlying urban problems, and reporting propensity may reproduce socio-spatial inequities. OSM POI and PLUTO are static context descriptors with snapshot/look-ahead risk across 2015--2025, and NOAA weather is weekly city-level exposure rather than NTA microclimate. Hyperparameters are selected from sampled tuning runs, although final reported scores are rebuilt on all 954,990 training rows; three sampled seeds produced test F1 \(0.3817 \pm 0.0021\), PR-AUC \(0.3313 \pm 0.0025\), and ROC-AUC \(0.7678 \pm 0.0007\). Alternative abnormal-demand definitions, city transfer, repeated full-training stability, and causal validation remain future work.
 
 \section{Conclusion}\label{sec:conclusion}
 
-This paper presented a semantics-aware explainable machine-learning pipeline for forecasting abnormal reported urban service-demand increases in NYC 311 data. By modeling the NTA-week-complaint-category panel, integrating historical demand with weather, OSM POI, and PLUTO context, and evaluating with a target-week chronological split, the study frames 311 forecasting as a realistic early-warning task rather than a generic count-prediction exercise. Under the target-week chronological evaluation, the selected ensemble of LightGBM and XGBoost with complaint-category-specific thresholds achieved future-test F1 = 0.3800, precision = 0.3012, recall = 0.5146, PR-AUC = 0.3294, and ROC-AUC = 0.7661. SHAP analysis showed that historical temporal dynamics are the dominant predictive signal, while built environment, POI context, weather, semantic category, and calendar features provide complementary information.
-
-The findings support the value of semantics-aware decision layers in smart-city forecasting, especially when service categories differ in temporal behavior and operational trade-offs. Future work should test transferability, deepen fairness analysis of reporting bias, compare abnormal-demand definitions, and link alerts to operational response.
+This paper presented a category-aware explainable machine-learning pipeline for forecasting next-week abnormal reported urban service-demand events in NYC 311 data. The NTA-week-complaint-category formulation, multi-source context, and target-week chronological split frame 311 forecasting as an early-warning task rather than generic count prediction. The selected LightGBM/XGBoost ensemble with complaint-category-specific thresholds achieved future-test F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, and ROC-AUC = 0.7720. SHAP showed that historical temporal dynamics dominate, while built environment, POI context, weather, service category, and calendar features contribute complementary information. The findings support category-aware decision layers as a way to make service-domain alert trade-offs explicit, while aggregate F1 remains similar to a global-threshold policy; future work should test transferability, fairness, alternative abnormal-demand definitions, and operational response links.
 
 \section*{Declarations}
 
 \begingroup
 \setlength{\parskip}{1pt}
-\noindent\textbf{Data and code availability.} The study uses public NYC 311, NOAA, OpenStreetMap, and PLUTO-derived inputs; processed data and scripts can be shared subject to source licensing, redistribution, and storage constraints.\par
+\noindent\textbf{Data and code availability.} Source data are NYC Open Data 311 (\texttt{erm2-nwe9}), NOAA GHCN-Daily station \texttt{GHCND:USW00094728}, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO (\texttt{64uk-42ks}), and 2020 NTA boundaries (\texttt{9nt8-h7nd}); the local snapshot was extracted on 2026-06-25. Scripts, mappings, configs, and evaluation code will be released upon acceptance; processed data release is subject to licensing, redistribution, and storage constraints.\par
 \noindent\textbf{Competing interests.} The authors declare no competing interests.\par
 \noindent\textbf{Funding.} No specific funding was received.\par
-\noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le supervised study design and editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed to validation, experiment review, and editing.
+\noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le served as academic advisor and supervised the study design, methodology, and manuscript editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed validation and review.
 \endgroup
 
 \setlength{\bibsep}{0pt}
-\renewcommand{\bibfont}{\fontsize{6}{6}\selectfont}
+\renewcommand{\bibfont}{\fontsize{5.4}{5.7}\selectfont}
 \bibliography{references}
 
 \end{document}

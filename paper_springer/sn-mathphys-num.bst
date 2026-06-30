@@ -1107,6 +1107,14 @@ FUNCTION {format.art.vol}
     'skip$
     { "(" number "issue" make.tag * ")" * * }
   if$
+  bnumber empty$
+    'skip$
+    { duplicate$ empty$
+        { bnumber * }
+        { ", " * bnumber * }
+      if$
+    }
+  if$
 }
 
 FUNCTION {format.series}
