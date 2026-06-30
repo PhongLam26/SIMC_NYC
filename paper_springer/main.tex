@@ -23,6 +23,7 @@
 \renewcommand{\arraystretch}{0.92}
 \renewcommand{\bibfont}{\fontsize{5.4}{5.7}\selectfont}
 \setlength{\bibsep}{0pt}
+\hyphenation{calendar category categories categorical component components}
 
 \begin{document}
 
@@ -257,11 +258,11 @@ SHAP analysis is performed on the tuned LightGBM component after one-hot categor
 \label{fig:shap_group}
 \end{figure}
 
-The top individual features are also consistent with the next-week abnormal reported-demand formulation. The leading features include \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, one-hot service-category indicators such as \texttt{complaint\_category=environment}, and current \texttt{complaint\_count}. These features combine short-term volatility, deviation from recent baseline, annual seasonality, service domain, and current observed demand.
+The leading individual features are consistent with the next-week abnormal reported-demand formulation: \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, service-category indicators such as \texttt{complaint\_category=environment}, and current \texttt{complaint\_count}. Together they capture volatility, baseline deviation, seasonality, service domain, and current demand.
 
 \subsection{Category-specific interpretation}
 
-Category-specific SHAP summaries indicate that the highest-ranked features are broadly similar across categories, but their relative magnitudes differ. In every category, the top features include rolling eight-week standard deviation, ratio to the eight-week mean, complaint-category indicators, 52-week lag count, and week of year. This pattern supports two interpretations. First, the model is primarily learning temporal abnormality relative to local historical behavior. Second, service category remains important even after category-specific series are included, suggesting that service domains differ in baseline volatility, seasonality, and alertability.
+Across service categories, the highest-ranked SHAP features are broadly similar but differ in relative magnitude. Top features consistently include rolling eight-week standard deviation, ratio to the eight-week mean, complaint-category indicators, 52-week lag count, and week of year. This pattern supports two interpretations. First, the model is primarily learning temporal abnormality relative to local historical behavior. Second, service category remains important even after category-specific series are included, suggesting that service domains differ in baseline volatility, seasonality, and alertability.
 
 Two local SHAP examples further show how the explanation layer should be used. A true-positive housing alert in Inwood for feature week 2025-10-06 has a LightGBM score of 0.954 and is associated with eight-week volatility, seasonal timing, and residential built-environment features. A false-positive public-safety alert in the Lower East Side for feature week 2025-06-30 has a LightGBM score of 0.940; annual and recent lag counts and current reported demand push the score upward, while eight-week volatility and zero weekly precipitation push it downward. These examples illustrate why explanations should support analyst review rather than automatic action.
 
