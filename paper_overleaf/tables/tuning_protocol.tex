@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{Compact tuning and final-score protocol for gradient-boosted models.}\label{tab:tuning_protocol}
+\centering
+\begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
+\toprule
+Item & Setting \\
+\midrule
+Feature set & 213-input no-COVID-period subset; one-hot expansion to 229 model columns \\
+Tuning sample/seed & Stratified train sample, \(\texttt{max\_train\_rows}=300{,}000\), seed 42; selected candidates rebuilt on all 954,990 training rows for final reported scores \\
+LightGBM grid & Depth/leaf/lr: (8,63,0.05), (6,31,0.03), (10,127,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
+XGBoost grid & Depth/lr: (8,0.05), (6,0.03), (5,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
+Selection & Validation F1; selected LightGBM depth 6, 31 leaves, lr 0.03, sqrt weight; selected XGBoost depth 6, lr 0.03, sqrt weight \\
+Thresholds & Validation grid 0.01--0.99 step 0.005 plus score quantiles; category fallback to global threshold if validation positives \(<30\) \\
+\bottomrule
+\end{tabular}
+\end{table}

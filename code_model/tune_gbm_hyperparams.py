@@ -386,8 +386,9 @@ class FastTabularPreprocessor:
         self.numeric_features = list(numeric_features)
         self.categorical_features = list(categorical_features)
         self.numeric_medians_: Dict[str, float] = {}
-        self.category_maps_: Dict[str, Dict[str, int]] = {}
-        self.feature_names_: List[str] = self.numeric_features + self.categorical_features
+        self.category_levels_: Dict[str, List[str]] = {}
+        self.one_hot_feature_names_: Dict[str, List[str]] = {}
+        self.feature_names_: List[str] = list(self.numeric_features)
 
     def fit(self, df: pd.DataFrame) -> "FastTabularPreprocessor":
         for col in self.numeric_features:
@@ -400,7 +401,13 @@ class FastTabularPreprocessor:
         for col in self.categorical_features:
             s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
             levels = sorted(s.unique().tolist())
-            self.category_maps_[col] = {v: i for i, v in enumerate(levels)}
+            self.category_levels_[col] = levels
+            self.one_hot_feature_names_[col] = [f"{col}={level}" for level in levels]
+
+        self.feature_names_ = (
+            list(self.numeric_features)
+            + [name for col in self.categorical_features for name in self.one_hot_feature_names_.get(col, [])]
+        )
 
         return self
 
@@ -408,24 +415,32 @@ class FastTabularPreprocessor:
         parts = []
 
         if self.numeric_features:
-            num = pd.DataFrame(index=df.index)
+            numeric_data = {}
             for col in self.numeric_features:
                 med = self.numeric_medians_.get(col, 0.0)
-                num[col] = (
+                numeric_data[col] = (
                     pd.to_numeric(df[col], errors="coerce")
                     .replace([np.inf, -np.inf], np.nan)
                     .fillna(med)
                     .astype("float32")
+                    .to_numpy()
                 )
-            parts.append(num)
+            parts.append(pd.DataFrame(numeric_data, index=df.index))
 
         if self.categorical_features:
-            cat = pd.DataFrame(index=df.index)
+            cat_parts = []
             for col in self.categorical_features:
-                cmap = self.category_maps_.get(col, {})
+                levels = self.category_levels_.get(col, [])
+                names = self.one_hot_feature_names_.get(col, [])
                 s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
-                cat[col] = s.map(cmap).fillna(-1).astype("int16")
-            parts.append(cat)
+                if not levels:
+                    continue
+                dummies = pd.get_dummies(s, dtype="int8")
+                dummies = dummies.reindex(columns=levels, fill_value=0)
+                dummies.columns = names
+                cat_parts.append(dummies)
+            if cat_parts:
+                parts.append(pd.concat(cat_parts, axis=1))
 
         if not parts:
             return pd.DataFrame(index=df.index)
@@ -441,7 +456,9 @@ class FastTabularPreprocessor:
             "numeric_features": self.numeric_features,
             "categorical_features": self.categorical_features,
             "numeric_medians": self.numeric_medians_,
-            "category_maps": self.category_maps_,
+            "category_levels": self.category_levels_,
+            "one_hot_feature_names": self.one_hot_feature_names_,
+            "categorical_encoding": "train_fitted_one_hot",
             "feature_names": self.feature_names_,
         }
 

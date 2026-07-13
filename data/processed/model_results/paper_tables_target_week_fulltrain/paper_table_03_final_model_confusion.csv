@@ -1,0 +1,3 @@
+﻿split,rows,positive_rows,predicted_positive_rows,tn,fp,fn,tp,precision,recall,f1,pr_auc,roc_auc,balanced_accuracy,predicted_positive_share
+validation,122616,15574,27129,88046,18996,7441,8133,0.2998,0.5222,0.3809,0.3249,0.7635,0.6724,0.2213
+test,247590,31570,52594,179580,36440,15416,16154,0.3071,0.5117,0.3839,0.3365,0.772,0.6715,0.2124

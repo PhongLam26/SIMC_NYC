@@ -1,0 +1,7 @@
+﻿validation_rank,method_id,model_label,threshold_mode,val_f1,val_precision,val_recall,val_pr_auc,val_roc_auc,test_f1,test_precision,test_recall,test_pr_auc,test_roc_auc,test_balanced_accuracy,test_predicted_positive_share,test_tp,test_fp,test_fn,test_tn
+1,ensemble_lgbm_w0p500_per_category,Ensemble LGBM(0.50) + XGB(0.50),per_category,0.3809,0.2998,0.5222,0.3249,0.7635,0.3839,0.3071,0.5117,0.3365,0.772,0.6715,0.2124,16154,36440,15416,179580
+2,xgb_per_category,Tuned XGBoost,per_category,0.3806,0.2982,0.5258,0.3233,0.7631,0.3845,0.3058,0.5175,0.3367,0.7722,0.6729,0.2158,16339,37087,15231,178933
+3,lgbm_per_category,Tuned LightGBM,per_category,0.3802,0.2935,0.5396,0.3249,0.7629,0.3836,0.3022,0.5249,0.3346,0.7709,0.6739,0.2214,16571,38257,14999,177763
+4,lgbm_global,Tuned LightGBM,global,0.3782,0.2906,0.5412,0.3249,0.7629,0.3859,0.3023,0.5332,0.3346,0.7709,0.6767,0.2249,16834,38850,14736,177170
+5,ensemble_lgbm_w0p500_global,Ensemble LGBM(0.50) + XGB(0.50),global,0.3777,0.2882,0.5479,0.3249,0.7635,0.3865,0.3001,0.5426,0.3365,0.772,0.6788,0.2305,17130,39951,14440,176069
+6,xgb_global,Tuned XGBoost,global,0.377,0.2968,0.5165,0.3233,0.7631,0.3854,0.3085,0.5136,0.3367,0.7722,0.6727,0.2123,16214,36347,15356,179673

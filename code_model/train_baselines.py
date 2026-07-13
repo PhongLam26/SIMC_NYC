@@ -31,7 +31,15 @@ Baselines included:
        and increasing:
            complaint_count > rolling_4w_mean and diff_1w_count > 0
 
-    5. logistic_regression
+    5. seasonal_lag52_margin
+       Scores rows by the one-year lag count relative to the shifted eight-week
+       local baseline and selects a hard threshold on validation.
+
+    6. rolling_zscore_rule
+       Scores rows by the current-week rolling z-score relative to shifted
+       eight-week history and selects a hard threshold on validation.
+
+    7. logistic_regression
        A leakage-safe statistical ML baseline using selected feature sets from
        model_config.json.
 
@@ -145,6 +153,8 @@ BASELINE_MODEL_NAMES = [
     "train_prevalence_probability",
     "current_week_abnormal_persistence",
     "recent_momentum_above_baseline",
+    "seasonal_lag52_margin",
+    "rolling_zscore_rule",
 ]
 
 SPLITS = ["train", "validation", "test"]
@@ -647,6 +657,52 @@ def predict_recent_momentum(df_split: pd.DataFrame) -> Tuple[np.ndarray, np.ndar
     return pred, score
 
 
+def score_seasonal_lag52_margin(df_split: pd.DataFrame, multiplier: float) -> np.ndarray:
+    required = ["lag_52w_count", "rolling_8w_mean", "rolling_8w_std"]
+    for c in required:
+        if c not in df_split.columns:
+            raise ValueError(f"Required column missing for seasonal_lag52_margin: {c}")
+
+    lag52 = pd.to_numeric(df_split["lag_52w_count"], errors="coerce")
+    mean8 = pd.to_numeric(df_split["rolling_8w_mean"], errors="coerce")
+    std8 = pd.to_numeric(df_split["rolling_8w_std"], errors="coerce").fillna(0)
+    threshold = mean8 + multiplier * std8
+    return (lag52 - threshold).replace([np.inf, -np.inf], np.nan).fillna(-1e9).to_numpy(dtype=float)
+
+
+def score_rolling_zscore(df_split: pd.DataFrame) -> np.ndarray:
+    required = ["complaint_count", "rolling_8w_mean", "rolling_8w_std"]
+    for c in required:
+        if c not in df_split.columns:
+            raise ValueError(f"Required column missing for rolling_zscore_rule: {c}")
+
+    count = pd.to_numeric(df_split["complaint_count"], errors="coerce")
+    mean8 = pd.to_numeric(df_split["rolling_8w_mean"], errors="coerce")
+    std8 = pd.to_numeric(df_split["rolling_8w_std"], errors="coerce")
+    z = (count - mean8) / std8.replace(0, np.nan)
+    return z.replace([np.inf, -np.inf], np.nan).fillna(-1e9).to_numpy(dtype=float)
+
+
+def pick_validation_f1_threshold(y_true: pd.Series, score: np.ndarray) -> Tuple[float, float]:
+    y = np.asarray(y_true).astype(int)
+    s = np.asarray(score, dtype=float)
+    finite = s[np.isfinite(s)]
+    if len(finite) == 0 or len(np.unique(y)) < 2:
+        return 0.0, 0.0
+
+    qs = np.linspace(0.01, 0.99, 200)
+    candidates = np.unique(np.concatenate([[0.0], np.quantile(finite, qs)]))
+    best_threshold = float(candidates[0])
+    best_f1 = -1.0
+    for t in candidates:
+        pred = (s >= t).astype(int)
+        f1 = f1_score(y, pred, zero_division=0)
+        if f1 > best_f1:
+            best_f1 = float(f1)
+            best_threshold = float(t)
+    return best_threshold, best_f1
+
+
 def run_non_ml_baselines(
     df: pd.DataFrame,
     experiments: List[str],
@@ -666,6 +722,12 @@ def run_non_ml_baselines(
 
         if progress:
             print(f"[baseline] experiment={exp_id}, train_rows={train_rows:,}, pos_share={y_train.mean():.4f}")
+
+        df_val, y_val, _ = get_split_data(df, exp_id, "validation", feature_cols=None)
+        seasonal_val_score = score_seasonal_lag52_margin(df_val, multiplier) if len(y_val) else np.array([])
+        zscore_val_score = score_rolling_zscore(df_val) if len(y_val) else np.array([])
+        seasonal_threshold, seasonal_val_f1 = pick_validation_f1_threshold(y_val, seasonal_val_score) if len(y_val) else (0.0, 0.0)
+        zscore_threshold, zscore_val_f1 = pick_validation_f1_threshold(y_val, zscore_val_score) if len(y_val) else (0.0, 0.0)
 
         for split in SPLITS:
             df_split, y_true, _ = get_split_data(df, exp_id, split, feature_cols=None)
@@ -738,6 +800,45 @@ def run_non_ml_baselines(
                 train_rows=train_rows,
                 threshold=0.0,
             )
+            metrics_rows.append(m)
+            conf_rows.append(c)
+
+            # Seasonal one-year lag margin with validation-selected threshold.
+            y_score = score_seasonal_lag52_margin(df_split, multiplier)
+            y_pred = (y_score >= seasonal_threshold).astype(int)
+            m, c = evaluate_predictions(
+                y_true=y_true,
+                y_pred=y_pred,
+                y_score=y_score,
+                experiment_id=exp_id,
+                split=split,
+                model_name="seasonal_lag52_margin",
+                feature_set="historical_rule",
+                train_rows=train_rows,
+                threshold=seasonal_threshold,
+            )
+            m["threshold_selection_split"] = "validation"
+            m["validation_selected_f1"] = float(seasonal_val_f1)
+            m["threshold_multiplier"] = float(multiplier)
+            metrics_rows.append(m)
+            conf_rows.append(c)
+
+            # Rolling z-score rule with validation-selected threshold.
+            y_score = score_rolling_zscore(df_split)
+            y_pred = (y_score >= zscore_threshold).astype(int)
+            m, c = evaluate_predictions(
+                y_true=y_true,
+                y_pred=y_pred,
+                y_score=y_score,
+                experiment_id=exp_id,
+                split=split,
+                model_name="rolling_zscore_rule",
+                feature_set="historical_rule",
+                train_rows=train_rows,
+                threshold=zscore_threshold,
+            )
+            m["threshold_selection_split"] = "validation"
+            m["validation_selected_f1"] = float(zscore_val_f1)
             metrics_rows.append(m)
             conf_rows.append(c)
 

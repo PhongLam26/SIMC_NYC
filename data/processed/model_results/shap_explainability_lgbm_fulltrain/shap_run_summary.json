@@ -1,0 +1,342 @@
+{
+  "script": "run_shap_explainability",
+  "status": "done",
+  "final_dataset": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "config": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_ready\\model_config.json",
+  "lgbm_tuning_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\final_lgbm_tuned_model",
+  "ensemble_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\ensemble_category_thresholds_target_week_fulltrain",
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain",
+  "experiment": "E1_main_2015_2025",
+  "feature_set": "full_without_covid_period_features",
+  "explained_model": "tuned_lightgbm",
+  "candidate": {
+    "candidate_id": "006_E1_main_2015_2025_lightgbm_lgbm_regularized_depth6_leaf31_lr003_pw_sqrt",
+    "param_id": "lgbm_regularized_depth6_leaf31_lr003",
+    "pos_weight_mode": "sqrt",
+    "pos_weight": 2.621558571578169,
+    "selected_threshold": 0.345,
+    "params": {
+      "param_id": "lgbm_regularized_depth6_leaf31_lr003",
+      "n_estimators": 800,
+      "learning_rate": 0.03,
+      "num_leaves": 31,
+      "max_depth": 6,
+      "min_child_samples": 100,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "reg_lambda": 3.0
+    }
+  },
+  "train_info": {
+    "train_rows": 954990,
+    "train_positive_share": 0.1270233196159122,
+    "preprocess_seconds": 3.31644868850708,
+    "fit_seconds": 90.45734024047852,
+    "warnings_count": 0,
+    "warnings_preview": ""
+  },
+  "validation_metrics_at_threshold": {
+    "rows": 122616,
+    "positive_rows": 15574,
+    "positive_share": 0.12701441899915183,
+    "threshold": 0.345,
+    "predicted_positive_rows": 29577,
+    "predicted_positive_share": 0.24121648072029753,
+    "precision": 0.288636440477398,
+    "recall": 0.5481571850520097,
+    "f1": 0.37815330778941775,
+    "pr_auc": 0.3249287184863687,
+    "roc_auc": 0.7628898581512348,
+    "tn": 86002,
+    "fp": 21040,
+    "fn": 7037,
+    "tp": 8537
+  },
+  "test_metrics_at_threshold": {
+    "rows": 247590,
+    "positive_rows": 31570,
+    "positive_share": 0.12750918857789087,
+    "threshold": 0.345,
+    "predicted_positive_rows": 56774,
+    "predicted_positive_share": 0.229306514802698,
+    "precision": 0.2999084087786663,
+    "recall": 0.5393411466582199,
+    "f1": 0.3854704337589423,
+    "pr_auc": 0.33459166990084216,
+    "roc_auc": 0.7708655897632868,
+    "tn": 176273,
+    "fp": 39747,
+    "fn": 14543,
+    "tp": 17027
+  },
+  "shap_sample_rows": 25000,
+  "shap_feature_count": 229,
+  "expected_value_log_odds": -1.444092527410527,
+  "top_20_global_features": [
+    {
+      "importance_rank": 1,
+      "feature": "rolling_8w_std",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.8247666419090461,
+      "mean_signed_shap": 0.05174245346794988,
+      "mean_abs_shap_share": 0.23648721139801734
+    },
+    {
+      "importance_rank": 2,
+      "feature": "ratio_to_8w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.40538403170493315,
+      "mean_signed_shap": -0.0051720786371813815,
+      "mean_abs_shap_share": 0.11623668360456953
+    },
+    {
+      "importance_rank": 3,
+      "feature": "week_of_year",
+      "feature_group": "calendar",
+      "mean_abs_shap": 0.1355551656672037,
+      "mean_signed_shap": -0.0004963781229312807,
+      "mean_abs_shap_share": 0.0388680403526413
+    },
+    {
+      "importance_rank": 4,
+      "feature": "lag_52w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.13133270774725198,
+      "mean_signed_shap": 0.0006593978543423267,
+      "mean_abs_shap_share": 0.03765732540856507
+    },
+    {
+      "importance_rank": 5,
+      "feature": "rolling_4w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.10933528416789517,
+      "mean_signed_shap": -0.06808041037163104,
+      "mean_abs_shap_share": 0.031349954213020566
+    },
+    {
+      "importance_rank": 6,
+      "feature": "lag_1w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.10050258754531509,
+      "mean_signed_shap": -0.030935736945255258,
+      "mean_abs_shap_share": 0.02881733506081557
+    },
+    {
+      "importance_rank": 7,
+      "feature": "complaint_category=environment",
+      "feature_group": "semantic_category",
+      "mean_abs_shap": 0.08659119464935057,
+      "mean_signed_shap": 0.0031917547654208766,
+      "mean_abs_shap_share": 0.024828489797852522
+    },
+    {
+      "importance_rank": 8,
+      "feature": "rolling_12w_std",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.0825927256737679,
+      "mean_signed_shap": -0.038728856582843835,
+      "mean_abs_shap_share": 0.02368199971223469
+    },
+    {
+      "importance_rank": 9,
+      "feature": "complaint_category=other",
+      "feature_group": "semantic_category",
+      "mean_abs_shap": 0.0734917676024849,
+      "mean_signed_shap": 0.0065715013682861294,
+      "mean_abs_shap_share": 0.02107246134590811
+    },
+    {
+      "importance_rank": 10,
+      "feature": "complaint_category=housing",
+      "feature_group": "semantic_category",
+      "mean_abs_shap": 0.060665712326917656,
+      "mean_signed_shap": -0.0026998387799963917,
+      "mean_abs_shap_share": 0.01739481740248317
+    },
+    {
+      "importance_rank": 11,
+      "feature": "history_weeks_available",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.0588113026643866,
+      "mean_signed_shap": 9.450754782491183e-05,
+      "mean_abs_shap_share": 0.01686309831056351
+    },
+    {
+      "importance_rank": 12,
+      "feature": "complaint_count",
+      "feature_group": "current_demand",
+      "mean_abs_shap": 0.05601892680347656,
+      "mean_signed_shap": 0.034781408660814084,
+      "mean_abs_shap_share": 0.016062434041464013
+    },
+    {
+      "importance_rank": 13,
+      "feature": "rolling_12w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.05562168357843607,
+      "mean_signed_shap": -0.011784863980851623,
+      "mean_abs_shap_share": 0.015948531589833406
+    },
+    {
+      "importance_rank": 14,
+      "feature": "lag_12w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.049716215731696246,
+      "mean_signed_shap": 0.020086798510310873,
+      "mean_abs_shap_share": 0.014255243389132675
+    },
+    {
+      "importance_rank": 15,
+      "feature": "ratio_to_12w_mean",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.04532273789384317,
+      "mean_signed_shap": -0.01221198599969159,
+      "mean_abs_shap_share": 0.012995491515793156
+    },
+    {
+      "importance_rank": 16,
+      "feature": "poi_semantic_entropy",
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap": 0.04377373115651372,
+      "mean_signed_shap": 0.011117994179444656,
+      "mean_abs_shap_share": 0.012551341297860143
+    },
+    {
+      "importance_rank": 17,
+      "feature": "pluto_lot_count",
+      "feature_group": "pluto_built_environment",
+      "mean_abs_shap": 0.040241398015400685,
+      "mean_signed_shap": -0.011988161775832885,
+      "mean_abs_shap_share": 0.01153850739815601
+    },
+    {
+      "importance_rank": 18,
+      "feature": "lag_2w_count",
+      "feature_group": "historical_temporal",
+      "mean_abs_shap": 0.038767092477665216,
+      "mean_signed_shap": -0.019658977194723655,
+      "mean_abs_shap_share": 0.011115776424749153
+    },
+    {
+      "importance_rank": 19,
+      "feature": "complaint_category=noise",
+      "feature_group": "semantic_category",
+      "mean_abs_shap": 0.035861273747298875,
+      "mean_signed_shap": 0.0010762240733259792,
+      "mean_abs_shap_share": 0.010282584424182955
+    },
+    {
+      "importance_rank": 20,
+      "feature": "poi_named_count",
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap": 0.034222363295272624,
+      "mean_signed_shap": 0.004176116587850913,
+      "mean_abs_shap_share": 0.00981265591005969
+    }
+  ],
+  "feature_group_importance": [
+    {
+      "group_rank": 1,
+      "feature_group": "historical_temporal",
+      "mean_abs_shap_sum": 2.056106983074928,
+      "feature_count": 21,
+      "mean_abs_shap_share": 0.5895522224782247
+    },
+    {
+      "group_rank": 2,
+      "feature_group": "semantic_category",
+      "mean_abs_shap_sum": 0.37410144911148574,
+      "feature_count": 9,
+      "mean_abs_shap_share": 0.1072669576882438
+    },
+    {
+      "group_rank": 3,
+      "feature_group": "pluto_built_environment",
+      "mean_abs_shap_sum": 0.35505341402386936,
+      "feature_count": 53,
+      "mean_abs_shap_share": 0.10180527134984464
+    },
+    {
+      "group_rank": 4,
+      "feature_group": "osm_poi_context",
+      "mean_abs_shap_sum": 0.28365670103839385,
+      "feature_count": 103,
+      "mean_abs_shap_share": 0.08133352976990123
+    },
+    {
+      "group_rank": 5,
+      "feature_group": "weather",
+      "mean_abs_shap_sum": 0.1701013014062161,
+      "feature_count": 22,
+      "mean_abs_shap_share": 0.04877353227043565
+    },
+    {
+      "group_rank": 6,
+      "feature_group": "calendar",
+      "mean_abs_shap_sum": 0.16646590404753045,
+      "feature_count": 4,
+      "mean_abs_shap_share": 0.04773114653367825
+    },
+    {
+      "group_rank": 7,
+      "feature_group": "current_demand",
+      "mean_abs_shap_sum": 0.05601892680347656,
+      "feature_count": 1,
+      "mean_abs_shap_share": 0.016062434041464017
+    },
+    {
+      "group_rank": 8,
+      "feature_group": "other",
+      "mean_abs_shap_sum": 0.01843163980803434,
+      "feature_count": 11,
+      "mean_abs_shap_share": 0.005284945920709796
+    },
+    {
+      "group_rank": 9,
+      "feature_group": "spatial_context",
+      "mean_abs_shap_sum": 0.007637647300823237,
+      "feature_count": 5,
+      "mean_abs_shap_share": 0.0021899599474980553
+    }
+  ],
+  "local_case_count": 20,
+  "plot_paths": {
+    "shap_summary_bar": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_summary_bar.png",
+    "shap_group_importance": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_group_importance.png",
+    "shap_beeswarm": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_beeswarm.png",
+    "shap_dependence_plots": [
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top01_rolling_8w_std.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top02_ratio_to_8w_mean.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top03_week_of_year.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top04_lag_52w_count.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top05_rolling_4w_mean.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top06_lag_1w_count.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top07_complaint_category_environment.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_dependence_top08_rolling_12w_std.png"
+    ],
+    "shap_local_case_plots": [
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_001.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_002.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_003.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_004.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_005.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_006.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_007.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_008.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_009.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_010.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_011.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_012.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_013.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_014.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_015.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_016.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_017.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_018.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_019.png",
+      "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\shap_explainability_lgbm_fulltrain\\shap_local_case_020.png"
+    ]
+  },
+  "elapsed_seconds": 268.366,
+  "elapsed_minutes": 4.473
+}

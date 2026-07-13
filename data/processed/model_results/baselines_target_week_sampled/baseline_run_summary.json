@@ -10,8 +10,7 @@
   ],
   "feature_sets": [
     "historical_only",
-    "historical_calendar_weather",
-    "full_without_covid_period_features"
+    "historical_calendar_weather"
   ],
   "skip_logistic": false,
   "only_logistic": false,
@@ -20,40 +19,27 @@
     "max_iter": 250,
     "C": 1.0,
     "class_weight": "balanced",
-    "sample_train": 300000,
+    "sample_train": 0,
     "save_logistic_models": false
   },
-  "metrics_rows": 21,
-  "confusion_matrix_rows": 21,
-  "model_info_rows": 3,
-  "elapsed_seconds": 502.628,
-  "elapsed_minutes": 8.377,
+  "metrics_rows": 24,
+  "confusion_matrix_rows": 24,
+  "model_info_rows": 2,
+  "elapsed_seconds": 453.353,
+  "elapsed_minutes": 7.556,
   "top_validation_models": [
     {
       "experiment_id": "E1_main_2015_2025",
-      "model_name": "logistic_regression",
-      "feature_set": "full_without_covid_period_features",
+      "model_name": "rolling_zscore_rule",
+      "feature_set": "historical_rule",
       "rows": 122616,
       "positive_share": 0.12701441899915183,
-      "precision": 0.1984412360596492,
-      "recall": 0.6980865545139335,
-      "f1": 0.3090348346385071,
-      "balanced_accuracy": 0.6439135151075301,
-      "roc_auc": 0.7003398070768994,
-      "pr_auc": 0.2567450482940767
-    },
-    {
-      "experiment_id": "E1_main_2015_2025",
-      "model_name": "logistic_regression",
-      "feature_set": "historical_only",
-      "rows": 122616,
-      "positive_share": 0.12701441899915183,
-      "precision": 0.2292502983617229,
-      "recall": 0.5426993707461153,
-      "f1": 0.3223370580832157,
-      "balanced_accuracy": 0.6386167394266067,
-      "roc_auc": 0.680754297641935,
-      "pr_auc": 0.2425430606910985
+      "precision": 0.2662522129358969,
+      "recall": 0.4152433543084628,
+      "f1": 0.32446127988360135,
+      "balanced_accuracy": 0.6243739799886329,
+      "roc_auc": 0.6775356792185021,
+      "pr_auc": 0.261478106638759
     },
     {
       "experiment_id": "E1_main_2015_2025",
@@ -61,12 +47,25 @@
       "feature_set": "historical_calendar_weather",
       "rows": 122616,
       "positive_share": 0.12701441899915183,
-      "precision": 0.22341725090291056,
-      "recall": 0.5401951971234108,
-      "f1": 0.31609994364080407,
-      "balanced_accuracy": 0.6335016829397999,
-      "roc_auc": 0.6797740814940202,
-      "pr_auc": 0.24177216455028705
+      "precision": 0.21970086348684212,
+      "recall": 0.548927700012842,
+      "f1": 0.31380538119884005,
+      "balanced_accuracy": 0.632636343046536,
+      "roc_auc": 0.6852748006626718,
+      "pr_auc": 0.24514541119322034
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "logistic_regression",
+      "feature_set": "historical_only",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.21965070988817692,
+      "recall": 0.5612559393861564,
+      "f1": 0.31573624230164893,
+      "balanced_accuracy": 0.6355727577202077,
+      "roc_auc": 0.6842307168515113,
+      "pr_auc": 0.24498526403165655
     },
     {
       "experiment_id": "E1_main_2015_2025",
@@ -93,6 +92,19 @@
       "balanced_accuracy": 0.6086044065707564,
       "roc_auc": 0.6252081904545908,
       "pr_auc": 0.2002815129582885
+    },
+    {
+      "experiment_id": "E1_main_2015_2025",
+      "model_name": "seasonal_lag52_margin",
+      "feature_set": "historical_rule",
+      "rows": 122616,
+      "positive_share": 0.12701441899915183,
+      "precision": 0.14167974882260598,
+      "recall": 0.7417490689610889,
+      "f1": 0.237915765626609,
+      "balanced_accuracy": 0.5439748128759407,
+      "roc_auc": 0.5661143183135784,
+      "pr_auc": 0.16141887622068274
     },
     {
       "experiment_id": "E1_main_2015_2025",

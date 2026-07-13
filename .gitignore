@@ -35,10 +35,16 @@ data/processed/model_results/**/shap_sample_metadata.csv
 SIMC_NYC_paper_strengths_and_must_have_checklist*.docx
 SIMC_NYC_30_references_verified_corrected.docx
 SIMC_NYC_Codex_paper_writing_plan.md
+SIMC_NYC_web_dashboard_partner_plan.md
+SIMC_PROJECT_HANDOFF_FOR_NEW_CHAT.md
 Springer Template (Word + LaTeX).zip
 paper_springer/SUBMISSION_AUDIT.md
 paper_springer/bst/
 code_pulldata/pull_nyc_311_copy*.py
+
+# Local handoff/package artifacts
+SIMC_overleaf_package.zip
+tmp/
 
 # Superseded exploratory outputs kept locally but not part of the reviewer bundle
 data/processed/model_results/baselines/

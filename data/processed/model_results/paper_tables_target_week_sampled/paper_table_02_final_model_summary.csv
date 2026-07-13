@@ -3,19 +3,19 @@ Selected method,ensemble_lgbm_w0p500_per_category
 Model label,Ensemble LGBM(0.50) + XGB(0.50)
 Threshold mode,per_category
 Threshold strategy,best_f1
-Validation F1,0.3756
-Validation precision,0.2901
-Validation recall,0.5326
-Validation PR-AUC,0.3137
-Validation ROC-AUC,0.7563
-Test F1,0.38
-Test precision,0.3012
-Test recall,0.5146
-Test PR-AUC,0.3294
-Test ROC-AUC,0.7661
-Test balanced accuracy,0.6701
-Test predicted positive share,0.2179
-Test true positives,16247
-Test false positives,37694
-Test false negatives,15323
-Test true negatives,178326
+Validation F1,0.3792
+Validation precision,0.2858
+Validation recall,0.5634
+Validation PR-AUC,0.3205
+Validation ROC-AUC,0.7602
+Test F1,0.384
+Test precision,0.2958
+Test recall,0.547
+Test PR-AUC,0.3326
+Test ROC-AUC,0.7682
+Test balanced accuracy,0.6783
+Test predicted positive share,0.2358
+Test true positives,17268
+Test false positives,41107
+Test false negatives,14302
+Test true negatives,174913

@@ -6,18 +6,18 @@ These tables are intended for drafting the Results and Experiments sections. Do 
 
 ## Selected final model
 
-The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with **per_category** thresholding. It achieved validation F1 = **0.3756**, validation PR-AUC = **0.3137**, future-test F1 = **0.3800**, test precision = **0.3012**, test recall = **0.5146**, and test PR-AUC = **0.3294**.
+The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with **per_category** thresholding. It achieved validation F1 = **0.3792**, validation PR-AUC = **0.3205**, future-test F1 = **0.3840**, test precision = **0.2958**, test recall = **0.5470**, and test PR-AUC = **0.3326**.
 
 ### Table 1. Final model/decision-layer comparison
 
-| Rank | Model | Threshold | Val F1 | Val Precision | Val Recall | Val PR-AUC | Test F1 | Test Precision | Test Recall | Test PR-AUC | Test Bal. Acc. |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ensemble LGBM(0.50) + XGB(0.50) | per_category | 0.3756 | 0.2901 | 0.5326 | 0.3137 | 0.3800 | 0.3012 | 0.5146 | 0.3294 | 0.6701 |
-| 2 | Tuned LightGBM | per_category | 0.3744 | 0.2897 | 0.5290 | 0.3089 | 0.3789 | 0.3000 | 0.5140 | 0.3270 | 0.6694 |
-| 3 | Ensemble LGBM(0.50) + XGB(0.50) | global | 0.3720 | 0.2838 | 0.5396 | 0.3137 | 0.3797 | 0.2967 | 0.5269 | 0.3294 | 0.6722 |
-| 4 | Tuned LightGBM | global | 0.3713 | 0.2853 | 0.5313 | 0.3089 | 0.3781 | 0.2972 | 0.5197 | 0.3270 | 0.6700 |
-| 5 | Tuned XGBoost | per_category | 0.3704 | 0.2785 | 0.5529 | 0.3119 | 0.3761 | 0.2901 | 0.5347 | 0.3247 | 0.6717 |
-| 6 | Tuned XGBoost | global | 0.3683 | 0.2720 | 0.5699 | 0.3119 | 0.3777 | 0.2860 | 0.5559 | 0.3247 | 0.6765 |
+| Rank | Model | Threshold | Val F1 | Val Precision | Val Recall | Val PR-AUC | Test F1 | Test Precision | Test Recall | Test PR-AUC | Test ROC-AUC | Test Bal. Acc. | Test Alert Rate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Ensemble LGBM(0.50) + XGB(0.50) | per_category | 0.3792 | 0.2858 | 0.5634 | 0.3205 | 0.3840 | 0.2958 | 0.5470 | 0.3326 | 0.7682 | 0.6783 | 0.2358 |
+| 2 | Tuned LightGBM | per_category | 0.3787 | 0.2870 | 0.5564 | 0.3212 | 0.3818 | 0.2951 | 0.5408 | 0.3308 | 0.7673 | 0.6760 | 0.2337 |
+| 3 | Tuned XGBoost | per_category | 0.3781 | 0.2892 | 0.5458 | 0.3174 | 0.3834 | 0.3008 | 0.5287 | 0.3319 | 0.7675 | 0.6745 | 0.2241 |
+| 4 | Ensemble LGBM(0.50) + XGB(0.50) | global | 0.3763 | 0.2881 | 0.5427 | 0.3205 | 0.3824 | 0.2995 | 0.5289 | 0.3326 | 0.7682 | 0.6741 | 0.2252 |
+| 5 | Tuned LightGBM | global | 0.3757 | 0.2884 | 0.5388 | 0.3212 | 0.3813 | 0.2987 | 0.5269 | 0.3308 | 0.7673 | 0.6731 | 0.2249 |
+| 6 | Tuned XGBoost | global | 0.3752 | 0.2834 | 0.5552 | 0.3174 | 0.3818 | 0.2955 | 0.5392 | 0.3319 | 0.7675 | 0.6757 | 0.2326 |
 
 ### Table 2. Selected final model summary
 
@@ -27,88 +27,101 @@ The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with
 | Model label | Ensemble LGBM(0.50) + XGB(0.50) |
 | Threshold mode | per_category |
 | Threshold strategy | best_f1 |
-| Validation F1 | 0.3756 |
-| Validation precision | 0.2901 |
-| Validation recall | 0.5326 |
-| Validation PR-AUC | 0.3137 |
-| Validation ROC-AUC | 0.7563 |
-| Test F1 | 0.38 |
-| Test precision | 0.3012 |
-| Test recall | 0.5146 |
-| Test PR-AUC | 0.3294 |
-| Test ROC-AUC | 0.7661 |
-| Test balanced accuracy | 0.6701 |
-| Test predicted positive share | 0.2179 |
-| Test true positives | 16247 |
-| Test false positives | 37694 |
-| Test false negatives | 15323 |
-| Test true negatives | 178326 |
+| Validation F1 | 0.3792 |
+| Validation precision | 0.2858 |
+| Validation recall | 0.5634 |
+| Validation PR-AUC | 0.3205 |
+| Validation ROC-AUC | 0.7602 |
+| Test F1 | 0.384 |
+| Test precision | 0.2958 |
+| Test recall | 0.547 |
+| Test PR-AUC | 0.3326 |
+| Test ROC-AUC | 0.7682 |
+| Test balanced accuracy | 0.6783 |
+| Test predicted positive share | 0.2358 |
+| Test true positives | 17268 |
+| Test false positives | 41107 |
+| Test false negatives | 14302 |
+| Test true negatives | 174913 |
 
 ### Table 3. Confusion matrix summary
 
-| Split | Rows | Actual positives | Predicted positives | TN | FP | FN | TP | Precision | Recall | F1 | PR-AUC |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| validation | 122,616 | 15,574 | 28,598 | 86,739 | 20,303 | 7,279 | 8,295 | 0.2901 | 0.5326 | 0.3756 | 0.3137 |
-| test | 247,590 | 31,570 | 53,941 | 178,326 | 37,694 | 15,323 | 16,247 | 0.3012 | 0.5146 | 0.3800 | 0.3294 |
+| Split | Rows | Actual positives | Predicted positives | TN | FP | FN | TP | Precision | Recall | F1 | PR-AUC | ROC-AUC | Bal. Acc. | Alert rate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| validation | 122,616 | 15,574 | 30,702 | 85,114 | 21,928 | 6,800 | 8,774 | 0.2858 | 0.5634 | 0.3792 | 0.3205 | 0.7602 | 0.6793 | 0.2504 |
+| test | 247,590 | 31,570 | 58,375 | 174,913 | 41,107 | 14,302 | 17,268 | 0.2958 | 0.5470 | 0.3840 | 0.3326 | 0.7682 | 0.6783 | 0.2358 |
 
 ### Table 4. Precision and lift at top-ranked risk sets
 
 | Risk set | Rows / alerts | True positives | Precision | Recall | Lift over base rate |
 | --- | --- | --- | --- | --- | --- |
-| Top 1% predicted risk | 2476.0000 | 1418.0000 | 0.5727 | 0.0449 | 4.4914 |
-| Top 5% predicted risk | 12380.0000 | 5480.0000 | 0.4426 | 0.1736 | 3.4715 |
-| Top 10% predicted risk | 24759.0000 | 9364.0000 | 0.3782 | 0.2966 | 2.9661 |
-| All category-threshold alerts | 53941.0000 | 16247.0000 | 0.3012 | 0.5146 | 2.3622 |
+| Top 1% predicted risk | 2476.0000 | 1445.0000 | 0.5836 | 0.0458 | 4.5769 |
+| Top 5% predicted risk | 12380.0000 | 5573.0000 | 0.4502 | 0.1765 | 3.5304 |
+| Top 10% predicted risk | 24759.0000 | 9450.0000 | 0.3817 | 0.2993 | 2.9933 |
+| All category-threshold alerts | 58375.0000 | 17268.0000 | 0.2958 | 0.5470 | 2.3199 |
 
 ### Table 5. Final model performance by complaint category
 
 | Category | Actual positives | Predicted positives | F1 | Precision | Recall | PR-AUC | ROC-AUC | Bal. Acc. |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| noise | 3,982 | 7,132 | 0.4423 | 0.3446 | 0.6173 | 0.4043 | 0.7952 | 0.7093 |
-| housing | 3,720 | 5,190 | 0.4049 | 0.3476 | 0.4849 | 0.3900 | 0.7803 | 0.6713 |
-| public_safety | 3,536 | 5,980 | 0.3968 | 0.3157 | 0.5339 | 0.3180 | 0.7812 | 0.6816 |
-| water_sewer | 3,462 | 5,131 | 0.3964 | 0.3319 | 0.4919 | 0.3616 | 0.7822 | 0.6747 |
-| other | 3,620 | 6,838 | 0.3725 | 0.2849 | 0.5381 | 0.3178 | 0.7557 | 0.6667 |
-| parking_traffic | 3,586 | 6,611 | 0.3644 | 0.2810 | 0.5181 | 0.3130 | 0.7470 | 0.6597 |
-| environment | 2,896 | 5,951 | 0.3585 | 0.2665 | 0.5477 | 0.2979 | 0.7830 | 0.6852 |
-| infrastructure | 3,596 | 6,183 | 0.3495 | 0.2764 | 0.4753 | 0.2728 | 0.7297 | 0.6441 |
-| sanitation | 3,172 | 4,925 | 0.3194 | 0.2625 | 0.4076 | 0.2497 | 0.7300 | 0.6292 |
+| noise | 3,982 | 7,061 | 0.4502 | 0.3521 | 0.6243 | 0.4137 | 0.8010 | 0.7149 |
+| housing | 3,720 | 6,570 | 0.4115 | 0.3222 | 0.5691 | 0.3924 | 0.7816 | 0.6910 |
+| public_safety | 3,536 | 6,361 | 0.4068 | 0.3165 | 0.5693 | 0.3279 | 0.7874 | 0.6940 |
+| water_sewer | 3,462 | 6,526 | 0.3957 | 0.3028 | 0.5708 | 0.3602 | 0.7808 | 0.6908 |
+| other | 3,620 | 6,856 | 0.3755 | 0.2869 | 0.5434 | 0.3229 | 0.7571 | 0.6694 |
+| parking_traffic | 3,586 | 7,384 | 0.3675 | 0.2730 | 0.5622 | 0.3204 | 0.7495 | 0.6689 |
+| environment | 2,896 | 5,575 | 0.3631 | 0.2759 | 0.5311 | 0.3076 | 0.7848 | 0.6835 |
+| infrastructure | 3,596 | 6,899 | 0.3465 | 0.2635 | 0.5056 | 0.2663 | 0.7286 | 0.6465 |
+| sanitation | 3,172 | 5,143 | 0.3216 | 0.2600 | 0.4215 | 0.2531 | 0.7316 | 0.6326 |
 
 ### Table 6. Category-specific thresholds
 
 | Category | Threshold | Val F1 | Val Precision | Val Recall | Val PR-AUC |
 | --- | --- | --- | --- | --- | --- |
-| environment | 0.1576 | 0.3569 | 0.2648 | 0.5472 | 0.2801 |
-| housing | 0.1901 | 0.3770 | 0.3119 | 0.4766 | 0.3539 |
-| infrastructure | 0.1879 | 0.3420 | 0.2611 | 0.4954 | 0.2680 |
-| noise | 0.1700 | 0.4020 | 0.3107 | 0.5695 | 0.3386 |
-| other | 0.1550 | 0.3754 | 0.2743 | 0.5943 | 0.3074 |
-| parking_traffic | 0.1650 | 0.3801 | 0.2944 | 0.5361 | 0.3177 |
-| public_safety | 0.1571 | 0.4015 | 0.3107 | 0.5672 | 0.3228 |
-| sanitation | 0.1773 | 0.3514 | 0.2739 | 0.4900 | 0.2791 |
-| water_sewer | 0.2050 | 0.3899 | 0.3178 | 0.5045 | 0.3487 |
+| environment | 0.3400 | 0.3583 | 0.2712 | 0.5278 | 0.2862 |
+| housing | 0.3371 | 0.3771 | 0.2878 | 0.5467 | 0.3705 |
+| infrastructure | 0.3564 | 0.3476 | 0.2554 | 0.5438 | 0.2792 |
+| noise | 0.3450 | 0.4101 | 0.3151 | 0.5870 | 0.3492 |
+| other | 0.3140 | 0.3784 | 0.2783 | 0.5910 | 0.3164 |
+| parking_traffic | 0.3174 | 0.3814 | 0.2846 | 0.5780 | 0.3235 |
+| public_safety | 0.3250 | 0.4064 | 0.3102 | 0.5889 | 0.3225 |
+| sanitation | 0.3467 | 0.3578 | 0.2745 | 0.5136 | 0.2821 |
+| water_sewer | 0.3550 | 0.3905 | 0.2944 | 0.5799 | 0.3446 |
 
-### Table 7. Best tuned single models
+### Table 7. Threshold macro/category trade-off comparison
+
+| Model | Threshold | Macro F1 | Worst-cat F1 | Macro Precision | Macro Recall | Macro PR-AUC | Mean alert rate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Ensemble LGBM(0.50) + XGB(0.50) | per_category | 0.3820 | 0.3216 | 0.2948 | 0.5441 | 0.3294 | 0.2358 |
+| Tuned XGBoost | per_category | 0.3818 | 0.3270 | 0.3000 | 0.5268 | 0.3289 | 0.2241 |
+| Tuned LightGBM | per_category | 0.3806 | 0.3183 | 0.2967 | 0.5368 | 0.3274 | 0.2337 |
+| Ensemble LGBM(0.50) + XGB(0.50) | global | 0.3806 | 0.3229 | 0.2989 | 0.5263 | 0.3294 | 0.2252 |
+| Tuned XGBoost | global | 0.3800 | 0.3251 | 0.2950 | 0.5366 | 0.3289 | 0.2326 |
+| Tuned LightGBM | global | 0.3794 | 0.3219 | 0.2981 | 0.5244 | 0.3274 | 0.2249 |
+
+### Table 8. Best tuned single models
 
 | Model | Parameter set | Pos. weight | Threshold | Val F1 | Val PR-AUC | Test F1 | Test Precision | Test Recall | Test PR-AUC | Fit seconds |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Tuned LightGBM | lgbm_deeper_depth10_leaf127_lr003 | none | 0.1823 | 0.3786 | 0.3266 | 0.3832 | 0.3059 | 0.5127 | 0.3345 | 361.8306 |
-| Tuned XGBoost | xgb_current_depth8_lr005 | none | 0.1790 | 0.3780 | 0.3230 | 0.3832 | 0.2988 | 0.5340 | 0.3365 | 31.1352 |
+| Tuned LightGBM | lgbm_regularized_depth6_leaf31_lr003 | sqrt | 0.3450 | 0.3757 | 0.3212 | 0.3813 | 0.2987 | 0.5269 | 0.3308 | 24.2829 |
+| Tuned XGBoost | xgb_regularized_depth6_lr003 | sqrt | 0.3400 | 0.3752 | 0.3174 | 0.3818 | 0.2955 | 0.5392 | 0.3319 | 46.6962 |
 
-### Table 8. Baseline candidates found in baseline result folder
+### Table 9. Baseline candidates found in baseline result folder
 
 | Model | Feature set | Split | F1 | Precision | Recall | PR-AUC | ROC-AUC | Bal. Acc. |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| logistic_regression | historical_only | test | 0.3324 | 0.2383 | 0.5494 | 0.2582 | 0.6943 | 0.6464 |
-| logistic_regression | historical_calendar_weather | test | 0.3306 | 0.2415 | 0.5238 | 0.2567 | 0.6933 | 0.6417 |
-| logistic_regression | historical_only | validation | 0.3223 | 0.2293 | 0.5427 | 0.2425 | 0.6808 | 0.6386 |
-| logistic_regression | full_without_covid_period_features | test | 0.3188 | 0.2061 | 0.7037 | 0.2719 | 0.7123 | 0.6538 |
-| logistic_regression | historical_calendar_weather | validation | 0.3161 | 0.2234 | 0.5402 | 0.2418 | 0.6798 | 0.6335 |
+| rolling_zscore_rule | historical_rule | test | 0.3332 | 0.2746 | 0.4236 | 0.2658 | 0.6852 | 0.6300 |
+| logistic_regression | historical_calendar_weather | test | 0.3307 | 0.2392 | 0.5357 | 0.2606 | 0.7003 | 0.6434 |
+| logistic_regression | historical_only | test | 0.3256 | 0.2277 | 0.5713 | 0.2598 | 0.6976 | 0.6440 |
+| rolling_zscore_rule | historical_rule | validation | 0.3245 | 0.2663 | 0.4152 | 0.2615 | 0.6775 | 0.6244 |
+| logistic_regression | historical_only | validation | 0.3157 | 0.2197 | 0.5613 | 0.2450 | 0.6842 | 0.6356 |
+| logistic_regression | historical_calendar_weather | validation | 0.3138 | 0.2197 | 0.5489 | 0.2451 | 0.6853 | 0.6326 |
 | current_week_abnormal_persistence | historical_rule | test | 0.3111 | 0.3207 | 0.3020 | 0.2359 | 0.6389 | 0.6043 |
-| logistic_regression | full_without_covid_period_features | validation | 0.3090 | 0.1984 | 0.6981 | 0.2567 | 0.7003 | 0.6439 |
 | current_week_abnormal_persistence | historical_rule | validation | 0.3077 | 0.3170 | 0.2990 | 0.2339 | 0.6379 | 0.6026 |
 | recent_momentum_above_baseline | historical_rule | validation | 0.2918 | 0.2088 | 0.4841 | 0.2003 | 0.6252 | 0.6086 |
 | recent_momentum_above_baseline | historical_rule | test | 0.2892 | 0.2074 | 0.4771 | 0.2025 | 0.6236 | 0.6054 |
+| seasonal_lag52_margin | historical_rule | test | 0.2423 | 0.1449 | 0.7385 | 0.1773 | 0.5806 | 0.5509 |
+| seasonal_lag52_margin | historical_rule | validation | 0.2379 | 0.1417 | 0.7417 | 0.1614 | 0.5661 | 0.5440 |
 | majority_class | none | validation | 0.0000 | 0.0000 | 0.0000 | 0.1270 | 0.5000 | 0.5000 |
 | majority_class | none | test | 0.0000 | 0.0000 | 0.0000 | 0.1275 | 0.5000 | 0.5000 |
 | train_prevalence_probability | none | test | 0.0000 | 0.0000 | 0.0000 | 0.1275 | 0.5000 | 0.5000 |
@@ -118,7 +131,7 @@ The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with
 
 After hyperparameter tuning, the best LightGBM and XGBoost models obtained similar validation and future-test performance, indicating that gradient-boosted tree models provide stable improvements for next-week abnormal service-demand forecasting. We therefore evaluated an ensemble decision layer that averages the LightGBM and XGBoost probability scores and compared both global and complaint-category-specific thresholds selected exclusively on the validation period.
 
-The best validation-ranked decision strategy was Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding. On the held-out 2024–2025 test period, this strategy achieved F1 = 0.3800, precision = 0.3012, recall = 0.5146, and PR-AUC = 0.3294. The category-specific thresholding result supports the semantics-aware framing of the task: different municipal service categories exhibit different score distributions and benefit from category-aware conversion of risk scores into operational alerts.
+The best validation-ranked decision strategy was Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding. On the held-out 2024–2025 test period, this strategy achieved F1 = 0.3840, precision = 0.2958, recall = 0.5470, and PR-AUC = 0.3326. The category-specific thresholding result supports the semantics-aware framing of the task: different municipal service categories exhibit different score distributions and benefit from category-aware conversion of risk scores into operational alerts.
 
 Because the abnormal-increase class is imbalanced, we interpret performance primarily using F1, precision, recall, PR-AUC, and balanced accuracy rather than raw accuracy. The confusion matrix should be reported to make the alert trade-off transparent: higher recall improves surge detection, while higher precision reduces false alerts.
 

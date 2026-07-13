@@ -1,0 +1,5 @@
+﻿risk_set,rows_or_alerts,true_positives,precision,recall,lift_over_base_rate,base_rate
+Top 1% predicted risk,2476.0,1477.0,0.5965,0.0468,4.6783,0.1275
+Top 5% predicted risk,12380.0,5631.0,0.4548,0.1784,3.5672,0.1275
+Top 10% predicted risk,24759.0,9571.0,0.3866,0.3032,3.0317,0.1275
+All category-threshold alerts,52594.0,16154.0,0.3071,0.5117,2.4088,0.1275

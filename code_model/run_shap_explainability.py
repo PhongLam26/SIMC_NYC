@@ -388,8 +388,9 @@ class FastTabularPreprocessor:
         self.numeric_features = list(numeric_features)
         self.categorical_features = list(categorical_features)
         self.numeric_medians_: Dict[str, float] = {}
-        self.category_maps_: Dict[str, Dict[str, int]] = {}
-        self.feature_names_: List[str] = self.numeric_features + self.categorical_features
+        self.category_levels_: Dict[str, List[str]] = {}
+        self.one_hot_feature_names_: Dict[str, List[str]] = {}
+        self.feature_names_: List[str] = list(self.numeric_features)
 
     def fit(self, df: pd.DataFrame) -> "FastTabularPreprocessor":
         medians = {}
@@ -401,12 +402,20 @@ class FastTabularPreprocessor:
             medians[col] = float(med)
         self.numeric_medians_ = medians
 
-        category_maps = {}
+        category_levels = {}
         for col in self.categorical_features:
             s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
             levels = sorted(s.unique().tolist())
-            category_maps[col] = {v: i for i, v in enumerate(levels)}
-        self.category_maps_ = category_maps
+            category_levels[col] = levels
+        self.category_levels_ = category_levels
+        self.one_hot_feature_names_ = {
+            col: [f"{col}={level}" for level in levels]
+            for col, levels in self.category_levels_.items()
+        }
+        self.feature_names_ = (
+            list(self.numeric_features)
+            + [name for col in self.categorical_features for name in self.one_hot_feature_names_.get(col, [])]
+        )
 
         return self
 
@@ -427,12 +436,19 @@ class FastTabularPreprocessor:
             parts.append(pd.DataFrame(numeric_data, index=df.index))
 
         if self.categorical_features:
-            cat_data = {}
+            cat_parts = []
             for col in self.categorical_features:
-                cmap = self.category_maps_.get(col, {})
+                levels = self.category_levels_.get(col, [])
+                names = self.one_hot_feature_names_.get(col, [])
                 s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
-                cat_data[col] = s.map(cmap).fillna(-1).astype("int16").to_numpy()
-            parts.append(pd.DataFrame(cat_data, index=df.index))
+                if not levels:
+                    continue
+                dummies = pd.get_dummies(s, dtype="int8")
+                dummies = dummies.reindex(columns=levels, fill_value=0)
+                dummies.columns = names
+                cat_parts.append(dummies)
+            if cat_parts:
+                parts.append(pd.concat(cat_parts, axis=1))
 
         if not parts:
             return pd.DataFrame(index=df.index)
@@ -617,6 +633,12 @@ def feature_group(feature: str) -> str:
 
     if f in {"complaint_count"}:
         return "current_demand"
+    if f.startswith("complaint_category=") or f == "complaint_category":
+        return "semantic_category"
+    if f.startswith("boroname=") or f == "boroname" or "nta" in f or "boro" in f:
+        return "spatial_context"
+    if f.startswith("period_type=") or f == "period_type" or "covid" in f or "period" in f:
+        return "period_context"
     if f.startswith("lag_") or f.startswith("rolling_") or f.startswith("ratio_to_") or f.startswith("diff_") or f.startswith("pct_change") or "history" in f:
         return "historical_temporal"
     if f.startswith("weather_") or f.startswith("temp_") or "prcp" in f or "snow" in f or "tmax" in f or "tmin" in f or "awnd" in f:
@@ -627,12 +649,6 @@ def feature_group(feature: str) -> str:
         return "pluto_built_environment"
     if f in {"week_of_year", "month", "quarter", "year"} or "week" in f and "lag" not in f and "rolling" not in f:
         return "calendar"
-    if "covid" in f or "period" in f:
-        return "period_context"
-    if "complaint_category" in f or "category" in f:
-        return "semantic_category"
-    if "nta" in f or "boro" in f:
-        return "spatial_context"
     if "flag" in f or "missing" in f or "quality" in f:
         return "quality_flag"
     return "other"

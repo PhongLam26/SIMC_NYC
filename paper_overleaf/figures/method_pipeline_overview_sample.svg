@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#27313f"/>
+    </marker>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 28px; font-weight: 700; fill: #111827; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 21px; font-weight: 700; fill: #111827; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #374151; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #4b5563; }
+      .box { fill: #ffffff; stroke: #27313f; stroke-width: 2.2; rx: 8; }
+      .soft { fill: #f7f9fc; stroke: #8792a2; stroke-width: 1.7; rx: 7; }
+      .source { fill: #eef6ff; stroke: #3b82f6; stroke-width: 1.7; rx: 7; }
+      .model { fill: #f4f7f2; stroke: #52734d; stroke-width: 1.8; rx: 7; }
+      .warn { fill: #fff8ed; stroke: #c77700; stroke-width: 1.8; rx: 7; }
+      .arrow { stroke: #27313f; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #6b7280; stroke-width: 1.6; stroke-dasharray: 7 6; fill: none; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="520" fill="#ffffff"/>
+  <text x="700" y="45" text-anchor="middle" class="title">Semantics-Aware Urban Service-Demand Forecasting Pipeline</text>
+
+  <rect x="35" y="92" width="265" height="320" class="box"/>
+  <text x="167.5" y="125" text-anchor="middle" class="label">Multi-source inputs</text>
+  <rect x="58" y="150" width="219" height="45" class="source"/>
+  <text x="167.5" y="178" text-anchor="middle" class="small">NYC 311 requests</text>
+  <rect x="58" y="207" width="219" height="45" class="source"/>
+  <text x="167.5" y="235" text-anchor="middle" class="small">NOAA weather</text>
+  <rect x="58" y="264" width="219" height="45" class="source"/>
+  <text x="167.5" y="292" text-anchor="middle" class="small">OSM POI context</text>
+  <rect x="58" y="321" width="219" height="45" class="source"/>
+  <text x="167.5" y="349" text-anchor="middle" class="small">PLUTO land use</text>
+  <text x="167.5" y="386" text-anchor="middle" class="tiny">Calendar and COVID-period</text>
+  <text x="167.5" y="405" text-anchor="middle" class="tiny">indicators</text>
+
+  <path d="M 305 252 L 348 252" class="arrow"/>
+
+  <rect x="355" y="92" width="250" height="320" class="box"/>
+  <text x="480" y="125" text-anchor="middle" class="label">Panel and features</text>
+  <rect x="380" y="153" width="200" height="58" class="soft"/>
+  <text x="480" y="178" text-anchor="middle" class="small">NTA-week-category</text>
+  <text x="480" y="199" text-anchor="middle" class="tiny">dense analytical panel</text>
+  <rect x="380" y="229" width="200" height="58" class="warn"/>
+  <text x="480" y="254" text-anchor="middle" class="small">Next-week target</text>
+  <text x="480" y="275" text-anchor="middle" class="tiny">abnormal demand increase</text>
+  <rect x="380" y="305" width="200" height="58" class="soft"/>
+  <text x="480" y="330" text-anchor="middle" class="small">Shifted lags and rolls</text>
+  <text x="480" y="351" text-anchor="middle" class="tiny">future leakage avoided</text>
+
+  <path d="M 610 252 L 673 252" class="arrow"/>
+
+  <rect x="680" y="92" width="235" height="320" class="box"/>
+  <text x="797.5" y="125" text-anchor="middle" class="label">Chronological split</text>
+  <rect x="710" y="157" width="175" height="52" class="soft"/>
+  <text x="797.5" y="188" text-anchor="middle" class="small">Train: 2015-2022</text>
+  <rect x="710" y="234" width="175" height="52" class="warn"/>
+  <text x="797.5" y="265" text-anchor="middle" class="small">Validate: 2023</text>
+  <rect x="710" y="311" width="175" height="52" class="soft"/>
+  <text x="797.5" y="342" text-anchor="middle" class="small">Test: 2024-2025</text>
+
+  <path d="M 920 252 L 983 252" class="arrow"/>
+
+  <rect x="990" y="92" width="210" height="320" class="box"/>
+  <text x="1095" y="125" text-anchor="middle" class="label">Decision layer</text>
+  <rect x="1016" y="153" width="158" height="50" class="model"/>
+  <text x="1095" y="184" text-anchor="middle" class="small">LightGBM</text>
+  <rect x="1016" y="219" width="158" height="50" class="model"/>
+  <text x="1095" y="250" text-anchor="middle" class="small">XGBoost</text>
+  <path d="M 1095 206 L 1095 216" class="dash"/>
+  <path d="M 1095 272 L 1095 299" class="arrow"/>
+  <rect x="1016" y="305" width="158" height="58" class="warn"/>
+  <text x="1095" y="330" text-anchor="middle" class="small">Score average</text>
+  <text x="1095" y="351" text-anchor="middle" class="tiny">category thresholds</text>
+
+  <path d="M 1205 252 L 1262 252" class="arrow"/>
+
+  <rect x="1270" y="92" width="95" height="320" class="box"/>
+  <text x="1317.5" y="125" text-anchor="middle" class="label">Outputs</text>
+  <rect x="1287" y="153" width="61" height="68" class="warn"/>
+  <text x="1317.5" y="181" text-anchor="middle" class="tiny">Risk</text>
+  <text x="1317.5" y="202" text-anchor="middle" class="tiny">alerts</text>
+  <rect x="1287" y="249" width="61" height="68" class="model"/>
+  <text x="1317.5" y="277" text-anchor="middle" class="tiny">SHAP</text>
+  <text x="1317.5" y="298" text-anchor="middle" class="tiny">drivers</text>
+  <rect x="1287" y="345" width="61" height="40" class="soft"/>
+  <text x="1317.5" y="371" text-anchor="middle" class="tiny">Metrics</text>
+
+  <text x="700" y="465" text-anchor="middle" class="small">Prediction unit: neighborhood x week x complaint category; interpretation: reported service demand, not causal urban conditions.</text>
+</svg>

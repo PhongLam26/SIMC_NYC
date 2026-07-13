@@ -200,6 +200,8 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--save-scores", action="store_true",
                         help="Save scored validation/test rows to scored_validation_test.csv.gz.")
+    parser.add_argument("--force-rebuild-scores", action="store_true",
+                        help="Ignore saved prediction files in tuning dirs and rebuild model scores.")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--progress", action="store_true")
 
@@ -396,8 +398,9 @@ class FastTabularPreprocessor:
         self.numeric_features = list(numeric_features)
         self.categorical_features = list(categorical_features)
         self.numeric_medians_: Dict[str, float] = {}
-        self.category_maps_: Dict[str, Dict[str, int]] = {}
-        self.feature_names_: List[str] = self.numeric_features + self.categorical_features
+        self.category_levels_: Dict[str, List[str]] = {}
+        self.one_hot_feature_names_: Dict[str, List[str]] = {}
+        self.feature_names_: List[str] = list(self.numeric_features)
 
     def fit(self, df: pd.DataFrame) -> "FastTabularPreprocessor":
         medians = {}
@@ -409,12 +412,20 @@ class FastTabularPreprocessor:
             medians[col] = float(med)
         self.numeric_medians_ = medians
 
-        category_maps = {}
+        category_levels = {}
         for col in self.categorical_features:
             s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
             levels = sorted(s.unique().tolist())
-            category_maps[col] = {v: i for i, v in enumerate(levels)}
-        self.category_maps_ = category_maps
+            category_levels[col] = levels
+        self.category_levels_ = category_levels
+        self.one_hot_feature_names_ = {
+            col: [f"{col}={level}" for level in levels]
+            for col, levels in self.category_levels_.items()
+        }
+        self.feature_names_ = (
+            list(self.numeric_features)
+            + [name for col in self.categorical_features for name in self.one_hot_feature_names_.get(col, [])]
+        )
 
         return self
 
@@ -436,12 +447,19 @@ class FastTabularPreprocessor:
             parts.append(pd.DataFrame(numeric_data, index=df.index))
 
         if self.categorical_features:
-            cat_data = {}
+            cat_parts = []
             for col in self.categorical_features:
-                cmap = self.category_maps_.get(col, {})
+                levels = self.category_levels_.get(col, [])
+                names = self.one_hot_feature_names_.get(col, [])
                 s = df[col].astype("object").where(df[col].notna(), "__MISSING__").astype(str)
-                cat_data[col] = s.map(cmap).fillna(-1).astype("int16").to_numpy()
-            parts.append(pd.DataFrame(cat_data, index=df.index))
+                if not levels:
+                    continue
+                dummies = pd.get_dummies(s, dtype="int8")
+                dummies = dummies.reindex(columns=levels, fill_value=0)
+                dummies.columns = names
+                cat_parts.append(dummies)
+            if cat_parts:
+                parts.append(pd.concat(cat_parts, axis=1))
 
         if not parts:
             return pd.DataFrame(index=df.index)
@@ -708,7 +726,7 @@ def load_or_rebuild_scores(
     best = load_best_candidate(tuning_dir, args.ranking_row, expected_model=model_name)
     candidate_id = str(best["candidate_id"])
 
-    pred_path = find_existing_prediction_file(tuning_dir, candidate_id)
+    pred_path = None if args.force_rebuild_scores else find_existing_prediction_file(tuning_dir, candidate_id)
     if pred_path is not None:
         pred = score_column_from_existing_predictions(pred_path)
         if pred is not None:

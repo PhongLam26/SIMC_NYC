@@ -341,6 +341,9 @@ def build_confusion_table(final_row: pd.Series, digits: int) -> pd.DataFrame:
             "recall": final_row.get(f"{split_prefix}_recall", np.nan),
             "f1": final_row.get(f"{split_prefix}_f1", np.nan),
             "pr_auc": final_row.get(f"{split_prefix}_pr_auc", np.nan),
+            "roc_auc": final_row.get(f"{split_prefix}_roc_auc", np.nan),
+            "balanced_accuracy": final_row.get(f"{split_prefix}_balanced_accuracy", np.nan),
+            "predicted_positive_share": final_row.get(f"{split_prefix}_predicted_positive_share", np.nan),
         })
     return round_numeric(pd.DataFrame(rows), digits)
 
@@ -467,6 +470,45 @@ def build_category_threshold_table(category_thresholds: pd.DataFrame, final_scor
     return round_numeric(out, digits)
 
 
+def build_threshold_macro_table(metrics_by_category: pd.DataFrame, digits: int) -> pd.DataFrame:
+    if metrics_by_category.empty:
+        return pd.DataFrame()
+
+    df = metrics_by_category.copy()
+    if "split" in df.columns:
+        df = df[df["split"] == "test"]
+    needed = {"method_id", "model_label", "threshold_mode", "complaint_category", "f1"}
+    if not needed.issubset(df.columns):
+        return pd.DataFrame()
+
+    rows = []
+    group_cols = ["method_id", "model_label", "threshold_mode", "threshold_strategy"]
+    group_cols = [c for c in group_cols if c in df.columns]
+    for keys, g in df.groupby(group_cols, dropna=False):
+        if not isinstance(keys, tuple):
+            keys = (keys,)
+        rec = dict(zip(group_cols, keys))
+        rec.update({
+            "category_count": int(g["complaint_category"].nunique()),
+            "macro_f1": g["f1"].mean(),
+            "worst_category_f1": g["f1"].min(),
+            "macro_precision": g["precision"].mean() if "precision" in g.columns else np.nan,
+            "macro_recall": g["recall"].mean() if "recall" in g.columns else np.nan,
+            "macro_pr_auc": g["pr_auc"].mean() if "pr_auc" in g.columns else np.nan,
+            "macro_roc_auc": g["roc_auc"].mean() if "roc_auc" in g.columns else np.nan,
+            "mean_alert_rate": g["predicted_positive_share"].mean() if "predicted_positive_share" in g.columns else np.nan,
+        })
+        rows.append(rec)
+
+    out = pd.DataFrame(rows)
+    sort_cols = [c for c in ["model_label", "threshold_mode"] if c in out.columns]
+    if "macro_f1" in out.columns:
+        out = out.sort_values(["macro_f1", "worst_category_f1"], ascending=[False, False]).reset_index(drop=True)
+    elif sort_cols:
+        out = out.sort_values(sort_cols).reset_index(drop=True)
+    return round_numeric(out, digits)
+
+
 def build_hyperparam_best_table(lgbm_dir: Path, xgb_dir: Path, digits: int) -> pd.DataFrame:
     rows = []
 
@@ -578,6 +620,7 @@ def build_markdown_tables(
     lift_at_k: pd.DataFrame,
     category_perf: pd.DataFrame,
     category_thresholds: pd.DataFrame,
+    threshold_macro: pd.DataFrame,
     hyperparam_best: pd.DataFrame,
     baselines: pd.DataFrame,
     final_row: pd.Series,
@@ -611,8 +654,8 @@ def build_markdown_tables(
         columns=[
             "validation_rank", "model_label", "threshold_mode",
             "val_f1", "val_precision", "val_recall", "val_pr_auc",
-            "test_f1", "test_precision", "test_recall", "test_pr_auc",
-            "test_balanced_accuracy",
+            "test_f1", "test_precision", "test_recall", "test_pr_auc", "test_roc_auc",
+            "test_balanced_accuracy", "test_predicted_positive_share",
         ],
         rename={
             "validation_rank": "Rank",
@@ -626,7 +669,9 @@ def build_markdown_tables(
             "test_precision": "Test Precision",
             "test_recall": "Test Recall",
             "test_pr_auc": "Test PR-AUC",
+            "test_roc_auc": "Test ROC-AUC",
             "test_balanced_accuracy": "Test Bal. Acc.",
+            "test_predicted_positive_share": "Test Alert Rate",
         },
         max_rows=12,
     ))
@@ -637,7 +682,11 @@ def build_markdown_tables(
     lines.append("### Table 3. Confusion matrix summary\n")
     lines.append(md_table(
         confusion,
-        columns=["split", "rows", "positive_rows", "predicted_positive_rows", "tn", "fp", "fn", "tp", "precision", "recall", "f1", "pr_auc"],
+        columns=[
+            "split", "rows", "positive_rows", "predicted_positive_rows",
+            "tn", "fp", "fn", "tp", "precision", "recall", "f1",
+            "pr_auc", "roc_auc", "balanced_accuracy", "predicted_positive_share",
+        ],
         rename={
             "split": "Split",
             "rows": "Rows",
@@ -651,6 +700,9 @@ def build_markdown_tables(
             "recall": "Recall",
             "f1": "F1",
             "pr_auc": "PR-AUC",
+            "roc_auc": "ROC-AUC",
+            "balanced_accuracy": "Bal. Acc.",
+            "predicted_positive_share": "Alert rate",
         },
     ))
 
@@ -702,7 +754,27 @@ def build_markdown_tables(
         },
     ))
 
-    lines.append("### Table 7. Best tuned single models\n")
+    lines.append("### Table 7. Threshold macro/category trade-off comparison\n")
+    lines.append(md_table(
+        threshold_macro,
+        columns=[
+            "model_label", "threshold_mode", "macro_f1", "worst_category_f1",
+            "macro_precision", "macro_recall", "macro_pr_auc", "mean_alert_rate",
+        ],
+        rename={
+            "model_label": "Model",
+            "threshold_mode": "Threshold",
+            "macro_f1": "Macro F1",
+            "worst_category_f1": "Worst-cat F1",
+            "macro_precision": "Macro Precision",
+            "macro_recall": "Macro Recall",
+            "macro_pr_auc": "Macro PR-AUC",
+            "mean_alert_rate": "Mean alert rate",
+        },
+        max_rows=12,
+    ))
+
+    lines.append("### Table 8. Best tuned single models\n")
     lines.append(md_table(
         hyperparam_best,
         columns=[
@@ -724,7 +796,7 @@ def build_markdown_tables(
         },
     ))
 
-    lines.append("### Table 8. Baseline candidates found in baseline result folder\n")
+    lines.append("### Table 9. Baseline candidates found in baseline result folder\n")
     if baselines.empty:
         lines.append("_No baseline candidate table was generated because no compatible baseline metrics CSV was detected. This is not fatal; use the original baseline output files directly if needed._\n")
     else:
@@ -866,6 +938,7 @@ def main() -> None:
     lift_at_k = build_lift_at_k_table(ensemble["scored"], final_row, final_score_col, args.digits)
     category_perf = build_category_performance_table(ensemble["metrics_by_category"], final_method_id, args.digits)
     category_thresholds = build_category_threshold_table(ensemble["category_thresholds"], final_score_col, args.digits)
+    threshold_macro = build_threshold_macro_table(ensemble["metrics_by_category"], args.digits)
     hyperparam_best = build_hyperparam_best_table(lgbm_dir, xgb_dir, args.digits)
     baselines = build_baseline_candidates_table(baselines_dir, args.digits)
 
@@ -877,6 +950,7 @@ def main() -> None:
     write_csv(output_dir / "paper_table_06_hyperparameter_best_models.csv", hyperparam_best, args.overwrite)
     write_csv(output_dir / "paper_table_07_baseline_candidates.csv", baselines, args.overwrite)
     write_csv(output_dir / "paper_table_08_lift_at_k.csv", lift_at_k, args.overwrite)
+    write_csv(output_dir / "paper_table_09_threshold_macro_tradeoffs.csv", threshold_macro, args.overwrite)
 
     md = build_markdown_tables(
         final_comparison=final_comparison,
@@ -885,6 +959,7 @@ def main() -> None:
         lift_at_k=lift_at_k,
         category_perf=category_perf,
         category_thresholds=category_thresholds,
+        threshold_macro=threshold_macro,
         hyperparam_best=hyperparam_best,
         baselines=baselines,
         final_row=final_row,
@@ -931,6 +1006,7 @@ def main() -> None:
             "lift_at_k": int(len(lift_at_k)),
             "category_performance": int(len(category_perf)),
             "category_thresholds": int(len(category_thresholds)),
+            "threshold_macro_tradeoffs": int(len(threshold_macro)),
             "hyperparam_best": int(len(hyperparam_best)),
             "baseline_candidates": int(len(baselines)),
         },
@@ -943,6 +1019,7 @@ def main() -> None:
             "paper_table_06_hyperparameter_best_models": str(output_dir / "paper_table_06_hyperparameter_best_models.csv"),
             "paper_table_07_baseline_candidates": str(output_dir / "paper_table_07_baseline_candidates.csv"),
             "paper_table_08_lift_at_k": str(output_dir / "paper_table_08_lift_at_k.csv"),
+            "paper_table_09_threshold_macro_tradeoffs": str(output_dir / "paper_table_09_threshold_macro_tradeoffs.csv"),
             "paper_results_tables_md": str(output_dir / "paper_results_tables.md"),
             "paper_results_key_takeaways_md": str(output_dir / "paper_results_key_takeaways.md"),
         },
