@@ -6,9 +6,9 @@
     line width=0.75pt,
     rounded corners=2pt,
     fill=white,
-    minimum width=2.85cm,
+    minimum width=2.2cm,
     minimum height=1.55cm,
-    text width=2.52cm,
+    text width=1.95cm,
     align=center,
     inner sep=4pt
   },
@@ -19,19 +19,23 @@
 ]
 
 \node[source] (inputs) at (0,0)
-  {\textbf{Inputs}\\311 requests\\weather\\OSM + PLUTO};
+  {\textbf{Data integration}\\311, NTA, NOAA\\OSM, PLUTO};
 
-\node[target] (panel) at (3.25,0)
-  {\textbf{Leakage-controlled panel}\\NTA-week-category\\shifted lags\\next-week label};
+\node[target] (panel) at (2.45,0)
+  {\textbf{Panel and target}\\NTA-week-category\\shifted history\\next-week label};
 
-\node[stage] (split) at (6.50,0)
-  {\textbf{Target-week split}\\train 2015-2022\\validation 2023\\test 2024-2025};
+\node[stage] (split) at (4.90,0)
+  {\textbf{Temporal split}\\train 2015-2022\\validation 2023\\test 2024-2025};
 
-\node[model] (decision) at (9.75,0)
-  {\textbf{Decision support}\\LightGBM + XGBoost\\category thresholds\\alerts + SHAP};
+\node[model] (model) at (7.35,0)
+  {\textbf{Modeling}\\LightGBM\\XGBoost\\ensemble};
+
+\node[output] (decision) at (9.80,0)
+  {\textbf{Decision layer}\\category thresholds\\alerts\\SHAP review};
 
 \draw[flow] (inputs.east) -- (panel.west);
 \draw[flow] (panel.east) -- (split.west);
-\draw[flow] (split.east) -- (decision.west);
+\draw[flow] (split.east) -- (model.west);
+\draw[flow] (model.east) -- (decision.west);
 
 \end{tikzpicture}

@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{12}
+\begin{thebibliography}{31}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -60,6 +60,20 @@
 \endbibitem
 
 %%% 2
+\bibitem[\protect\citeauthoryear{Kontokosta
+  et~al.}{2017}]{Kontokosta2017Equity311}
+\begin{botherref}
+\oauthor{\bsnm{Kontokosta}, \binits{C.E.}},
+\oauthor{\bsnm{Hong}, \binits{B.}},
+\oauthor{\bsnm{Korsberg}, \binits{K.}}:
+Equity in 311 Reporting: Understanding Socio-Spatial Differentials in the
+  Propensity to Complain
+(2017).
+\url{https://arxiv.org/abs/1710.02452}
+\end{botherref}
+\endbibitem
+
+%%% 3
 \bibitem[\protect\citeauthoryear{Kontokosta and
   Hong}{2021}]{KontokostaHong2021Bias}
 \begin{barticle}
@@ -75,7 +89,20 @@
 \end{barticle}
 \endbibitem
 
-%%% 3
+%%% 4
+\bibitem[\protect\citeauthoryear{Tussey and
+  Yan}{2025}]{TusseyYan2025OpenDataCuration311}
+\begin{botherref}
+\oauthor{\bsnm{Tussey}, \binits{D.}},
+\oauthor{\bsnm{Yan}, \binits{J.}}:
+Principles for Open Data Curation: A Case Study with the New York City 311
+  Service Request Data
+(2025).
+\url{https://arxiv.org/abs/2502.08649}
+\end{botherref}
+\endbibitem
+
+%%% 5
 \bibitem[\protect\citeauthoryear{Zheng et~al.}{2014}]{Zheng2014UrbanComputing}
 \begin{barticle}
 \bauthor{\bsnm{Zheng}, \binits{Y.}},
@@ -91,7 +118,27 @@
 \end{barticle}
 \endbibitem
 
-%%% 4
+%%% 6
+\bibitem[\protect\citeauthoryear{Jin et~al.}{2024}]{Jin2024STGNNSurvey}
+\begin{barticle}
+\bauthor{\bsnm{Jin}, \binits{G.}},
+\bauthor{\bsnm{Liang}, \binits{Y.}},
+\bauthor{\bsnm{Fang}, \binits{Y.}},
+\bauthor{\bsnm{Shao}, \binits{Z.}},
+\bauthor{\bsnm{Huang}, \binits{J.}},
+\bauthor{\bsnm{Zhang}, \binits{J.}},
+\bauthor{\bsnm{Zheng}, \binits{Y.}}:
+\batitle{Spatio-temporal graph neural networks for predictive learning in urban
+  computing: A survey}.
+\bjtitle{IEEE Transactions on Knowledge and Data Engineering}
+\bvolume{36}(\bissue{10}),
+\bfpage{5388}--\blpage{5408}
+(\byear{2024})
+\doiurl{10.1109/TKDE.2023.3333824}
+\end{barticle}
+\endbibitem
+
+%%% 7
 \bibitem[\protect\citeauthoryear{Agonafir
   et~al.}{2022}]{Agonafir2022Flooding311}
 \begin{barticle}
@@ -109,7 +156,52 @@
 \end{barticle}
 \endbibitem
 
-%%% 5
+%%% 8
+\bibitem[\protect\citeauthoryear{Kianmehr and
+  Pamukcu}{2022}]{KianmehrPamukcu2022Heat311}
+\begin{bchapter}
+\bauthor{\bsnm{Kianmehr}, \binits{A.}},
+\bauthor{\bsnm{Pamukcu}, \binits{D.}}:
+\bctitle{Analyzing citizens' needs during an extreme heat event, based on 311
+  service requests: A case study of the 2021 heatwave in vancouver, british
+  columbia}.
+In: \bbtitle{ISCRAM 2022 Conference Proceedings -- 19th International
+  Conference on Information Systems for Crisis Response and Management},
+pp. \bfpage{174}--\blpage{182}
+(\byear{2022}).
+\burl{https://idl.iscram.org/files/aydakianmehr/2022/2408\_AydaKianmehr+DuyguPamukcu2022.pdf}
+\end{bchapter}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Shaveet
+  et~al.}{2024}]{Shaveet2024Foodborne311Yelp}
+\begin{botherref}
+\oauthor{\bsnm{Shaveet}, \binits{E.}},
+\oauthor{\bsnm{Su}, \binits{C.}},
+\oauthor{\bsnm{Hsu}, \binits{D.}},
+\oauthor{\bsnm{Gravano}, \binits{L.}}:
+Seasonality Patterns in 311-Reported Foodborne Illness Cases and Machine
+  Learning-Identified Indications of Foodborne Illnesses from Yelp Reviews,
+  {New York City}, 2022-2023
+(2024).
+\url{https://arxiv.org/abs/2405.06138}
+\end{botherref}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Liu and Garg}{2024}]{LiuGarg2024SLA}
+\begin{botherref}
+\oauthor{\bsnm{Liu}, \binits{Z.}},
+\oauthor{\bsnm{Garg}, \binits{N.}}:
+Redesigning Service Level Agreements: Equity and Efficiency in City Government
+  Operations
+(2024).
+\url{https://arxiv.org/abs/2410.14825}
+\end{botherref}
+\endbibitem
+
+%%% 11
 \bibitem[\protect\citeauthoryear{Haklay and Weber}{2008}]{HaklayWeber2008OSM}
 \begin{barticle}
 \bauthor{\bsnm{Haklay}, \binits{M.}},
@@ -123,7 +215,25 @@
 \end{barticle}
 \endbibitem
 
-%%% 6
+%%% 12
+\bibitem[\protect\citeauthoryear{Vargas-Munoz
+  et~al.}{2021}]{VargasMunoz2021OSMML}
+\begin{barticle}
+\bauthor{\bsnm{Vargas-Munoz}, \binits{J.E.}},
+\bauthor{\bsnm{Srivastava}, \binits{S.}},
+\bauthor{\bsnm{Tuia}, \binits{D.}},
+\bauthor{\bsnm{Falcao}, \binits{A.X.}}:
+\batitle{{OpenStreetMap}: Challenges and opportunities in machine learning and
+  remote sensing}.
+\bjtitle{IEEE Geoscience and Remote Sensing Magazine}
+\bvolume{9}(\bissue{1}),
+\bfpage{184}--\blpage{199}
+(\byear{2021})
+\doiurl{10.1109/MGRS.2020.2994107}
+\end{barticle}
+\endbibitem
+
+%%% 13
 \bibitem[\protect\citeauthoryear{Zhang and
   Pfoser}{2019}]{ZhangPfoser2019OSMPOI}
 \begin{barticle}
@@ -138,7 +248,108 @@
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 14
+\bibitem[\protect\citeauthoryear{Luo et~al.}{2023}]{Luo2023UFZPOI}
+\begin{barticle}
+\bauthor{\bsnm{Luo}, \binits{G.}},
+\bauthor{\bsnm{Ye}, \binits{J.}},
+\bauthor{\bsnm{Wang}, \binits{J.}},
+\bauthor{\bsnm{Wei}, \binits{Y.}}:
+\batitle{Urban functional zone classification based on {POI} data and machine
+  learning}.
+\bjtitle{Sustainability}
+\bvolume{15}(\bissue{5}),
+\bfpage{4631}
+(\byear{2023})
+\doiurl{10.3390/su15054631}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Zhou and
+  Cao}{2022}]{ZhouCao2022CoarseToFineLandUse}
+\begin{bchapter}
+\bauthor{\bsnm{Zhou}, \binits{Q.}},
+\bauthor{\bsnm{Cao}, \binits{R.}}:
+\bctitle{A coarse-to-fine approach for urban land use mapping based on
+  multisource geospatial data}.
+In: \bbtitle{2022 29th International Conference on Geoinformatics}
+(\byear{2022}).
+\doiurl{10.1109/GEOINFORMATICS57846.2022.9963851}
+\end{bchapter}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2023}]{Wang2023POIMetaBlock}
+\begin{botherref}
+\oauthor{\bsnm{Wang}, \binits{K.}},
+\oauthor{\bsnm{Liu}, \binits{L.}},
+\oauthor{\bsnm{Liu}, \binits{Y.}},
+\oauthor{\bsnm{Li}, \binits{G.}},
+\oauthor{\bsnm{Zhou}, \binits{F.}},
+\oauthor{\bsnm{Lin}, \binits{L.}}:
+Urban Regional Function Guided Traffic Flow Prediction
+(2023).
+\url{https://arxiv.org/abs/2303.09789}
+\end{botherref}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{He and Garcia}{2009}]{HeGarcia2009Imbalanced}
+\begin{barticle}
+\bauthor{\bsnm{He}, \binits{H.}},
+\bauthor{\bsnm{Garcia}, \binits{E.A.}}:
+\batitle{Learning from imbalanced data}.
+\bjtitle{IEEE Transactions on Knowledge and Data Engineering}
+\bvolume{21}(\bissue{9}),
+\bfpage{1263}--\blpage{1284}
+(\byear{2009})
+\doiurl{10.1109/TKDE.2008.239}
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Fawcett}{2006}]{Fawcett2006ROC}
+\begin{barticle}
+\bauthor{\bsnm{Fawcett}, \binits{T.}}:
+\batitle{An introduction to {ROC} analysis}.
+\bjtitle{Pattern Recognition Letters}
+\bvolume{27}(\bissue{8}),
+\bfpage{861}--\blpage{874}
+(\byear{2006})
+\doiurl{10.1016/j.patrec.2005.10.010}
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Davis and
+  Goadrich}{2006}]{DavisGoadrich2006PRROC}
+\begin{bchapter}
+\bauthor{\bsnm{Davis}, \binits{J.}},
+\bauthor{\bsnm{Goadrich}, \binits{M.}}:
+\bctitle{The relationship between precision-recall and {ROC} curves}.
+In: \bbtitle{Proceedings of the 23rd International Conference on Machine
+  Learning},
+pp. \bfpage{233}--\blpage{240}
+(\byear{2006}).
+\doiurl{10.1145/1143844.1143874}
+\end{bchapter}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Powers}{2011}]{Powers2011Evaluation}
+\begin{barticle}
+\bauthor{\bsnm{Powers}, \binits{D.M.W.}}:
+\batitle{Evaluation: From precision, recall and f-measure to {ROC},
+  informedness, markedness and correlation}.
+\bjtitle{Journal of Machine Learning Technologies}
+\bvolume{2}(\bissue{1}),
+\bfpage{37}--\blpage{63}
+(\byear{2011})
+\end{barticle}
+\endbibitem
+
+%%% 21
 \bibitem[\protect\citeauthoryear{Saito and
   Rehmsmeier}{2015}]{SaitoRehmsmeier2015PR}
 \begin{barticle}
@@ -153,7 +364,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 8
+%%% 22
 \bibitem[\protect\citeauthoryear{Chen and
   Guestrin}{2016}]{ChenGuestrin2016XGBoost}
 \begin{bchapter}
@@ -170,7 +381,7 @@ pp. \bfpage{785}--\blpage{794}.
 \end{bchapter}
 \endbibitem
 
-%%% 9
+%%% 23
 \bibitem[\protect\citeauthoryear{Ke et~al.}{2017}]{Ke2017LightGBM}
 \begin{bchapter}
 \bauthor{\bsnm{Ke}, \binits{G.}},
@@ -189,7 +400,7 @@ vol. \bseriesno{30}
 \end{bchapter}
 \endbibitem
 
-%%% 10
+%%% 24
 \bibitem[\protect\citeauthoryear{Lundberg and Lee}{2017}]{LundbergLee2017SHAP}
 \begin{bchapter}
 \bauthor{\bsnm{Lundberg}, \binits{S.M.}},
@@ -202,7 +413,7 @@ vol. \bseriesno{30}
 \end{bchapter}
 \endbibitem
 
-%%% 11
+%%% 25
 \bibitem[\protect\citeauthoryear{Lundberg et~al.}{2020}]{Lundberg2020TreeSHAP}
 \begin{barticle}
 \bauthor{\bsnm{Lundberg}, \binits{S.M.}},
@@ -225,7 +436,7 @@ vol. \bseriesno{30}
 \end{barticle}
 \endbibitem
 
-%%% 12
+%%% 26
 \bibitem[\protect\citeauthoryear{Rudin}{2019}]{Rudin2019InterpretableML}
 \begin{barticle}
 \bauthor{\bsnm{Rudin}, \binits{C.}}:
@@ -237,6 +448,70 @@ vol. \bseriesno{30}
 (\byear{2019})
 \doiurl{10.1038/s42256-019-0048-x}
 \end{barticle}
+\endbibitem
+
+%%% 27
+\bibitem[\protect\citeauthoryear{{City of New York}}{2026}]{NYC311OpenData}
+\begin{botherref}
+\oauthor{\bsnm{{City of New York}}}:
+311 Service Requests from 2020 to Present.
+NYC Open Data
+(2026).
+\url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9}
+\end{botherref}
+\endbibitem
+
+%%% 28
+\bibitem[\protect\citeauthoryear{{New York City Department of City
+  Planning}}{2026}]{NYCNTA2020}
+\begin{botherref}
+\oauthor{\bsnm{{New York City Department of City Planning}}}:
+2020 Neighborhood Tabulation Areas (NTAs).
+NYC Open Data
+(2026).
+\url{https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-/9nt8-h7nd}
+\end{botherref}
+\endbibitem
+
+%%% 29
+\bibitem[\protect\citeauthoryear{Menne et~al.}{2012}]{Menne2012GHCND}
+\begin{barticle}
+\bauthor{\bsnm{Menne}, \binits{M.J.}},
+\bauthor{\bsnm{Durre}, \binits{I.}},
+\bauthor{\bsnm{Vose}, \binits{R.S.}},
+\bauthor{\bsnm{Gleason}, \binits{B.E.}},
+\bauthor{\bsnm{Houston}, \binits{T.G.}}:
+\batitle{An overview of the global historical climatology network-daily
+  database}.
+\bjtitle{Journal of Atmospheric and Oceanic Technology}
+\bvolume{29}(\bissue{7}),
+\bfpage{897}--\blpage{910}
+(\byear{2012})
+\doiurl{10.1175/JTECH-D-11-00103.1}
+\end{barticle}
+\endbibitem
+
+%%% 30
+\bibitem[\protect\citeauthoryear{{OpenStreetMap Wiki
+  Contributors}}{2026}]{OverpassAPI}
+\begin{botherref}
+\oauthor{\bsnm{{OpenStreetMap Wiki Contributors}}}:
+Overpass API
+(2026).
+\url{https://wiki.openstreetmap.org/wiki/Overpass_API}
+\end{botherref}
+\endbibitem
+
+%%% 31
+\bibitem[\protect\citeauthoryear{{New York City Department of City
+  Planning}}{2026}]{NYCPLUTO}
+\begin{botherref}
+\oauthor{\bsnm{{New York City Department of City Planning}}}:
+Primary Land Use Tax Lot Output (PLUTO).
+NYC Open Data
+(2026).
+\url{https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks}
+\end{botherref}
 \endbibitem
 
 \end{thebibliography}
