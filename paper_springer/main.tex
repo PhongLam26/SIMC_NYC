@@ -74,7 +74,7 @@ The forecasting target is an imbalanced binary event, making ordinary accuracy u
 
 \subsection{Data and Task Formulation}\label{subsec:data_task}
 
-The project integrates five public data sources: NYC Open Data 311 Service Requests \cite{NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, NOAA GHCN-Daily weather for Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}, OSM POIs queried through Overpass \cite{OverpassAPI}, and NYC PLUTO/MapPLUTO land-use records \cite{NYCPLUTO}. Weekly 311 counts use Monday week starts and are spatially joined to 2020 NTAs. OSM and PLUTO variables are fixed extraction snapshots from 2026-06-25 and are used as static context descriptors.
+The project integrates five public data sources: NYC Open Data 311 Service Requests \cite{NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, NOAA GHCN-Daily weather for Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}, OSM POIs queried through Overpass \cite{OverpassAPI}, and NYC PLUTO/MapPLUTO land-use records \cite{NYCPLUTO}. Weekly 311 counts use Monday week starts and are spatially joined to 2020 NTAs. Weather covariates summarize the feature week \(t\), not the target week \(t+1\). OSM and PLUTO variables are fixed extraction snapshots from 2026-06-25 and are used as static context descriptors.
 
 The analytical unit is \((n,t,c)\), where \(n\) is an NTA, \(t\) is a feature-week start date, and \(c\) is one of nine stable complaint categories: noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. These categories reduce sparsity while preserving service meaning. The dense panel contains 262 NTAs, 575 weekly periods, and nine categories, yielding 1,355,850 rows. Relative to the full dense panel, 30,654 rows are excluded due to warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows. Table \ref{tab:data_summary} summarizes the construction.
 
@@ -140,7 +140,7 @@ For explainability, SHAP is computed for the tuned LightGBM component. Since the
 
 \section{Results}\label{sec:results}
 
-\subsection{Predictive Performance}\label{subsec:predictive_performance}
+\subsection{Overall Performance and Ablation Results}\label{subsec:predictive_performance}
 
 Rule and logistic baselines confirm that simple history alone is not enough for the final alerting task. On the 2024-2025 target-week test period, current-week persistence obtains F1 = 0.3111 and PR-AUC = 0.2359, a seasonal lag-52 margin obtains F1 = 0.2423 and PR-AUC = 0.1773, and the strongest rule baseline, a rolling z-score rule, obtains F1 = 0.3332 and PR-AUC = 0.2658. Logistic regression with historical features obtains F1 = 0.3256 and PR-AUC = 0.2598. LightGBM ablations show ranking quality rising from PR-AUC = 0.2770 with historical features alone to 0.3158 with full context.
 
@@ -165,9 +165,9 @@ Ensemble LGBM(0.50)+XGB(0.50) & Global & 0.3777 & 0.3865 & 0.3001 & 0.5426 & 0.3
 
 The final test confusion matrix contains 16,154 true positives, 36,440 false positives, 15,416 false negatives, and 179,580 true negatives. The model captures about half of true next-week abnormal reported-demand events while roughly three out of ten alerts correspond to true events. The top 1\% of scored test rows has precision 0.5965 and 4.68-times lift over the test base rate; the top 5\% has precision 0.4548; and the top 10\% has precision 0.3866. These concentration results position the model as prioritization support rather than an automatic allocation rule.
 
-\subsection{Category Operating Points}\label{subsec:category_operating}
+\subsection{Category-Level Alert Analysis}\label{subsec:category_operating}
 
-Performance varies across municipal service domains (Table \ref{tab:category_performance}). Noise has the strongest F1, followed by public safety, housing, and water/sewer. Sanitation, infrastructure, and environment are weaker by F1, although several retain moderate recall. Positives in Table \ref{tab:category_performance} are observed abnormal next-week rows within the held-out test set; alerts are rows whose ensemble score exceeds the validation-selected threshold for that complaint category. The counts are consistent with the test confusion matrix: summing the category positives gives 31,570 and summing the category alerts gives 52,594.
+Performance varies across municipal service domains (Table \ref{tab:category_performance}). Noise has the strongest F1, followed by public safety, housing, and water/sewer. Sanitation, infrastructure, and environment are weaker by F1, although several retain moderate recall. Positives in Table \ref{tab:category_performance} are observed abnormal next-week rows within the held-out test set; alerts are rows whose ensemble score exceeds the validation-selected threshold for that complaint category. Alert counts therefore need not be proportional to positives. They depend on the category threshold, the category score distribution, separation between positive and negative rows, and the validation operating point. The counts are consistent with the test confusion matrix: summing the category positives gives 31,570 and summing the category alerts gives 52,594.
 
 \begin{table*}[t]
 \caption{Final model test performance by complaint category on the 2024-2025 target-week period.}\label{tab:category_performance}
@@ -198,11 +198,11 @@ Sanitation & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
 \label{fig:category_operating_points}
 \end{figure}
 
-Figure \ref{fig:category_operating_points} makes the operating-point trade-off visible. Relative to a global ensemble threshold, the category-specific ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The result should be read as a validation-selected, operationally preferred category-aware strategy, not as the best aggregate-F1 strategy.
+Figure \ref{fig:category_operating_points} makes the operating-point trade-off visible. Noise has more observed positives than public safety but fewer alerts; its selected operating point yields higher precision and slightly lower recall, while public safety issues more alerts to capture higher recall at lower precision. This is not a data contradiction, but a consequence of category thresholds and score distributions. Relative to a global ensemble threshold, the category-specific ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The result should be read as a validation-selected, operationally preferred category-aware strategy, not as the best aggregate-F1 strategy.
 
-\subsection{Explainability}\label{subsec:explainability}
+\subsection{Explanation Results}\label{subsec:explainability}
 
-Figure \ref{fig:shap_group} summarizes SHAP importance by feature group for the tuned LightGBM component. Historical temporal features dominate, accounting for 58.96\% of summed mean absolute SHAP importance. Service category accounts for 10.73\%, PLUTO built environment for 10.18\%, OSM POI context for 8.13\%, weather for 4.88\%, calendar features for 4.77\%, and current demand for 1.61\%. The leading individual features include \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, service-category indicators, and current \texttt{complaint\_count}.
+Figure \ref{fig:shap_group} summarizes SHAP importance by feature group for the tuned LightGBM component. Historical temporal features dominate, accounting for 58.96\% of summed mean absolute SHAP importance across 21 features. Service category accounts for 10.73\% across nine indicators, PLUTO built environment for 10.18\% across 53 features, OSM POI context for 8.13\% across 103 features, weather for 4.88\% across 22 features, calendar features for 4.77\% across four features, and current demand for 1.61\% for one feature. Because these are summed group importances, groups with more features can accumulate larger total contribution. The leading individual features include \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, service-category indicators, and current \texttt{complaint\_count}.
 
 \begin{figure}[t]
 \centering
@@ -215,7 +215,7 @@ Two local examples illustrate how explanations should be used. A true-positive h
 
 \section{Discussion}\label{sec:discussion}
 
-\subsection{Operational Implications}\label{subsec:operational}
+\subsection{Operational and Methodological Implications}\label{subsec:operational}
 
 The model is most useful as early-warning decision support. Recall of 0.5117 means it captures about half of future abnormal reported-demand events, while precision of 0.3071 means many alerts are false positives. Agencies should therefore use alerts to prioritize review, pre-position attention, or monitor risk queues, with final actions incorporating severity, staffing, and local knowledge.
 
