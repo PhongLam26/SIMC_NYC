@@ -125,6 +125,35 @@ This pass only changed Figure 1 placement and Figure 1 typography. It did not re
 - Final compile logs contain only benign underfull-box warnings in body/reference text; no undefined citations/references, duplicate labels, missing figures, hyperref option clash, fatal errors, or major overfull boxes were found.
 - Hyperlink audit confirms 83 clickable annotations and 0 visible colored link/border issues; existing black hyperlink configuration was not changed.
 
+## Table Float Placement Pass
+
+This pass only changed table float placement and section-boundary barriers. It did not rerun model training, scoring, threshold tuning, ablation, sensitivity analysis, SHAP computation, table generation, metric generation, or reference generation.
+
+- Files edited: `paper_overleaf/main.tex` and `paper_springer/main.tex`.
+- Table 1 previous rendered placement: top of page 4 before the `3 Methodology` heading.
+- Table 1 revised rendered placement: page 4 after `3 Methodology` and `3.1 Data and Task Formulation`, immediately after the dense-panel/model-ready-row paragraph that references Table 1.
+- Table 3 previous rendered placement: top of page 6 before the `4 Results` heading.
+- Table 3 revised rendered placement: page 6 after `4 Results` and `4.1 Overall Performance and Ablation Results`, after the baseline and ablation-introduction text.
+- Additional checklist correction: Table 5 now renders after `4.2 Category-Level Alert Analysis`, not before that subsection heading.
+- Float options changed:
+  - Table 1: `[t]` to `[!htbp]`.
+  - Table 3: `[t]` to `[!htbp]`.
+  - Table 5: `[t]` to `[!htbp]`.
+- Added or retained controlled `\FloatBarrier` guards:
+  - Existing Figure 1 barrier before Related Work remains unchanged.
+  - Added a barrier before `\section{Methodology}`.
+  - Added a barrier before `\section{Results}`.
+  - Added a barrier immediately after `\subsection{Category-Level Alert Analysis}` to keep Table 5 inside Section 4.2.
+  - Existing barriers before Discussion remain unchanged.
+- Build command used:
+  - `powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean`
+  - `powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean`
+- Final page count remains 12 pages for both PDFs.
+- Compile-log audit found no undefined citations/references, duplicate labels, missing figures/tables, hyperref option clash, fatal errors, or major overfull boxes. Remaining warnings are benign underfull boxes in body/reference text.
+- Visual QA rendered all 12 Overleaf PDF pages. Figure 1 remains before Related Work; Table 1 is inside Methodology; Table 2 is inside Methodology; Table 3 and Table 4 are inside Results 4.1; Table 5 and Figure 2 are inside Results 4.2; Table 6 is before the Explanation Results subsection; Figures 3 and 4 remain before Discussion; no Results float appears after the Discussion heading.
+- Hyperlink audit confirms 83 clickable annotations and 0 visible colored link/border issues; existing black hyperlink configuration was not changed.
+- Headline metrics remain present and unchanged in the final PDF: F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, and ROC-AUC = 0.7643.
+
 ## Audits
 
 - `prospective_leakage_audit.md`: PASS, 10/10 checks.

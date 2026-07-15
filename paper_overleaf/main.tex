@@ -82,6 +82,7 @@ Contextual urban features can improve service-demand models when interpreted car
 
 The forecasting target is an imbalanced binary event, making ordinary accuracy uninformative. Imbalance-learning surveys and evaluation work motivate precision, recall, F1, PR-AUC, ROC-AUC, and balanced accuracy as complementary views \cite{HeGarcia2009Imbalanced,Fawcett2006ROC,DavisGoadrich2006PRROC,Powers2011Evaluation,SaitoRehmsmeier2015PR}. Gradient-boosted tree methods such as XGBoost and LightGBM are strong tabular baselines for nonlinear interactions \cite{ChenGuestrin2016XGBoost,Ke2017LightGBM}. Because operational use requires transparency, we use SHAP and TreeSHAP to explain a tuned LightGBM component while following cautions that explanations of black-box models should not be mistaken for causal guarantees \cite{LundbergLee2017SHAP,Lundberg2020TreeSHAP,Rudin2019InterpretableML}.
 
+\FloatBarrier
 \section{Methodology}\label{sec:method}
 
 \subsection{Data and Task Formulation}\label{subsec:data_task}
@@ -90,7 +91,7 @@ The project integrates six public data sources: NYC Open Data 311 Service Reques
 
 The analytical unit is \((n,t,c)\), where \(n\) is an NTA, \(t\) is a feature-week start date, and \(c\) is one of nine stable complaint categories: noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. These categories reduce sparsity while preserving service meaning. The dense panel contains 262 NTAs, 575 weekly periods, and nine categories, yielding 1,355,850 rows. Relative to the full dense panel, 30,654 rows are excluded due to warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows. Table \ref{tab:data_summary} summarizes the construction.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \caption{Dataset construction summary.}\label{tab:data_summary}
 \centering
 \begin{tabular}{@{}llll@{}}
@@ -154,6 +155,7 @@ F1 is the primary validation-ranking metric because the alerting task requires b
 
 For explainability, SHAP is computed for the tuned prospective LightGBM component. Since the final evaluated score is an ensemble with category-specific thresholds, SHAP values are interpreted as evidence about a representative tree component under the same prospective feature design and chronological protocol, not as a direct explanation of every final alert or as causal attribution.
 
+\FloatBarrier
 \section{Results}\label{sec:results}
 
 \subsection{Overall Performance and Ablation Results}\label{subsec:predictive_performance}
@@ -162,7 +164,7 @@ Rule and logistic baselines confirm that simple history alone is not enough for 
 
 Table \ref{tab:ablation} reports a controlled compact LightGBM comparison using the same target-week split, validation-selected threshold policy, and 300,000-row stratified training sample for each configuration. Calendar provides the largest prospective gain over core history. The OSM/PLUTO rows are retrospective context checks only: they show small additional predictive association in this compact protocol but are not used for final ensemble scores, thresholds, alerts, or headline metrics.
 
-\begin{table*}[t]
+\begin{table*}[!htbp]
 \caption{Prospective feature ablation and retrospective context extension under the same compact LightGBM protocol. OSM and PLUTO rows are retrospective context checks using contemporary 2026 snapshots; they are not used in the final prospective model. Thresholds are selected on validation; PR-AUC and ROC-AUC use raw scores.}\label{tab:ablation}
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -206,9 +208,11 @@ The final prospective test confusion matrix contains 17,059 true positives, 41,1
 
 \subsection{Category-Level Alert Analysis}\label{subsec:category_operating}
 
+\FloatBarrier
+
 Performance varies across municipal service domains (Table \ref{tab:category_performance}). Noise has the strongest F1, followed by public safety, housing, and water/sewer. Positives are observed abnormal next-week rows within the held-out test set; alerts are rows whose prospective ensemble score exceeds the validation-selected threshold for that complaint category. Summing the category positives gives 31,570 and summing the category alerts gives 58,165, matching the overall confusion matrix.
 
-\begin{table*}[t]
+\begin{table*}[!htbp]
 \caption{Final prospective model test performance by complaint category on the 2024-2025 target-week period.}\label{tab:category_performance}
 \centering
 \begin{adjustbox}{max width=\textwidth}
