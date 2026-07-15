@@ -136,10 +136,12 @@ This pass only changed table float placement and section-boundary barriers. It d
 - Table 3 revised rendered placement: page 6 after `4 Results` and `4.1 Overall Performance and Ablation Results`, after the baseline and ablation-introduction text.
 - Additional checklist correction: Table 5 now renders after `4.2 Category-Level Alert Analysis`, not before that subsection heading.
 - Additional layout polish: Table 2 now renders in-line with the surrounding Section 3.2 text on page 5 instead of floating alone at the page top, reducing the awkward page 5/6 split before Results.
+- Additional layout polish: Table 4 now uses `[!htbp]`, the Results discussion was tightened around the validation-selected category-aware strategy, and the manuscript uses `\flushbottom` to reduce the obvious page 6 bottom imbalance while keeping both PDFs at 12 pages.
 - Float options changed:
   - Table 1: `[t]` to `[!htbp]`.
   - Table 2: `[t]` to `[!htbp]`.
   - Table 3: `[t]` to `[!htbp]`.
+  - Table 4: `[t]` to `[!htbp]`.
   - Table 5: `[t]` to `[!htbp]`.
 - Added or retained controlled `\FloatBarrier` guards:
   - Existing Figure 1 barrier before Related Work remains unchanged.
@@ -152,7 +154,7 @@ This pass only changed table float placement and section-boundary barriers. It d
   - `powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean`
 - Final page count remains 12 pages for both PDFs.
 - Compile-log audit found no undefined citations/references, duplicate labels, missing figures/tables, hyperref option clash, fatal errors, or major overfull boxes. Remaining warnings are benign underfull boxes in body/reference text.
-- Visual QA rendered all 12 Overleaf PDF pages. Figure 1 remains before Related Work; Table 1 is inside Methodology; Table 2 is inside Methodology and page 5 is visually more balanced; Table 3 and Table 4 are inside Results 4.1; Table 5 and Figure 2 are inside Results 4.2; Table 6 is before the Explanation Results subsection; Figures 3 and 4 remain before Discussion; no Results float appears after the Discussion heading.
+- Visual QA rendered all 12 Overleaf PDF pages. Figure 1 remains before Related Work; Table 1 is inside Methodology; Table 2 is inside Methodology and page 5 is visually more balanced; Table 3 and Table 4 are inside Results 4.1; page 6 no longer has the obvious lower-page gap or a dangling split sentence before Table 4; Table 5 and Figure 2 are inside Results 4.2; Table 6 is before the Explanation Results subsection; Figures 3 and 4 remain before Discussion; no Results float appears after the Discussion heading.
 - Hyperlink audit confirms 83 clickable annotations and 0 visible colored link/border issues; existing black hyperlink configuration was not changed.
 - Headline metrics remain present and unchanged in the final PDF: F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, and ROC-AUC = 0.7643.
 

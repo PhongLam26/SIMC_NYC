@@ -20,7 +20,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning}
 
-\raggedbottom
+\flushbottom
 \setlength{\textfloatsep}{5pt plus 1pt minus 2pt}
 \setlength{\floatsep}{5pt plus 1pt minus 2pt}
 \setlength{\intextsep}{5pt plus 1pt minus 2pt}
@@ -185,9 +185,9 @@ Prospective + OSM 2026 + PLUTO 2026 & 0.3180 & 0.3819 & 0.3066 & 0.5061 & 0.3297
 \end{adjustbox}
 \end{table*}
 
-Table \ref{tab:model_comparison} compares final prospective decision strategies. Following the validation-selection rule, the selected strategy is the LightGBM/XGBoost ensemble with complaint-category thresholds. On the held-out future test period, it achieves F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643, and balanced accuracy = 0.6750. The category-specific layer is retained because it exposes service-specific operating points selected only on validation; the result should be interpreted as the validation-selected category-specific strategy, not as evidence of aggregate metric dominance.
+Table \ref{tab:model_comparison} compares final prospective decision strategies.
 
-\begin{table*}[t]
+\begin{table*}[!htbp]
 \caption{Final prospective decision-layer comparison. Thresholds are selected on validation and evaluated unchanged on the future test period.}\label{tab:model_comparison}
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -203,6 +203,8 @@ Ensemble LGBM(0.50)+XGB(0.50) & Global & 0.3733 & 0.3801 & 0.2967 & 0.5287 & 0.3
 \end{tabular}
 \end{adjustbox}
 \end{table*}
+
+Following the validation-selection rule, the LightGBM/XGBoost ensemble with complaint-category thresholds achieves F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643, and balanced accuracy = 0.6750 on the held-out future test period. We report this category-aware choice as the validation-selected category-specific strategy, not evidence of aggregate metric dominance.
 
 The final prospective test confusion matrix contains 17,059 true positives, 41,106 false positives, 14,511 false negatives, and 174,914 true negatives. The top 1\% of scored test rows has precision 0.5905 and 4.63-times lift over the test base rate; the top 5\% has precision 0.4460; and the top 10\% has precision 0.3809. These concentration results position the model as prioritization support rather than an automatic allocation rule.
 
