@@ -1,0 +1,12 @@
+metric,value,note,share_of_test_positives
+test_rows,247590.0,Rows in held-out 2024-2025 scored set.,
+test_positive_rows,31570.0,Observed abnormal rows.,
+test_positive_share,0.12750918857789087,Observed abnormal prevalence.,
+positive_rows_with_rolling_8w_mean_lt_0.25,2560.0,Reviewer P1-2 sparse-baseline diagnostic.,0.08108964206525182
+positive_rows_with_rolling_8w_mean_lt_0.5,4073.0,Reviewer P1-2 sparse-baseline diagnostic.,0.12901488755147292
+positive_rows_with_rolling_8w_mean_lt_1,5670.0,Reviewer P1-2 sparse-baseline diagnostic.,0.17960088691796008
+positive_rows_with_rolling_8w_mean_lt_2,7469.0,Reviewer P1-2 sparse-baseline diagnostic.,0.23658536585365852
+target_count_eq_1,2707.0,Composition of positive target rows.,0.08574596135571745
+target_count_eq_2,1586.0,Composition of positive target rows.,0.05023756731073804
+target_count_eq_3,1123.0,Composition of positive target rows.,0.03557174532784289
+target_count_ge_4,26154.0,Composition of positive target rows.,0.8284447260057016

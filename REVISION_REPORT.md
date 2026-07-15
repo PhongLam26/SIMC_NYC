@@ -351,3 +351,51 @@ Internal/generated files that reviewers do not need unless reproducing experimen
 - `data/processed/model_results/prospective/`
 - `data/processed/model_results/retrospective_context/`
 - intermediate LaTeX logs and aux files
+
+## Major Methodological Rebuild Checkpoint
+
+This checkpoint starts the larger methodological revision requested in `Danh_sach_can_sua_SIMC_NYC.docx` and the attached pasted checklist. It does not claim that the major revision is complete.
+
+Git and artifact protection:
+
+- Baseline commit: `7ccf58dd55dd2c24d6f0d5a2a3adcfa8c1bf0a6a`
+- Baseline tag: `pre-major-revision-submission-2026-07-16`
+- Revision branch: `major-revision-methodological-rebuild`
+- Archived submitted PDFs: `archive/submitted_2026-07-16/`
+- `paper_springer/main_SIMC_submission.pdf` was not rebuilt during this checkpoint.
+
+New revision-control documents:
+
+- `MAJOR_REVISION_BASELINE.md`
+- `major_revision_workspace_audit.md`
+- `pre_registered_revision_selection_rule.md`
+- `archive/submitted_2026-07-16/README.md`
+
+Initial evidence generated:
+
+- Added reproducible audit script: `scripts/major_revision_initial_audit.py`
+- Generated initial sparse-panel diagnostics under `data/processed/model_results/major_revision/initial_audit/`
+
+Initial sparse-panel findings for the current submitted target:
+
+- Held-out test rows: 247,590
+- Held-out positives: 31,570
+- Positive test rows with `rolling_8w_mean < 1`: 5,670, or 17.96 percent
+- Positive test rows with `rolling_8w_mean < 2`: 7,469, or 23.66 percent
+- Positive rows with `target_next_week_count >= 4`: 26,154, or 82.84 percent
+- Historical-volume decile performance ranges from F1 = 0.1935 in D1 to F1 = 0.4290 in D10
+- Current score top-5-percent precision is 0.4460
+
+Reviewer checklist status at this checkpoint:
+
+- P1-1 target/input shortcut: OPEN. Risk confirmed because current final features include `rolling_8w_mean`, `rolling_8w_std`, and `ratio_to_8w_mean`, and current SHAP ranks formula-aligned 8-week features highly.
+- P1-2 sparse/zero-heavy panel: PARTIAL. Initial diagnostic generated; sparse-aware target alternatives have not yet been evaluated.
+- P1-3 title/category-aware/ensemble claim: OPEN. Final title and final decision model must wait for revised validation evidence.
+- OSM/PLUTO look-ahead risk: OPEN for manuscript rewrite. Existing artifacts are mapped; revised main paper should remove OSM/PLUTO from the main pipeline claims.
+- Count-model baselines: OPEN.
+- Five requested seeds 42, 123, 2026, 3407, 7777: OPEN. Existing seed stability only covers 7, 42, and 123.
+- Rolling-origin evaluation: OPEN.
+- Calibration and uncertainty intervals: OPEN.
+- Final manuscript rewrite and new submission PDF: NOT STARTED in this checkpoint.
+
+Guardrail: do not mark the major methodological revision PASS until the requested experiment set is actually run and the manuscript is rewritten from the revised evidence.

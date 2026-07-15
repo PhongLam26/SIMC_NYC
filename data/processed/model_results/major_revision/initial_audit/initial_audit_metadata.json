@@ -1,0 +1,15 @@
+{
+  "final_dataset": "data\\processed\\final\\final_nyc_urban_service_demand_dataset.csv.gz",
+  "scored_file": "data\\processed\\model_results\\prospective\\ensemble\\scored_validation_test.csv.gz",
+  "threshold_file": "data\\processed\\model_results\\prospective\\ensemble\\category_thresholds.csv",
+  "score_col": "ensemble_lgbm_w0p500_score",
+  "rows_scored": 370206,
+  "outputs": [
+    "capacity_precision_at_k.csv",
+    "initial_audit_metadata.json",
+    "performance_by_volume_decile.csv",
+    "sparse_panel_category_profile.csv",
+    "sparse_panel_diagnostics.csv",
+    "sparse_panel_diagnostics.md"
+  ]
+}
