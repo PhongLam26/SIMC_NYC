@@ -27,19 +27,19 @@ FIGURE_DIRS = [
 PREVIEW_DIR = ROOT / "tmp" / "figure1_workflow"
 
 FIG_NAME = "method_pipeline_overview"
-FIG_SIZE = (6.05, 1.75)
+FIG_SIZE = (6.05, 1.62)
 DPI = 220
 
 FONT_FAMILY = "DejaVu Sans"
-TITLE_SIZE = 10.0
-BODY_SIZE = 8.6
-SMALL_SIZE = 6.7
+TITLE_SIZE = 9.0
+BODY_SIZE = 8.0
+SMALL_SIZE = 6.4
 
 COLORS = {
-    "data": {"edge": "#567CA7", "fill": "#EEF4FA", "bar": "#D7E5F2"},
-    "panel": {"edge": "#B77B3A", "fill": "#FFF4E8", "bar": "#F2D9B9"},
-    "eval": {"edge": "#5F8A64", "fill": "#EFF7EF", "bar": "#D9EAD8"},
-    "decision": {"edge": "#71608F", "fill": "#F3F0F8", "bar": "#DDD6EB"},
+    "data": {"edge": "#4E7197", "fill": "#FFFFFF", "bar": "#E8F0F8", "badge": "#F4F8FC"},
+    "panel": {"edge": "#A66D33", "fill": "#FFFFFF", "bar": "#F7E7D1", "badge": "#FFF6EC"},
+    "eval": {"edge": "#5E8061", "fill": "#FFFFFF", "bar": "#E8F2E7", "badge": "#F5FAF4"},
+    "decision": {"edge": "#67547F", "fill": "#FFFFFF", "bar": "#ECE6F3", "badge": "#F7F4FA"},
     "ink": "#202020",
     "muted": "#555555",
     "arrow": "#5A5A5A",
@@ -47,10 +47,10 @@ COLORS = {
 }
 
 GRAY_COLORS = {
-    "data": {"edge": "#666666", "fill": "#F4F4F4", "bar": "#E0E0E0"},
-    "panel": {"edge": "#555555", "fill": "#F2F2F2", "bar": "#D4D4D4"},
-    "eval": {"edge": "#6A6A6A", "fill": "#F5F5F5", "bar": "#E3E3E3"},
-    "decision": {"edge": "#505050", "fill": "#F0F0F0", "bar": "#D8D8D8"},
+    "data": {"edge": "#666666", "fill": "#FFFFFF", "bar": "#E4E4E4", "badge": "#F7F7F7"},
+    "panel": {"edge": "#555555", "fill": "#FFFFFF", "bar": "#DCDCDC", "badge": "#F4F4F4"},
+    "eval": {"edge": "#666666", "fill": "#FFFFFF", "bar": "#E4E4E4", "badge": "#F7F7F7"},
+    "decision": {"edge": "#505050", "fill": "#FFFFFF", "bar": "#DCDCDC", "badge": "#F4F4F4"},
     "ink": "#202020",
     "muted": "#555555",
     "arrow": "#5A5A5A",
@@ -90,7 +90,7 @@ def add_round_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str]
         (spec.x, spec.y),
         spec.w,
         spec.h,
-        boxstyle="round,pad=0.006,rounding_size=0.016",
+        boxstyle="round,pad=0.004,rounding_size=0.012",
         linewidth=lw,
         edgecolor=colors["edge"],
         facecolor=colors["fill"],
@@ -98,16 +98,16 @@ def add_round_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str]
     ax.add_patch(patch)
     ax.add_patch(
         Rectangle(
-            (spec.x + 0.006, spec.y + spec.h - 0.115),
-            spec.w - 0.012,
-            0.105,
+            (spec.x + 0.010, spec.y + spec.h - 0.082),
+            spec.w - 0.020,
+            0.055,
             linewidth=0,
             facecolor=colors["bar"],
         )
     )
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + spec.h - 0.062,
+        spec.y + spec.h - 0.116,
         spec.title,
         ha="center",
         va="center",
@@ -117,26 +117,40 @@ def add_round_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str]
         linespacing=1.05,
     )
     if spec.badge:
+        badge_w = min(spec.w - 0.040, 0.145)
+        badge_x = spec.x + (spec.w - badge_w) / 2
+        badge_y = spec.y + 0.038
+        ax.add_patch(
+            FancyBboxPatch(
+                (badge_x, badge_y),
+                badge_w,
+                0.048,
+                boxstyle="round,pad=0.004,rounding_size=0.010",
+                linewidth=0.75,
+                edgecolor=colors["edge"],
+                facecolor=colors["badge"],
+            )
+        )
         ax.text(
-            spec.x + spec.w - 0.012,
-            spec.y + spec.h + 0.036,
+            spec.x + spec.w / 2,
+            badge_y + 0.024,
             spec.badge,
-            ha="right",
+            ha="center",
             va="center",
-            fontsize=SMALL_SIZE,
+            fontsize=SMALL_SIZE - 0.15,
             fontweight="semibold",
             color=colors["edge"],
         )
 
 
 def add_arrow(ax: plt.Axes, left: BoxSpec, right: BoxSpec, palette: dict[str, dict[str, str] | str]) -> None:
-    y = left.y + left.h / 2
+    y = left.y + left.h / 2 + 0.015
     arrow = FancyArrowPatch(
-        (left.x + left.w + 0.008, y),
-        (right.x - 0.008, y),
+        (left.x + left.w + 0.010, y),
+        (right.x - 0.010, y),
         arrowstyle="-|>",
-        mutation_scale=9,
-        linewidth=1.1,
+        mutation_scale=8,
+        linewidth=0.95,
         color=palette["arrow"],
         shrinkA=0,
         shrinkB=0,
@@ -170,38 +184,39 @@ def add_chip(
 
 
 def populate_data_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str] | str]) -> None:
-    ax.text(
-        spec.x + spec.w / 2,
-        spec.y + 0.335,
-        "311  |  Weather\nPOI  |  Land use",
-        ha="center",
-        va="center",
-        fontsize=BODY_SIZE,
-        color=palette["ink"],
-        linespacing=1.1,
-    )
     colors = palette[spec.key]
     assert isinstance(colors, dict)
-    chip_w = (spec.w - 0.062) / 2
+    chip_w = (spec.w - 0.065) / 2
+    chip_h = 0.070
     for i, label in enumerate(["311", "Weather", "POI", "Land use"]):
         row = i // 2
         col = i % 2
         add_chip(
             ax,
-            spec.x + 0.024 + col * (chip_w + 0.014),
-            spec.y + 0.095 + (1 - row) * 0.082,
+            spec.x + 0.025 + col * (chip_w + 0.015),
+            spec.y + 0.210 + (1 - row) * 0.092,
             chip_w,
-            0.052,
+            chip_h,
             label,
             colors["edge"],
-            "#FFFFFF",
+            colors["badge"],
+            BODY_SIZE - 0.3,
         )
+    ax.text(
+        spec.x + spec.w / 2,
+        spec.y + 0.140,
+        "multi-source context",
+        ha="center",
+        va="center",
+        fontsize=SMALL_SIZE,
+        color=palette["muted"],
+    )
 
 
 def populate_panel_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str] | str]) -> None:
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + 0.345,
+        spec.y + 0.342,
         "NTA x Week x Category",
         ha="center",
         va="center",
@@ -221,8 +236,8 @@ def populate_panel_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str,
     )
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + 0.14,
-        "shifted history only",
+        spec.y + 0.145,
+        "shifted temporal features",
         ha="center",
         va="center",
         fontsize=SMALL_SIZE,
@@ -233,7 +248,7 @@ def populate_panel_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str,
 def populate_eval_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str] | str]) -> None:
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + 0.35,
+        spec.y + 0.342,
         "LightGBM + XGBoost",
         ha="center",
         va="center",
@@ -244,22 +259,22 @@ def populate_eval_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, 
     colors = palette[spec.key]
     assert isinstance(colors, dict)
     bar_x = spec.x + 0.026
-    bar_y = spec.y + 0.145
+    bar_y = spec.y + 0.188
     bar_w = spec.w - 0.052
-    bar_h = 0.066
+    bar_h = 0.055
     segments = [
         (0.00, 0.51, "2015-22", "Train", colors["bar"]),
-        (0.51, 0.73, "2023", "Validation", "#FFFFFF"),
-        (0.73, 1.00, "2024-25", "Future\ntest", "#FFFFFF"),
+        (0.51, 0.73, "2023", "Val.", "#FFFFFF"),
+        (0.73, 1.00, "2024-25", "Test", "#FFFFFF"),
     ]
     for start, end, top, bottom, fill in segments:
         x = bar_x + bar_w * start
         w = bar_w * (end - start)
         ax.add_patch(Rectangle((x, bar_y), w, bar_h, linewidth=0.7, edgecolor=colors["edge"], facecolor=fill))
-        ax.text(x + w / 2, bar_y + bar_h + 0.031, top, ha="center", va="bottom", fontsize=SMALL_SIZE, color=palette["ink"])
+        ax.text(x + w / 2, bar_y + bar_h + 0.024, top, ha="center", va="bottom", fontsize=SMALL_SIZE, color=palette["ink"])
         ax.text(
             x + w / 2,
-            bar_y - 0.025,
+            bar_y - 0.022,
             bottom,
             ha="center",
             va="top",
@@ -272,8 +287,8 @@ def populate_eval_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, 
 def populate_decision_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[str, str] | str]) -> None:
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + 0.36,
-        "Validation-only\ncategory thresholds",
+        spec.y + 0.342,
+        "Ensemble score\n-> service threshold",
         ha="center",
         va="center",
         fontsize=BODY_SIZE,
@@ -282,18 +297,25 @@ def populate_decision_box(ax: plt.Axes, spec: BoxSpec, palette: dict[str, dict[s
     )
     ax.text(
         spec.x + spec.w / 2,
-        spec.y + 0.265,
-        "score -> threshold -> alert",
+        spec.y + 0.235,
+        "risk alerts",
         ha="center",
         va="center",
-        fontsize=SMALL_SIZE + 0.2,
+        fontsize=BODY_SIZE,
+        fontweight="semibold",
         color=palette["ink"],
-        linespacing=1.15,
     )
     colors = palette[spec.key]
     assert isinstance(colors, dict)
-    add_chip(ax, spec.x + 0.028, spec.y + 0.105, 0.078, 0.056, "Risk alerts", colors["edge"], "#FFFFFF", 6.0)
-    add_chip(ax, spec.x + spec.w - 0.108, spec.y + 0.105, 0.080, 0.056, "SHAP review", colors["edge"], "#FFFFFF", 6.0)
+    ax.text(
+        spec.x + spec.w / 2,
+        spec.y + 0.150,
+        "+ SHAP review",
+        ha="center",
+        va="center",
+        fontsize=SMALL_SIZE,
+        color=palette["muted"],
+    )
 
 
 def render_figure(output_path: Path, palette: dict[str, dict[str, str] | str], fmt: str) -> None:
@@ -306,16 +328,16 @@ def render_figure(output_path: Path, palette: dict[str, dict[str, str] | str], f
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
 
-    margin = 0.014
-    gap = 0.019
+    margin = 0.016
+    gap = 0.024
     box_w = (1 - 2 * margin - 3 * gap) / 4
-    y = 0.16
-    h = 0.70
+    y = 0.145
+    h = 0.720
     boxes = [
         BoxSpec("data", "Multi-source\nurban signals", margin, y, box_w, h),
-        BoxSpec("panel", "Leakage-safe\npanel", margin + (box_w + gap), y, box_w, h, True, "Key design 1"),
+        BoxSpec("panel", "Leakage-safe\npanel", margin + (box_w + gap), y, box_w, h, True, "t -> t+1 design"),
         BoxSpec("eval", "Prospective\nevaluation", margin + 2 * (box_w + gap), y, box_w, h),
-        BoxSpec("decision", "Category\ncalibrated alerts", margin + 3 * (box_w + gap), y, box_w, h, True, "Key design 2"),
+        BoxSpec("decision", "Category calibrated\nalerts", margin + 3 * (box_w + gap), y, box_w, h, True, "validation only"),
     ]
 
     for spec in boxes:
