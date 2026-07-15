@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "seed": 42,
+  "max_train_rows": 300000,
+  "sensitivity_max_train_rows": 100000,
+  "ablation_rows": 12,
+  "sensitivity_rows": 10,
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\paper_extended_checks"
+}

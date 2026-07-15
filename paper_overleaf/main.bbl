@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{31}
+\begin{thebibliography}{32}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -281,17 +281,20 @@ In: \bbtitle{2022 29th International Conference on Geoinformatics}
 
 %%% 16
 \bibitem[\protect\citeauthoryear{Wang et~al.}{2023}]{Wang2023POIMetaBlock}
-\begin{botherref}
-\oauthor{\bsnm{Wang}, \binits{K.}},
-\oauthor{\bsnm{Liu}, \binits{L.}},
-\oauthor{\bsnm{Liu}, \binits{Y.}},
-\oauthor{\bsnm{Li}, \binits{G.}},
-\oauthor{\bsnm{Zhou}, \binits{F.}},
-\oauthor{\bsnm{Lin}, \binits{L.}}:
-Urban Regional Function Guided Traffic Flow Prediction
-(2023).
-\url{https://arxiv.org/abs/2303.09789}
-\end{botherref}
+\begin{barticle}
+\bauthor{\bsnm{Wang}, \binits{K.}},
+\bauthor{\bsnm{Liu}, \binits{L.}},
+\bauthor{\bsnm{Liu}, \binits{Y.}},
+\bauthor{\bsnm{Li}, \binits{G.}},
+\bauthor{\bsnm{Zhou}, \binits{F.}},
+\bauthor{\bsnm{Lin}, \binits{L.}}:
+\batitle{Urban regional function guided traffic flow prediction}.
+\bjtitle{Information Sciences}
+\bvolume{634},
+\bfpage{308}--\blpage{320}
+(\byear{2023})
+\doiurl{10.1016/j.ins.2023.03.109}
+\end{barticle}
 \endbibitem
 
 %%% 17
@@ -451,7 +454,19 @@ vol. \bseriesno{30}
 \endbibitem
 
 %%% 27
-\bibitem[\protect\citeauthoryear{{City of New York}}{2026}]{NYC311OpenData}
+\bibitem[\protect\citeauthoryear{{City of New
+  York}}{2026a}]{NYC311HistoricalOpenData}
+\begin{botherref}
+\oauthor{\bsnm{{City of New York}}}:
+311 Service Requests from 2010 to 2019.
+NYC Open Data
+(2026).
+\url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-2019/76ig-c548}
+\end{botherref}
+\endbibitem
+
+%%% 28
+\bibitem[\protect\citeauthoryear{{City of New York}}{2026b}]{NYC311OpenData}
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
 311 Service Requests from 2020 to Present.
@@ -461,7 +476,7 @@ NYC Open Data
 \end{botherref}
 \endbibitem
 
-%%% 28
+%%% 29
 \bibitem[\protect\citeauthoryear{{New York City Department of City
   Planning}}{2026}]{NYCNTA2020}
 \begin{botherref}
@@ -473,7 +488,7 @@ NYC Open Data
 \end{botherref}
 \endbibitem
 
-%%% 29
+%%% 30
 \bibitem[\protect\citeauthoryear{Menne et~al.}{2012}]{Menne2012GHCND}
 \begin{barticle}
 \bauthor{\bsnm{Menne}, \binits{M.J.}},
@@ -491,7 +506,7 @@ NYC Open Data
 \end{barticle}
 \endbibitem
 
-%%% 30
+%%% 31
 \bibitem[\protect\citeauthoryear{{OpenStreetMap Wiki
   Contributors}}{2026}]{OverpassAPI}
 \begin{botherref}
@@ -502,7 +517,7 @@ Overpass API
 \end{botherref}
 \endbibitem
 
-%%% 31
+%%% 32
 \bibitem[\protect\citeauthoryear{{New York City Department of City
   Planning}}{2026}]{NYCPLUTO}
 \begin{botherref}

@@ -26,8 +26,8 @@
 \setlength{\abovecaptionskip}{3pt}
 \setlength{\belowcaptionskip}{2pt}
 \renewcommand{\arraystretch}{0.92}
-\renewcommand{\bibfont}{\fontsize{5.4}{5.7}\selectfont}
-\setlength{\bibsep}{0pt}
+\renewcommand{\bibfont}{\footnotesize}
+\setlength{\bibsep}{2pt plus 0.3pt}
 \hyphenation{calendar category categories categorical component components}
 
 \begin{document}
@@ -53,7 +53,7 @@ Urban service systems increasingly rely on administrative and citizen-generated 
 
 We study a prospective early-warning task at the neighborhood tabulation area (NTA), week, and complaint-category level. For each feature week, the model estimates whether the following week will show abnormal reported demand relative to recent local history. The design combines historical 311 demand, calendar timing, weekly weather exposure, OpenStreetMap (OSM) point-of-interest context, and PLUTO built-environment descriptors. The target and temporal features are leakage-controlled: lags and rolling statistics are shifted so only information available before the prediction week is used. Static OSM and PLUTO snapshots are treated as contextual descriptors and are discussed as a snapshot/look-ahead limitation rather than as dynamic covariates.
 
-Three questions guide the analysis. First, can a multi-source NTA-week-category panel forecast next-week abnormal reported demand under a future chronological test? Second, how does a complaint-category-specific decision layer change precision, recall, and alert-volume trade-offs across service domains? Third, which temporal and urban-context feature groups drive model predictions? The contributions are a category-aware early-warning formulation for urban service demand, a large NYC panel built from 30,940,129 NTA-matched 311 requests and public contextual data, a target-week chronological evaluation with validation-only threshold selection, and SHAP-based interpretation of model behavior. Figure \ref{fig:pipeline_overview} summarizes the workflow.
+The analysis examines whether next-week abnormal reported demand can be forecast under a strictly chronological future test, how service-specific thresholds alter precision, recall, and alert volume across complaint domains, and which temporal and urban-context features contribute most strongly to model predictions. Its contributions are a leakage-controlled NTA-week-category forecasting task, a large multi-source NYC panel built from 30,940,129 NTA-matched 311 requests and public contextual data, category-specific alert calibration, prospective target-week evaluation, and explainability that separates predictive association from causal interpretation. The practical aim is to prioritize analyst attention toward elevated reported-demand risk without treating 311 data as a complete map of urban need. Figure \ref{fig:pipeline_overview} summarizes the workflow.
 
 \begin{figure}[t]
 \centering
@@ -74,7 +74,7 @@ The forecasting target is an imbalanced binary event, making ordinary accuracy u
 
 \subsection{Data and Task Formulation}\label{subsec:data_task}
 
-The project integrates five public data sources: NYC Open Data 311 Service Requests \cite{NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, NOAA GHCN-Daily weather for Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}, OSM POIs queried through Overpass \cite{OverpassAPI}, and NYC PLUTO/MapPLUTO land-use records \cite{NYCPLUTO}. Weekly 311 counts use Monday week starts and are spatially joined to 2020 NTAs. Weather covariates summarize the feature week \(t\), not the target week \(t+1\). OSM and PLUTO variables are fixed extraction snapshots from 2026-06-25 and are used as static context descriptors.
+The project integrates six public data sources: NYC Open Data 311 Service Requests from the historical 2010--2019 archive and the current 2020--present archive \cite{NYC311HistoricalOpenData,NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, NOAA GHCN-Daily weather for Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}, OSM POIs queried through Overpass \cite{OverpassAPI}, and NYC PLUTO/MapPLUTO land-use records \cite{NYCPLUTO}. The analysis window uses 2015--2025 records from the combined 311 archives. Weekly 311 counts use Monday week starts and are spatially joined to 2020 NTAs. Weather covariates summarize the feature week \(t\), not the target week \(t+1\). OSM and PLUTO variables are fixed extraction snapshots from 2026-06-25 and are used as static context descriptors.
 
 The analytical unit is \((n,t,c)\), where \(n\) is an NTA, \(t\) is a feature-week start date, and \(c\) is one of nine stable complaint categories: noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. These categories reduce sparsity while preserving service meaning. The dense panel contains 262 NTAs, 575 weekly periods, and nine categories, yielding 1,355,850 rows. Relative to the full dense panel, 30,654 rows are excluded due to warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows. Table \ref{tab:data_summary} summarizes the construction.
 
@@ -142,9 +142,30 @@ For explainability, SHAP is computed for the tuned LightGBM component. Since the
 
 \subsection{Overall Performance and Ablation Results}\label{subsec:predictive_performance}
 
-Rule and logistic baselines confirm that simple history alone is not enough for the final alerting task. On the 2024-2025 target-week test period, current-week persistence obtains F1 = 0.3111 and PR-AUC = 0.2359, a seasonal lag-52 margin obtains F1 = 0.2423 and PR-AUC = 0.1773, and the strongest rule baseline, a rolling z-score rule, obtains F1 = 0.3332 and PR-AUC = 0.2658. Logistic regression with historical features obtains F1 = 0.3256 and PR-AUC = 0.2598. LightGBM ablations show ranking quality rising from PR-AUC = 0.2770 with historical features alone to 0.3158 with full context.
+Rule and logistic baselines confirm that simple history alone is not enough for the final alerting task. On the 2024-2025 target-week test period, current-week persistence obtains F1 = 0.3111 and PR-AUC = 0.2359, a seasonal lag-52 margin obtains F1 = 0.2423 and PR-AUC = 0.1773, and the strongest rule baseline, a rolling z-score rule, obtains F1 = 0.3332 and PR-AUC = 0.2658. Logistic regression with historical features obtains F1 = 0.3256 and PR-AUC = 0.2598.
 
-Table \ref{tab:model_comparison} compares final decision strategies. Following the validation-selection rule, the operationally preferred category-aware strategy is the LightGBM/XGBoost ensemble with complaint-category-specific thresholds. On the held-out future test period, it achieves F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, ROC-AUC = 0.7720, and balanced accuracy = 0.6715. The global-threshold ensemble has slightly higher test F1, but it applies one alert rule across service domains; the category-specific strategy is retained as the validation-selected and operationally interpretable decision layer.
+Table \ref{tab:ablation} reports a controlled LightGBM ablation using the same target-week split, validation-selected threshold policy, and 300,000-row stratified training sample for each configuration. Historical demand already provides substantial predictive information, with test PR-AUC = 0.2838. Adding calendar terms raises test PR-AUC to 0.3262, while weather alone does not improve that run. OSM and PLUTO descriptors provide complementary context: the OSM configuration has the highest test PR-AUC among ablations (0.3314), and the PLUTO configuration yields higher precision with lower recall. The full context model has the strongest ROC-AUC and similar F1 to the OSM/PLUTO variants, so contextual features are best interpreted as incremental predictive signal rather than causal explanations.
+
+\begin{table*}[t]
+\caption{Feature-group ablation under the same target-week chronological protocol. Thresholds are selected on validation; PR-AUC and ROC-AUC use raw scores.}\label{tab:ablation}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Feature configuration & Val PR-AUC & Test F1 & Prec. & Rec. & Test PR-AUC & Test ROC-AUC \\
+\midrule
+Historical demand only & 0.2702 & 0.3513 & 0.2595 & 0.5434 & 0.2838 & 0.7374 \\
+Historical + calendar & 0.3072 & 0.3785 & 0.2873 & 0.5546 & 0.3262 & 0.7635 \\
+Historical + calendar + weather & 0.3143 & 0.3767 & 0.2843 & 0.5581 & 0.3246 & 0.7615 \\
+Historical + calendar + weather + OSM & 0.3189 & 0.3818 & 0.2915 & 0.5535 & 0.3314 & 0.7673 \\
+Historical + calendar + weather + PLUTO & 0.3165 & 0.3813 & 0.3008 & 0.5208 & 0.3299 & 0.7668 \\
+Full context & 0.3180 & 0.3819 & 0.3066 & 0.5061 & 0.3297 & 0.7679 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}
+
+Table \ref{tab:model_comparison} compares final decision strategies. Following the validation-selection rule, the selected category-specific strategy is the LightGBM/XGBoost ensemble with complaint-category thresholds. On the held-out future test period, it achieves F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, ROC-AUC = 0.7720, and balanced accuracy = 0.6715. The global-threshold ensemble has slightly higher test F1, but it applies one alert rule across service domains; the category-specific layer is retained because it exposes service-specific operating points selected only on validation.
 
 \begin{table*}[t]
 \caption{Final decision-layer comparison. Thresholds are selected on validation and evaluated unchanged on the future test period.}\label{tab:model_comparison}
@@ -173,19 +194,19 @@ Performance varies across municipal service domains (Table \ref{tab:category_per
 \caption{Final model test performance by complaint category on the 2024-2025 target-week period.}\label{tab:category_performance}
 \centering
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{tabular}{@{}lrrrrrrr@{}}
 \toprule
-Category & Positives & Alerts & PR-AUC & F1 & Precision & Recall \\
+Category & Thr. & Positives & Alerts & PR-AUC & F1 & Precision & Recall \\
 \midrule
-Noise & 3,982 & 5,729 & 0.4229 & 0.4578 & 0.3880 & 0.5583 \\
-Public safety & 3,536 & 6,482 & 0.3312 & 0.4097 & 0.3166 & 0.5803 \\
-Housing & 3,720 & 5,412 & 0.3860 & 0.4025 & 0.3396 & 0.4941 \\
-Water/sewer & 3,462 & 6,090 & 0.3642 & 0.3938 & 0.3089 & 0.5433 \\
-Other & 3,620 & 6,695 & 0.3237 & 0.3762 & 0.2898 & 0.5359 \\
-Parking/traffic & 3,586 & 5,811 & 0.3255 & 0.3708 & 0.2998 & 0.4858 \\
-Environment & 2,896 & 5,924 & 0.3105 & 0.3633 & 0.2704 & 0.5532 \\
-Infrastructure & 3,596 & 5,900 & 0.2764 & 0.3484 & 0.2803 & 0.4600 \\
-Sanitation & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
+Noise & 0.4150 & 3,982 & 5,729 & 0.4229 & 0.4578 & 0.3880 & 0.5583 \\
+Public safety & 0.3232 & 3,536 & 6,482 & 0.3312 & 0.4097 & 0.3166 & 0.5803 \\
+Housing & 0.3850 & 3,720 & 5,412 & 0.3860 & 0.4025 & 0.3396 & 0.4941 \\
+Water/sewer & 0.3700 & 3,462 & 6,090 & 0.3642 & 0.3938 & 0.3089 & 0.5433 \\
+Other & 0.3314 & 3,620 & 6,695 & 0.3237 & 0.3762 & 0.2898 & 0.5359 \\
+Parking/traffic & 0.3596 & 3,586 & 5,811 & 0.3255 & 0.3708 & 0.2998 & 0.4858 \\
+Environment & 0.3385 & 2,896 & 5,924 & 0.3105 & 0.3633 & 0.2704 & 0.5532 \\
+Infrastructure & 0.3814 & 3,596 & 5,900 & 0.2764 & 0.3484 & 0.2803 & 0.4600 \\
+Sanitation & 0.3500 & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -198,11 +219,29 @@ Sanitation & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
 \label{fig:category_operating_points}
 \end{figure}
 
-Figure \ref{fig:category_operating_points} makes the operating-point trade-off visible. Noise has more observed positives than public safety but fewer alerts; its selected operating point yields higher precision and slightly lower recall, while public safety issues more alerts to capture higher recall at lower precision. This is not a data contradiction, but a consequence of category thresholds and score distributions. Relative to a global ensemble threshold, the category-specific ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The result should be read as a validation-selected, operationally preferred category-aware strategy, not as the best aggregate-F1 strategy.
+Figure \ref{fig:category_operating_points} makes the operating-point trade-off visible. Noise has more observed positives than public safety but fewer alerts; its higher threshold yields higher precision and slightly lower recall, while public safety issues more alerts to capture higher recall at lower precision. This is not a data contradiction, but a consequence of category thresholds and score distributions. Relative to a global ensemble threshold, the category-specific ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The result should be read as the pre-specified category-specific strategy selected on validation, not as the best aggregate-F1 strategy.
+
+Target-definition sensitivity was also checked with a compact LightGBM protocol using the full context features, the same chronological split, and validation-selected thresholds (Table \ref{tab:target_sensitivity}). Event prevalence changes as expected: a 1.0-standard-deviation threshold marks more rows positive, while 2.0 standard deviations yields a rarer target. The main 8-week, 1.5-standard-deviation definition sits between these alternatives. F1 and PR-AUC move with prevalence, but ROC-AUC remains in a narrow 0.7505--0.7716 range across the tested definitions, suggesting that the ranking problem is not an artifact of a single window/multiplier choice.
+
+\begin{table}[t]
+\caption{Sensitivity to abnormal-demand definition using a compact LightGBM check. Each run keeps the chronological split and selects the hard-alert threshold on validation.}\label{tab:target_sensitivity}
+\centering
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Target definition & Pos. share & F1 & PR-AUC & ROC-AUC \\
+\midrule
+4w + 1.5\(\sigma\) & 0.1443 & 0.4156 & 0.3659 & 0.7716 \\
+8w + 1.0\(\sigma\) & 0.1833 & 0.4411 & 0.3982 & 0.7505 \\
+8w + 1.5\(\sigma\) main & 0.1275 & 0.3753 & 0.3214 & 0.7608 \\
+8w + 2.0\(\sigma\) & 0.0885 & 0.3178 & 0.2568 & 0.7706 \\
+12w + 1.5\(\sigma\) & 0.1180 & 0.3665 & 0.3155 & 0.7677 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Explanation Results}\label{subsec:explainability}
 
-Figure \ref{fig:shap_group} summarizes SHAP importance by feature group for the tuned LightGBM component. Historical temporal features dominate, accounting for 58.96\% of summed mean absolute SHAP importance across 21 features. Service category accounts for 10.73\% across nine indicators, PLUTO built environment for 10.18\% across 53 features, OSM POI context for 8.13\% across 103 features, weather for 4.88\% across 22 features, calendar features for 4.77\% across four features, and current demand for 1.61\% for one feature. Because these are summed group importances, groups with more features can accumulate larger total contribution. The leading individual features include \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{week\_of\_year}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, \texttt{lag\_1w\_count}, service-category indicators, and current \texttt{complaint\_count}.
+Figure \ref{fig:shap_group} summarizes SHAP importance by feature group for the tuned LightGBM component. Historical temporal features dominate, accounting for 58.96\% of summed mean absolute SHAP importance across 21 features. Service category accounts for 10.73\% across nine indicators, PLUTO built environment for 10.18\% across 53 features, OSM POI context for 8.13\% across 103 features, weather for 4.88\% across 22 features, calendar features for 4.77\% across four features, and current demand for 1.61\% for one feature. Because these are summed group importances, groups with more features can accumulate larger total contribution.
 
 \begin{figure}[t]
 \centering
@@ -211,7 +250,16 @@ Figure \ref{fig:shap_group} summarizes SHAP importance by feature group for the 
 \label{fig:shap_group}
 \end{figure}
 
-Two local examples illustrate how explanations should be used. A true-positive housing alert in Inwood for feature week 2025-10-06 has a LightGBM score of 0.954 and is associated with eight-week volatility, seasonal timing, and residential built-environment features. A false-positive public-safety alert in the Lower East Side for feature week 2025-06-30 has a LightGBM score of 0.940; annual and recent lag counts and current reported demand push the score upward, while eight-week volatility and zero weekly precipitation push it downward. These cases support analyst review but do not establish causal effects.
+Figure \ref{fig:shap_top_features} shows the leading individual features. The strongest terms are historical: \texttt{rolling\_8w\_std}, \texttt{ratio\_to\_8w\_mean}, \texttt{lag\_52w\_count}, \texttt{rolling\_4w\_mean}, and \texttt{lag\_1w\_count}. Calendar timing appears through \texttt{week\_of\_year}, current demand appears through \texttt{complaint\_count}, and several complaint-category indicators enter the top ranks. These patterns align with the ablation results: recent history and seasonality carry most of the signal, while context and category terms refine the score. SHAP explains the LightGBM component, not every ensemble alert, and should be read as predictive association rather than causal effect.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\linewidth]{figures/shap_top_features.pdf}
+\caption{Top 15 individual features by mean absolute SHAP value for the tuned LightGBM explanation component. Blue bars are historical temporal features; orange bars are other feature groups.}
+\label{fig:shap_top_features}
+\end{figure}
+
+Two local examples illustrate how explanations should be used. A true-positive housing alert in Inwood for feature week 2025-10-06 is associated with eight-week volatility, seasonal timing, and residential built-environment features. A false-positive public-safety alert in the Lower East Side for feature week 2025-06-30 is lifted by annual and recent lag counts and current reported demand, while other terms push the score downward. These cases support analyst review but do not establish causal effects.
 
 \section{Discussion}\label{sec:discussion}
 
@@ -219,28 +267,28 @@ Two local examples illustrate how explanations should be used. A true-positive h
 
 The model is most useful as early-warning decision support. Recall of 0.5117 means it captures about half of future abnormal reported-demand events, while precision of 0.3071 means many alerts are false positives. Agencies should therefore use alerts to prioritize review, pre-position attention, or monitor risk queues, with final actions incorporating severity, staffing, and local knowledge.
 
-Category-specific thresholds make the alert layer more realistic because service domains do not share the same base rates, volatility, response costs, or tolerance for missed events. A sanitation alert and a public-safety alert can have different operational consequences even when their model scores are similar. The small aggregate-F1 difference between global and category-specific thresholds reinforces the main point: the benefit is explicit service-domain trade-off control, not a claim of universal metric dominance.
+Category thresholds make the alert layer more transparent because service domains do not share the same base rates, volatility, response costs, or tolerance for missed events. A sanitation alert and a public-safety alert can have different consequences even when their model scores are similar. The small aggregate-F1 difference between global and category-specific thresholds reinforces the main point: the benefit is explicit service-domain trade-off control, not a claim of universal metric dominance. The ablation results also qualify the role of urban context. Calendar and historical demand provide the largest improvement over history alone, while OSM and PLUTO add complementary ranking signal. Sensitivity checks show that target prevalence changes under alternative abnormal-demand definitions, so thresholds and workload should be revisited if an agency adopts a different event definition.
 
 \subsection{Limitations and Future Work}\label{subsec:limitations}
 
-Several limits should guide interpretation. NYC 311 data measure reported service demand, not all underlying urban problems, and reporting propensity can reproduce socio-spatial inequities. OSM POI and PLUTO are static 2026 snapshots used across a 2015-2025 panel, so they carry snapshot/look-ahead risk and should be interpreted only as broad context. NOAA weather is weekly city-level exposure rather than NTA microclimate. Hyperparameters are selected from sampled tuning runs, although final reported scores are rebuilt on all training rows; three sampled seeds produced test F1 \(0.3817 \pm 0.0021\), PR-AUC \(0.3313 \pm 0.0025\), and ROC-AUC \(0.7678 \pm 0.0007\). Future work should test transferability to other cities, alternative abnormal-demand definitions, fairness-aware reporting adjustments, repeated full-training runs, and links between alerts and operational response outcomes.
+Several limits should guide interpretation. NYC 311 data measure reported service demand, not all underlying urban problems, and reporting propensity can reproduce socio-spatial inequities. OSM POI and PLUTO are static 2026 snapshots used across a 2015-2025 panel, so they carry snapshot/look-ahead risk and should be interpreted only as broad context. NOAA weather is weekly city-level exposure rather than NTA microclimate. Hyperparameters are selected from sampled tuning runs, although final reported scores are rebuilt on all training rows; three sampled seeds produced test F1 \(0.3817 \pm 0.0021\), PR-AUC \(0.3313 \pm 0.0025\), and ROC-AUC \(0.7678 \pm 0.0007\). Category thresholds are optimized for validation F1, not agency-specific costs, and full operational utility would require response-time, staffing, service-outcome, and fairness data. Future work should test historical or time-matched OSM and PLUTO, spatial weather, calibrated probabilities, cost-sensitive thresholds, alternative target definitions, cross-city transfer, and operational outcome evaluation.
 
 \section{Conclusion}\label{sec:conclusion}
 
-We present an explainable machine-learning pipeline for forecasting next-week abnormal reported demand in NYC 311 data at the neighborhood, week, and service-category level. The NTA-week-category formulation, multi-source context, and target-week chronological split frame 311 forecasting as an early-warning task rather than generic count prediction. The validation-selected LightGBM/XGBoost ensemble with category-specific thresholds achieves future-test F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, and ROC-AUC = 0.7720. SHAP shows that historical temporal dynamics dominate prediction, while built environment, POI context, weather, service category, and calendar features add smaller but interpretable contextual contributions. The findings support category-aware decision layers as a practical way to make service-domain alert trade-offs explicit while keeping the central limitation clear: 311 data forecast reported demand, not the complete distribution of urban need.
+An explainable forecasting framework was developed for next-week abnormal reported demand in NYC 311 data at the neighborhood, week, and service-category level. The NTA-week-category formulation, multi-source context, and target-week chronological split frame 311 forecasting as an early-warning task rather than generic count prediction. Results from the held-out future period show that the LightGBM/XGBoost ensemble captures about half of abnormal reported-demand events, while ablation and SHAP evidence indicate that historical temporal dynamics dominate and contextual features add smaller complementary signal. Category thresholds make service-domain alert trade-offs explicit. The main limitation remains central: 311 data forecast reported demand, not the complete distribution of urban need.
 
 \section*{Declarations}
 
 \begingroup
 \setlength{\parskip}{1pt}
-\noindent\textbf{Data and code availability.} Source data are NYC Open Data 311 (\texttt{erm2-nwe9}), NOAA GHCN-Daily station \texttt{GHCND:USW00094728}, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO (\texttt{64uk-42ks}), and 2020 NTA boundaries (\texttt{9nt8-h7nd}); the local snapshot was extracted on 2026-06-25. Scripts, mappings, configurations, and evaluation code are available at \href{https://github.com/PhongLam26/SIMC_NYC}{\texttt{https://github.com/PhongLam26/SIMC\_NYC}}; processed data release is subject to licensing, redistribution, and storage constraints.\par
+\noindent\textbf{Data and code availability.} Source data are NYC Open Data 311 historical archive \texttt{76ig-c548}, NYC Open Data 311 current archive \texttt{erm2-nwe9}, NOAA GHCN-Daily station \texttt{GHCND:USW00094728}, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO \texttt{64uk-42ks}, and 2020 NTA boundaries \texttt{9nt8-h7nd}; the local snapshot was extracted on 2026-06-25. Scripts, mappings, configurations, and evaluation code are available at \href{https://github.com/PhongLam26/SIMC_NYC}{\texttt{https://github.com/PhongLam26/SIMC\_NYC}}; processed data release is subject to licensing, redistribution, and storage constraints.\par
 \noindent\textbf{Competing interests.} The authors declare no competing interests.\par
 \noindent\textbf{Funding.} No specific funding was received.\par
 \noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le served as academic advisor and supervised the study design, methodology, and manuscript editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed validation and review.
 \endgroup
 
-\setlength{\bibsep}{0pt}
-\renewcommand{\bibfont}{\fontsize{5.4}{5.7}\selectfont}
+\setlength{\bibsep}{2pt plus 0.3pt}
+\renewcommand{\bibfont}{\footnotesize}
 \bibliography{references}
 
 \end{document}
