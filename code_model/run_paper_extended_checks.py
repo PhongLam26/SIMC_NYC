@@ -207,11 +207,11 @@ def _fit_score(
 
 def run_ablation(df: pd.DataFrame, features_by_set: dict[str, list[str]]) -> pd.DataFrame:
     configs = [
-        ("Historical demand only", _drop_unwanted(features_by_set["historical_only"])),
-        ("Historical + calendar", _drop_unwanted(features_by_set["historical_calendar_no_covid_period"])),
-        ("Historical + calendar + weather", _drop_unwanted(features_by_set["historical_calendar_weather"])),
-        ("Historical + calendar + weather + OSM", _drop_unwanted(features_by_set["historical_calendar_weather_osm"])),
-        ("Historical + calendar + weather + PLUTO", _drop_unwanted(features_by_set["historical_calendar_weather_pluto"])),
+        ("Core history + identifiers", _drop_unwanted(features_by_set["historical_only"])),
+        ("Core + calendar", _drop_unwanted(features_by_set["historical_calendar_no_covid_period"])),
+        ("Core + calendar + weather", _drop_unwanted(features_by_set["historical_calendar_weather"])),
+        ("Core + calendar + weather + OSM", _drop_unwanted(features_by_set["historical_calendar_weather_osm"])),
+        ("Core + calendar + weather + PLUTO", _drop_unwanted(features_by_set["historical_calendar_weather_pluto"])),
         ("Full context", _drop_unwanted(features_by_set["full_without_covid_period_features"])),
     ]
     out_rows: list[dict[str, float | int | str]] = []
