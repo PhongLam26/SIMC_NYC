@@ -1,6 +1,10 @@
 % Springer Nature manuscript draft for SIMC NYC.
 % Generated from the local SIMC_project evidence files.
 
+\ifdefined\SIMCsubmission
+  \PassOptionsToPackage{draft,bookmarks=false,pdfpagelabels=false}{hyperref}
+\fi
+
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
 
 \IfFileExists{glyphtounicode.tex}{\input{glyphtounicode}}{}
@@ -31,14 +35,30 @@
 \renewcommand{\bibfont}{\footnotesize}
 \setlength{\bibsep}{2pt plus 0.3pt}
 \hyphenation{calendar category categories categorical component components}
-\AtBeginDocument{\hypersetup{allcolors=black, linkbordercolor=black, citebordercolor=black, urlbordercolor=black, filebordercolor=black, pdfborder={0 0 0}}}
+\ifdefined\SIMCsubmission
+\else
+  \AtBeginDocument{\hypersetup{allcolors=black, linkbordercolor=black, citebordercolor=black, urlbordercolor=black, filebordercolor=black, pdfborder={0 0 0}}}
+\fi
 \makeatletter
-\renewcommand{\email}[1]{\global\advance\emailcnt by 1\relax%
-\if@corauemail%
-   \g@addto@macro\corrauthemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
-\else%
-   \g@addto@macro\authemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
-\fi}
+\ifdefined\SIMCsubmission
+  \let\ps@plain\ps@empty
+  \let\ps@headings\ps@empty
+  \let\ps@myheadings\ps@empty
+  \let\ps@titlepage\ps@empty
+  \renewcommand{\email}[1]{\global\advance\emailcnt by 1\relax%
+  \if@corauemail%
+     \g@addto@macro\corrauthemail{\setcounter{footnote}{0}\textcolor{black}{#1};\ }%
+  \else%
+     \g@addto@macro\authemail{\setcounter{footnote}{0}\textcolor{black}{#1};\ }%
+  \fi}
+\else
+  \renewcommand{\email}[1]{\global\advance\emailcnt by 1\relax%
+  \if@corauemail%
+     \g@addto@macro\corrauthemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
+  \else%
+     \g@addto@macro\authemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
+  \fi}
+\fi
 \makeatother
 
 \begin{document}
@@ -56,7 +76,19 @@
 
 \keywords{urban computing, smart cities, 311 service requests, service-demand forecasting, explainable machine learning, SHAP, spatiotemporal modeling}
 
+\ifdefined\SIMCsubmission
+  \pagenumbering{gobble}
+  \pagestyle{empty}
+  \thispagestyle{empty}
+\fi
+
 \maketitle
+
+\ifdefined\SIMCsubmission
+  \pagenumbering{gobble}
+  \pagestyle{empty}
+  \thispagestyle{empty}
+\fi
 
 \section{Introduction}\label{sec:introduction}
 

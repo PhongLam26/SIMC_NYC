@@ -46,6 +46,14 @@ powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean
 
 Expected output: `paper_springer/main.pdf` and `paper_overleaf/main.pdf`, each 12 pages.
 
+For the SIMC review-manuscript upload, use the separate no-link/no-bookmark/no-footer build:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\paper_springer\build_SIMC_submission.ps1 -Clean
+```
+
+Upload output: `paper_springer/main_SIMC_submission.pdf`.
+
 ## Prospective Modeling Protocol
 
 The manuscript uses a target-week chronological split:

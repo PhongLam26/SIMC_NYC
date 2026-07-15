@@ -30,6 +30,7 @@ data/processed/model_results/**/shap_sample_metadata.csv
 *.toc
 *.fls
 *.fdb_latexmk
+paper_springer/main_SIMC_submission.bbl
 
 # Internal drafting/checklist files, not needed by reviewers
 SIMC_NYC_paper_strengths_and_must_have_checklist*.docx
