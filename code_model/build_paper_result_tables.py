@@ -83,6 +83,9 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--final-rank", type=int, default=1,
                         help="Use this validation_rank from final_model_comparison.csv as the selected final method.")
+    parser.add_argument("--expected-analysis-type", type=str, default=None,
+                        choices=["prospective", "retrospective_context"],
+                        help="Fail if ensemble metadata does not match the expected analysis_type.")
     parser.add_argument("--digits", type=int, default=4)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--progress", action="store_true")
@@ -926,6 +929,12 @@ def main() -> None:
         print(f"[setup] output_dir={output_dir}")
 
     ensemble = load_ensemble_outputs(ensemble_dir)
+    actual_analysis_type = ensemble["summary"].get("analysis_type", "unspecified")
+    if args.expected_analysis_type and actual_analysis_type != args.expected_analysis_type:
+        raise ValueError(
+            f"Expected ensemble analysis_type={args.expected_analysis_type}, "
+            f"found {actual_analysis_type} in {ensemble_dir / 'ensemble_threshold_run_summary.json'}"
+        )
     comparison = ensemble["comparison"]
     final_row = select_final_method(comparison, args.final_rank)
 
@@ -983,6 +992,7 @@ def main() -> None:
         "xgb_tuning_dir": str(xgb_dir),
         "baselines_dir": str(baselines_dir),
         "output_dir": str(output_dir),
+        "analysis_type": actual_analysis_type,
         "final_rank": int(args.final_rank),
         "final_method_id": final_method_id,
         "final_model_label": str(final_row.get("model_label", "")),

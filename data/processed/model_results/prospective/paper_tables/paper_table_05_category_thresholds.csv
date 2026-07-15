@@ -1,0 +1,10 @@
+﻿complaint_category,threshold,global_threshold_fallback,validation_rows,validation_positive_rows,validation_f1,validation_precision,validation_recall,validation_pr_auc,validation_roc_auc,note
+environment,0.46,0.4613,13624,1495,0.3479,0.2657,0.5037,0.2812,0.7578,Max validation F1.
+housing,0.495,0.4613,13624,1626,0.3894,0.3265,0.4822,0.3778,0.7782,Max validation F1.
+infrastructure,0.44,0.4613,13624,1734,0.3448,0.2445,0.5848,0.2693,0.7232,Max validation F1.
+noise,0.51,0.4613,13624,1884,0.409,0.3361,0.5223,0.345,0.7592,Max validation F1.
+other,0.4512,0.4613,13624,1802,0.3775,0.2809,0.5755,0.3024,0.7496,Max validation F1.
+parking_traffic,0.4385,0.4613,13624,1884,0.3765,0.2763,0.5908,0.3156,0.7372,Max validation F1.
+public_safety,0.416,0.4613,13624,1839,0.401,0.2936,0.6324,0.3273,0.7744,Max validation F1.
+sanitation,0.44,0.4613,13624,1651,0.3528,0.271,0.5051,0.2805,0.7435,Max validation F1.
+water_sewer,0.475,0.4613,13624,1659,0.3896,0.2968,0.5672,0.3537,0.7769,Max validation F1.

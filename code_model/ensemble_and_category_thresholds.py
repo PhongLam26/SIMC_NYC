@@ -202,6 +202,9 @@ def parse_args() -> argparse.Namespace:
                         help="Save scored validation/test rows to scored_validation_test.csv.gz.")
     parser.add_argument("--force-rebuild-scores", action="store_true",
                         help="Ignore saved prediction files in tuning dirs and rebuild model scores.")
+    parser.add_argument("--analysis-type", type=str, default="unspecified",
+                        choices=["unspecified", "prospective", "retrospective_context"],
+                        help="Analysis protocol identifier written to output metadata.")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--progress", action="store_true")
 
@@ -700,6 +703,12 @@ def rebuild_scores_for_model(
         "params": params,
         "train_rows": int(len(y_train)),
         "train_rows_full": int(train_rows_full),
+        "input_feature_count": int(len(feature_cols)),
+        "numeric_feature_count": int(len(numeric_features)),
+        "categorical_feature_count": int(len(categorical_features)),
+        "input_feature_names": feature_cols,
+        "model_feature_count": int(len(pre.feature_names_)),
+        "model_feature_names": list(pre.feature_names_),
         "preprocess_seconds": float(preprocess_seconds),
         "fit_seconds": float(fit_seconds),
         "warnings_count": int(len(caught)),
@@ -738,8 +747,10 @@ def load_or_rebuild_scores(
                 "param_id": best.get("param_id"),
                 "pos_weight_mode": best.get("pos_weight_mode"),
                 "pos_weight": float(best.get("pos_weight", 1.0)),
-                "params": best.get("params", {}),
-                "score_source": str(pred_path),
+        "params": best.get("params", {}),
+        "input_feature_count": int(len(numeric_features) + len(categorical_features)),
+        "input_feature_names": list(numeric_features) + list(categorical_features),
+        "score_source": str(pred_path),
             }
             return pred, info
 
@@ -1330,6 +1341,7 @@ def main() -> None:
         "output_dir": str(output_dir),
         "experiment": args.experiment,
         "feature_set": args.feature_set,
+        "analysis_type": args.analysis_type,
         "ranking_row": int(args.ranking_row),
         "primary_strategy": args.primary_strategy,
         "ensemble_weights": args.ensemble_weights,

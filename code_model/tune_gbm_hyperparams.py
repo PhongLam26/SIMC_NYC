@@ -196,6 +196,9 @@ def parse_args() -> argparse.Namespace:
                         help="Save every fitted candidate model. Can use disk space.")
     parser.add_argument("--save-predictions-for-best", action="store_true",
                         help="Save validation/test predictions for the best validation-ranked candidate.")
+    parser.add_argument("--analysis-type", type=str, default="unspecified",
+                        choices=["unspecified", "prospective", "retrospective_context"],
+                        help="Analysis protocol identifier written to output metadata.")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--progress", action="store_true")
 
@@ -1331,6 +1334,7 @@ def main() -> None:
         "output_dir": str(output_dir),
         "experiments": args.experiments,
         "feature_set": args.feature_set,
+        "analysis_type": args.analysis_type,
         "models_requested": models_requested,
         "models_run": models_to_run,
         "skipped_models": skipped_models,

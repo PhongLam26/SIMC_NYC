@@ -185,6 +185,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--threshold", type=float, default=None,
                         help="Override LightGBM threshold. Default uses selected_threshold from gbm_tuning_ranking.csv.")
     parser.add_argument("--sample-random-state", type=int, default=42)
+    parser.add_argument("--analysis-type", type=str, default="unspecified",
+                        choices=["unspecified", "prospective", "retrospective_context"],
+                        help="Analysis protocol identifier written to output metadata.")
 
     parser.add_argument("--lightgbm-use-gpu", action="store_true",
                         help="Use LightGBM OpenCL GPU. On Windows this may pick Intel iGPU.")
@@ -1272,6 +1275,7 @@ def main() -> None:
         "output_dir": str(output_dir),
         "experiment": args.experiment,
         "feature_set": args.feature_set,
+        "analysis_type": args.analysis_type,
         "explained_model": "tuned_lightgbm",
         "candidate": {
             "candidate_id": candidate.get("candidate_id"),
@@ -1286,6 +1290,7 @@ def main() -> None:
         "test_metrics_at_threshold": test_metrics,
         "shap_sample_rows": int(len(sample_meta)),
         "shap_feature_count": int(len(feature_names)),
+        "shap_feature_names": feature_names,
         "expected_value_log_odds": float(expected_value),
         "top_20_global_features": global_imp.head(20).to_dict(orient="records"),
         "feature_group_importance": group_imp.to_dict(orient="records"),

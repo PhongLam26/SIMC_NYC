@@ -9,7 +9,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUT = ROOT / "data/processed/model_results/shap_explainability_lgbm_fulltrain/shap_global_importance.csv"
+INPUT = ROOT / "data/processed/model_results/prospective/shap/shap_global_importance.csv"
 OUTPUTS = [
     ROOT / "paper_springer/figures/shap_top_features.pdf",
     ROOT / "paper_overleaf/figures/shap_top_features.pdf",

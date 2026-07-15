@@ -1,0 +1,7 @@
+﻿method_id,model_label,threshold_mode,threshold_strategy,category_count,macro_f1,worst_category_f1,macro_precision,macro_recall,macro_pr_auc,macro_roc_auc,mean_alert_rate
+ensemble_lgbm_w0p500_per_category,Ensemble LGBM(0.50) + XGB(0.50),per_category,best_f1,9,0.379,0.3173,0.2946,0.5382,0.3267,0.7627,0.2349
+xgb_per_category,Tuned XGBoost,per_category,best_f1,9,0.3784,0.315,0.2974,0.5242,0.3265,0.7626,0.226
+lgbm_per_category,Tuned LightGBM,per_category,best_f1,9,0.3776,0.3149,0.2943,0.5318,0.3253,0.7621,0.2317
+ensemble_lgbm_w0p500_global,Ensemble LGBM(0.50) + XGB(0.50),global,best_f1,9,0.377,0.3098,0.2953,0.5251,0.3267,0.7627,0.2272
+xgb_global,Tuned XGBoost,global,best_f1,9,0.3764,0.3073,0.2989,0.5119,0.3265,0.7626,0.2188
+lgbm_global,Tuned LightGBM,global,best_f1,9,0.3761,0.3129,0.2893,0.5412,0.3253,0.7621,0.2389

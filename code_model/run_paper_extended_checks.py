@@ -33,18 +33,21 @@ from sklearn.preprocessing import OneHotEncoder
 
 ROOT = Path(__file__).resolve().parents[1]
 DATASET = ROOT / "data/processed/final/final_nyc_urban_service_demand_dataset.csv.gz"
-FEATURE_SETS = ROOT / "data/processed/_model_summaries/inspect_final_dataset_feature_sets.json"
-PAPER_TABLES = ROOT / "data/processed/model_results/paper_tables_target_week_fulltrain"
-SHAP_DIR = ROOT / "data/processed/model_results/shap_explainability_lgbm_fulltrain"
-OUT = ROOT / "data/processed/model_results/paper_extended_checks"
+FEATURE_SETS = ROOT / "data/processed/model_ready/model_config.json"
+PAPER_TABLES = ROOT / "data/processed/model_results/prospective/paper_tables"
+SHAP_DIR = ROOT / "data/processed/model_results/prospective/shap"
+OUT = ROOT / "data/processed/model_results/prospective/paper_extended_checks"
+CONTEXT_OUT = ROOT / "data/processed/model_results/retrospective_context/compact_checks"
 SEED = 42
 MAX_TRAIN_ROWS = 300_000
 SENSITIVITY_MAX_TRAIN_ROWS = 100_000
+CATEGORICAL_FEATURES = {"period_type", "boroname", "complaint_category", "poi_dominant_semantic_category"}
 
 
 def _read_features() -> dict[str, list[str]]:
     raw = json.loads(FEATURE_SETS.read_text(encoding="utf-8"))
-    return {k: v["features"] for k, v in raw.items()}
+    feature_sets = raw.get("feature_sets", raw)
+    return {k: v["features"] for k, v in feature_sets.items()}
 
 
 def _drop_unwanted(features: list[str]) -> list[str]:
@@ -133,7 +136,7 @@ def _fit_score(
     x_test = test[features]
     y_test = test[target].astype(int).to_numpy()
 
-    categorical = [c for c in features if df[c].dtype == "object" or str(df[c].dtype) == "category"]
+    categorical = [c for c in features if c in CATEGORICAL_FEATURES]
     numeric = [c for c in features if c not in categorical]
 
     encoder_kwargs = {"handle_unknown": "ignore"}
@@ -207,20 +210,22 @@ def _fit_score(
 
 def run_ablation(df: pd.DataFrame, features_by_set: dict[str, list[str]]) -> pd.DataFrame:
     configs = [
-        ("Core history + identifiers", _drop_unwanted(features_by_set["historical_only"])),
-        ("Core + calendar", _drop_unwanted(features_by_set["historical_calendar_no_covid_period"])),
-        ("Core + calendar + weather", _drop_unwanted(features_by_set["historical_calendar_weather"])),
-        ("Core + calendar + weather + OSM", _drop_unwanted(features_by_set["historical_calendar_weather_osm"])),
-        ("Core + calendar + weather + PLUTO", _drop_unwanted(features_by_set["historical_calendar_weather_pluto"])),
-        ("Full context", _drop_unwanted(features_by_set["full_without_covid_period_features"])),
+        ("A", "prospective", "Core history + identifiers", _drop_unwanted(features_by_set["prospective_core_history_identifiers"])),
+        ("A", "prospective", "Core + calendar", _drop_unwanted(features_by_set["prospective_core_calendar"])),
+        ("A", "prospective", "Core + calendar + feature-week weather", _drop_unwanted(features_by_set["prospective_forecast_available"])),
+        ("B", "retrospective_context", "Prospective + OSM 2026", _drop_unwanted(features_by_set["retrospective_context_osm_2026"])),
+        ("B", "retrospective_context", "Prospective + PLUTO 2026", _drop_unwanted(features_by_set["retrospective_context_pluto_2026"])),
+        ("B", "retrospective_context", "Prospective + OSM 2026 + PLUTO 2026", _drop_unwanted(features_by_set["retrospective_context_full_2026"])),
     ]
     out_rows: list[dict[str, float | int | str]] = []
-    for label, features in configs:
+    for section, analysis_type, label, features in configs:
         rows, info = _fit_score(df, features, "abnormal_increase_next_week")
         for split, metrics in rows.items():
             out_rows.append(
                 {
-                    "analysis": "feature_group_ablation",
+                    "analysis": "prospective_ablation_retrospective_context",
+                    "table_section": section,
+                    "analysis_type": analysis_type,
                     "configuration": label,
                     **info,
                     **metrics,
@@ -276,8 +281,9 @@ def reconcile_thresholds() -> pd.DataFrame:
 def write_report(ablation: pd.DataFrame, sensitivity: pd.DataFrame, threshold_recon: pd.DataFrame) -> None:
     cm = pd.read_csv(PAPER_TABLES / "paper_table_03_final_model_confusion.csv")
     cm_test = cm[cm["split"].str.lower().eq("test")].iloc[0]
-    group = pd.read_csv(SHAP_DIR / "shap_group_importance_paper_7groups.csv")
+    group = pd.read_csv(SHAP_DIR / "shap_group_importance.csv")
     global_imp = pd.read_csv(SHAP_DIR / "shap_global_importance.csv")
+    group_percent_sum = 100.0 * group["mean_abs_shap_share"].sum()
 
     test_ab = ablation[ablation["split"].eq("test")].copy()
     test_sens = sensitivity[sensitivity["split"].eq("test")].copy()
@@ -323,7 +329,7 @@ def write_report(ablation: pd.DataFrame, sensitivity: pd.DataFrame, threshold_re
             "",
             "## SHAP Checks",
             "",
-            f"- SHAP group importance percentages sum to {group['percent'].sum():.2f}%.",
+            f"- SHAP group importance percentages sum to {group_percent_sum:.2f}%.",
             f"- SHAP group feature counts sum to {int(group['feature_count'].sum())}.",
             f"- Top individual features include: {', '.join(global_imp.head(8)['feature'].tolist())}.",
             "- SHAP outputs explain the LightGBM component and are interpreted as predictive associations, not causal effects.",
@@ -335,18 +341,19 @@ def write_report(ablation: pd.DataFrame, sensitivity: pd.DataFrame, threshold_re
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    CONTEXT_OUT.mkdir(parents=True, exist_ok=True)
     features_by_set = _read_features()
     needed = sorted(
         set().union(
             *[
                 set(_drop_unwanted(features_by_set[k]))
                 for k in [
-                    "historical_only",
-                    "historical_calendar_no_covid_period",
-                    "historical_calendar_weather",
-                    "historical_calendar_weather_osm",
-                    "historical_calendar_weather_pluto",
-                    "full_without_covid_period_features",
+                    "prospective_core_history_identifiers",
+                    "prospective_core_calendar",
+                    "prospective_forecast_available",
+                    "retrospective_context_osm_2026",
+                    "retrospective_context_pluto_2026",
+                    "retrospective_context_full_2026",
                 ]
             ],
             {
@@ -367,7 +374,7 @@ def main() -> None:
     df = df[df["final_train_ready_flag"].eq(1)].copy()
     df["abnormal_increase_next_week"] = df["abnormal_increase_next_week"].astype(int)
 
-    ablation_path = OUT / "feature_group_ablation_compact.csv"
+    ablation_path = CONTEXT_OUT / "feature_group_ablation_compact.csv"
     if ablation_path.exists():
         ablation = pd.read_csv(ablation_path)
         if "max_train_rows" not in ablation.columns:
@@ -378,7 +385,7 @@ def main() -> None:
         ablation = run_ablation(df.copy(), features_by_set)
         ablation.to_csv(ablation_path, index=False)
 
-    sensitivity_features = _drop_unwanted(features_by_set["full_without_covid_period_features"])
+    sensitivity_features = _drop_unwanted(features_by_set["prospective_forecast_available"])
     sensitivity = run_sensitivity(df.copy(), sensitivity_features)
     sensitivity.to_csv(OUT / "target_sensitivity_compact.csv", index=False)
 
@@ -388,14 +395,26 @@ def main() -> None:
     write_report(ablation, sensitivity, threshold_recon)
     summary = {
         "status": "done",
+        "analysis_type": "prospective",
         "seed": SEED,
         "max_train_rows": MAX_TRAIN_ROWS,
         "sensitivity_max_train_rows": SENSITIVITY_MAX_TRAIN_ROWS,
         "ablation_rows": int(len(ablation)),
         "sensitivity_rows": int(len(sensitivity)),
         "output_dir": str(OUT),
+        "context_output_dir": str(CONTEXT_OUT),
     }
     (OUT / "paper_extended_checks_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    context_summary = {
+        "status": "done",
+        "analysis_type": "retrospective_context",
+        "seed": SEED,
+        "max_train_rows": MAX_TRAIN_ROWS,
+        "ablation_rows": int(len(ablation)),
+        "output_dir": str(CONTEXT_OUT),
+        "note": "OSM/PLUTO 2026 rows are retrospective context checks only and are not used for final prospective alerts.",
+    }
+    (CONTEXT_OUT / "retrospective_context_summary.json").write_text(json.dumps(context_summary, indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":

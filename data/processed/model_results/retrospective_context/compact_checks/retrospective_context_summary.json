@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "analysis_type": "retrospective_context",
+  "seed": 42,
+  "max_train_rows": 300000,
+  "ablation_rows": 12,
+  "output_dir": "D:\\00_Major\\K4\\DAP\\SIMC_project\\data\\processed\\model_results\\retrospective_context\\compact_checks",
+  "note": "OSM/PLUTO 2026 rows are retrospective context checks only and are not used for final prospective alerts."
+}

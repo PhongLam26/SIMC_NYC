@@ -1,0 +1,13 @@
+﻿method_id,model_label,score_col,threshold_mode,threshold_strategy,split,global_threshold,tn,fp,fn,tp
+lgbm_global,Tuned LightGBM,lgbm_score,global,best_f1,validation,0.57,84993,22049,6965,8609
+lgbm_global,Tuned LightGBM,lgbm_score,global,best_f1,test,0.57,174053,41967,14380,17190
+lgbm_per_category,Tuned LightGBM,lgbm_score,per_category,best_f1,validation,,85796,21246,7104,8470
+lgbm_per_category,Tuned LightGBM,lgbm_score,per_category,best_f1,test,,175521,40499,14701,16869
+xgb_global,Tuned XGBoost,xgb_score,global,best_f1,validation,0.35,87288,19754,7455,8119
+xgb_global,Tuned XGBoost,xgb_score,global,best_f1,test,0.35,178121,37899,15291,16279
+xgb_per_category,Tuned XGBoost,xgb_score,per_category,best_f1,validation,,86579,20463,7226,8348
+xgb_per_category,Tuned XGBoost,xgb_score,per_category,best_f1,test,,176705,39315,14933,16637
+ensemble_lgbm_w0p500_global,Ensemble LGBM(0.50) + XGB(0.50),ensemble_lgbm_w0p500_score,global,best_f1,validation,0.461296,86359,20683,7254,8320
+ensemble_lgbm_w0p500_global,Ensemble LGBM(0.50) + XGB(0.50),ensemble_lgbm_w0p500_score,global,best_f1,test,0.461296,176467,39553,14880,16690
+ensemble_lgbm_w0p500_per_category,Ensemble LGBM(0.50) + XGB(0.50),ensemble_lgbm_w0p500_score,per_category,best_f1,validation,,85425,21617,6951,8623
+ensemble_lgbm_w0p500_per_category,Ensemble LGBM(0.50) + XGB(0.50),ensemble_lgbm_w0p500_score,per_category,best_f1,test,,174914,41106,14511,17059

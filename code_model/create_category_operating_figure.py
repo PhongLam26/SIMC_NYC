@@ -5,7 +5,7 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUT = ROOT / "data" / "processed" / "model_results" / "paper_tables_target_week_fulltrain" / "paper_table_04_category_performance.csv"
+INPUT = ROOT / "data" / "processed" / "model_results" / "prospective" / "paper_tables" / "paper_table_04_category_performance.csv"
 OUTPUTS = [
     ROOT / "paper_springer" / "figures" / "category_operating_points.pdf",
     ROOT / "paper_overleaf" / "figures" / "category_operating_points.pdf",
