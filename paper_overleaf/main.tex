@@ -125,7 +125,7 @@ The final prospective configuration uses 61 inputs: complaint category, borough,
 
 We compare rule baselines, logistic regression, LightGBM, XGBoost, and an equal-weight LightGBM/XGBoost ensemble. Numeric medians and categorical levels are fitted on the training period only. Hyperparameters are selected from stratified 300,000-row tuning runs for reproducibility, then final scores are rebuilt on all 954,990 training rows. Table \ref{tab:tuning_protocol} records the compact protocol.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \caption{Compact tuning and final-score protocol for gradient-boosted models.}\label{tab:tuning_protocol}
 \centering
 \begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
