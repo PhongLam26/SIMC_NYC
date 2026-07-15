@@ -285,6 +285,47 @@ Visual and log QA:
 - Compile warnings remaining: expected `Package hyperref Warning: Draft mode on.` plus benign underfull hbox/vbox warnings in body/reference text.
 - Compile-log audit found no undefined citations, undefined references, fatal errors, emergency stops, LaTeX errors, duplicate-label warnings, or overfull boxes.
 
+## Data and Code Availability Wording Pass
+
+This pass rewrote only the `Declarations` -> `Data and code availability` paragraph for clarity and NOAA weather-source precision. It did not rerun any model, regenerate metrics, change tables, change figures, change references, or change dataset IDs.
+
+Old paragraph:
+
+`Data and code availability. Source data are NYC Open Data 311 historical archive 76ig-c548, NYC Open Data 311 current archive erm2-nwe9, NOAA GHCN-Daily station GHCND:USW00094728, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO 64uk-42ks, and 2020 NTA boundaries 9nt8-h7nd; the local snapshot was extracted on 2026-06-25. Scripts, mappings, configurations, and evaluation code are available at https://github.com/PhongLam26/SIMC_NYC. The repository separates prospective model artifacts from retrospective OSM/PLUTO context checks; processed data release is subject to licensing, redistribution, and storage constraints.`
+
+New paragraph:
+
+`Data and code availability. Source data include NYC Open Data 311 archives 76ig-c548 and erm2-nwe9, 2020 NTA boundaries 9nt8-h7nd, NOAA GHCN-Daily observations from Central Park station GHCND:USW00094728 used as city-level weekly weather exposure, OpenStreetMap via Overpass, and NYC PLUTO/MapPLUTO 64uk-42ks. OSM/PLUTO snapshots for retrospective context analysis were extracted on 25 June 2026. Scripts, mappings, configurations, and evaluation code are available at https://github.com/PhongLam26/SIMC_NYC. The repository separates prospective model artifacts from retrospective OSM/PLUTO checks; processed-data release remains subject to licensing, redistribution, and storage constraints.`
+
+Clarifications made:
+
+- Central Park station is explicitly named as the NOAA GHCN-Daily weather source.
+- Station ID `GHCND:USW00094728` remains visible.
+- Weather is described as `city-level weekly weather exposure`, not NTA-level microclimate or spatially precise neighborhood weather.
+- OSM/PLUTO is described as retrospective context analysis only, while the repository separation between prospective model artifacts and retrospective checks remains explicit.
+- The public code URL remains visible as text.
+- Processed-data release constraints remain explicit.
+
+Files edited:
+
+- `paper_springer/main.tex`
+- `paper_overleaf/main.tex`
+- `REVISION_REPORT.md`
+
+Build and QA:
+
+- Build commands:
+  - `powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean`
+  - `powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean`
+  - `powershell -ExecutionPolicy Bypass -File .\paper_springer\build_SIMC_submission.ps1 -Clean`
+- Final page count: 12 pages for `paper_springer/main.pdf`, `paper_overleaf/main.pdf`, and `paper_springer/main_SIMC_submission.pdf`.
+- Text audit confirms the Central Park station ID, `city-level weekly weather exposure`, all dataset IDs, GitHub URL, OSM/PLUTO retrospective wording, and processed-data constraints remain visible in all three PDFs.
+- Compile-log audit found no undefined citations, undefined references, overfull boxes, fatal errors, emergency stops, duplicate-label warnings, or LaTeX errors.
+- Submission PDF audit remains PASS: 0 bookmarks/outlines, 0 link annotations, 0 page numbers, 0 running headers, and 0 footers.
+- Visual QA rendered the Declarations page from `paper_springer/main_SIMC_submission.pdf`; the paragraph remains readable, URL and dataset IDs do not overflow, and no header/footer/page number appears.
+- Headline metrics remain unchanged: F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643.
+- No model, threshold, SHAP, table, figure, reference, or dataset-ID generation was run or changed.
+
 ## Audits
 
 - `prospective_leakage_audit.md`: PASS, 10/10 checks.
