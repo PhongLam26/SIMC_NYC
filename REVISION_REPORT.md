@@ -6,7 +6,7 @@ Revision date: 2026-07-15
 
 - Manuscript sources: `paper_overleaf/main.tex`, `paper_springer/main.tex`
 - Compiled PDFs: `paper_overleaf/main.pdf`, `paper_springer/main.pdf`
-- Revised figure assets: `paper_overleaf/figures/category_operating_points.pdf`, `paper_springer/figures/category_operating_points.pdf`
+- Revised figure assets: `paper_overleaf/figures/category_operating_points.pdf`, `paper_springer/figures/category_operating_points.pdf`, `paper_overleaf/figures/method_pipeline_overview.png`, `paper_springer/figures/method_pipeline_overview.png`
 - Revised scripts: `code_model/create_category_operating_figure.py`, `code_model/run_paper_extended_checks.py`, `code_model/build_paper_result_tables.py`
 - New experiment outputs: `data/processed/model_results/paper_extended_checks/`
 - Audit/report files: `reference_audit.md`, `numerical_consistency_report.md`, `REVISION_REPORT.md`
@@ -14,7 +14,6 @@ Revision date: 2026-07-15
 ## Build Command
 
 ```powershell
-python code_model\create_method_pipeline_overview.py
 powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean
 powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean
 ```
@@ -83,17 +82,13 @@ Hyperparameter text was updated from workspace evidence in `data/processed/model
 
 ## New or Revised Tables and Figures
 
-- Rebuilt Figure 1 as a method-contribution overview instead of a generic five-step flowchart. The old figure over-weighted data-source abbreviations, used small wrapped text, stacked the temporal split as a plain pipeline stage, and did not visually emphasize the two core design choices.
-- Added script `code_model/create_method_pipeline_overview.py`.
-- Figure 1 build command: `python code_model/create_method_pipeline_overview.py`.
-- Figure 1 vector outputs: `paper_overleaf/figures/method_pipeline_overview.pdf`, `paper_overleaf/figures/method_pipeline_overview.svg`, `paper_springer/figures/method_pipeline_overview.pdf`, and `paper_springer/figures/method_pipeline_overview.svg`.
-- Figure 1 temporary QA previews: `tmp/figure1_workflow/method_pipeline_overview_preview.png` and `tmp/figure1_workflow/method_pipeline_overview_grayscale_preview.png`.
-- Figure 1 size: 437.76 x 118.8 pt as a one-page vector PDF, included at `\linewidth`.
-- Figure 1 typography: DejaVu Sans, with 9.0 pt box titles, 8.0 pt body text, and 6.4 pt compact labels before LaTeX placement.
-- Figure 1 colors: white cards with muted blue, orange, green, and gray-violet accent bars and borders; no gradient, 3D effects, or saturated fills.
-- Figure 1 contribution emphasis: the leakage-safe panel and category-calibrated alert boxes use slightly stronger borders plus content-specific badges, `t -> t+1 design` and `validation only`.
+- Replaced Figure 1 with the user-provided workflow image because the previous generated version was visually too cramped. The paper now includes `paper_overleaf/figures/method_pipeline_overview.png` and `paper_springer/figures/method_pipeline_overview.png`.
+- Figure 1 source image: `ChatGPT Image 11_50_28 15 thg 7, 2026.png`, imported as a stable repository asset with size 2172 x 724 px.
+- Removed the earlier generated Figure 1 PDF/SVG assets and the obsolete generator script so the paper has a single active Figure 1 source.
+- Figure 1 content highlights four numbered stages: multi-source urban signals, leakage-safe forecasting panel, prospective evaluation, and category-calibrated alerts.
+- Figure 1 contribution emphasis is carried by the stage design and labels `t -> t+1 design` and `validation only`.
 - Figure 1 caption changed from `Overview of the leakage-controlled temporal pipeline. The modeling target is next-week abnormal reported demand for each NTA, week, and service category; OSM and PLUTO are used as static context snapshots.` to `Overview of the proposed early-warning framework. Multi-source urban signals are organized into a leakage-safe NTA-week-category panel, where information available at week t predicts abnormal reported demand at t+1. Models are evaluated prospectively, and validation-only category thresholds convert ensemble scores into service-specific alerts. SHAP supports post-hoc analyst review.`
-- Figure 1 visual QA: rendered page 2 at 150 DPI in color and grayscale and at 95 DPI for reduced-size inspection; box titles, secondary text, arrows, horizontal train/validation/test timeline, `t -> t+1` target logic, and validation-only category-threshold wording remain readable.
+- Figure 1 visual QA: rendered page 2 at 150 DPI and 90 DPI in color and grayscale after final build; the four stages, t-to-t+1 target logic, horizontal train/validation/test timeline, and validation-only threshold note remain readable.
 - Added Table 3: feature-group ablation.
 - Revised Table 5: category performance now includes validation-selected threshold.
 - Added Table 6: target-definition sensitivity.
