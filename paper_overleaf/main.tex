@@ -65,12 +65,12 @@ We study a prospective early-warning task at the neighborhood tabulation area (N
 
 The analysis examines whether next-week abnormal reported demand can be forecast under a strictly chronological future test, how service-specific thresholds alter precision, recall, and alert volume across complaint domains, and which forecast-available features contribute most strongly to model predictions. Its contributions are a leakage-controlled next-week forecasting task, a prospective feature set using information available at week \(t\), target-week chronological evaluation, validation-only service thresholds, explainability of prospective model behavior, and a separate retrospective assessment of contemporary urban context. The practical aim is to prioritize analyst attention toward elevated reported-demand risk without treating 311 data as a complete map of urban need. Figure \ref{fig:pipeline_overview} summarizes the workflow.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/method_pipeline_overview.pdf}
+\includegraphics[width=\textwidth]{figures/method_pipeline_overview.pdf}
 \caption{Overview of the revised early-warning framework. The prospective alerting path uses only predictors available by the end of feature week \(t\), while the target represents abnormal reported demand at \(t+1\). Models are evaluated chronologically, and category thresholds are selected on validation. Contemporary OSM and PLUTO snapshots are assessed separately as retrospective context and are not used to produce prospective alerts.}
 \label{fig:pipeline_overview}
-\end{figure}
+\end{figure*}
 
 \section{Related Work}\label{sec:related}
 
@@ -181,7 +181,7 @@ Prospective + OSM 2026 + PLUTO 2026 & 0.3180 & 0.3819 & 0.3066 & 0.5061 & 0.3297
 \end{adjustbox}
 \end{table*}
 
-Table \ref{tab:model_comparison} compares final prospective decision strategies. Following the validation-selection rule, the selected strategy is the LightGBM/XGBoost ensemble with complaint-category thresholds. On the held-out future test period, it achieves F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643, and balanced accuracy = 0.6750. The category-specific layer is retained because it exposes service-specific operating points selected only on validation; it should be read as the validation-selected and operationally preferred category-aware strategy.
+Table \ref{tab:model_comparison} compares final prospective decision strategies. Following the validation-selection rule, the selected strategy is the LightGBM/XGBoost ensemble with complaint-category thresholds. On the held-out future test period, it achieves F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643, and balanced accuracy = 0.6750. The category-specific layer is retained because it exposes service-specific operating points selected only on validation; the result should be interpreted as the validation-selected category-specific strategy, not as evidence of aggregate metric dominance.
 
 \begin{table*}[t]
 \caption{Final prospective decision-layer comparison. Thresholds are selected on validation and evaluated unchanged on the future test period.}\label{tab:model_comparison}
@@ -257,12 +257,12 @@ Target definition & Pos. share & F1 & PR-AUC & ROC-AUC \\
 
 \subsection{Explanation Results}\label{subsec:explainability}
 
-Figure \ref{fig:shap_group} summarizes SHAP importance for the prospective LightGBM component. Historical temporal features dominate, accounting for 75.15\% of summed mean absolute SHAP importance across 21 features. Service category accounts for 8.16\%, calendar for 6.13\%, weather for 5.87\%, current demand for 2.74\%, and spatial identifiers for 1.23\%. OSM and PLUTO do not appear because they are not final prospective inputs.
+Figure \ref{fig:shap_group} summarizes SHAP importance for the prospective LightGBM component. Historical temporal features dominate, accounting for 75.15\% of summed mean absolute SHAP importance across 21 features. Service category accounts for 8.16\%, calendar for 6.13\%, weather for 5.87\%, current demand for 2.74\%, and spatial identifiers for 1.23\%. The remaining 0.72\% is assigned to other low-contribution predictors. OSM and PLUTO do not appear because they are not final prospective inputs.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/shap_group_importance.png}
-\caption{Normalized summed mean absolute SHAP importance for the prospective LightGBM explanation backbone. Historical temporal demand features dominate; OSM and PLUTO are absent from the final prospective explanation.}
+\includegraphics[width=0.92\linewidth]{figures/shap_group_importance.pdf}
+\caption{Share of summed mean absolute SHAP importance by feature group for the prospective LightGBM component. Historical temporal features dominate, while service category, calendar, weather, current demand, and spatial identifiers provide smaller predictive contributions.}
 \label{fig:shap_group}
 \end{figure}
 

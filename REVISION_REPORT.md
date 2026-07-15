@@ -29,7 +29,7 @@ Clean build status:
 - `paper_overleaf/main.pdf`: 12 pages, A4.
 - `paper_springer/main.pdf`: 12 pages, A4.
 - Final LaTeX logs contain no undefined citation/reference, overfull box, missing file, fatal error, or emergency stop messages.
-- PDF text layer is extractable; the Overleaf PDF text layer contains 32,921 characters.
+- PDF text layer is extractable; the Overleaf PDF text layer contains 33,176 characters.
 - PDF link audit: 83 annotations, 0 visible link color/border issues.
 
 ## Feature Protocol
@@ -49,7 +49,7 @@ LightGBM and XGBoost were retuned on a 300,000-row stratified training sample an
 
 - LightGBM: `lgbm_regularized_depth6_leaf31_lr003`, balanced positive weight 6.8726, selected threshold 0.5600.
 - XGBoost: `xgb_shallow_depth5_lr003`, square-root positive weight 2.6216, selected threshold 0.3510.
-- Final validation-selected operational strategy: ensemble LGBM(0.50)+XGB(0.50) with category-specific validation thresholds.
+- Final validation-selected decision strategy: ensemble LGBM(0.50)+XGB(0.50) with category-specific validation thresholds.
 
 ## Headline Metric Change
 
@@ -78,11 +78,28 @@ These rows are labelled retrospective/context-only in the manuscript and are not
 SHAP was regenerated using the prospective LightGBM feature set only. The audited SHAP feature list contains 73 encoded features and no OSM/PLUTO variables. Global group shares are:
 
 - Historical/temporal: 75.15%
-- Semantic category: 8.16%
+- Service category: 8.16%
 - Calendar: 6.13%
 - Weather: 5.87%
 - Current demand: 2.74%
-- Spatial context: 1.23%
+- Spatial identifiers: 1.23%
+- Other low-contribution predictors: 0.72%
+
+## Figure and Wording Polish Pass
+
+This final polish pass did not rerun model training, model scoring, threshold tuning, or SHAP value generation. It only regenerated manuscript figures from existing outputs and synchronized the manuscript text.
+
+- Removed the stronger preference-style wording from the model-comparison interpretation. The manuscript now describes the selected result as the validation-selected category-specific strategy and explicitly avoids claiming aggregate metric dominance.
+- Rebuilt Figure 1 with a clearer vector layout from `code_model/create_method_pipeline_overview.py`. The figure now uses four concise stages, a separate dashed OSM/PLUTO retrospective branch, and the explicit phrase "excluded from prospective alerts".
+- Rebuilt Figure 3 from existing SHAP group totals using `code_model/create_shap_group_importance_figure.py`. The plot now reports percentage shares and uses manuscript-facing group labels: Historical temporal, Service category, Calendar, Weather, Current demand, Spatial identifiers, and Other.
+- Updated the Figure 3 caption and explanation text to match the plotted percentage shares, including the 0.72% Other group.
+- Updated `code_model/run_shap_explainability.py` so any future group-importance regeneration uses the same percentage-axis format and display labels.
+
+Final visual QA:
+
+- Figure 1 was rendered from `paper_overleaf/figures/method_pipeline_overview.pdf` and again inside `paper_overleaf/main.pdf`; no text overlap, clipping, or OSM/PLUTO branch ambiguity remains.
+- Figure 3 was rendered inside `paper_overleaf/main.pdf`; labels, percentages, caption, and manuscript text are consistent.
+- `paper_overleaf/main.pdf` and `paper_springer/main.pdf` remain 12 pages.
 
 ## Audits
 

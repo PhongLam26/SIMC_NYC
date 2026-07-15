@@ -880,11 +880,22 @@ def save_global_bar_plot(global_imp: pd.DataFrame, output_path: Path, top_n: int
 
 def save_group_bar_plot(group_imp: pd.DataFrame, output_path: Path, overwrite: bool) -> None:
     ensure_output_path(output_path, overwrite)
+    labels = {
+        "historical_temporal": "Historical temporal",
+        "semantic_category": "Service category",
+        "calendar": "Calendar",
+        "weather": "Weather",
+        "current_demand": "Current demand",
+        "spatial_context": "Spatial identifiers",
+        "other": "Other",
+    }
     d = group_imp.sort_values("mean_abs_shap_sum", ascending=True).copy()
+    d["label"] = d["feature_group"].map(labels).fillna(d["feature_group"].str.replace("_", " ").str.title())
+    d["share_pct"] = d["mean_abs_shap_sum"] / d["mean_abs_shap_sum"].sum() * 100.0
 
     plt.figure(figsize=(9, max(5, 0.35 * len(d))))
-    plt.barh(d["feature_group"], d["mean_abs_shap_sum"])
-    plt.xlabel("Sum of mean absolute SHAP values")
+    plt.barh(d["label"], d["share_pct"])
+    plt.xlabel("Share of summed mean absolute SHAP importance (%)")
     plt.ylabel("Feature group")
     plt.title("SHAP importance by feature group")
     plt.tight_layout()
