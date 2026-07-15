@@ -233,7 +233,7 @@ def run_sensitivity(df: pd.DataFrame, features: list[str]) -> pd.DataFrame:
     configs = [
         ("4w + 1.5 sigma", "rolling_4w_mean", "rolling_4w_std", 1.5),
         ("8w + 1.0 sigma", "rolling_8w_mean", "rolling_8w_std", 1.0),
-        ("8w + 1.5 sigma (main)", "rolling_8w_mean", "rolling_8w_std", 1.5),
+        ("8w + 1.5 sigma (reference)", "rolling_8w_mean", "rolling_8w_std", 1.5),
         ("8w + 2.0 sigma", "rolling_8w_mean", "rolling_8w_std", 2.0),
         ("12w + 1.5 sigma", "rolling_12w_mean", "rolling_12w_std", 1.5),
     ]

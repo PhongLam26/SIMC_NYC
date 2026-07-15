@@ -29,6 +29,15 @@
 \renewcommand{\bibfont}{\footnotesize}
 \setlength{\bibsep}{2pt plus 0.3pt}
 \hyphenation{calendar category categories categorical component components}
+\AtBeginDocument{\hypersetup{allcolors=black, linkbordercolor=black, citebordercolor=black, urlbordercolor=black, filebordercolor=black, pdfborder={0 0 0}}}
+\makeatletter
+\renewcommand{\email}[1]{\global\advance\emailcnt by 1\relax%
+\if@corauemail%
+   \g@addto@macro\corrauthemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
+\else%
+   \g@addto@macro\authemail{\setcounter{footnote}{0}\href{mailto:#1}{\textcolor{black}{#1}};\ }%
+\fi}
+\makeatother
 
 \begin{document}
 
@@ -122,11 +131,14 @@ Feature set & 213-input no-COVID-period subset; one-hot expansion to 229 model c
 Tuning sample/seed & Stratified train sample, \(\texttt{max\_train\_rows}=300{,}000\), seed 42; selected candidates rebuilt on all 954,990 training rows \\
 LightGBM grid & Depth/leaf/lr: (8,63,0.05), (6,31,0.03), (10,127,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
 XGBoost grid & Depth/lr: (8,0.05), (6,0.03), (5,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
-Selection & Validation F1; selected LightGBM depth 6, 31 leaves, lr 0.03, sqrt weight; selected XGBoost depth 6, lr 0.03, sqrt weight \\
+Selection & Validation F1; selected LightGBM and XGBoost both use 800 estimators, lr 0.03, max depth 6, and square-root positive weight 2.6216; no early stopping is used \\
+Selected settings & LightGBM: binary objective, 31 leaves, min child samples 100, subsample/colsample 0.85, \(\lambda_2=3.0\), class weights \(\{0:1,1:2.6216\}\). XGBoost: binary:logistic objective, AUC-PR eval metric, min child weight 50, subsample/colsample 0.85, \(\lambda_2=3.0\), scale\_pos\_weight 2.6216, tree method hist. Seed 42 is used for sampling and model fitting \\
 Thresholds & Validation grid 0.01--0.99 step 0.005 plus score quantiles; category fallback to global threshold if validation positives \(<30\) \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The final settings are read from the LightGBM, XGBoost, and ensemble run summaries under \texttt{data/processed/model\_results/}; parameters not passed by the scripts, including XGBoost \(\gamma\) and \(\lambda_1\), retain library defaults.
 
 Let \(s^{L}_{n,t,c}\) be the tuned LightGBM score and \(s^{X}_{n,t,c}\) the tuned XGBoost score. The ensemble score is \(s^{E}_{n,t,c}=0.5s^{L}_{n,t,c}+0.5s^{X}_{n,t,c}\). The category-aware decision layer assigns each category \(c\) a validation-selected threshold \(\tau_c\), producing \(\hat{y}_{n,t,c}=\mathbf{1}\{s^{E}_{n,t,c}\geq\tau_c\}\). This is category-aware at the decision stage: the same probability score can map to different alert decisions because service domains differ in score distribution, prevalence, and operating cost.
 
@@ -164,6 +176,8 @@ Full context & 0.3180 & 0.3819 & 0.3066 & 0.5061 & 0.3297 & 0.7679 \\
 \end{tabular}
 \end{adjustbox}
 \end{table*}
+
+Feature-set composition is fixed by the feature-set JSON. The history-only row includes complaint category, borough, current \texttt{complaint\_count}, lag/difference/rolling/ratio demand features, and history-availability flags; complaint category and current demand are retained in every ablation. Calendar and weather are cumulative additions, OSM and PLUTO are alternative additions after weather, and full context includes both OSM and PLUTO.
 
 Table \ref{tab:model_comparison} compares final decision strategies. Following the validation-selection rule, the selected category-specific strategy is the LightGBM/XGBoost ensemble with complaint-category thresholds. On the held-out future test period, it achieves F1 = 0.3839, precision = 0.3071, recall = 0.5117, PR-AUC = 0.3365, ROC-AUC = 0.7720, and balanced accuracy = 0.6715. The global-threshold ensemble has slightly higher test F1, but it applies one alert rule across service domains; the category-specific layer is retained because it exposes service-specific operating points selected only on validation.
 
@@ -221,10 +235,10 @@ Sanitation & 0.3500 & 3,172 & 4,551 & 0.2570 & 0.3165 & 0.2685 & 0.3852 \\
 
 Figure \ref{fig:category_operating_points} makes the operating-point trade-off visible. Noise has more observed positives than public safety but fewer alerts; its higher threshold yields higher precision and slightly lower recall, while public safety issues more alerts to capture higher recall at lower precision. This is not a data contradiction, but a consequence of category thresholds and score distributions. Relative to a global ensemble threshold, the category-specific ensemble has macro-F1 0.3821 versus 0.3838, macro precision 0.3069 versus 0.2989, macro recall 0.5107 versus 0.5394, and mean alert rate 0.2124 versus 0.2305. The result should be read as the pre-specified category-specific strategy selected on validation, not as the best aggregate-F1 strategy.
 
-Target-definition sensitivity was also checked with a compact LightGBM protocol using the full context features, the same chronological split, and validation-selected thresholds (Table \ref{tab:target_sensitivity}). Event prevalence changes as expected: a 1.0-standard-deviation threshold marks more rows positive, while 2.0 standard deviations yields a rarer target. The main 8-week, 1.5-standard-deviation definition sits between these alternatives. F1 and PR-AUC move with prevalence, but ROC-AUC remains in a narrow 0.7505--0.7716 range across the tested definitions, suggesting that the ranking problem is not an artifact of a single window/multiplier choice.
+Target-definition sensitivity was also checked with a compact LightGBM protocol using the full context features, the same chronological split, and validation-selected thresholds (Table \ref{tab:target_sensitivity}). Event prevalence changes as expected: a 1.0-standard-deviation threshold marks more rows positive, while 2.0 standard deviations yields a rarer target. The reference 8-week, 1.5-standard-deviation target definition sits between these alternatives. F1 and PR-AUC move with prevalence, but ROC-AUC remains in a narrow 0.7505--0.7716 range across the tested definitions, suggesting that the ranking problem is not an artifact of a single window/multiplier choice.
 
 \begin{table}[t]
-\caption{Sensitivity to abnormal-demand definition using a compact LightGBM check. Each run keeps the chronological split and selects the hard-alert threshold on validation.}\label{tab:target_sensitivity}
+\caption{Sensitivity to abnormal-demand definition under a compact LightGBM protocol. Scores are for within-table comparison and are not directly comparable with the final full-training ensemble in Table \ref{tab:model_comparison}.}\label{tab:target_sensitivity}
 \centering
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
@@ -232,7 +246,7 @@ Target definition & Pos. share & F1 & PR-AUC & ROC-AUC \\
 \midrule
 4w + 1.5\(\sigma\) & 0.1443 & 0.4156 & 0.3659 & 0.7716 \\
 8w + 1.0\(\sigma\) & 0.1833 & 0.4411 & 0.3982 & 0.7505 \\
-8w + 1.5\(\sigma\) main & 0.1275 & 0.3753 & 0.3214 & 0.7608 \\
+8w + 1.5\(\sigma\) (reference) & 0.1275 & 0.3753 & 0.3214 & 0.7608 \\
 8w + 2.0\(\sigma\) & 0.0885 & 0.3178 & 0.2568 & 0.7706 \\
 12w + 1.5\(\sigma\) & 0.1180 & 0.3665 & 0.3155 & 0.7677 \\
 \bottomrule

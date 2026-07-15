@@ -830,12 +830,12 @@ def build_markdown_tables(
     )
     lines.append(
         "Because the abnormal-increase class is imbalanced, we interpret performance primarily using F1, precision, recall, PR-AUC, and balanced accuracy rather than raw accuracy. "
-        "The confusion matrix should be reported to make the alert trade-off transparent: higher recall improves surge detection, while higher precision reduces false alerts.\n"
+        "The confusion matrix should be reported to make the alert trade-off transparent: higher recall raises surge detection, while higher precision reduces false alerts.\n"
     )
 
     lines.append("## Suggested Discussion points\n")
     lines.append(
-        "- The improvement from ensemble and per-category thresholding is modest in absolute F1, but it is methodologically meaningful because it improves the decision layer without changing the chronological train/validation/test protocol.\n"
+        "- The gain from ensemble and per-category thresholding is modest in absolute F1, but it is methodologically meaningful because it strengthens the decision layer without changing the chronological train/validation/test protocol.\n"
         "- Per-category thresholds are aligned with the paper's semantic formulation: noise, housing, sanitation, traffic, and infrastructure complaints have different baseline dynamics and alert costs.\n"
         "- Category-level results should be discussed as evidence that urban service-demand forecasting is heterogeneous across municipal service domains.\n"
         "- Avoid claiming causality. The model identifies predictive associations between historical demand, context features, and abnormal reported demand.\n"
@@ -895,7 +895,7 @@ def build_key_takeaways_markdown(final_row: pd.Series, category_perf: pd.DataFra
     lines.append("## What not to overclaim\n")
     lines.append(
         "- Do not claim that 311 requests represent all real urban problems; they represent reported service demand.\n"
-        "- Do not claim SHAP/feature importance proves causality.\n"
+        "- Do not claim SHAP/feature importance establishes causality.\n"
         "- Do not claim per-category thresholds are universally optimal; they are validation-selected for this forecasting setup.\n"
         "- Do not use random split results as the main claim if chronological split results are available.\n"
     )

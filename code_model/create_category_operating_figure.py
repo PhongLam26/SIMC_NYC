@@ -11,6 +11,18 @@ OUTPUTS = [
     ROOT / "paper_overleaf" / "figures" / "category_operating_points.pdf",
 ]
 
+LABELS = {
+    "noise": "Noise",
+    "public_safety": "Public safety",
+    "housing": "Housing",
+    "water_sewer": "Water/sewer",
+    "other": "Other",
+    "parking_traffic": "Parking/traffic",
+    "environment": "Environment",
+    "infrastructure": "Infrastructure",
+    "sanitation": "Sanitation",
+}
+
 
 def main() -> None:
     plt.rcParams["pdf.fonttype"] = 42
@@ -19,13 +31,13 @@ def main() -> None:
 
     df = pd.read_csv(INPUT)
     df = df.sort_values("f1", ascending=True).reset_index(drop=True)
-    labels = df["complaint_category"].str.replace("_", " ", regex=False)
+    labels = df["complaint_category"].map(LABELS).fillna(df["complaint_category"].str.replace("_", " ", regex=False))
     y = range(len(df))
 
     fig, ax = plt.subplots(figsize=(7.2, 3.95))
     ax.hlines(y, df["positive_share"], df["predicted_positive_share"], color="#b8b8b8", linewidth=1.6)
-    ax.scatter(df["positive_share"], y, s=46, color="#4c78a8", label="Observed positive share", zorder=3)
-    ax.scatter(df["predicted_positive_share"], y, s=46, color="#f58518", label="Alert share", zorder=3)
+    ax.scatter(df["positive_share"], y, s=46, marker="o", color="#222222", label="Observed positive share", zorder=3)
+    ax.scatter(df["predicted_positive_share"], y, s=46, marker="D", color="#777777", label="Alert share", zorder=3)
 
     for idx, row in df.iterrows():
         ax.text(
@@ -41,6 +53,7 @@ def main() -> None:
     ax.set_xlim(0.08, 0.27)
     ax.set_xlabel("Share of category-week-neighborhood rows in the held-out test period")
     ax.set_title("Category-specific operating points on the 2024-2025 test period", pad=8)
+    ax.tick_params(axis="both", labelsize=8.5)
     ax.grid(axis="x", color="#dddddd", linewidth=0.7)
     ax.legend(loc="lower right", frameon=False, fontsize=8)
     ax.spines["top"].set_visible(False)
