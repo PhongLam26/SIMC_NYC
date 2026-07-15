@@ -434,3 +434,41 @@ Reviewer status updates:
 - P1-3 ensemble/title: OPEN. These results strengthen the case for simplifying the story, but final title/model choice still needs rolling-origin and uncertainty evidence.
 - P1-4 uncertainty: OPEN.
 - P1-6 full ablation: OPEN.
+
+## Major Methodological Rebuild - Target Definition Pass 1
+
+This pass adds a first sparse-aware target-definition evaluation for P1-2. It does not freeze the final target, because the checklist requires rolling-origin validation and uncertainty intervals before the manuscript is rewritten around a new target.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_target_selection.py`
+- Reviewer-facing report: `target_definition_selection_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/target_selection/`
+
+Target definitions evaluated with the no-shortcut LightGBM feature set:
+
+- T0 current reference: current stored abnormal-increase target.
+- T1 minimum future count: T0 and `target_next_week_count >= 2`.
+- T2 stricter minimum future count: T0 and `target_next_week_count >= 3`.
+- T3 baseline-activity eligibility: evaluates only rows with `rolling_8w_mean >= 1`, target remains T0 within eligible rows.
+
+Test-period target-composition evidence:
+
+- T0 has 31,570 positives; 5,670 positives, or 17.96 percent, have `rolling_8w_mean < 1`.
+- T1 has 28,863 positives and reduces the low-baseline-positive share to 10.27 percent.
+- T2 has 27,277 positives and reduces the low-baseline-positive share to 5.10 percent.
+- T3 has 25,900 positives after excluding 58,167 test rows; it removes low-baseline positives by design and is not directly comparable to T0/T1/T2.
+
+Validation evidence for target selection:
+
+- T0 validation PR-AUC = 0.2936, precision@5% = 0.3993, F1 = 0.3511.
+- T1 validation PR-AUC = 0.2956, precision@5% = 0.3963, F1 = 0.3504.
+- T2 validation PR-AUC = 0.3006, precision@5% = 0.4003, F1 = 0.3547.
+- T3 validation PR-AUC = 0.3079, precision@5% = 0.4204, F1 = 0.3606, but on a restricted risk set.
+
+Reviewer status updates:
+
+- P1-2 sparse/zero-heavy panel: PARTIAL. Sparse-aware T1/T2/T3 targets are now evaluated on the current train/validation/test split with volume-decile diagnostics. Final target selection remains open until rolling-origin evidence, uncertainty, and the equity/coverage implication of T3 are evaluated.
+- P1-1 target/input shortcut: still PARTIAL. This pass uses no-shortcut features but still needs rolling-origin and final-model SHAP.
+- P2-6 precision@k/capacity: PARTIAL. Precision@1% and precision@5% are now recorded for target definitions, but workload and final headline metric are not frozen.
+- T4 hurdle target: OPEN.

@@ -1,0 +1,42 @@
+{
+  "status": "done",
+  "script": "major_revision_target_selection.py",
+  "elapsed_seconds": 136.644,
+  "rows_loaded": 1325196,
+  "target_definitions": {
+    "T0_current_reference": {
+      "description": "count_t+1 > mu_8w + 1.5 sigma_8w",
+      "min_count": null,
+      "min_mu8w": null
+    },
+    "T1_min_count_2": {
+      "description": "T0 AND count_t+1 >= 2",
+      "min_count": 2,
+      "min_mu8w": null
+    },
+    "T2_min_count_3": {
+      "description": "T0 AND count_t+1 >= 3",
+      "min_count": 3,
+      "min_mu8w": null
+    },
+    "T3_mu8w_ge_1_eligible": {
+      "description": "Evaluate only rows with mu_8w >= 1, target remains T0 within eligible rows",
+      "min_count": null,
+      "min_mu8w": 1.0
+    }
+  },
+  "feature_set": "B_no_8w_formula_features",
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "target_definition_composition.csv",
+    "target_definition_decile_results.csv",
+    "target_definition_results.csv",
+    "target_definition_run_summary.json",
+    "target_definition_selection_report.md"
+  ]
+}
