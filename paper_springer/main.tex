@@ -67,8 +67,8 @@ The analysis examines whether next-week abnormal reported demand can be forecast
 
 \begin{figure}[t]
 \centering
-\input{figures/method_pipeline_overview.tex}
-\caption{Overview of the leakage-controlled temporal pipeline. The modeling target is next-week abnormal reported demand for each NTA, week, and service category; OSM and PLUTO are used as static context snapshots.}
+\includegraphics[width=\linewidth]{figures/method_pipeline_overview.pdf}
+\caption{Overview of the proposed early-warning framework. Multi-source urban signals are organized into a leakage-safe NTA-week-category panel, where information available at week \(t\) predicts abnormal reported demand at \(t+1\). Models are evaluated prospectively, and validation-only category thresholds convert ensemble scores into service-specific alerts. SHAP supports post-hoc analyst review.}
 \label{fig:pipeline_overview}
 \end{figure}
 

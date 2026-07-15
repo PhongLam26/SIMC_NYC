@@ -14,7 +14,9 @@ Revision date: 2026-07-15
 ## Build Command
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build_paper.ps1 -Clean
+python code_model\create_method_pipeline_overview.py
+powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean
+powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean
 ```
 
 ## Page, Abstract, and Reference Counts
@@ -81,6 +83,17 @@ Hyperparameter text was updated from workspace evidence in `data/processed/model
 
 ## New or Revised Tables and Figures
 
+- Rebuilt Figure 1 as a method-contribution overview instead of a generic five-step flowchart. The old figure over-weighted data-source abbreviations, used small wrapped text, stacked the temporal split as a plain pipeline stage, and did not visually emphasize the two core design choices.
+- Added script `code_model/create_method_pipeline_overview.py`.
+- Figure 1 build command: `python code_model/create_method_pipeline_overview.py`.
+- Figure 1 vector outputs: `paper_overleaf/figures/method_pipeline_overview.pdf`, `paper_overleaf/figures/method_pipeline_overview.svg`, `paper_springer/figures/method_pipeline_overview.pdf`, and `paper_springer/figures/method_pipeline_overview.svg`.
+- Figure 1 temporary QA previews: `tmp/figure1_workflow/method_pipeline_overview_preview.png` and `tmp/figure1_workflow/method_pipeline_overview_grayscale_preview.png`.
+- Figure 1 size: 437.76 x 128.16 pt as a one-page vector PDF, included at `\linewidth`.
+- Figure 1 typography: DejaVu Sans, with 10.0 pt box titles, 8.6 pt body text, and 6.7 pt compact labels before LaTeX placement.
+- Figure 1 colors: muted blue, orange, green, and gray-violet with pale fills, thin borders, dark gray arrows, and no gradient or 3D effects.
+- Figure 1 contribution emphasis: the leakage-safe panel and category-calibrated alert boxes use slightly stronger borders and `Key design 1` / `Key design 2` badges.
+- Figure 1 caption changed from `Overview of the leakage-controlled temporal pipeline. The modeling target is next-week abnormal reported demand for each NTA, week, and service category; OSM and PLUTO are used as static context snapshots.` to `Overview of the proposed early-warning framework. Multi-source urban signals are organized into a leakage-safe NTA-week-category panel, where information available at week t predicts abnormal reported demand at t+1. Models are evaluated prospectively, and validation-only category thresholds convert ensemble scores into service-specific alerts. SHAP supports post-hoc analyst review.`
+- Figure 1 visual QA: rendered page 2 at 150 DPI in color and grayscale and at 95 DPI for reduced-size inspection; box titles, secondary text, arrows, horizontal train/validation/test timeline, `t -> t+1` target logic, and validation-only category-threshold wording remain readable.
 - Added Table 3: feature-group ablation.
 - Revised Table 5: category performance now includes validation-selected threshold.
 - Added Table 6: target-definition sensitivity.
