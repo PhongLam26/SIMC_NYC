@@ -158,6 +158,17 @@ This pass only changed table float placement and section-boundary barriers. It d
 - Hyperlink audit confirms 83 clickable annotations and 0 visible colored link/border issues; existing black hyperlink configuration was not changed.
 - Headline metrics remain present and unchanged in the final PDF: F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, and ROC-AUC = 0.7643.
 
+## Horizontal Alignment Pass
+
+This pass corrected the manuscript-wide left/right drift caused by the Springer class loading two-sided article geometry with a 6 mm binding offset. It did not change font size, metrics, tables, figures, references, or hyperlink configuration.
+
+- Files edited: `paper_overleaf/main.tex` and `paper_springer/main.tex`.
+- Added `\geometry{bindingoffset=0mm,hcentering}` after the class-loaded geometry package is available, so review PDFs use the same centered text block on odd and even pages.
+- Before this pass, extracted PDF block positions alternated between approximately `x=100.071 pt` on odd pages and `x=124.595 pt` on even pages.
+- After this pass, pages 2-12 align at approximately `x=112.333 pt` on the left and `x=482.95 pt` on the right; page 1 remains title-layout-specific.
+- Visual QA rendered pages 7-8, including Figure 2, Table 6, and Section 4.3; the text block, captions, and tables now share the same horizontal axis across page boundaries.
+- Final page count remains 12 pages for both PDFs. Compile-log and hyperlink audits remain clean.
+
 ## Audits
 
 - `prospective_leakage_audit.md`: PASS, 10/10 checks.
