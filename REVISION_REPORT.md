@@ -29,7 +29,7 @@ Clean build status:
 - `paper_overleaf/main.pdf`: 12 pages, A4.
 - `paper_springer/main.pdf`: 12 pages, A4.
 - Final LaTeX logs contain no undefined citation/reference, overfull box, missing file, fatal error, or emergency stop messages.
-- PDF text layer is extractable; the Overleaf PDF text layer contains 33,176 characters.
+- PDF text layer is extractable; the Overleaf PDF text layer contains 33,183 characters.
 - PDF link audit: 83 annotations, 0 visible link color/border issues.
 
 ## Feature Protocol
@@ -100,6 +100,30 @@ Final visual QA:
 - Figure 1 was rendered from `paper_overleaf/figures/method_pipeline_overview.pdf` and again inside `paper_overleaf/main.pdf`; no text overlap, clipping, or OSM/PLUTO branch ambiguity remains.
 - Figure 3 was rendered inside `paper_overleaf/main.pdf`; labels, percentages, caption, and manuscript text are consistent.
 - `paper_overleaf/main.pdf` and `paper_springer/main.pdf` remain 12 pages.
+
+## Figure 1 Placement and Typography Pass
+
+This pass only changed Figure 1 placement and Figure 1 typography. It did not rerun model training, scoring, thresholding, SHAP computation, table generation, metric generation, or reference generation.
+
+- Previous placement: Figure 1 floated to the top of page 3 after the Related Work heading had already begun.
+- Revised placement: Figure 1 is forced before `\section{Related Work}` by keeping `placeins` loaded and adding `\FloatBarrier` immediately before the Related Work section.
+- Final float control: `\begin{figure}[!ht] ... \end{figure}` followed by `\FloatBarrier`. A bottom-float trial was rejected because it increased the PDF to 13 pages.
+- Figure 1 remains part of the Introduction: the Introduction text ends with the Figure 1 reference, then Figure 1 and its caption appear, and only then Section 2 begins.
+- Caption remains immediately below Figure 1 and retains the existing math notation `\(t\)` and `\(t+1\)`.
+- Source script updated: `code_model/create_method_pipeline_overview.py`.
+- Regenerated vector outputs: `paper_overleaf/figures/method_pipeline_overview.pdf`, `paper_overleaf/figures/method_pipeline_overview.svg`, `paper_springer/figures/method_pipeline_overview.pdf`, and `paper_springer/figures/method_pipeline_overview.svg`.
+- Standardized Figure 1 labels:
+  - `NTA x week x category` -> `NTA × Week × Category`
+  - `history t -> event t+1` -> `History at t → Event at t+1`
+  - `2015-22 train` -> `2015–22 Train`
+  - `2023 val.` -> `2023 Val.`
+  - `2024-25 test` -> `2024–25 Test`
+  - `t -> t+1 design` -> `t → t+1 design`
+  - alert box labels now use arrow notation and consistent capitalization.
+- Visual QA confirms the multiplication sign, arrows, and en dashes render correctly in the vector figure; labels do not touch borders; the retrospective branch remains readable and visually secondary.
+- Final page count remains 12 pages for both PDFs.
+- Final compile logs contain only benign underfull-box warnings in body/reference text; no undefined citations/references, duplicate labels, missing figures, hyperref option clash, fatal errors, or major overfull boxes were found.
+- Hyperlink audit confirms 83 clickable annotations and 0 visible colored link/border issues; existing black hyperlink configuration was not changed.
 
 ## Audits
 

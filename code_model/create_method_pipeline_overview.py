@@ -35,7 +35,7 @@ def card(ax, xy, wh, edge, title, lines, badge=None, face="#fbfbfb"):
     for i, line in enumerate(lines):
         ax.text(x + w / 2, top - 0.18 * i, line, ha="center", va="top", fontsize=7.0, color="#1f1f1f")
     if badge:
-        bx, by, bw, bh = x + 0.20, y + 0.12, w - 0.40, 0.23
+        bx, by, bw, bh = x + 0.20, y + 0.04, w - 0.40, 0.21
         ax.add_patch(
             FancyBboxPatch(
                 (bx, by),
@@ -106,8 +106,8 @@ def main() -> None:
         (w, h),
         colors["orange"],
         "Leakage-controlled\npanel",
-        ["NTA x week x category", "history t -> event t+1"],
-        badge="t -> t+1 design",
+        ["NTA × Week × Category", "History at t → Event at t+1"],
+        badge="t → t+1 design",
     )
     card(
         ax,
@@ -115,7 +115,7 @@ def main() -> None:
         (w, h),
         colors["green"],
         "Prospective\nevaluation",
-        ["LightGBM + XGBoost", "2015-22 train | 2023 val.", "2024-25 test"],
+        ["LightGBM + XGBoost", "2015–22 Train | 2023 Val.", "2024–25 Test"],
     )
     card(
         ax,
@@ -123,7 +123,7 @@ def main() -> None:
         (w, h),
         colors["purple"],
         "Category-calibrated\nalerts",
-        ["ensemble score", "service threshold", "risk alert + SHAP review"],
+        ["Ensemble score →", "service threshold →", "risk alert", "SHAP review"],
         badge="validation only",
     )
 
