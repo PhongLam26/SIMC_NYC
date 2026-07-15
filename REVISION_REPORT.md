@@ -169,6 +169,44 @@ This pass corrected the manuscript-wide left/right drift caused by the Springer 
 - Visual QA rendered pages 7-8, including Figure 2, Table 6, and Section 4.3; the text block, captions, and tables now share the same horizontal axis across page boundaries.
 - Final page count remains 12 pages for both PDFs. Compile-log and hyperlink audits remain clean.
 
+## Final Repository and Reproducibility Synchronization Pass
+
+This pass synchronized the public GitHub repository and reviewer-facing documentation with the final manuscript. It did not rerun LightGBM training, XGBoost training, ensemble scoring, threshold tuning, ablation, sensitivity experiments, or SHAP computation.
+
+- README title before: `Semantics-Aware Explainable Machine Learning for Urban Service Demand Forecasting in Smart Cities`.
+- README title after: `Category-Aware Explainable Machine Learning for Urban Service Demand Forecasting in Smart Cities`.
+- README pipeline description before: final pipeline was described as combining 311, NOAA, OSM, and PLUTO context.
+- README pipeline description after: the final prospective alerting pipeline uses shifted 311 demand history, current complaint count, calendar timing, feature-week weather, service category, and borough identifiers.
+- Final prospective inputs remain 61; encoded model columns remain 73.
+- Hyperparameter tuning sample remains 300,000 stratified training rows.
+- Final selected LightGBM/XGBoost configurations remain rebuilt on all 954,990 training rows before validation-only threshold selection.
+- OSM/PLUTO 2026 snapshots are documented as retrospective context only: not final LightGBM inputs, not final XGBoost inputs, not ensemble-score inputs, not category-threshold inputs, not SHAP inputs, and not headline-metric inputs.
+- Reproduction commands in `README.md` now use the prospective feature set, `analysis_type=prospective`, `configs/features_prospective.json`, and current `data/processed/model_results/prospective/` output paths.
+- Key artifact paths in `README.md` were updated to current prospective artifacts and checked for existence.
+- Retrospective context commands and artifacts are separated under "Optional retrospective context checks" and labelled as not used in final alerts.
+- LightGBM subsampling was verified from code and summaries: scripts pass `subsample=0.85`, but do not pass `subsample_freq` or `bagging_freq`; the library default `subsample_freq=0` means row bagging is inactive. No `subsample_freq=1` was added.
+- XGBoost subsampling remains unchanged: selected XGBoost uses `subsample=0.9`, `colsample_bytree=0.9`, `reg_lambda=5.0`, `tree_method=hist`, `eval_metric=aucpr`, and square-root positive weight 2.6216.
+- `paper_springer/reference_verification_report.md` was updated from the obsolete 30-entry source-note wording to the current 32-entry cited bibliography.
+- `reference_audit.md` and both `references.bib` files were synchronized.
+- Reference [10] was updated to the verified ACM EC '24 proceedings version with DOI `10.1145/3670865.3673624`.
+- LightGBM now uses official NeurIPS metadata, pages 3146-3154; the checklist-suggested 3149-3157 page range was not used because it does not match the official metadata.
+- SHAP now uses official NeurIPS metadata, pages 4765-4774.
+- Dataset and web references use official portals/project documentation with compact `Accessed 25 June 2026` notes.
+- Reviewer file guidance was updated in `REVIEWER_FILES.md` to point reviewers toward the prospective artifacts and away from superseded local planning notes.
+- Generated prospective paper-table Markdown was softened from "best validation-ranked" wording to "validation-selected category-aware decision strategy".
+
+Build and QA for this pass:
+
+- Build commands:
+  - `powershell -ExecutionPolicy Bypass -File .\paper_overleaf\build_paper.ps1 -Clean`
+  - `powershell -ExecutionPolicy Bypass -File .\paper_springer\build_paper.ps1 -Clean`
+- Final page count: 12 pages for both `paper_overleaf/main.pdf` and `paper_springer/main.pdf`.
+- Compile-log audit: no undefined citations, undefined references, duplicate labels, missing figures/tables, overfull boxes, fatal errors, emergency stops, or major layout errors. Remaining warnings are benign underfull boxes and normal `rerunfilecheck` package messages.
+- Reference audit: 32 BibTeX entries, 32 unique citation keys, 32 `.bbl` items, 0 missing citation keys, 0 unused bibliography entries, 0 duplicate DOI entries, and 0 duplicate title entries.
+- Hyperlink audit: 82 clickable PDF annotations in each PDF, 0 visible colored link or border issues; existing black hyperlink configuration was not changed.
+- Visual QA: rendered all 12 Overleaf PDF pages to PNG and inspected a contact sheet plus page 5 and page 12 at higher resolution. Table 2 remains readable, the LightGBM subsample wording is clear, the bibliography stays within page 12, and the centered page geometry remains consistent.
+- Headline metrics were not changed: F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310, ROC-AUC = 0.7643, balanced accuracy = 0.6750, alert rate = 0.2349, TP = 17,059, FP = 41,106, FN = 14,511, TN = 174,914, positives = 31,570, alerts = 58,165.
+
 ## Audits
 
 - `prospective_leakage_audit.md`: PASS, 10/10 checks.

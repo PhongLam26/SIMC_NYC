@@ -2,9 +2,9 @@
 
 ## Most important claims to use
 
-1. **Final model:** Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding is the selected final method because it ranks first by validation F1.
+1. **Final strategy:** Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding is the validation-selected category-aware operating strategy.
 2. **Future-test performance:** test F1 = 0.3802, precision = 0.2933, recall = 0.5404, PR-AUC = 0.3310.
-3. **Semantics-aware decision layer:** category-specific thresholds improve the validation-ranked decision strategy and fit the paper's semantic service-demand framing.
+3. **Category-aware decision layer:** category-specific thresholds fit the paper's service-domain framing and are selected only on validation.
 4. **Modeling protocol:** all thresholds are selected on the validation period and evaluated on the held-out future test period.
 5. **Imbalance-aware metrics:** report F1 and PR-AUC prominently; raw accuracy should be secondary.
 

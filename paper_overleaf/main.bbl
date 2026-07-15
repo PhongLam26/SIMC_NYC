@@ -191,14 +191,19 @@ Seasonality Patterns in 311-Reported Foodborne Illness Cases and Machine
 
 %%% 10
 \bibitem[\protect\citeauthoryear{Liu and Garg}{2024}]{LiuGarg2024SLA}
-\begin{botherref}
-\oauthor{\bsnm{Liu}, \binits{Z.}},
-\oauthor{\bsnm{Garg}, \binits{N.}}:
-Redesigning Service Level Agreements: Equity and Efficiency in City Government
-  Operations
-(2024).
-\url{https://arxiv.org/abs/2410.14825}
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Liu}, \binits{Z.}},
+\bauthor{\bsnm{Garg}, \binits{N.}}:
+\bctitle{Redesigning service level agreements: Equity and efficiency in city
+  government operations}.
+In: \bbtitle{Proceedings of the 25th ACM Conference on Economics and
+  Computation},
+pp. \bfpage{309}--\blpage{309}.
+\bpublisher{ACM},
+\blocation{New York, NY, USA}
+(\byear{2024}).
+\doiurl{10.1145/3670865.3673624}
+\end{bchapter}
 \endbibitem
 
 %%% 11
@@ -397,7 +402,8 @@ pp. \bfpage{785}--\blpage{794}.
 \bauthor{\bsnm{Liu}, \binits{T.-Y.}}:
 \bctitle{{LightGBM}: A highly efficient gradient boosting decision tree}.
 In: \bbtitle{Advances in Neural Information Processing Systems},
-vol. \bseriesno{30}
+vol. \bseriesno{30},
+pp. \bfpage{3146}--\blpage{3154}
 (\byear{2017}).
 \burl{https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree}
 \end{bchapter}
@@ -410,9 +416,10 @@ vol. \bseriesno{30}
 \bauthor{\bsnm{Lee}, \binits{S.-I.}}:
 \bctitle{A unified approach to interpreting model predictions}.
 In: \bbtitle{Advances in Neural Information Processing Systems},
-vol. \bseriesno{30}
+vol. \bseriesno{30},
+pp. \bfpage{4765}--\blpage{4774}
 (\byear{2017}).
-\burl{https://arxiv.org/abs/1705.07874}
+\burl{https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions}
 \end{bchapter}
 \endbibitem
 
@@ -459,7 +466,8 @@ vol. \bseriesno{30}
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
 311 Service Requests from 2010 to 2019.
-NYC Open Data
+NYC Open Data.
+Accessed 25 June 2026
 (2026).
 \url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-2019/76ig-c548}
 \end{botherref}
@@ -470,7 +478,8 @@ NYC Open Data
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
 311 Service Requests from 2020 to Present.
-NYC Open Data
+NYC Open Data.
+Accessed 25 June 2026
 (2026).
 \url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9}
 \end{botherref}
@@ -482,7 +491,8 @@ NYC Open Data
 \begin{botherref}
 \oauthor{\bsnm{{New York City Department of City Planning}}}:
 2020 Neighborhood Tabulation Areas (NTAs).
-NYC Open Data
+NYC Open Data.
+Accessed 25 June 2026
 (2026).
 \url{https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-/9nt8-h7nd}
 \end{botherref}
@@ -511,7 +521,9 @@ NYC Open Data
   Contributors}}{2026}]{OverpassAPI}
 \begin{botherref}
 \oauthor{\bsnm{{OpenStreetMap Wiki Contributors}}}:
-Overpass API
+Overpass API.
+OpenStreetMap Wiki.
+Accessed 25 June 2026
 (2026).
 \url{https://wiki.openstreetmap.org/wiki/Overpass_API}
 \end{botherref}
@@ -523,7 +535,8 @@ Overpass API
 \begin{botherref}
 \oauthor{\bsnm{{New York City Department of City Planning}}}:
 Primary Land Use Tax Lot Output (PLUTO).
-NYC Open Data
+NYC Open Data.
+Accessed 25 June 2026
 (2026).
 \url{https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks}
 \end{botherref}

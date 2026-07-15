@@ -1,47 +1,33 @@
 # Reference Verification Report
 
-Source: `SIMC_NYC_30_references_verified_corrected.docx`
+Report date: 2026-07-15
 
-Generated for the Springer LaTeX manuscript draft. The source document contains 30 BibTeX entries. All 30 entries were converted into `references.bib`; the manuscript cites a selected subset so the 10--12 page paper remains focused.
+Scope: current `paper_springer/references.bib`, mirrored in `paper_overleaf/references.bib`, and citations in both manuscript sources.
 
 ## Verification Summary
 
-- DOI and arXiv identifiers were checked for resolvability.
-- Entries with publisher blocks such as ACM or MDPI may return HTTP 403 to command-line checks while still resolving to a real publisher page.
-- Preprints are treated as supporting related-work citations, not as the strongest evidence for core methodological claims.
+- Bibliography entries: 32.
+- Manuscript citation keys resolved: 32/32.
+- Entries cited at least once: 32/32.
+- Undefined citations: none found after clean build.
+- Unused bibliography entries in the manuscript set: none found.
+- Fabricated references: none detected.
+- Duplicate DOI/title checks: no conflicting duplicate DOI or duplicate title found.
+- Numeric ordering: handled by the Springer numeric bibliography style.
 
-## Selected Core References for Main Manuscript
+## Metadata Updates
 
-| Key | Role in manuscript | Verification status |
-|---|---|---|
-| Zheng2014UrbanComputing | Urban-computing framing | DOI resolves |
-| Wang2017Structure311 | 311 service-request structure | DOI resolves |
-| KontokostaHong2021Bias | 311 reporting bias and governance caution | DOI resolves |
-| Wu2020CitizenGeneratedData | Citizen-generated 311 behavior | DOI resolves |
-| Agonafir2022Flooding311 | 311 and weather/urban hazard context | DOI resolves |
-| Psyllidis2022POI | POI data framing | DOI resolves |
-| ZhangPfoser2019OSMPOI | OSM POI and urban change | DOI resolves |
-| HaklayWeber2008OSM | OpenStreetMap source context | DOI resolves |
-| Chen2021EULUC | Open big data for urban land use | DOI resolves |
-| Du2024UFZReview | Urban functional-zone review | DOI resolves |
-| Breiman2001RandomForests | Tree ensemble background | DOI resolves |
-| Friedman2001GBM | Gradient boosting background | DOI resolves |
-| ChenGuestrin2016XGBoost | XGBoost method | DOI resolves to ACM page |
-| Ke2017LightGBM | LightGBM method | NeurIPS URL resolves |
-| SaitoRehmsmeier2015PR | PR-AUC for imbalance | DOI resolves |
-| Chandola2009AnomalySurvey | Anomaly-detection framing | DOI resolves to ACM page |
-| LundbergLee2017SHAP | SHAP method | arXiv resolves |
-| Lundberg2020TreeSHAP | TreeSHAP method | DOI resolves |
-| Arrieta2020XAI | XAI framing | DOI resolves |
-| Rudin2019InterpretableML | Responsible caution on black-box explanations | DOI resolves |
+- `LiuGarg2024SLA` was updated from arXiv-only metadata to the official ACM EC '24 conference version with DOI `10.1145/3670865.3673624`.
+- `Ke2017LightGBM` keeps the NeurIPS 2017 proceedings source and now uses official NeurIPS metadata, pages 3146-3154.
+- `LundbergLee2017SHAP` keeps the NeurIPS 2017 proceedings source and now uses official NeurIPS metadata, pages 4765-4774.
+- Dataset and web references use official NYC Open Data, NOAA, OpenStreetMap, or project documentation sources. The 2026 year is treated as the access/snapshot date and is paired with compact access notes where appropriate.
+- Both NYC 311 archive references are present: the 2010-2019 historical archive and the 2020-present current archive.
+- The traffic-flow reference uses the Information Sciences journal version.
 
-## Supporting References Kept in BibTeX
+## Preprint Handling
 
-These entries are kept in `references.bib` for optional use or revision but should be cited sparingly in the main paper:
+Preprints retained in the bibliography are labelled as arXiv entries and are used only for related-work or data-curation context. They are not presented as official journal or conference publications unless official metadata was verified.
 
-- `Kontokosta2017Equity311`: arXiv preprint; useful for 311 reporting equity.
-- `TusseyYan2025OpenDataCuration311`: arXiv preprint; useful for NYC 311 open-data curation if a recent data note is needed.
-- `LiuGarg2024SLA`: arXiv preprint; useful for service-level agreement context.
-- `KianmehrPamukcu2022Heat311`: proceedings URL may be intermittently unavailable; cite only if needed.
-- `Shaveet2024Foodborne311Yelp`: arXiv preprint; specific 311/Yelp foodborne illness context.
-- `Luo2023UFZPOI`, `ZhouCao2022CoarseToFineLandUse`, `Wang2023POIMetaBlock`, `Jin2024STGNNSurvey`, `VargasMunoz2021OSMML`: valid broader urban/geospatial/ML context, optional under page constraints.
+## Reviewer Notes
+
+The bibliography intentionally cites official data portals for the public datasets and keeps OSM/PLUTO references tied to the retrospective context discussion. OSM/PLUTO snapshots are not used by the final prospective alerting model, ensemble score, category thresholds, headline metrics, or SHAP feature set.

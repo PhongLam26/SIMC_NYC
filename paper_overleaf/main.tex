@@ -138,13 +138,13 @@ Tuning sample/seed & Stratified train sample, \(\texttt{max\_train\_rows}=300{,}
 LightGBM grid & Depth/leaf/lr: (8,63,0.05), (6,31,0.03), (10,127,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
 XGBoost grid & Depth/lr: (8,0.05), (6,0.03), (5,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
 Selection & Validation F1; selected LightGBM uses 800 estimators, lr 0.03, max depth 6, 31 leaves, and balanced positive weight 6.8726; selected XGBoost uses 900 estimators, lr 0.03, max depth 5, and square-root positive weight 2.6216 \\
-Selected settings & LightGBM: binary objective, min\_child\_samples = 100, subsample = 0.85, colsample\_bytree = 0.85, reg\_lambda = 3.0. XGBoost: binary:logistic objective, eval\_metric = aucpr, min\_child\_weight = 80, subsample = 0.9, colsample\_bytree = 0.9, reg\_lambda = 5.0, tree\_method = hist. Seed 42 is used for sampling and model fitting \\
+Selected settings & LightGBM: binary objective, min\_child\_samples = 100, colsample\_bytree = 0.85, reg\_lambda = 3.0; row subsampling is inactive because \texttt{subsample\_freq}=0. XGBoost: binary:logistic objective, eval\_metric = aucpr, min\_child\_weight = 80, subsample = 0.9, colsample\_bytree = 0.9, reg\_lambda = 5.0, tree\_method = hist. Seed 42 is used for sampling and model fitting \\
 Thresholds & Validation grid 0.01--0.99 step 0.005 plus score quantiles; category fallback to global threshold if validation positives \(<30\) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The final settings are read from the LightGBM, XGBoost, and ensemble run summaries under \texttt{data/processed/model\_results/}. Parameters not explicitly passed by the scripts, including XGBoost \texttt{gamma} and \texttt{reg\_alpha}, retain their library defaults.
+The final settings are read from the LightGBM, XGBoost, and ensemble run summaries under \texttt{data/processed/model\_results/}. The scripts pass LightGBM \texttt{subsample}=0.85, but do not pass \texttt{subsample\_freq} or \texttt{bagging\_freq}; the library default \texttt{subsample\_freq}=0 therefore disables row bagging. Parameters not explicitly passed by the scripts, including XGBoost \texttt{gamma} and \texttt{reg\_alpha}, retain their library defaults.
 
 Let \(s^{L}_{n,t,c}\) be the tuned LightGBM score and \(s^{X}_{n,t,c}\) the tuned XGBoost score. The ensemble score is \(s^{E}_{n,t,c}=0.5s^{L}_{n,t,c}+0.5s^{X}_{n,t,c}\). The category-aware decision layer assigns each category \(c\) a validation-selected threshold \(\tau_c\), producing \(\hat{y}_{n,t,c}=\mathbf{1}\{s^{E}_{n,t,c}\geq\tau_c\}\). This is category-aware at the decision stage: the same probability score can map to different alert decisions because service domains differ in score distribution, prevalence, and operating cost.
 
@@ -308,7 +308,7 @@ An explainable forecasting framework was developed for next-week abnormal report
 
 \begingroup
 \setlength{\parskip}{1pt}
-\noindent\textbf{Data and code availability.} Source data are NYC Open Data 311 historical archive \texttt{76ig-c548}, NYC Open Data 311 current archive \texttt{erm2-nwe9}, NOAA GHCN-Daily station \texttt{GHCND:USW00094728}, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO \texttt{64uk-42ks}, and 2020 NTA boundaries \texttt{9nt8-h7nd}; the local snapshot was extracted on 2026-06-25. Scripts, mappings, configurations, and evaluation code are available at \href{https://github.com/PhongLam26/SIMC_NYC}{\texttt{https://github.com/PhongLam26/SIMC\_NYC}}; processed data release is subject to licensing, redistribution, and storage constraints.\par
+\noindent\textbf{Data and code availability.} Source data are NYC Open Data 311 historical archive \texttt{76ig-c548}, NYC Open Data 311 current archive \texttt{erm2-nwe9}, NOAA GHCN-Daily station \texttt{GHCND:USW00094728}, OpenStreetMap Overpass, NYC PLUTO/MapPLUTO \texttt{64uk-42ks}, and 2020 NTA boundaries \texttt{9nt8-h7nd}; the local snapshot was extracted on 2026-06-25. Scripts, mappings, configurations, and evaluation code are available at \href{https://github.com/PhongLam26/SIMC_NYC}{\texttt{https://github.com/PhongLam26/SIMC\_NYC}}. The repository separates prospective model artifacts from retrospective OSM/PLUTO context checks; processed data release is subject to licensing, redistribution, and storage constraints.\par
 \noindent\textbf{Competing interests.} The authors declare no competing interests.\par
 \noindent\textbf{Funding.} No specific funding was received.\par
 \noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le served as academic advisor and supervised the study design, methodology, and manuscript editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed validation and review.

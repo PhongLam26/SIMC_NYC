@@ -6,7 +6,7 @@ These tables are intended for drafting the Results and Experiments sections. Do 
 
 ## Selected final model
 
-The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with **per_category** thresholding. It achieved validation F1 = **0.3764**, validation PR-AUC = **0.3183**, future-test F1 = **0.3802**, test precision = **0.2933**, test recall = **0.5404**, and test PR-AUC = **0.3310**.
+The validation-selected category-aware decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with **per_category** thresholding. It achieved validation F1 = **0.3764**, validation PR-AUC = **0.3183**, future-test F1 = **0.3802**, test precision = **0.2933**, test recall = **0.5404**, and test PR-AUC = **0.3310**.
 
 ### Table 1. Final model/decision-layer comparison
 
@@ -131,7 +131,7 @@ The selected final decision strategy is **Ensemble LGBM(0.50) + XGB(0.50)** with
 
 After hyperparameter tuning, the best LightGBM and XGBoost models obtained similar validation and future-test performance, indicating that gradient-boosted tree models provide stable improvements for next-week abnormal service-demand forecasting. We therefore evaluated an ensemble decision layer that averages the LightGBM and XGBoost probability scores and compared both global and complaint-category-specific thresholds selected exclusively on the validation period.
 
-The best validation-ranked decision strategy was Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding. On the held-out 2024–2025 test period, this strategy achieved F1 = 0.3802, precision = 0.2933, recall = 0.5404, and PR-AUC = 0.3310. The category-specific thresholding result supports the semantics-aware framing of the task: different municipal service categories exhibit different score distributions and benefit from category-aware conversion of risk scores into operational alerts.
+The validation-selected category-aware decision strategy was Ensemble LGBM(0.50) + XGB(0.50) with per_category thresholding. On the held-out 2024–2025 test period, this strategy achieved F1 = 0.3802, precision = 0.2933, recall = 0.5404, and PR-AUC = 0.3310. The category-specific thresholding result supports the service-domain framing of the task: different municipal service categories exhibit different score distributions and use category-aware conversion of risk scores into operational alerts.
 
 Because the abnormal-increase class is imbalanced, we interpret performance primarily using F1, precision, recall, PR-AUC, and balanced accuracy rather than raw accuracy. The confusion matrix should be reported to make the alert trade-off transparent: higher recall raises surge detection, while higher precision reduces false alerts.
 
