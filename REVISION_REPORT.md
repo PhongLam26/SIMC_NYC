@@ -399,3 +399,38 @@ Reviewer checklist status at this checkpoint:
 - Final manuscript rewrite and new submission PDF: NOT STARTED in this checkpoint.
 
 Guardrail: do not mark the major methodological revision PASS until the requested experiment set is actually run and the manuscript is rewritten from the revised evidence.
+
+## Major Methodological Rebuild - Model Audit Pass 1
+
+This pass adds actual model evidence for the highest-priority reviewer issues P1-1 and P1-5. It does not complete the full major revision.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_model_audits.py`
+- Target-shortcut report: `target_shortcut_audit.md`
+- Count baseline report: `count_model_baseline_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/model_audits/`
+
+Target-shortcut evidence:
+
+- Current LightGBM prospective test metrics: F1 = 0.3800, PR-AUC = 0.3301, precision = 0.2986, recall = 0.5222, precision@5% = 0.4451.
+- Removing `rolling_8w_mean`, `rolling_8w_std`, `rolling_8w_sum`, and `ratio_to_8w_mean` gives test F1 = 0.3591, PR-AUC = 0.3097, precision = 0.2717, recall = 0.5293, precision@5% = 0.4220.
+- The no-shortcut delta is F1 -0.0209 and PR-AUC -0.0204 relative to the current feature set.
+- Current gain importance confirms formula-aligned predictors are prominent: `rolling_8w_std` rank 1 and `ratio_to_8w_mean` rank 5.
+- No-shortcut SHAP shifts toward `ratio_to_12w_mean`, `rolling_4w_std`, `rolling_12w_std`, `lag_8w_count`, and `lag_12w_count`.
+
+Count-model baseline evidence:
+
+- Stable PoissonRegressor baselines were run with log-transformed count/history predictors, `alpha = 10.0`, and `max_iter = 500`.
+- The no-NTA Poisson model converged in 106 iterations; the NTA fixed-effect Poisson model converged in 445 iterations.
+- Poisson no-NTA test PR-AUC = 0.1400, formula-threshold F1 = 0.1460, count MAE = 8.6680.
+- Poisson + NTA fixed effects test PR-AUC = 0.1400, formula-threshold F1 = 0.1492, count MAE = 8.6839.
+- Adding NTA fixed effects slightly improves Poisson deviance but does not materially improve event ranking in this first baseline.
+
+Reviewer status updates:
+
+- P1-1 target/input shortcut: PARTIAL. Evidence now shows material performance loss and SHAP/importance shift after removing formula-aligned 8-week predictors. Still requires rolling-origin validation and final-model SHAP.
+- P1-5 count/spatial baseline: PARTIAL. Full-data Poisson and NTA fixed-effect Poisson baselines are complete. Negative Binomial or hurdle/overdispersed count baseline remains open.
+- P1-3 ensemble/title: OPEN. These results strengthen the case for simplifying the story, but final title/model choice still needs rolling-origin and uncertainty evidence.
+- P1-4 uncertainty: OPEN.
+- P1-6 full ablation: OPEN.
