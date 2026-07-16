@@ -994,3 +994,38 @@ Build and QA:
 - Main PDF: 13 pages.
 - Final log search found no undefined citations, no undefined references, no LaTeX errors, no fatal errors, and no overfull boxes.
 - Bibliography audit confirms no stale `Kontokosta2017`, `Tussey`, `Shaveet`, `Powers`, `OpenStreetMap`, `PLUTO`, `2026a`, or `2026b` entries in `main.bbl`; NYC data sources now render as `n.d.` with the access date.
+
+## Major Methodological Rebuild - Numerical and Leakage Audit Pass 1
+
+This pass creates explicit major-revision audit reports from the already generated experiment artifacts. No model was retrained; the new script reconstructs and cross-checks metrics, feature manifests, and run summaries.
+
+Files added:
+
+- `scripts/major_revision_final_audits.py`
+- `major_revision_numerical_consistency_report.md`
+- `major_revision_leakage_audit.md`
+
+Numerical audit highlights:
+
+- Reconstructed precision, recall, and F1 from target-selection confusion matrices with zero reconstruction error.
+- Reported selected T2 sparse-panel composition: 5.1% of T2 test positives have `rolling_8w_mean < 1`, and 95.9% have next-week count at least 4.
+- Added historical-volume decile performance, count-baseline metrics, rolling-origin yearly metrics, calibration summaries, seed stability, bootstrap CIs, paired calibration differences, severity/workload metrics, weather check, and SHAP group-share checks in one report.
+- Confirmed SHAP group shares sum to 100.00% across 69 encoded features and TP/FP/FN local cases are available.
+
+Leakage audit highlights:
+
+- Split assignment is by `target_week = week_start + 7 days`.
+- The current final-style candidate `07_final_no_shortcut_borough` excludes target columns, OSM/PLUTO/POI context features, weather date-key duplicates, and formula-aligned 8-week shortcut features.
+- SHAP explains the T2 single LightGBM candidate with the same removed formula-aligned feature set.
+- The audit explicitly preserves caveats: archived OSM/PLUTO columns still exist in the dense dataset for retrospective artifacts, observed citywide weather is not an operational forecast, historical data vintages are unavailable, and socioeconomic fairness is deferred.
+
+Build and QA:
+
+- Command: `python scripts/major_revision_final_audits.py`.
+- `major_revision_numerical_consistency_report.md`: PASS for arithmetic consistency of available artifacts.
+- `major_revision_leakage_audit.md`: PASS for the current major-revision final-style candidate.
+
+Reviewer status updates:
+
+- Numerical consistency audit: PARTIAL/PASS for available major-revision artifacts. It now covers confusion metrics, target composition, deciles, count baselines, rolling-origin, calibration, bootstrap, seed stability, workload, severity, and SHAP totals.
+- Leakage audit: PARTIAL/PASS for the current final-style candidate and manuscript direction. It does not claim to erase the archived dense-dataset OSM/PLUTO columns; it verifies they are not used in the final-style candidate.
