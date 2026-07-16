@@ -1,0 +1,55 @@
+{
+  "status": "done",
+  "script": "major_revision_rolling_origin.py",
+  "elapsed_seconds": 532.106,
+  "targets": [
+    "T0_current_reference",
+    "T1_min_count_2",
+    "T2_min_count_3",
+    "T3_mu8w_ge_1_eligible"
+  ],
+  "folds": [
+    {
+      "fold_id": "fold_2021",
+      "train_end_year": 2019,
+      "validation_year": 2020,
+      "test_year": 2021
+    },
+    {
+      "fold_id": "fold_2022",
+      "train_end_year": 2020,
+      "validation_year": 2021,
+      "test_year": 2022
+    },
+    {
+      "fold_id": "fold_2023",
+      "train_end_year": 2021,
+      "validation_year": 2022,
+      "test_year": 2023
+    },
+    {
+      "fold_id": "fold_2024",
+      "train_end_year": 2022,
+      "validation_year": 2023,
+      "test_year": 2024
+    },
+    {
+      "fold_id": "final_style_2025",
+      "train_end_year": 2023,
+      "validation_year": 2024,
+      "test_year": 2025
+    }
+  ],
+  "feature_set": "B_no_8w_formula_features",
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "rolling_origin_report.md",
+    "rolling_origin_results.csv",
+    "rolling_origin_summary.csv"
+  ]
+}

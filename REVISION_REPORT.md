@@ -472,3 +472,42 @@ Reviewer status updates:
 - P1-1 target/input shortcut: still PARTIAL. This pass uses no-shortcut features but still needs rolling-origin and final-model SHAP.
 - P2-6 precision@k/capacity: PARTIAL. Precision@1% and precision@5% are now recorded for target definitions, but workload and final headline metric are not frozen.
 - T4 hurdle target: OPEN.
+
+## Major Methodological Rebuild - Rolling-Origin Pass 1
+
+This pass adds expanding-window backtesting for P2-1 and year-specific drift evidence for 2024 versus 2025. It does not freeze the final model or target because multiple seeds, calibration, and uncertainty intervals are still required.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_rolling_origin.py`
+- Reviewer-facing report: `rolling_origin_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/backtests/`
+
+Fold design:
+
+- Fold 1: train through 2019, validate 2020, test 2021.
+- Fold 2: train through 2020, validate 2021, test 2022.
+- Fold 3: train through 2021, validate 2022, test 2023.
+- Fold 4: train through 2022, validate 2023, test 2024.
+- Final-style fold: train through 2023, validate 2024, test 2025.
+
+All folds use the no-shortcut LightGBM feature set. Thresholds are selected on each validation year and applied unchanged to that fold's test year.
+
+Mean test-year evidence across five folds:
+
+- T0 current reference: PR-AUC = 0.2959 +/- 0.0153, precision@5% = 0.4062 +/- 0.0219, F1 = 0.3520 +/- 0.0093.
+- T1 minimum count 2: PR-AUC = 0.2991 +/- 0.0183, precision@5% = 0.4060 +/- 0.0251, F1 = 0.3550 +/- 0.0133.
+- T2 minimum count 3: PR-AUC = 0.2997 +/- 0.0174, precision@5% = 0.4015 +/- 0.0234, F1 = 0.3583 +/- 0.0138.
+- T3 `rolling_8w_mean >= 1` eligible rows: PR-AUC = 0.3064 +/- 0.0185, precision@5% = 0.4199 +/- 0.0261, F1 = 0.3631 +/- 0.0119, but this is a restricted risk set and not directly comparable to T0/T1/T2.
+
+2024 versus 2025 test-year evidence:
+
+- T0 PR-AUC improves from 0.3023 in 2024 to 0.3120 in 2025; precision@5% improves from 0.4100 to 0.4236.
+- T2 PR-AUC improves from 0.3082 in 2024 to 0.3165 in 2025; precision@5% improves from 0.4077 to 0.4180.
+- T3 PR-AUC improves from 0.3152 in 2024 to 0.3261 in 2025 on eligible rows.
+
+Reviewer status updates:
+
+- P2-1 rolling-origin evaluation: PARTIAL. Five expanding-window folds are complete and 2024/2025 are reported separately. Still requires multiple seeds, calibration drift, category drift, and COVID-exclusion sensitivity.
+- P1-2 target selection: still PARTIAL. T1/T2 improve construct validity by removing one-call positives; T2 gives the strongest comparable validation/backtest PR-AUC among T0/T1/T2, but final target selection remains open until uncertainty and calibration are added.
+- P1-4 uncertainty: still OPEN. The `+/-` values above are fold standard deviations, not bootstrap confidence intervals.
