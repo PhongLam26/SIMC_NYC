@@ -10,18 +10,17 @@ Artifact folder: `paper_springer/`
 - Build command verified:
   - `powershell -ExecutionPolicy Bypass -File .\build_SIMC_submission.ps1 -Clean`
 - Latest verified script output:
-  - `Output written on main_SIMC_submission.pdf (13 pages, 559099 bytes).`
+  - `paper_springer/main_SIMC_submission.pdf`, 11 A4 pages, SHA-256 `5160CBB0664C4C2AC3983289BEEE811B7EA9393A4096D35B656903D41FB5BC1B`.
 - Automated audit PASS:
   - no PDF outlines/bookmarks
   - no `/OpenAction`, `/Names`, `/Dests`, or `/PageLabels`
   - no clickable link annotations
-  - 13 A4 pages
+  - 11 A4 pages after the final build
   - no standalone page-number footer
   - no known running headers/footers
   - all fonts embedded and no Type 3 fonts
   - title, authors, emails, GitHub URL, DOI, dataset IDs, citations, and current metrics remain visible as ordinary text
-- Visual render QA PASS on the rendered 13-page contact sheet and zoomed Methodology/Table 3 pages: no horizontal margin drift, clipping, overlap, or table spillover observed.
-- Reviewer-facing supplementary PDF `supplementary_SIMC.pdf` was also rendered and inspected: five A4 pages, all fonts embedded, no Type 3 fonts, and section headings remain paired with their evidence tables.
+- Visual render QA was completed for all 11 pages, including the methods, results tables, SHAP figures, declarations, and reference tail. No clipping, overlap, orphan heading, or excessive blank final page was observed.
 
 ## Current Manuscript Claims Verified
 
@@ -45,5 +44,5 @@ Artifact folder: `paper_springer/`
 - Upload/use `main_SIMC_submission.pdf` for SIMC review if the portal requires no links, page numbers, headers, or footers.
 - Use `main.pdf` only as the normal Springer-rendered version.
 - Use `references.bib`, `main.bbl`, and `figures/` as the source bundle paired with `main.tex`.
-- Upload `supplementary_SIMC.pdf` alongside the main PDF; see `SUPPLEMENTARY_UPLOAD_README.md` for contents.
+- Do not upload a separate supplementary PDF. Detailed diagnostic artifacts remain available in the public repository.
 - Do not use earlier archived submissions or old generated tables as submission evidence.

@@ -69,22 +69,22 @@ This report summarizes the current SIMC_NYC paper package after the major method
 - `major_revision_final_required_answers.md` answers the requested final audit questions from current repository artifacts.
 - External-data-dependent items are explicitly handled as future work rather than claimed as completed analyses: historical source vintages, historical forecast-weather archives, spatial weather grids, ACS/Census socioeconomic fairness, processed-panel publication infrastructure, agency staffing/cost functions, operational intervention outcomes, and cross-city replication.
 
-## Submission Audit
+## Archived 13-Page Submission Audit
 
 The current Springer/SIMC upload PDF was rebuilt and audited after the final manuscript edits.
 
 - File: `paper_springer/main_SIMC_submission.pdf`.
-- Pages: 13 A4 pages.
+- Pages: 13 A4 pages. This is the archived pre-page-limit checkpoint, not the current upload artifact.
 - PDF compliance audit: no bookmarks/outlines, no link annotations, no page labels, no page-number footer, no running headers/footers, required visible text retained, all fonts embedded, and no Type 3 fonts.
 - Visual PDF QA: rendered all 13 pages and inspected the contact sheet plus the dense methods and results pages where tables and SHAP figures are concentrated; no margin drift, clipping, overlap, or table spillover was observed.
 - Final LaTeX log audit: no undefined references/citations, no LaTeX fatal errors, and no overfull boxes.
 
-## Final Same-Target Baseline and Supplementary Evidence Pass
+## Final Same-Target Baseline and Repository Evidence Pass
 
 - Poisson GLM and Poisson GLM plus NTA fixed effects were rerun on the final chronological protocol: train through 2023, validation 2024, held-out test 2025. Both use the T2 event label and the same 122,616 test rows with 13,562 positives as the HGB, hurdle, and LightGBM rows.
 - Poisson convergence is documented directly in `final_comparability_workspace_audit.md`: 156 of 500 iterations without NTA fixed effects and 199 of 500 with NTA fixed effects.
 - Table 3 now contains only same-target T2 rows; `original-threshold count diagnostics` language was removed.
-- `paper_springer/supplementary_SIMC.pdf` was generated from current artifacts. It exposes volume-decile performance, mapping/`other` composition, full same-target baseline metrics, baseline bootstrap intervals, seed stability, rolling-origin evidence, calibration, target sensitivity, and the Negative Binomial blocker.
+- Detailed diagnostic artifacts remain in the public repository; they are not a separate submission dependency.
 - `final_same_target_numerical_consistency_report.md` reconstructs the shared population and table metrics; `final_comparability_workspace_audit.md` records target, split, decision rule, paths, and convergence.
 - Reference decision: the repository contains no venue or advisor instruction requiring 30 references. The main bibliography remains the verified, directly cited set rather than being padded with uncited entries.
 
@@ -103,3 +103,23 @@ The manuscript now includes the public repository link supplied by the author:
 `https://github.com/PhongLam26/SIMC_NYC.git`
 
 Scripts, mappings, configurations, and evaluation code are available in that repository. Source data are cited by public dataset IDs/DOIs in the manuscript; processed-data publication remains a release-policy/storage item outside this coding revision.
+
+## Single-PDF 12-Page Compliance Pass
+
+The formal regular-manuscript range is 10--12 pages. The archived baseline was 13 pages; the current self-contained submission PDF is 11 pages after a clean build. The manuscript font, A4 page size, and template margins were not reduced to meet the limit.
+
+- Final upload: `paper_springer/main_SIMC_submission.pdf` only. There is no separate supplementary PDF or reviewer-facing supplementary dependency.
+- P1 evidence retained in the main manuscript: the target-feature separation block; T2 minimum-count target and sparse-cell reduction from 17.96\% to 5.10\%; the D1--D10 historical-volume table with prevalence, PR-AUC, F1, and P@5\%; same-target count baselines; full ablation; five-seed stability; and NTA-category cluster-bootstrap intervals.
+- Table numbering is preserved for review: Table 2 is the selected-model metrics table, Table 3 is the held-out-2025 same-target baseline table, and Table 4 is the full-training ablation table. The new D1--D10 evidence is Table 5.
+- Explainability is compact and self-contained: the SHAP beeswarm, a TP/FP/FN local-case table, and the severe-FN waterfall remain. The redundant TP and FP waterfall figures are not part of the manuscript.
+- Mapping composition and detailed diagnostics are repository CSV/code artifacts. The data-and-code statement gives the public repository URL and does not promise a future code release.
+- Validation-only thresholding, Platt calibration, leakage-controlled temporal construction, target/feature separation, class-weight definition, and the five-seed/cluster-bootstrap uncertainty wording are retained in the final main text.
+
+### Final Build and Audit
+
+- Springer and Overleaf sources were both clean-built with `powershell -ExecutionPolicy Bypass -File .\build_paper.ps1 -Clean`; each produced an 11-page A4 `main.pdf`.
+- The submission wrapper was clean-built with `powershell -ExecutionPolicy Bypass -File .\build_SIMC_submission.ps1 -Clean` and audited with `python scripts\audit_submission_pdf.py paper_springer\main_SIMC_submission.pdf --expected-pages 11`.
+- The audit passed: no outlines/bookmarks, `/OpenAction`, `/Names`, `/Dests`, `/PageLabels`, links, standalone page number, running header/footer, unembedded font, or Type 3 font. Required title, authors, emails, repository URL, DOI/citation text, dataset IDs, and headline metrics are visible as text.
+- Render QA covered all 11 final pages. Tables and figures are readable and uncropped; no page has a detached heading or an excessively blank final reference tail.
+- Final upload PDF SHA-256: `5160CBB0664C4C2AC3983289BEEE811B7EA9393A4096D35B656903D41FB5BC1B`.
+- Implementation commit: recorded after the final content commit; the follow-up documentation commit records that SHA without changing the self-contained PDF.

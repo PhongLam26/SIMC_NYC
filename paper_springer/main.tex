@@ -31,8 +31,9 @@
 \setlength{\belowcaptionskip}{2pt}
 \renewcommand{\arraystretch}{0.92}
 \renewcommand{\bibfont}{\footnotesize}
-\setlength{\bibsep}{2pt plus 0.3pt}
+\setlength{\bibsep}{0pt}
 \hyphenation{calendar category categories categorical component components}
+\AtBeginDocument{\providecommand{\doiurl}[1]{doi:\allowbreak#1}}
 \ifdefined\SIMCsubmission
 \else
   \AtBeginDocument{\hypersetup{allcolors=black, linkbordercolor=black, citebordercolor=black, urlbordercolor=black, filebordercolor=black, pdfborder={0 0 0}}}
@@ -108,7 +109,7 @@ The target is rare and imbalanced, so accuracy is not a useful headline metric. 
 
 Source data are NYC Open Data 311 archives for 2010--2019 and 2020--present \cite{NYC311HistoricalOpenData,NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}. The analysis window uses 2015--2025 requests spatially joined to 2020 NTAs and aggregated to Monday-start weeks.
 
-Each row corresponds to one NTA \(n\), one feature week \(t\), and one mapped complaint category \(c\). The nine categories are noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. The deterministic mapping covers 320 original complaint types. Housing, noise, parking/traffic, sanitation, infrastructure, public safety, water/sewer, environment, and other account for 26.06\%, 21.70\%, 21.08\%, 9.99\%, 8.64\%, 5.16\%, 3.92\%, 2.03\%, and 1.43\% of mapped requests, respectively. The full mapping and `other' composition are included in the reviewer-facing supplementary PDF and companion CSV files. The dense panel has 262 NTAs, 575 weekly periods, and nine categories, or 1,355,850 rows. Relative to this dense panel, 30,654 rows are excluded because of warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows (Table \ref{tab:data_summary}).
+Each row corresponds to one NTA \(n\), one feature week \(t\), and one mapped complaint category \(c\). The nine categories are noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. The deterministic mapping covers 320 original complaint types. The full complaint-type mapping and `other' composition are available as repository CSV artifacts. The dense panel has 262 NTAs, 575 weekly periods, and nine categories, or 1,355,850 rows. Relative to this dense panel, 30,654 rows are excluded because of warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows (Table \ref{tab:data_summary}).
 
 \begin{table}[!htbp]
 \caption{Dataset construction summary.}\label{tab:data_summary}
@@ -133,11 +134,27 @@ y_{n,t,c}=\mathbf{1}\{\text{count}_{n,t+1,c}>\mu^{8w}_{n,t,c}+1.5\sigma^{8w}_{n,
 \]
 The 8-week mean, standard deviation, sum, and ratio used in this target construction are not used as model predictors. Across the 2024--2025 two-year diagnostic period, the T2 target yields 27,277 positives among 247,590 rows and reduces the share of positives from cells with \(\mu^{8w}<1\) from 17.96\% under the original target to 5.10\%.
 
+\begin{center}
+\small
+\textbf{Target-feature separation.}\quad
+\begin{tabular}{@{}p{0.42\linewidth}cc@{}}
+\toprule
+Quantity & Used to construct T2 & Final model predictor \\
+\midrule
+8-week mean, standard deviation, sum, and ratio & Yes & No \\
+Next-week count & Yes & No; unavailable at scoring \\
+Shifted non-target history, current-week count, calendar, weather, category, borough & No & Yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
 \subsection{Models and Evaluation}\label{subsec:models_eval}
 
 The final model uses shifted 311 history, current feature-week count, ratios to non-target 12-week history, calendar variables, feature-week weather, service category, and borough identifiers. Weather is a city-level observed exposure for week \(t\); it is not a forecast of week \(t+1\). Contemporary built-environment snapshots are not used in the final model.
 
-The main classifier is LightGBM with the same no-shortcut feature design across folds. The fitted configuration uses 800 trees, learning rate 0.03, 31 leaves, depth 6, minimum child size 100, subsampling and column sampling 0.85, and L2 regularization 3.0. Its training weight is the inverse training prevalence (\texttt{scale\_pos\_weight}); it addresses imbalance during fitting but does not set the alert threshold. The historical hyperparameter grid ranked candidates by validation F1, whereas the revision freeze selects the target and feature scope from validation/rolling-origin PR-AUC, capacity metrics, construct validity, and the documented tie-breakers. A threshold maximizing validation-year F1 is applied unchanged to 2025. Platt calibration was frozen as the final parametric calibrator before held-out reporting; isotonic calibration is retained as a validation-fit sensitivity comparator. The held-out 2025 evaluation trains through 2023, validates on 2024, and tests on 2025. We also report expanding-window folds ending in 2019--2023 with test years 2021--2025, five seeds (42, 123, 2026, 3407, and 7777), and 1,000 NTA-category cluster-bootstrap resamples for the final model. Poisson GLMs use train-fit scaling and train-only categorical encoding; HGB Poisson and hurdle baselines use 260 boosting iterations, learning rate 0.05, 31 leaves, and L2 regularization 0.1. The analyses were run with Python 3.12.10, LightGBM 4.6.0, scikit-learn 1.9.0, pandas 2.3.3, and NumPy 2.3.5. The seed-42 LightGBM fit used for explainability trains in 20.1 seconds on the local workstation; this is a reproducibility diagnostic, not a staffing or deployment latency estimate.
+The final LightGBM uses 800 trees, learning rate 0.03, 31 leaves, depth 6, minimum child size 100, subsampling and column sampling 0.85, and L2 regularization 3.0. The positive-class weight is the training-set negative-to-positive ratio; it addresses imbalance during fitting but does not set the alert threshold. Hyperparameter candidates were initially screened by validation F1; target and feature-scope decisions use validation and rolling-origin PR-AUC, capacity metrics, construct validity, and stated tie-breaking rules. A validation-year F1 threshold and Platt calibrator are applied unchanged to 2025; isotonic calibration is a validation-fit sensitivity comparator. The held-out protocol trains through 2023, validates on 2024, and tests on 2025.
+
+We report expanding-window folds ending in 2019--2023 with test years 2021--2025, five seeds (42, 123, 2026, 3407, and 7777), and 1,000 NTA-category cluster-bootstrap resamples. Poisson GLMs use train-fit scaling and train-only categorical encoding; HGB Poisson and hurdle baselines use 260 boosting iterations, learning rate 0.05, 31 leaves, and L2 regularization 0.1. Analyses used Python 3.12.10, LightGBM 4.6.0, scikit-learn 1.9.0, pandas 2.3.3, and NumPy 2.3.5; the seed-42 explainability fit took 20.1 seconds locally.
 
 Metrics include PR-AUC, F1, precision, recall, precision@1\%, precision@5\%, Brier score, log loss, expected calibration error (ECE), and alert rate. Precision@k is reported because agencies can review only a fraction of scored rows. Thresholds are fit on validation only. The resulting alerts should be interpreted as a ranking and triage signal rather than an automatic allocation rule.
 
@@ -173,17 +190,17 @@ Across five rolling-origin folds, the T2 target has mean PR-AUC 0.300, precision
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.78\linewidth]{figures/reliability_diagram.pdf}
+\includegraphics[width=0.90\linewidth]{figures/reliability_diagram.pdf}
 \caption{Reliability diagrams for the original T0 target (left) and the final minimum-count T2 target (right). Platt and isotonic calibration are fitted on 2024 validation data and evaluated on held-out 2025 data. T2 is used for the final model.}
 \label{fig:reliability}
 \end{figure}
 
 \subsection{Baselines and Ablation}\label{subsec:ablation}
 
-Count-model baselines are substantially weaker event rankers than the classification model on the shared T2 task (Table \ref{tab:baselines}). They remain useful as a sanity check: the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap comparing the final LightGBM with the HGB Poisson count baseline gives PR-AUC difference 0.164 [0.156, 0.172] and precision@5\% difference 0.243 [0.227, 0.258]; against the hurdle count baseline, the corresponding differences are 0.165 [0.156, 0.173] and 0.246 [0.230, 0.261]. Supplementary Sections S1--S5 provide volume-decile, mapping, bootstrap, seed, rolling-origin, calibration, and target-sensitivity evidence.
+Count-model baselines are substantially weaker event rankers than the classifier on the shared T2 task (Table \ref{tab:baselines}). They remain a sanity check that the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap versus HGB Poisson gives PR-AUC difference 0.164 [0.156, 0.172] and precision@5\% difference 0.243 [0.227, 0.258]; versus the hurdle baseline, the differences are 0.165 [0.156, 0.173] and 0.246 [0.230, 0.261]. Detailed diagnostic tables and reproducibility artifacts are available in the public repository.
 
 \begin{table*}[!htbp]
-\caption{Same-target baseline comparison on held-out 2025 data (122,616 rows; 13,562 T2 positives). Every row is evaluated on the final T2 event. Formula-threshold count decisions apply the T2 abnormal-event rule to predicted counts; the LightGBM threshold is selected on validation 2024.}\label{tab:baselines}
+\caption{Same-target baseline comparison on held-out 2025 data. All models are evaluated against T2; count-model decisions apply the T2 rule to predicted counts, while the LightGBM threshold is selected on validation 2024.}\label{tab:baselines}
 \centering
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}llrrrrrr@{}}
@@ -210,12 +227,12 @@ Full-row ablations show that history and current count provide most of the signa
 \toprule
 Feature configuration & Val PR-AUC & Val P@5\% & Val F1 & Test PR-AUC & Test P@5\% & Test F1 \\
 \midrule
-History lags only & 0.185 & 0.235 & 0.262 & 0.186 & 0.238 & 0.267 \\
-History + current count & 0.246 & 0.329 & 0.315 & 0.253 & 0.338 & 0.317 \\
-History + calendar & 0.275 & 0.363 & 0.344 & 0.286 & 0.380 & 0.345 \\
-History + calendar + weather & 0.274 & 0.364 & 0.347 & 0.295 & 0.389 & 0.354 \\
+History & 0.185 & 0.235 & 0.262 & 0.186 & 0.238 & 0.267 \\
++ current & 0.246 & 0.329 & 0.315 & 0.253 & 0.338 & 0.317 \\
++ calendar & 0.275 & 0.363 & 0.344 & 0.286 & 0.380 & 0.345 \\
++ weather & 0.274 & 0.364 & 0.347 & 0.295 & 0.389 & 0.354 \\
 Final + borough & 0.294 & 0.391 & 0.361 & 0.317 & 0.418 & 0.361 \\
-Final + NTA indicators & 0.295 & 0.392 & 0.362 & 0.319 & 0.422 & 0.363 \\
+Final + NTA & 0.295 & 0.392 & 0.362 & 0.319 & 0.422 & 0.363 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -225,29 +242,33 @@ Final + NTA indicators & 0.295 & 0.392 & 0.362 & 0.319 & 0.422 & 0.363 \\
 
 At the validation-selected Platt threshold, the 2025 test year produces a mean of 568.6 alerts per week, with a median of 510 and a range of 97 to 1,055. This volume is high for manual review, so precision@1\% and precision@5\% are more operationally meaningful than F1 alone. Borough alert rates range from 0.209 in Manhattan to 0.259 in Brooklyn; borough precision ranges from 0.245 in Staten Island to 0.308 in Manhattan.
 
-Complaint categories differ sharply (Table \ref{tab:category_metrics}). Noise has the highest alert rate and strongest category F1, while sanitation and other remain weaker. These differences are descriptive performance diagnostics, not a socioeconomic fairness audit. ACS/Census demographic variables are not included, so the reported group diagnostics do not constitute a socioeconomic fairness audit.
+Table \ref{tab:volume_deciles} reports performance across ten descriptive historical-volume deciles. Deciles use only feature-week reporting volume, with deterministic tie-breaking for the many zero-volume rows; they are not a socioeconomic fairness analysis. Performance is weakest in D1, where the event prevalence is 0.003, and increases in the highest-volume groups. Complaint-category diagnostics are repository artifacts: noise has the strongest category F1 (0.421), while sanitation is weakest (0.298). ACS/Census demographic variables are not included, so these results are not a socioeconomic fairness audit.
 
-\begin{table*}[!htbp]
-\caption{Held-out 2025 calibrated LightGBM metrics by complaint category.}\label{tab:category_metrics}
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lrrrrrr@{}}
+\begin{table}[!htbp]
+\caption{Held-out 2025 performance by historical reporting-volume decile. Deciles use information available by the end of the feature week and are descriptive volume strata, not a socioeconomic fairness analysis.}\label{tab:volume_deciles}
+\centering\small
+\input{tables/volume_deciles_main.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Held-out 2025 calibrated metrics by complaint category. These are descriptive diagnostics, not a socioeconomic fairness analysis.}\label{tab:category_metrics}
+\centering\small
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Category & Event prevalence & Alert rate & Precision & Recall & F1 & PR-AUC \\
+Category & Prevalence & Precision & F1 & PR-AUC \\
 \midrule
-Noise & 0.132 & 0.344 & 0.292 & 0.760 & 0.421 & 0.413 \\
-Water/sewer & 0.109 & 0.238 & 0.278 & 0.607 & 0.381 & 0.364 \\
-Public safety & 0.109 & 0.232 & 0.282 & 0.598 & 0.384 & 0.300 \\
-Housing & 0.122 & 0.214 & 0.295 & 0.519 & 0.376 & 0.382 \\
-Parking/traffic & 0.123 & 0.268 & 0.260 & 0.567 & 0.357 & 0.303 \\
-Infrastructure & 0.124 & 0.277 & 0.247 & 0.553 & 0.342 & 0.260 \\
-Environment & 0.091 & 0.239 & 0.230 & 0.604 & 0.333 & 0.275 \\
-Other & 0.090 & 0.153 & 0.253 & 0.431 & 0.319 & 0.260 \\
-Sanitation & 0.096 & 0.205 & 0.218 & 0.468 & 0.298 & 0.234 \\
+Noise & 0.132 & 0.292 & 0.421 & 0.413 \\
+Water/sewer & 0.109 & 0.278 & 0.381 & 0.364 \\
+Public safety & 0.109 & 0.282 & 0.384 & 0.300 \\
+Housing & 0.122 & 0.295 & 0.376 & 0.382 \\
+Parking/traffic & 0.123 & 0.260 & 0.357 & 0.303 \\
+Infrastructure & 0.124 & 0.247 & 0.342 & 0.260 \\
+Environment & 0.091 & 0.230 & 0.333 & 0.275 \\
+Other & 0.090 & 0.253 & 0.319 & 0.260 \\
+Sanitation & 0.096 & 0.218 & 0.298 & 0.234 \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
-\end{table*}
+\end{table}
 
 Error-severity analysis shows that the final T2 model recalls 57.4\% of positives overall. Recall increases with realized severity: 50.4\% for 1.5--2 standard-deviation exceedances, 56.5\% for 2--3 standard deviations, and 64.4\% for exceedances of at least 3 standard deviations. False negatives therefore still occur in severe events and must be discussed as an operational risk.
 
@@ -255,37 +276,36 @@ Error-severity analysis shows that the final T2 model recalls 57.4\% of positive
 
 SHAP is computed for the same fitted no-shortcut LightGBM score model used in the held-out 2025 evaluation. It is not an ensemble proxy and it is not a causal explanation. TreeSHAP values are computed on the LightGBM raw-margin scale before Platt calibration. Platt scaling is monotonic for the audited score range and therefore preserves score ordering, but waterfall values and uncalibrated LightGBM probabilities should not be interpreted as calibrated probabilities. The beeswarm in Figure \ref{fig:shap_beeswarm} shows both direction and dispersion of feature effects. Shifted history dominates the global explanation with 72.6\% of summed mean absolute SHAP importance, followed by service category (7.3\%), current count (7.2\%), feature-week weather (6.3\%), calendar (5.5\%), and borough (1.1\%). The weather share reflects citywide feature-week exposure and seasonal correlation in reported demand, not neighborhood microclimate or a forecast of next week's weather. The highest-ranked individual predictors are \texttt{rolling\_12w\_mean}, \texttt{ratio\_to\_12w\_mean}, \texttt{rolling\_4w\_std}, \texttt{complaint\_count}, and \texttt{rolling\_12w\_std}. The formula-aligned 8-week target-construction fields do not appear as predictors.
 
-\begin{figure*}[!htbp]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/shap_beeswarm_final.pdf}
+\includegraphics[width=0.80\linewidth]{figures/shap_beeswarm_final.pdf}
 \caption{SHAP beeswarm for the selected no-shortcut LightGBM score model on a stratified sample of 8,000 held-out 2025 rows. The explanation model and score model are the same fitted LightGBM; SHAP values are on the pre-calibration raw-margin scale.}
 \label{fig:shap_beeswarm}
-\end{figure*}
+\end{figure}
 
 Local cases were selected before interpretation: the highest-probability true positive, the highest-probability false positive, and the missed positive with the largest realized z-exceedance. The Platt-calibrated alert threshold is 0.167. The TP is a Parkchester/Bronx housing case on 2025-10-20 with uncalibrated LightGBM probability 0.975, calibrated probability 0.625, and 244 next-week requests. The FP is a Mapleton-Midwood/Brooklyn noise case on 2025-03-17 with uncalibrated probability 0.956 and calibrated probability 0.603 but no abnormal event. The FN is an Elmhurst/Queens other-category case on 2025-06-30 with uncalibrated probability 0.316, calibrated probability 0.061, and 426 next-week requests, illustrating that large rare shocks can be missed when recent history and category patterns do not support a high pre-event probability.
 
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=0.90\textwidth]{figures/shap_local_tp.pdf}
-\caption{Local SHAP waterfall explanation for the pre-specified high-confidence true-positive case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
-\label{fig:local_shap_tp}
-\end{figure*}
+\begin{table}[!htbp]
+\caption{Pre-specified local cases from held-out 2025. Probabilities are uncalibrated LightGBM $\rightarrow$ Platt-calibrated; drivers are raw-margin SHAP contributions.}\label{tab:local_cases}
+\centering\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.8cm}r>{\raggedright\arraybackslash}X@{}}
+\toprule
+Case & Location, category, date & Status and $p_u\rightarrow p_c$ & Count & Leading SHAP drivers \\
+\midrule
+TP & Parkchester, Bronx; housing; 2025-10-20 & Event; alert; $0.975\rightarrow0.625$ & 244 & +ratio/12w; +4w difference; +52w lag \\
+FP & Mapleton-Midwood, Brooklyn; noise; 2025-03-17 & No event; alert; $0.956\rightarrow0.603$ & 12 & +ratio/12w; +current count; +noise category \\
+FN & Elmhurst, Queens; other; 2025-06-30 & Event; missed; $0.316\rightarrow0.061$ & 426 & +12w mean; -ratio/12w; +current count \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\begin{figure*}[!htbp]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.90\textwidth]{figures/shap_local_fp.pdf}
-\caption{Local SHAP waterfall explanation for the pre-specified high-confidence false-positive case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
-\label{fig:local_shap_fp}
-\end{figure*}
-
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=0.90\textwidth]{figures/shap_local_fn.pdf}
+\includegraphics[width=0.92\linewidth]{figures/shap_local_fn.pdf}
 \caption{Local SHAP waterfall explanation for the pre-specified severe false-negative case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
 \label{fig:local_shap_fn}
-\end{figure*}
-
-\FloatBarrier
+\end{figure}
 
 \section{Discussion}\label{sec:discussion}
 
@@ -295,6 +315,8 @@ The target redesign improves construct validity in sparse panel cells. Under the
 
 Several limitations remain. 311 data reflect reported demand and can reproduce spatial and social reporting inequities. Weather is city-level observed exposure for week \(t\), not a spatial forecast for week \(t+1\). Historical source vintages are unavailable, the modeling panel does not retain row-level archive-source identifiers, and weekly counts may be affected by late entry, reclassification, deduplication, or open-data updates. We therefore cannot fully measure production-time data delay or archive-boundary provenance from the modeling panel. New demographic, staffing, cost, and operational outcome variables are outside the data scope, so socioeconomic fairness, cost-sensitive thresholds, and downstream service impact remain future work. The gain from NTA indicators is small and should be treated as suggestive rather than definitive.
 
+For operational use, the score should be produced only after the feature week closes, ranked within a documented analyst-review capacity, and paired with a stable escalation protocol. Thresholds, calibration, weekly alert counts, category composition, and realized outcomes should be logged so that drift and feedback can be assessed prospectively. A high score should trigger review rather than a service decision: analysts still need to inspect local context, possible reporting artifacts, and the consequence of a missed event. The released mapping and evaluation artifacts support this audit trail, but they do not establish causal benefit, equitable access, or a production-ready service-level policy.
+
 \section{Conclusion}\label{sec:conclusion}
 
 We present a leakage-controlled early-warning study for next-week abnormal reported NYC 311 demand. The final model uses a minimum-count target, removes target-construction shortcut predictors, evaluates chronologically, calibrates probabilities on validation only, and reports uncertainty, seed stability, workload, and local explanations. On held-out 2025 rows, the Platt-calibrated no-shortcut LightGBM model reaches PR-AUC 0.317, F1 0.361, recall 0.574, precision@1\% 0.570, and precision@5\% 0.418. The strongest practical use is not automatic dispatch, but capacity-aware prioritization of analyst attention toward reported-demand risks that merit review.
@@ -303,13 +325,13 @@ We present a leakage-controlled early-warning study for next-week abnormal repor
 
 \begingroup
 \setlength{\parskip}{1pt}
-\noindent\textbf{Data and code availability.} Source data include NYC Open Data 311 archives \texttt{76ig-c548} and \texttt{erm2-nwe9}, 2020 NTA boundaries \texttt{9nt8-h7nd}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728}. Scripts, complaint-type mappings, configurations, evaluation code, and compact result outputs are available at \texttt{https://github.com/PhongLam26/SIMC\_NYC}. Large intermediate panels can be rebuilt from the public sources using the repository scripts.\par
+\noindent\textbf{Data and code availability.} Source data include NYC Open Data 311 archives \texttt{76ig-c548} and \texttt{erm2-nwe9}, 2020 NTA boundaries \texttt{9nt8-h7nd}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728}. Scripts, complaint-type mappings, configurations, evaluation code, diagnostic tables, and compact result artifacts are available at \texttt{https://github.com/PhongLam26/SIMC\_NYC}. Large intermediate panels can be rebuilt from the public sources using the repository scripts.\par
 \noindent\textbf{Competing interests.} The authors declare no competing interests.\par
 \noindent\textbf{Funding.} No specific funding was received.\par
 \noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le served as academic advisor and supervised the study design, methodology, and manuscript editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed validation and review.
 \endgroup
 
-\setlength{\bibsep}{2pt plus 0.3pt}
+\setlength{\bibsep}{0pt}
 \renewcommand{\bibfont}{\footnotesize}
 \bibliography{references}
 

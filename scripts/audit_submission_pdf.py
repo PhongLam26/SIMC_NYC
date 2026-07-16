@@ -59,7 +59,6 @@ FORBIDDEN_EDGE_TEXT = [
     "Nguyen Trung Trinh",
     "Springer",
     "SIMC",
-    ".pdf",
 ]
 
 

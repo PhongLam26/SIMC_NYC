@@ -2,24 +2,22 @@
 
 Use this list for the current major-revision submission package.
 
-## Upload / Reviewer-Facing
+## Single Upload
 
 - `paper_springer/main_SIMC_submission.pdf` - SIMC-safe review PDF with no links, bookmarks, page numbers, running headers, or footers.
+
+## Source Package If Requested
 - `paper_springer/main.tex` - Springer manuscript source matching the review PDF.
 - `paper_springer/main_SIMC_submission.tex` - wrapper used to build the no-link/no-header submission PDF.
 - `paper_springer/references.bib` - cleaned bibliography for the current manuscript.
 - `paper_springer/main.bbl` - generated bibliography paired with `main.tex`.
-- `paper_springer/supplementary_SIMC.pdf` - reviewer-facing same-target T2 evidence package.
 - `paper_springer/figures/reliability_diagram.pdf`
 - `paper_springer/figures/shap_beeswarm_final.pdf`
-- `paper_springer/figures/shap_local_tp.pdf`
-- `paper_springer/figures/shap_local_fp.pdf`
 - `paper_springer/figures/shap_local_fn.pdf`
-- `SUPPLEMENTARY_UPLOAD_README.md` - contents and upload guidance for the supplementary PDF.
 
 ## Keep Internal / Do Not Upload As Main Evidence
 
-- `archive/` - old submitted or intermediate manuscript states.
+- `archive/` - old submitted or intermediate manuscript states, including the 13-page page-limit checkpoint.
 - `REVISION_REPORT.md` - internal audit trail; useful for us, not a manuscript file.
 - `major_revision_*report*.md`, `major_revision_*checklist*.md`, and `tree_vs_count_paired_ci_report.md` - internal evidence and QA notes.
 - `data/processed/model_results/` - generated model artifacts; cite derived tables/figures instead of uploading raw result folders unless specifically requested.
