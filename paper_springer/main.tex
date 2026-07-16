@@ -108,7 +108,7 @@ The target is rare and imbalanced, so accuracy is not a useful headline metric. 
 
 Source data are NYC Open Data 311 archives for 2010--2019 and 2020--present \cite{NYC311HistoricalOpenData,NYC311OpenData}, 2020 NTA boundaries \cite{NYCNTA2020}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728} \cite{Menne2012GHCND}. The analysis window uses 2015--2025 requests spatially joined to 2020 NTAs and aggregated to Monday-start weeks.
 
-Each row corresponds to one NTA \(n\), one feature week \(t\), and one mapped complaint category \(c\). The nine categories are noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. The deterministic mapping covers 320 original complaint types. Housing, noise, parking/traffic, sanitation, infrastructure, public safety, water/sewer, environment, and other account for 26.06\%, 21.70\%, 21.08\%, 9.99\%, 8.64\%, 5.16\%, 3.92\%, 2.03\%, and 1.43\% of mapped requests, respectively. The full mapping and `other' composition are provided as supplementary CSV files. The dense panel has 262 NTAs, 575 weekly periods, and nine categories, or 1,355,850 rows. Relative to this dense panel, 30,654 rows are excluded because of warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows (Table \ref{tab:data_summary}).
+Each row corresponds to one NTA \(n\), one feature week \(t\), and one mapped complaint category \(c\). The nine categories are noise, housing, water/sewer, public safety, parking/traffic, environment, infrastructure, sanitation, and other. The deterministic mapping covers 320 original complaint types. Housing, noise, parking/traffic, sanitation, infrastructure, public safety, water/sewer, environment, and other account for 26.06\%, 21.70\%, 21.08\%, 9.99\%, 8.64\%, 5.16\%, 3.92\%, 2.03\%, and 1.43\% of mapped requests, respectively. The full mapping and `other' composition are included in the reviewer-facing supplementary PDF and companion CSV files. The dense panel has 262 NTAs, 575 weekly periods, and nine categories, or 1,355,850 rows. Relative to this dense panel, 30,654 rows are excluded because of warm-up/history requirements and unavailable next-week targets, leaving 1,325,196 model-ready rows (Table \ref{tab:data_summary}).
 
 \begin{table}[!htbp]
 \caption{Dataset construction summary.}\label{tab:data_summary}
@@ -137,7 +137,7 @@ The 8-week mean, standard deviation, sum, and ratio used in this target construc
 
 The final model uses shifted 311 history, current feature-week count, ratios to non-target 12-week history, calendar variables, feature-week weather, service category, and borough identifiers. Weather is a city-level observed exposure for week \(t\); it is not a forecast of week \(t+1\). Contemporary built-environment snapshots are not used in the final model.
 
-The main classifier is LightGBM with the same no-shortcut feature design across folds. A Platt calibrator is fit only on the validation year and then applied unchanged to the test year. The held-out 2025 evaluation trains through 2023, validates on 2024, and tests on 2025. We also report five expanding-window rolling-origin folds, five stochastic seeds for the held-out 2025 configuration, and cluster-bootstrap confidence intervals that resample NTA-category clusters. The seed-42 LightGBM fit used for the explainability pass trains in 20.1 seconds on the local workstation; this is a reproducibility diagnostic, not a staffing or deployment latency estimate.
+The main classifier is LightGBM with the same no-shortcut feature design across folds. The fitted configuration uses 800 trees, learning rate 0.03, 31 leaves, depth 6, minimum child size 100, subsampling and column sampling 0.85, and L2 regularization 3.0. Its training weight is the inverse training prevalence (\texttt{scale\_pos\_weight}); it addresses imbalance during fitting but does not set the alert threshold. The historical hyperparameter grid ranked candidates by validation F1, whereas the revision freeze selects the target and feature scope from validation/rolling-origin PR-AUC, capacity metrics, construct validity, and the documented tie-breakers. A threshold maximizing validation-year F1 is applied unchanged to 2025. Platt calibration was frozen as the final parametric calibrator before held-out reporting; isotonic calibration is retained as a validation-fit sensitivity comparator. The held-out 2025 evaluation trains through 2023, validates on 2024, and tests on 2025. We also report expanding-window folds ending in 2019--2023 with test years 2021--2025, five seeds (42, 123, 2026, 3407, and 7777), and 1,000 NTA-category cluster-bootstrap resamples for the final model. Poisson GLMs use train-fit scaling and train-only categorical encoding; HGB Poisson and hurdle baselines use 260 boosting iterations, learning rate 0.05, 31 leaves, and L2 regularization 0.1. The analyses were run with Python 3.12.10, LightGBM 4.6.0, scikit-learn 1.9.0, pandas 2.3.3, and NumPy 2.3.5. The seed-42 LightGBM fit used for explainability trains in 20.1 seconds on the local workstation; this is a reproducibility diagnostic, not a staffing or deployment latency estimate.
 
 Metrics include PR-AUC, F1, precision, recall, precision@1\%, precision@5\%, Brier score, log loss, expected calibration error (ECE), and alert rate. Precision@k is reported because agencies can review only a fraction of scored rows. Thresholds are fit on validation only. The resulting alerts should be interpreted as a ranking and triage signal rather than an automatic allocation rule.
 
@@ -148,7 +148,7 @@ Metrics include PR-AUC, F1, precision, recall, precision@1\%, precision@5\%, Bri
 Table \ref{tab:main_metrics} summarizes the held-out 2025 evidence for the selected no-shortcut LightGBM model. The Platt-calibrated score improves calibration sharply while preserving the ranking metrics, as expected for a monotone score transformation.
 
 \begin{table*}[!htbp]
-\caption{Held-out 2025 performance for the final no-shortcut LightGBM candidate. Confidence intervals are cluster-bootstrap 95\% intervals over NTA-category clusters.}\label{tab:main_metrics}
+\caption{Held-out 2025 performance for the selected no-shortcut LightGBM model. Confidence intervals are cluster-bootstrap 95\% intervals over NTA-category clusters.}\label{tab:main_metrics}
 \centering
 \begin{tabular}{@{}lcc@{}}
 \toprule
@@ -180,18 +180,18 @@ Across five rolling-origin folds, the T2 target has mean PR-AUC 0.300, precision
 
 \subsection{Baselines and Ablation}\label{subsec:ablation}
 
-Count-model baselines are substantially weaker event rankers than the classification model (Table \ref{tab:baselines}). They remain useful as a sanity check: the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap comparing the final LightGBM with the HGB Poisson count baseline gives PR-AUC difference 0.164 [0.156, 0.172] and precision@5\% difference 0.243 [0.227, 0.258]; against the hurdle count baseline, the corresponding differences are 0.165 [0.156, 0.173] and 0.246 [0.230, 0.261].
+Count-model baselines are substantially weaker event rankers than the classification model on the shared T2 task (Table \ref{tab:baselines}). They remain useful as a sanity check: the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap comparing the final LightGBM with the HGB Poisson count baseline gives PR-AUC difference 0.164 [0.156, 0.172] and precision@5\% difference 0.243 [0.227, 0.258]; against the hurdle count baseline, the corresponding differences are 0.165 [0.156, 0.173] and 0.246 [0.230, 0.261]. Supplementary Sections S1--S5 provide volume-decile, mapping, bootstrap, seed, rolling-origin, calibration, and target-sensitivity evidence.
 
 \begin{table*}[!htbp]
-\caption{Baseline comparison on held-out data. Each row reports one decision rule. Formula-threshold count decisions apply the abnormal-event threshold to predicted counts; the HGB and hurdle rows use the final T2 target, while Poisson GLM rows are retained as original-threshold count diagnostics.}\label{tab:baselines}
+\caption{Same-target baseline comparison on held-out 2025 data (122,616 rows; 13,562 T2 positives). Every row is evaluated on the final T2 event. Formula-threshold count decisions apply the T2 abnormal-event rule to predicted counts; the LightGBM threshold is selected on validation 2024.}\label{tab:baselines}
 \centering
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}llrrrrrr@{}}
 \toprule
 Method & Decision & Count MAE & PR-AUC & P@5\% & Precision & Recall & F1 \\
 \midrule
-Poisson GLM, no NTA FE & Formula threshold & 8.668 & 0.140 & 0.144 & 0.116 & 0.198 & 0.146 \\
-Poisson GLM + NTA fixed effects & Formula threshold & 8.684 & 0.140 & 0.145 & 0.117 & 0.204 & 0.149 \\
+Poisson GLM, no NTA FE & Formula threshold & 9.069 & 0.141 & 0.146 & 0.376 & 0.038 & 0.068 \\
+Poisson GLM + NTA fixed effects & Formula threshold & 9.070 & 0.141 & 0.146 & 0.375 & 0.038 & 0.068 \\
 HGB Poisson count & T2 formula threshold & 8.021 & 0.153 & 0.176 & 0.513 & 0.103 & 0.171 \\
 Hurdle HGB count & T2 formula threshold & 7.938 & 0.152 & 0.172 & 0.497 & 0.111 & 0.181 \\
 No-shortcut LightGBM classifier & Validation threshold & -- & 0.317 & 0.418 & 0.263 & 0.574 & 0.361 \\

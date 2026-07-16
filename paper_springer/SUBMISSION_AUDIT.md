@@ -10,17 +10,18 @@ Artifact folder: `paper_springer/`
 - Build command verified:
   - `powershell -ExecutionPolicy Bypass -File .\build_SIMC_submission.ps1 -Clean`
 - Latest verified script output:
-  - `Output written on main_SIMC_submission.pdf (12 pages, 557666 bytes).`
+  - `Output written on main_SIMC_submission.pdf (13 pages, 559099 bytes).`
 - Automated audit PASS:
   - no PDF outlines/bookmarks
   - no `/OpenAction`, `/Names`, `/Dests`, or `/PageLabels`
   - no clickable link annotations
-  - 12 A4 pages
+  - 13 A4 pages
   - no standalone page-number footer
   - no known running headers/footers
   - all fonts embedded and no Type 3 fonts
   - title, authors, emails, GitHub URL, DOI, dataset IDs, citations, and current metrics remain visible as ordinary text
-- Visual render QA PASS on `tmp/pdfs/final_logic_contact_sheet.png` and zoomed pages 5--9: no horizontal margin drift, clipping, overlap, or table spillover observed.
+- Visual render QA PASS on the rendered 13-page contact sheet and zoomed Methodology/Table 3 pages: no horizontal margin drift, clipping, overlap, or table spillover observed.
+- Reviewer-facing supplementary PDF `supplementary_SIMC.pdf` was also rendered and inspected: five A4 pages, all fonts embedded, no Type 3 fonts, and section headings remain paired with their evidence tables.
 
 ## Current Manuscript Claims Verified
 
@@ -28,6 +29,7 @@ Artifact folder: `paper_springer/`
 - Corresponding email: `phonglam2599@gmail.com`; Thu Le email: `thulvm@fpt.edu.vn`.
 - Data/code availability includes `https://github.com/PhongLam26/SIMC_NYC`.
 - Final model is a single no-shortcut LightGBM with Platt calibration.
+- Table 3 uses only held-out-2025 T2 rows (122,616 rows; 13,562 positives) for Poisson, HGB/hurdle, and LightGBM comparisons.
 - Final held-out 2025 metrics remain visible:
   - PR-AUC 0.317
   - F1 0.361
@@ -36,11 +38,12 @@ Artifact folder: `paper_springer/`
   - precision@1% 0.570
   - precision@5% 0.418
   - Brier score 0.087
-- Submission-source stale-text audit found no old Category-Aware title, no old 0.3802/0.3310 headline metrics, and no old OSM/PLUTO bibliography entries in the rebuilt `main.bbl` files.
+- Submission-source stale-text audit found no superseded manuscript title, no old 0.3802/0.3310 headline metrics, and no old OSM/PLUTO bibliography entries in the rebuilt `main.bbl` files.
 
 ## Submission Files
 
 - Upload/use `main_SIMC_submission.pdf` for SIMC review if the portal requires no links, page numbers, headers, or footers.
 - Use `main.pdf` only as the normal Springer-rendered version.
 - Use `references.bib`, `main.bbl`, and `figures/` as the source bundle paired with `main.tex`.
+- Upload `supplementary_SIMC.pdf` alongside the main PDF; see `SUPPLEMENTARY_UPLOAD_README.md` for contents.
 - Do not use earlier archived submissions or old generated tables as submission evidence.

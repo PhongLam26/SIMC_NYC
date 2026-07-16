@@ -51,3 +51,10 @@ Status meanings:
 ## Current Non-PASS Items
 
 - P2-3, P2-7, P2-9, and R-7 are DEFERRED because they require external datasets or publication infrastructure beyond the current workspace and the revision constraint explicitly forbids collecting those external resources.
+
+## Final Same-Target Evidence Update
+
+- P1-2: `paper_springer/supplementary_SIMC.pdf` now gives held-out-2025 T2 performance by train-derived historical-volume decile; `volume_decile_performance_2025.csv` is the machine-readable source.
+- P1-4: the supplementary PDF exposes baseline bootstrap intervals and five-seed key-ablation stability, in addition to the existing 1,000-resample final-model CI and paired differences.
+- P1-5: both Poisson rows are rerun and evaluated on the same T2/2025 population as every Table 3 comparator; `final_comparability_workspace_audit.md` records paths, target, split, decision rules, and convergence.
+- P1-6: the main Methodology now records the LightGBM and count-baseline configuration, selection, threshold, calibration, folds, seeds, bootstrap, software versions, and runtime diagnostic.

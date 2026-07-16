@@ -185,9 +185,11 @@
     "rolling_8w_sum",
     "ratio_to_8w_mean"
   ],
+  "count_event_target": "T2_min_count_3",
   "output_dir": "data\\processed\\model_results\\major_revision\\model_audits",
   "outputs": [
     "count_model_baseline_results.csv",
+    "count_model_predictions_validation_test.csv.gz",
     "model_audit_report.md",
     "model_audit_run_summary.json",
     "shap_global_A_current_prospective.csv",
@@ -196,5 +198,5 @@
     "target_shortcut_feature_importance.csv",
     "target_shortcut_results.csv"
   ],
-  "elapsed_seconds": 27.117
+  "elapsed_seconds": 151.502
 }

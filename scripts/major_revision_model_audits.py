@@ -84,6 +84,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-poisson", action="store_true")
     parser.add_argument("--save-count-predictions", action="store_true")
     parser.add_argument("--poisson-alpha", type=float, default=1.0)
+    parser.add_argument(
+        "--count-event-target",
+        choices=["T0_current_reference", "T1_min_count_2", "T2_min_count_3"],
+        default="T2_min_count_3",
+        help="Event label used when evaluating count-model predictions.",
+    )
     parser.add_argument("--random-state", type=int, default=42)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--progress", action="store_true")
@@ -475,9 +481,13 @@ def fit_poisson_baseline(
     categorical = [f for f in features if f in set(categorical_all + ["nta2020"])]
     numeric = [f for f in features if f not in categorical]
 
-    train = df[df[SPLIT_COL].eq("train")].copy()
-    val = df[df[SPLIT_COL].eq("validation")].copy()
-    test = df[df[SPLIT_COL].eq("test")].copy()
+    # Count baselines use the final-style chronological protocol rather than
+    # the older diagnostic `time_split`, whose test partition pools 2024--2025.
+    train = df[df["target_year"].le(2023)].copy()
+    val = df[df["target_year"].eq(2024)].copy()
+    test = df[df["target_year"].eq(2025)].copy()
+    if train.empty or val.empty or test.empty:
+        raise ValueError("Final-style Poisson split requires train through 2023, validation 2024, and test 2025 rows.")
 
     numeric_pipe = Pipeline([("imputer", SimpleImputer(strategy="median")), ("scaler", StandardScaler(with_mean=False))])
     categorical_pipe = Pipeline([("imputer", SimpleImputer(strategy="most_frequent")), ("onehot", make_ohe())])
@@ -492,25 +502,45 @@ def fit_poisson_baseline(
     pipe.fit(stabilize_count_features(train, features), train[COUNT_TARGET_COL])
     fit_seconds = time.time() - t0
 
+    def event_label(frame: pd.DataFrame) -> np.ndarray:
+        label = frame[TARGET_COL].astype(int).to_numpy(dtype=int)
+        if args.count_event_target == "T1_min_count_2":
+            label = label & frame[COUNT_TARGET_COL].ge(2).to_numpy(dtype=bool)
+        elif args.count_event_target == "T2_min_count_3":
+            label = label & frame[COUNT_TARGET_COL].ge(3).to_numpy(dtype=bool)
+        return label.astype(int)
+
+    def formula_event(frame: pd.DataFrame, predicted_count: np.ndarray) -> np.ndarray:
+        event = predicted_count > frame[THRESHOLD_COL].to_numpy(dtype=float)
+        if args.count_event_target == "T1_min_count_2":
+            event &= predicted_count >= 2
+        elif args.count_event_target == "T2_min_count_3":
+            event &= predicted_count >= 3
+        return event
+
+    pred_val = np.clip(pipe.predict(stabilize_count_features(val, features)), 0, None)
+    y_val_event = event_label(val)
+    validation_threshold, _ = select_threshold(pd.Series(y_val_event), pred_val)
+
     rows = []
     pred_frames = []
     model_name = "poisson_regressor_nta_fe" if include_nta else "poisson_regressor_no_nta"
     for split_name, d in [("validation", val), ("test", test)]:
         pred_count = np.clip(pipe.predict(stabilize_count_features(d, features)), 0, None)
-        y_event = d[TARGET_COL].astype(int).to_numpy()
+        y_event = event_label(d)
         y_count = d[COUNT_TARGET_COL].to_numpy(dtype=float)
-        formula_event = pred_count > d[THRESHOLD_COL].to_numpy(dtype=float)
-        val_threshold, _ = select_threshold(pd.Series(y_event), pred_count)
-        val_event = pred_count >= val_threshold
+        formula_decision = formula_event(d, pred_count)
+        val_event = pred_count >= validation_threshold
         for mode, event_pred, hard_threshold in [
-            ("formula_threshold", formula_event, np.nan),
-            ("validation_score_threshold", val_event, val_threshold),
+            ("formula_threshold", formula_decision, np.nan),
+            ("validation_score_threshold", val_event, validation_threshold),
         ]:
             event_scores = pred_count
             tn, fp, fn, tp = confusion_matrix(y_event, event_pred, labels=[0, 1]).ravel()
             rows.append(
                 {
                     "audit_family": "count_baseline",
+                    "target_definition": args.count_event_target,
                     "model_name": model_name,
                     "decision_mode": mode,
                     "split": split_name,
@@ -545,6 +575,8 @@ def fit_poisson_baseline(
             )
         pred_frame = d[ID_COLS].copy()
         pred_frame["split"] = split_name
+        pred_frame["target_definition"] = args.count_event_target
+        pred_frame["event_label"] = y_event
         pred_frame["model_name"] = model_name
         pred_frame["predicted_count"] = pred_count
         pred_frames.append(pred_frame)
@@ -644,7 +676,7 @@ def make_report(
             "",
             "- These runs do not use OSM/PLUTO features.",
             "- The no-shortcut model removes direct 8-week target-formula predictors but still predicts the current submitted target.",
-            "- Count baselines predict `target_next_week_count`; event metrics are reported both with the original abnormal-threshold conversion and a validation-selected score threshold.",
+        "- Count baselines predict `target_next_week_count`; event metrics are evaluated on the stated event target with a formula-threshold conversion and a validation-selected score threshold.",
             "- Final target/model selection still requires rolling-origin validation, uncertainty intervals, and target-definition sensitivity.",
             "",
         ]
@@ -729,6 +761,7 @@ def main() -> None:
         "rows_loaded": int(len(df)),
         "feature_sets": {k: v for k, v in feature_sets.items()},
         "formula_aligned_removed": FORMULA_ALIGNED_REMOVE,
+        "count_event_target": args.count_event_target,
         "output_dir": str(out_dir.relative_to(ROOT)),
         "outputs": sorted(p.name for p in out_dir.iterdir() if p.is_file()),
         "elapsed_seconds": round(time.time() - t_start, 3),

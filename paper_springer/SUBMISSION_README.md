@@ -2,7 +2,7 @@
 
 Upload file: `main_SIMC_submission.pdf`
 
-- Pages: 12
+- Pages: 13
 - Paper size: A4
 - PDF bookmarks/outlines: 0
 - Clickable PDF links: 0

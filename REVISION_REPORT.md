@@ -74,10 +74,19 @@ This report summarizes the current SIMC_NYC paper package after the major method
 The current Springer/SIMC upload PDF was rebuilt and audited after the final manuscript edits.
 
 - File: `paper_springer/main_SIMC_submission.pdf`.
-- Pages: 12 A4 pages.
+- Pages: 13 A4 pages.
 - PDF compliance audit: no bookmarks/outlines, no link annotations, no page labels, no page-number footer, no running headers/footers, required visible text retained, all fonts embedded, and no Type 3 fonts.
-- Visual PDF QA: rendered all 12 pages and inspected the contact sheet plus pages 5-9 where tables and SHAP figures are concentrated; no margin drift, clipping, overlap, or table spillover was observed.
+- Visual PDF QA: rendered all 13 pages and inspected the contact sheet plus the dense methods and results pages where tables and SHAP figures are concentrated; no margin drift, clipping, overlap, or table spillover was observed.
 - Final LaTeX log audit: no undefined references/citations, no LaTeX fatal errors, and no overfull boxes.
+
+## Final Same-Target Baseline and Supplementary Evidence Pass
+
+- Poisson GLM and Poisson GLM plus NTA fixed effects were rerun on the final chronological protocol: train through 2023, validation 2024, held-out test 2025. Both use the T2 event label and the same 122,616 test rows with 13,562 positives as the HGB, hurdle, and LightGBM rows.
+- Poisson convergence is documented directly in `final_comparability_workspace_audit.md`: 156 of 500 iterations without NTA fixed effects and 199 of 500 with NTA fixed effects.
+- Table 3 now contains only same-target T2 rows; `original-threshold count diagnostics` language was removed.
+- `paper_springer/supplementary_SIMC.pdf` was generated from current artifacts. It exposes volume-decile performance, mapping/`other` composition, full same-target baseline metrics, baseline bootstrap intervals, seed stability, rolling-origin evidence, calibration, target sensitivity, and the Negative Binomial blocker.
+- `final_same_target_numerical_consistency_report.md` reconstructs the shared population and table metrics; `final_comparability_workspace_audit.md` records target, split, decision rule, paths, and convergence.
+- Reference decision: the repository contains no venue or advisor instruction requiring 30 references. The main bibliography remains the verified, directly cited set rather than being padded with uncited entries.
 
 ## Git Evidence
 

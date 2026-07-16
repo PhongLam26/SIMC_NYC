@@ -1,0 +1,83 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{float}
+\setlength{\parskip}{3pt}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\title{Supplementary Evidence for\\Explainable Early Warning for Next-Week Abnormal Reported 311 Demand}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent This supplement is generated from the repository's current stored artifacts. The final comparison uses the T2 event: a shifted eight-week abnormality and next-week count at least three. Unless stated otherwise, the final protocol trains through 2023, selects calibration and thresholds on 2024, and evaluates unchanged on held-out 2025 rows.
+
+\section*{S1. Historical-volume performance}
+Train-derived cut points of the shifted eight-week historical mean define the volume groups; no test label is used to form the groups. Repeated zero-valued cut points collapse the nominal deciles to nine observable bins. All rows below sum to the full held-out 2025 T2 population.
+\begin{table}[H]
+\centering\scriptsize
+\input{tables/supplementary/volume_deciles.tex}
+\caption{Final Platt-calibrated LightGBM performance by train-derived historical-volume group on held-out 2025 T2 rows.}\label{tab:supp-volume}
+\end{table}
+\clearpage
+
+\section*{S2. Complaint-category mapping and residual category}
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/complaint_mapping.tex}
+\caption{Deterministic mapping of original 311 complaint types to the nine analysis categories.}\label{tab:supp-mapping}
+\end{table}
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/other_composition.tex}
+\caption{Largest original complaint types in the residual \texttt{other} category.}\label{tab:supp-other}
+\end{table}
+\clearpage
+
+\section*{S3. Same-target baseline comparison}
+Every row uses the same held-out 2025 T2 population. Formula-threshold decisions apply the T2 threshold to predicted counts; the LightGBM threshold is selected on validation 2024.
+\begin{table}[H]
+\centering\scriptsize
+\input{tables/supplementary/same_target_baselines.tex}
+\caption{Full baseline metrics on the shared T2 task.}\label{tab:supp-baselines}
+\end{table}
+\clearpage
+
+\section*{S4. Bootstrap uncertainty and seed stability}
+Baseline intervals use 250 NTA-category cluster resamples; the main LightGBM confidence intervals reported in the manuscript use 1,000. The reported estimate is the held-out 2025 value; this table does not turn distinct decision rules into a single superiority claim.
+\begin{table}[H]
+\centering\scriptsize
+\input{tables/supplementary/baseline_bootstrap_ci.tex}
+\caption{Cluster-bootstrap uncertainty for final-comparison rows.}\label{tab:supp-bootstrap}
+\end{table}
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/seed_stability.tex}
+\caption{Five-seed held-out stability for key ablation configurations. Values are mean $\pm$ standard deviation.}\label{tab:supp-seeds}
+\end{table}
+\clearpage
+
+\section*{S5. Chronological, calibration, and target-sensitivity evidence}
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/rolling_origin.tex}
+\caption{Expanding-window rolling-origin test metrics for T2.}\label{tab:supp-rolling}
+\end{table}
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/calibration.tex}
+\caption{Final-style 2025 calibration diagnostics for T2.}\label{tab:supp-calibration}
+\end{table}
+\noindent The following is a labelled 2024--2025 target-definition diagnostic, not the same-task baseline comparison in Section S3.
+\begin{table}[H]
+\centering\small
+\input{tables/supplementary/target_sensitivity.tex}
+\caption{Target-sensitivity diagnostic with prevalence and ranking metrics.}\label{tab:supp-targets}
+\end{table}
+
+\section*{S6. Count-model limitation}
+Poisson GLM fits converged within the configured 500 iterations. A Negative Binomial GLM is not included because \texttt{statsmodels} was unavailable in the recorded environment and scikit-learn does not provide a Negative Binomial GLM. This is a documented tooling limitation, not an omitted result.
+\end{document}

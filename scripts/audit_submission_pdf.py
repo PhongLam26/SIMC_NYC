@@ -64,6 +64,8 @@ FORBIDDEN_EDGE_TEXT = [
 
 
 def normalize_text(text: str) -> str:
+    # PDF extraction preserves discretionary line-break hyphens from justified text.
+    text = re.sub(r"(?<=\w)-\s+(?=\w)", "", text)
     return re.sub(r"\s+", " ", text).strip()
 
 

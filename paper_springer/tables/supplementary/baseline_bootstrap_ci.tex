@@ -1,0 +1,21 @@
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Model & Metric & Estimate & Cluster-bootstrap 95\% CI \\
+\midrule
+No-shortcut LightGBM & PR-AUC & 0.317 & [0.308, 0.326] \\\\
+No-shortcut LightGBM & P@5\% & 0.418 & [0.403, 0.432] \\\\
+No-shortcut LightGBM & F1 & 0.361 & [0.355, 0.367] \\\\
+Poisson GLM, no NTA FE & PR-AUC & 0.141 & [0.138, 0.144] \\\\
+Poisson GLM, no NTA FE & P@5\% & 0.146 & [0.136, 0.155] \\\\
+Poisson GLM, no NTA FE & F1 & 0.068 & [0.062, 0.076] \\\\
+Poisson GLM + NTA FE & PR-AUC & 0.141 & [0.138, 0.144] \\\\
+Poisson GLM + NTA FE & P@5\% & 0.146 & [0.135, 0.157] \\\\
+Poisson GLM + NTA FE & F1 & 0.068 & [0.061, 0.075] \\\\
+HGB Poisson count & PR-AUC & 0.153 & [0.149, 0.157] \\\\
+HGB Poisson count & P@5\% & 0.176 & [0.165, 0.184] \\\\
+HGB Poisson count & F1 & 0.171 & [0.162, 0.180] \\\\
+Hurdle HGB count & PR-AUC & 0.152 & [0.148, 0.156] \\\\
+Hurdle HGB count & P@5\% & 0.172 & [0.164, 0.183] \\\\
+Hurdle HGB count & F1 & 0.181 & [0.171, 0.189] \\\\
+\bottomrule
+\end{tabular}

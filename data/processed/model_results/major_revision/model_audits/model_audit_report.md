@@ -63,14 +63,14 @@ Formula-aligned features removed in the no-shortcut configuration: `rolling_8w_m
 
 | model_name | decision_mode | feature_count | count_mae | poisson_deviance | mean_observed_count | mean_predicted_count | precision | recall | f1 | pr_auc | precision_at_5pct |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| poisson_regressor_no_nta | formula_threshold | 18 | 8.6680 | 6.4720 | 28.3029 | 27.6028 | 0.1156 | 0.1980 | 0.1460 | 0.1400 | 0.1444 |
-| poisson_regressor_no_nta | validation_score_threshold | 18 | 8.6680 | 6.4720 | 28.3029 | 27.6028 | 0.1388 | 0.9577 | 0.2424 | 0.1400 | 0.1444 |
-| poisson_regressor_nta_fe | formula_threshold | 19 | 8.6839 | 6.4590 | 28.3029 | 27.9629 | 0.1175 | 0.2044 | 0.1492 | 0.1400 | 0.1445 |
-| poisson_regressor_nta_fe | validation_score_threshold | 19 | 8.6839 | 6.4590 | 28.3029 | 27.9629 | 0.1388 | 0.9576 | 0.2424 | 0.1400 | 0.1445 |
+| poisson_regressor_no_nta | formula_threshold | 18 | 9.0691 | 6.9680 | 28.8971 | 28.3786 | 0.3756 | 0.0376 | 0.0684 | 0.1410 | 0.1460 |
+| poisson_regressor_no_nta | validation_score_threshold | 18 | 9.0691 | 6.9680 | 28.8971 | 28.3786 | 0.1393 | 0.9207 | 0.2420 | 0.1410 | 0.1460 |
+| poisson_regressor_nta_fe | formula_threshold | 19 | 9.0696 | 6.9658 | 28.8971 | 28.3785 | 0.3752 | 0.0377 | 0.0685 | 0.1410 | 0.1460 |
+| poisson_regressor_nta_fe | validation_score_threshold | 19 | 9.0696 | 6.9658 | 28.8971 | 28.3785 | 0.1393 | 0.9207 | 0.2420 | 0.1410 | 0.1460 |
 
 ## Guardrails
 
 - These runs do not use OSM/PLUTO features.
 - The no-shortcut model removes direct 8-week target-formula predictors but still predicts the current submitted target.
-- Count baselines predict `target_next_week_count`; event metrics are reported both with the original abnormal-threshold conversion and a validation-selected score threshold.
+- Count baselines predict `target_next_week_count`; event metrics are evaluated on the stated event target with a formula-threshold conversion and a validation-selected score threshold.
 - Final target/model selection still requires rolling-origin validation, uncertainty intervals, and target-definition sensitivity.

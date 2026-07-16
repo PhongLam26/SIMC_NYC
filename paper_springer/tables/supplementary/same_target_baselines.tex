@@ -1,0 +1,11 @@
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Method & Decision & Count MAE & PR-AUC & P@5\% & Precision & Recall & F1 \\
+\midrule
+Poisson GLM, no NTA FE & Formula threshold & 9.069 & 0.141 & 0.146 & 0.376 & 0.038 & 0.068 \\\\
+Poisson GLM + NTA FE & Formula threshold & 9.070 & 0.141 & 0.146 & 0.375 & 0.038 & 0.068 \\\\
+HGB Poisson count & Formula threshold & 8.021 & 0.153 & 0.176 & 0.513 & 0.103 & 0.171 \\\\
+Hurdle HGB count & Formula threshold & 7.938 & 0.152 & 0.172 & 0.497 & 0.111 & 0.181 \\\\
+No-shortcut LightGBM classifier & Validation threshold & -- & 0.317 & 0.418 & 0.263 & 0.574 & 0.361 \\\\
+\bottomrule
+\end{tabular}
