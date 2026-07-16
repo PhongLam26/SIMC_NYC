@@ -122,4 +122,4 @@ The formal regular-manuscript range is 10--12 pages. The archived baseline was 1
 - The audit passed: no outlines/bookmarks, `/OpenAction`, `/Names`, `/Dests`, `/PageLabels`, links, standalone page number, running header/footer, unembedded font, or Type 3 font. Required title, authors, emails, repository URL, DOI/citation text, dataset IDs, and headline metrics are visible as text.
 - Render QA covered all 11 final pages. Tables and figures are readable and uncropped; no page has a detached heading or an excessively blank final reference tail.
 - Final upload PDF SHA-256: `5160CBB0664C4C2AC3983289BEEE811B7EA9393A4096D35B656903D41FB5BC1B`.
-- Implementation commit: recorded after the final content commit; the follow-up documentation commit records that SHA without changing the self-contained PDF.
+- Implementation commit: `b065420` (`Finalize self-contained 11-page SIMC manuscript`). The follow-up documentation commit records this SHA without changing the self-contained PDF.
