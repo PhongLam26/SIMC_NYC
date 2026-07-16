@@ -1,0 +1,32 @@
+{
+  "status": "done",
+  "script": "major_revision_bootstrap_ci.py",
+  "elapsed_seconds": 996.294,
+  "fold": {
+    "fold_id": "final_style_2025",
+    "train_end_year": 2023,
+    "validation_year": 2024,
+    "test_year": 2025
+  },
+  "targets": [
+    "T0_current_reference",
+    "T2_min_count_3"
+  ],
+  "n_bootstrap": 1000,
+  "cluster_unit": "nta_category",
+  "bootstrap_seed": 20260716,
+  "feature_set": "B_no_8w_formula_features",
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "bootstrap_ci_results.csv",
+    "bootstrap_prediction_rows.csv.gz",
+    "bootstrap_report.md",
+    "bootstrap_run_summary.json",
+    "paired_model_difference_ci.csv"
+  ]
+}

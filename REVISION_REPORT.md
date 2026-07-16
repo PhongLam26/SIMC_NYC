@@ -546,3 +546,41 @@ Reviewer status updates:
 - P2-4 calibration: PARTIAL. Platt and isotonic calibration are complete across rolling-origin folds, Brier/ECE/log loss are reported, and a reliability diagram is generated. Final calibration choice remains open until final target/model freeze and uncertainty intervals.
 - P1-4 uncertainty: still OPEN. Calibration does not replace bootstrap CIs or multi-seed stability.
 - P2-1 rolling-origin: still PARTIAL. Calibration is now folded into rolling-origin evidence, but category drift and COVID-exclusion sensitivity remain open.
+
+## Major Methodological Rebuild - Bootstrap CI Pass 1
+
+This pass adds the first paired cluster-bootstrap uncertainty evidence for P1-4 and the calibration comparison. It is not the full final manuscript CI package because the final target/model/table rows and multi-seed stability remain open.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_bootstrap_ci.py`
+- Reviewer-facing report: `bootstrap_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/bootstrap/`
+- Row-level final-style predictions: `data/processed/model_results/major_revision/bootstrap/bootstrap_prediction_rows.csv.gz`
+
+Bootstrap protocol:
+
+- Fold: final-style 2025 with train through 2023, validation 2024, test 2025.
+- Cluster unit: NTA x complaint category.
+- Number of clusters: 2,358.
+- Replicates: 1,000 with fixed seed.
+- Targets evaluated: T0 current reference and T2 minimum-count target.
+- Models: no-shortcut LightGBM with uncalibrated, Platt, and isotonic scores.
+
+Main 95 percent CIs for Platt-calibrated scores:
+
+- T0 current reference: PR-AUC = 0.3120 [0.3038, 0.3207], F1 = 0.3544 [0.3484, 0.3602], precision@5% = 0.4236 [0.4096, 0.4379], Brier = 0.1011 [0.0996, 0.1025].
+- T2 minimum count 3: PR-AUC = 0.3165 [0.3080, 0.3252], F1 = 0.3613 [0.3551, 0.3676], precision@5% = 0.4180 [0.4035, 0.4324], Brier = 0.0869 [0.0852, 0.0888].
+- T2 precision@1% = 0.5697 [0.5428, 0.6023] and lift@1% = 5.1506 [4.8934, 5.4603].
+
+Paired calibration difference evidence:
+
+- T0 Platt minus uncalibrated: Brier difference = -0.0731 [-0.0747, -0.0715], log-loss difference = -0.1824 [-0.1860, -0.1785].
+- T2 Platt minus uncalibrated: Brier difference = -0.0807 [-0.0827, -0.0785], log-loss difference = -0.1995 [-0.2042, -0.1948].
+- Platt does not change PR-AUC, F1, or precision@5% in this setup; these paired difference CIs are exactly zero.
+
+Reviewer status updates:
+
+- P1-4 uncertainty: PARTIAL. Cluster-bootstrap CIs now exist for final-style 2025 T0/T2 no-shortcut LightGBM rows and paired calibration differences. Still requires final Table 4/Table 5 row coverage and at least five stochastic seeds.
+- P2-4 calibration: PARTIAL but materially strengthened. Calibration has statistically clear Brier/log-loss improvement without a ranking claim.
+- Paired model-difference CI: PARTIAL. Calibration paired differences are complete; final tree-vs-baseline and final-model comparisons remain open until final model/target freeze.
