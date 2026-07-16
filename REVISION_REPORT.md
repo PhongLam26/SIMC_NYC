@@ -1082,3 +1082,53 @@ Reviewer status updates:
 - Final required answers: PARTIAL/PASS. All 20 questions now have artifact-backed answers or explicit OPEN notes where evidence is missing.
 - Final checklist: PARTIAL/PASS. The checklist now exists with evidence paths and conservative status labels.
 - Completion status: NOT COMPLETE. The repository now documents remaining blockers clearly rather than hiding them.
+
+## Major Methodological Rebuild - Tree-vs-Count Paired CI Pass 1
+
+This pass closes the largest OPEN item from the final required answers: paired uncertainty for the final classifier versus count-model baselines.
+
+Files added or changed:
+
+- `scripts/major_revision_tree_vs_count_ci.py`
+- `data/processed/model_results/major_revision/bootstrap/tree_vs_count_prediction_rows.csv.gz`
+- `data/processed/model_results/major_revision/bootstrap/tree_vs_count_paired_ci.csv`
+- `data/processed/model_results/major_revision/bootstrap/tree_vs_count_paired_ci_report.md`
+- `data/processed/model_results/major_revision/bootstrap/tree_vs_count_paired_ci_run_summary.json`
+- `tree_vs_count_paired_ci_report.md`
+- `major_revision_final_required_answers.md`
+- `major_revision_completion_checklist.md`
+- `paper_overleaf/main.tex`
+- `paper_overleaf/main.pdf`
+
+Experiment:
+
+- Fold: final-style 2025, train through 2023, validation 2024, held-out test 2025.
+- Target: `T2_min_count_3`.
+- Comparator rows: 122,616 held-out 2025 rows matched one-to-one between final LightGBM predictions and count-baseline predictions.
+- Bootstrap unit: NTA-category clusters, 2,358 clusters, 1,000 bootstrap replicates.
+- Count baselines retrained for row scores: HGB Poisson count and hurdle HGB occurrence/positive-count model.
+
+Paired results:
+
+- LightGBM vs HGB Poisson count:
+  - PR-AUC difference = 0.1637, 95% CI [0.1559, 0.1722].
+  - Precision@5% difference = 0.2425, 95% CI [0.2269, 0.2575].
+  - F1 difference = 0.1902, 95% CI [0.1812, 0.1989].
+- LightGBM vs hurdle count:
+  - PR-AUC difference = 0.1648, 95% CI [0.1565, 0.1733].
+  - Precision@5% difference = 0.2458, 95% CI [0.2296, 0.2610].
+  - F1 difference = 0.1800, 95% CI [0.1711, 0.1899].
+
+Manuscript integration:
+
+- Added a compact paired-bootstrap sentence to the baseline results paragraph in `paper_overleaf/main.tex`.
+- Rebuilt `paper_overleaf/main.pdf`; output remains 13 A4 pages.
+- Rendered all 13 pages to PNG; inspected the baseline paragraph/table pages and found no visible text overflow, clipping, or horizontal margin drift.
+- Final LaTeX log search found no undefined citations, no undefined references, no LaTeX errors, no fatal errors, and no overfull boxes.
+
+Reviewer status updates:
+
+- P1-5 count/spatial baseline: PARTIAL/PASS. Count baselines now have paired uncertainty against the final tree classifier for the primary event-ranking metrics.
+- P1-4 uncertainty: strengthened. Main tree-vs-count model differences now have paired cluster-bootstrap CIs.
+- Final required answer 5: PASS for tree-vs-count paired CI.
+- Final required answer 7: PARTIAL/PASS. Calibration and tree-vs-count differences now have paired CIs; NTA-vs-borough paired CI remains open because the NTA effect is kept as a small diagnostic rather than a main claim.

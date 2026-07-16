@@ -43,6 +43,8 @@ def final_answers() -> str:
     nb = csv("data/processed/model_results/major_revision/count_extensions/negative_binomial_status.csv")
     boot = csv("data/processed/model_results/major_revision/bootstrap/bootstrap_ci_results.csv")
     paired = csv("data/processed/model_results/major_revision/bootstrap/paired_model_difference_ci.csv")
+    tree_count_ci_path = ROOT / "data/processed/model_results/major_revision/bootstrap/tree_vs_count_paired_ci.csv"
+    tree_count_ci = pd.read_csv(tree_count_ci_path) if tree_count_ci_path.exists() else pd.DataFrame()
     rolling = csv("data/processed/model_results/major_revision/backtests/rolling_origin_results.csv")
     calib = csv("data/processed/model_results/major_revision/calibration/calibration_results.csv")
     severity = csv("data/processed/model_results/major_revision/error_analysis/error_severity_analysis.csv")
@@ -200,7 +202,14 @@ def final_answers() -> str:
     lines.append(
         f"- Point estimate: final LightGBM PR-AUC {fmt(final.pr_auc)} and P@5% {fmt(final.precision_at_5pct)} beat HGB Poisson PR-AUC {fmt(hgb.pr_auc)} / P@5% {fmt(hgb.precision_at_5pct)} and hurdle HGB PR-AUC {fmt(hurdle.pr_auc)} / P@5% {fmt(hurdle.precision_at_5pct)}."
     )
-    lines.append("- OPEN: a paired tree-vs-count bootstrap CI has not yet been generated because current count-baseline artifacts do not save row-level count-model scores.")
+    if tree_count_ci.empty:
+        lines.append("- OPEN: a paired tree-vs-count bootstrap CI has not yet been generated because current count-baseline artifacts do not save row-level count-model scores.")
+    else:
+        for _, r in tree_count_ci[tree_count_ci.metric.isin(["pr_auc", "precision_at_5pct", "f1"])].iterrows():
+            lines.append(
+                f"- Paired tree vs `{r.baseline}` {r.metric}: diff {fmt(r.observed_difference)}, "
+                f"95% CI {fmt(r.ci_lower)} to {fmt(r.ci_upper)}, includes zero={bool(r.ci_includes_zero)}."
+            )
     lines.append("")
     lines.append("6. Main 95% CIs.")
     lines.extend(table(ci_rows, ["metric", "value", "95% CI"]))
@@ -208,7 +217,13 @@ def final_answers() -> str:
     lines.append("7. Are model differences statistically distinguishable?")
     for _, r in paired[(paired.target_definition == "T2_min_count_3") & paired.metric.isin(["brier", "log_loss", "pr_auc", "f1"])].iterrows():
         lines.append(f"- {r.challenger} vs {r.baseline}, {r.metric}: diff {fmt(r.observed_difference)}, CI {fmt(r.ci_lower)} to {fmt(r.ci_upper)}, includes zero={bool(r.ci_includes_zero)}.")
-    lines.append("- OPEN: tree-vs-count and NTA-vs-borough paired CIs are not yet available.")
+    if tree_count_ci.empty:
+        lines.append("- OPEN: tree-vs-count and NTA-vs-borough paired CIs are not yet available.")
+    else:
+        sig = tree_count_ci[tree_count_ci.metric.isin(["pr_auc", "precision_at_5pct", "f1"])]
+        nonzero = int((~sig["ci_includes_zero"]).sum())
+        lines.append(f"- Tree-vs-count ranking/F1 differences: {nonzero}/{len(sig)} reported CIs exclude zero.")
+        lines.append("- OPEN: NTA-vs-borough paired CI is not yet available; current NTA evidence remains a small single-seed diagnostic.")
     lines.append("")
     lines.append("8. Rolling-origin metrics by year.")
     lines.extend(table(roll_rows, ["test year", "PR-AUC", "F1", "P@5%", "prevalence"]))
@@ -281,7 +296,7 @@ def completion_checklist() -> str:
         ("Reliability diagram generated", "PASS", "paper_overleaf/figures/reliability_diagram.pdf."),
         ("Brier/ECE reported", "PASS", "calibration_report.md; paper_overleaf/main.tex."),
         ("Cluster bootstrap CI completed", "PASS", "bootstrap_ci_results.csv."),
-        ("Paired difference CI completed", "PARTIAL", "paired_model_difference_ci.csv covers calibration differences; tree-vs-count paired CI remains OPEN."),
+        ("Paired difference CI completed", "PARTIAL/PASS", "paired_model_difference_ci.csv covers calibration; tree_vs_count_paired_ci.csv covers tree-vs-count; NTA-vs-borough paired CI remains open."),
         ("Precision@k/capacity analysis completed", "PASS", "capacity_precision_at_k.csv; major_revision_final_required_answers.md."),
         ("Weekly workload reported", "PASS", "weekly_workload_summary.csv; paper_overleaf/main.tex."),
         ("Error severity analysis completed", "PASS", "error_severity_analysis.csv; paper_overleaf/main.tex."),
@@ -322,7 +337,7 @@ def completion_checklist() -> str:
     lines.extend(table(rows, ["item", "status", "evidence"]))
     lines.append("")
     lines.append("Open items before a strict completion claim:")
-    lines.append("- Generate paired tree-vs-count bootstrap differences if reviewer-facing statistical dominance over count baselines is required.")
+    lines.append("- Optionally generate NTA-vs-borough paired differences if making a stronger spatial fixed-effect claim.")
     lines.append("- Decide whether to expand five-seed evidence to all key ablation rows and any remaining stochastic candidate.")
     lines.append("- Build and audit the final SIMC submission PDF only after manuscript freeze.")
     lines.append("- Optionally expand REVISION_REPORT into a literal P1/P2/P3/R item-by-item matrix.")
