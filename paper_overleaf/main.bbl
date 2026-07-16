@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{32}
+\begin{thebibliography}{19}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -60,20 +60,6 @@
 \endbibitem
 
 %%% 2
-\bibitem[\protect\citeauthoryear{Kontokosta
-  et~al.}{2017}]{Kontokosta2017Equity311}
-\begin{botherref}
-\oauthor{\bsnm{Kontokosta}, \binits{C.E.}},
-\oauthor{\bsnm{Hong}, \binits{B.}},
-\oauthor{\bsnm{Korsberg}, \binits{K.}}:
-Equity in 311 Reporting: Understanding Socio-Spatial Differentials in the
-  Propensity to Complain
-(2017).
-\url{https://arxiv.org/abs/1710.02452}
-\end{botherref}
-\endbibitem
-
-%%% 3
 \bibitem[\protect\citeauthoryear{Kontokosta and
   Hong}{2021}]{KontokostaHong2021Bias}
 \begin{barticle}
@@ -89,20 +75,7 @@ Equity in 311 Reporting: Understanding Socio-Spatial Differentials in the
 \end{barticle}
 \endbibitem
 
-%%% 4
-\bibitem[\protect\citeauthoryear{Tussey and
-  Yan}{2025}]{TusseyYan2025OpenDataCuration311}
-\begin{botherref}
-\oauthor{\bsnm{Tussey}, \binits{D.}},
-\oauthor{\bsnm{Yan}, \binits{J.}}:
-Principles for Open Data Curation: A Case Study with the New York City 311
-  Service Request Data
-(2025).
-\url{https://arxiv.org/abs/2502.08649}
-\end{botherref}
-\endbibitem
-
-%%% 5
+%%% 3
 \bibitem[\protect\citeauthoryear{Zheng et~al.}{2014}]{Zheng2014UrbanComputing}
 \begin{barticle}
 \bauthor{\bsnm{Zheng}, \binits{Y.}},
@@ -118,7 +91,7 @@ Principles for Open Data Curation: A Case Study with the New York City 311
 \end{barticle}
 \endbibitem
 
-%%% 6
+%%% 4
 \bibitem[\protect\citeauthoryear{Jin et~al.}{2024}]{Jin2024STGNNSurvey}
 \begin{barticle}
 \bauthor{\bsnm{Jin}, \binits{G.}},
@@ -138,7 +111,7 @@ Principles for Open Data Curation: A Case Study with the New York City 311
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 5
 \bibitem[\protect\citeauthoryear{Agonafir
   et~al.}{2022}]{Agonafir2022Flooding311}
 \begin{barticle}
@@ -156,7 +129,7 @@ Principles for Open Data Curation: A Case Study with the New York City 311
 \end{barticle}
 \endbibitem
 
-%%% 8
+%%% 6
 \bibitem[\protect\citeauthoryear{Kianmehr and
   Pamukcu}{2022}]{KianmehrPamukcu2022Heat311}
 \begin{bchapter}
@@ -173,23 +146,7 @@ pp. \bfpage{174}--\blpage{182}
 \end{bchapter}
 \endbibitem
 
-%%% 9
-\bibitem[\protect\citeauthoryear{Shaveet
-  et~al.}{2024}]{Shaveet2024Foodborne311Yelp}
-\begin{botherref}
-\oauthor{\bsnm{Shaveet}, \binits{E.}},
-\oauthor{\bsnm{Su}, \binits{C.}},
-\oauthor{\bsnm{Hsu}, \binits{D.}},
-\oauthor{\bsnm{Gravano}, \binits{L.}}:
-Seasonality Patterns in 311-Reported Foodborne Illness Cases and Machine
-  Learning-Identified Indications of Foodborne Illnesses from Yelp Reviews,
-  {New York City}, 2022-2023
-(2024).
-\url{https://arxiv.org/abs/2405.06138}
-\end{botherref}
-\endbibitem
-
-%%% 10
+%%% 7
 \bibitem[\protect\citeauthoryear{Liu and Garg}{2024}]{LiuGarg2024SLA}
 \begin{bchapter}
 \bauthor{\bsnm{Liu}, \binits{Z.}},
@@ -206,103 +163,7 @@ pp. \bfpage{309}--\blpage{309}.
 \end{bchapter}
 \endbibitem
 
-%%% 11
-\bibitem[\protect\citeauthoryear{Haklay and Weber}{2008}]{HaklayWeber2008OSM}
-\begin{barticle}
-\bauthor{\bsnm{Haklay}, \binits{M.}},
-\bauthor{\bsnm{Weber}, \binits{P.}}:
-\batitle{{OpenStreetMap}: User-generated street maps}.
-\bjtitle{IEEE Pervasive Computing}
-\bvolume{7}(\bissue{4}),
-\bfpage{12}--\blpage{18}
-(\byear{2008})
-\doiurl{10.1109/MPRV.2008.80}
-\end{barticle}
-\endbibitem
-
-%%% 12
-\bibitem[\protect\citeauthoryear{Vargas-Munoz
-  et~al.}{2021}]{VargasMunoz2021OSMML}
-\begin{barticle}
-\bauthor{\bsnm{Vargas-Munoz}, \binits{J.E.}},
-\bauthor{\bsnm{Srivastava}, \binits{S.}},
-\bauthor{\bsnm{Tuia}, \binits{D.}},
-\bauthor{\bsnm{Falcao}, \binits{A.X.}}:
-\batitle{{OpenStreetMap}: Challenges and opportunities in machine learning and
-  remote sensing}.
-\bjtitle{IEEE Geoscience and Remote Sensing Magazine}
-\bvolume{9}(\bissue{1}),
-\bfpage{184}--\blpage{199}
-(\byear{2021})
-\doiurl{10.1109/MGRS.2020.2994107}
-\end{barticle}
-\endbibitem
-
-%%% 13
-\bibitem[\protect\citeauthoryear{Zhang and
-  Pfoser}{2019}]{ZhangPfoser2019OSMPOI}
-\begin{barticle}
-\bauthor{\bsnm{Zhang}, \binits{L.}},
-\bauthor{\bsnm{Pfoser}, \binits{D.}}:
-\batitle{Using {OpenStreetMap} point-of-interest data to model urban change---a
-  feasibility study}.
-\bjtitle{PLOS ONE}
-\bvolume{14}(\bissue{2}), e0212606
-(\byear{2019})
-\doiurl{10.1371/journal.pone.0212606}
-\end{barticle}
-\endbibitem
-
-%%% 14
-\bibitem[\protect\citeauthoryear{Luo et~al.}{2023}]{Luo2023UFZPOI}
-\begin{barticle}
-\bauthor{\bsnm{Luo}, \binits{G.}},
-\bauthor{\bsnm{Ye}, \binits{J.}},
-\bauthor{\bsnm{Wang}, \binits{J.}},
-\bauthor{\bsnm{Wei}, \binits{Y.}}:
-\batitle{Urban functional zone classification based on {POI} data and machine
-  learning}.
-\bjtitle{Sustainability}
-\bvolume{15}(\bissue{5}),
-\bfpage{4631}
-(\byear{2023})
-\doiurl{10.3390/su15054631}
-\end{barticle}
-\endbibitem
-
-%%% 15
-\bibitem[\protect\citeauthoryear{Zhou and
-  Cao}{2022}]{ZhouCao2022CoarseToFineLandUse}
-\begin{bchapter}
-\bauthor{\bsnm{Zhou}, \binits{Q.}},
-\bauthor{\bsnm{Cao}, \binits{R.}}:
-\bctitle{A coarse-to-fine approach for urban land use mapping based on
-  multisource geospatial data}.
-In: \bbtitle{2022 29th International Conference on Geoinformatics}
-(\byear{2022}).
-\doiurl{10.1109/GEOINFORMATICS57846.2022.9963851}
-\end{bchapter}
-\endbibitem
-
-%%% 16
-\bibitem[\protect\citeauthoryear{Wang et~al.}{2023}]{Wang2023POIMetaBlock}
-\begin{barticle}
-\bauthor{\bsnm{Wang}, \binits{K.}},
-\bauthor{\bsnm{Liu}, \binits{L.}},
-\bauthor{\bsnm{Liu}, \binits{Y.}},
-\bauthor{\bsnm{Li}, \binits{G.}},
-\bauthor{\bsnm{Zhou}, \binits{F.}},
-\bauthor{\bsnm{Lin}, \binits{L.}}:
-\batitle{Urban regional function guided traffic flow prediction}.
-\bjtitle{Information Sciences}
-\bvolume{634},
-\bfpage{308}--\blpage{320}
-(\byear{2023})
-\doiurl{10.1016/j.ins.2023.03.109}
-\end{barticle}
-\endbibitem
-
-%%% 17
+%%% 8
 \bibitem[\protect\citeauthoryear{He and Garcia}{2009}]{HeGarcia2009Imbalanced}
 \begin{barticle}
 \bauthor{\bsnm{He}, \binits{H.}},
@@ -316,7 +177,7 @@ In: \bbtitle{2022 29th International Conference on Geoinformatics}
 \end{barticle}
 \endbibitem
 
-%%% 18
+%%% 9
 \bibitem[\protect\citeauthoryear{Fawcett}{2006}]{Fawcett2006ROC}
 \begin{barticle}
 \bauthor{\bsnm{Fawcett}, \binits{T.}}:
@@ -329,7 +190,7 @@ In: \bbtitle{2022 29th International Conference on Geoinformatics}
 \end{barticle}
 \endbibitem
 
-%%% 19
+%%% 10
 \bibitem[\protect\citeauthoryear{Davis and
   Goadrich}{2006}]{DavisGoadrich2006PRROC}
 \begin{bchapter}
@@ -344,20 +205,7 @@ pp. \bfpage{233}--\blpage{240}
 \end{bchapter}
 \endbibitem
 
-%%% 20
-\bibitem[\protect\citeauthoryear{Powers}{2011}]{Powers2011Evaluation}
-\begin{barticle}
-\bauthor{\bsnm{Powers}, \binits{D.M.W.}}:
-\batitle{Evaluation: From precision, recall and f-measure to {ROC},
-  informedness, markedness and correlation}.
-\bjtitle{Journal of Machine Learning Technologies}
-\bvolume{2}(\bissue{1}),
-\bfpage{37}--\blpage{63}
-(\byear{2011})
-\end{barticle}
-\endbibitem
-
-%%% 21
+%%% 11
 \bibitem[\protect\citeauthoryear{Saito and
   Rehmsmeier}{2015}]{SaitoRehmsmeier2015PR}
 \begin{barticle}
@@ -372,24 +220,7 @@ pp. \bfpage{233}--\blpage{240}
 \end{barticle}
 \endbibitem
 
-%%% 22
-\bibitem[\protect\citeauthoryear{Chen and
-  Guestrin}{2016}]{ChenGuestrin2016XGBoost}
-\begin{bchapter}
-\bauthor{\bsnm{Chen}, \binits{T.}},
-\bauthor{\bsnm{Guestrin}, \binits{C.}}:
-\bctitle{{XGBoost}: A scalable tree boosting system}.
-In: \bbtitle{Proceedings of the 22nd ACM SIGKDD International Conference on
-  Knowledge Discovery and Data Mining},
-pp. \bfpage{785}--\blpage{794}.
-\bpublisher{ACM},
-\blocation{New York, NY, USA}
-(\byear{2016}).
-\doiurl{10.1145/2939672.2939785}
-\end{bchapter}
-\endbibitem
-
-%%% 23
+%%% 12
 \bibitem[\protect\citeauthoryear{Ke et~al.}{2017}]{Ke2017LightGBM}
 \begin{bchapter}
 \bauthor{\bsnm{Ke}, \binits{G.}},
@@ -409,7 +240,7 @@ pp. \bfpage{3146}--\blpage{3154}
 \end{bchapter}
 \endbibitem
 
-%%% 24
+%%% 13
 \bibitem[\protect\citeauthoryear{Lundberg and Lee}{2017}]{LundbergLee2017SHAP}
 \begin{bchapter}
 \bauthor{\bsnm{Lundberg}, \binits{S.M.}},
@@ -423,7 +254,7 @@ pp. \bfpage{4765}--\blpage{4774}
 \end{bchapter}
 \endbibitem
 
-%%% 25
+%%% 14
 \bibitem[\protect\citeauthoryear{Lundberg et~al.}{2020}]{Lundberg2020TreeSHAP}
 \begin{barticle}
 \bauthor{\bsnm{Lundberg}, \binits{S.M.}},
@@ -446,7 +277,7 @@ pp. \bfpage{4765}--\blpage{4774}
 \end{barticle}
 \endbibitem
 
-%%% 26
+%%% 15
 \bibitem[\protect\citeauthoryear{Rudin}{2019}]{Rudin2019InterpretableML}
 \begin{barticle}
 \bauthor{\bsnm{Rudin}, \binits{C.}}:
@@ -460,7 +291,7 @@ pp. \bfpage{4765}--\blpage{4774}
 \end{barticle}
 \endbibitem
 
-%%% 27
+%%% 16
 \bibitem[\protect\citeauthoryear{{City of New
   York}}{2026a}]{NYC311HistoricalOpenData}
 \begin{botherref}
@@ -473,7 +304,7 @@ Accessed 25 June 2026
 \end{botherref}
 \endbibitem
 
-%%% 28
+%%% 17
 \bibitem[\protect\citeauthoryear{{City of New York}}{2026b}]{NYC311OpenData}
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
@@ -485,7 +316,7 @@ Accessed 25 June 2026
 \end{botherref}
 \endbibitem
 
-%%% 29
+%%% 18
 \bibitem[\protect\citeauthoryear{{New York City Department of City
   Planning}}{2026}]{NYCNTA2020}
 \begin{botherref}
@@ -498,7 +329,7 @@ Accessed 25 June 2026
 \end{botherref}
 \endbibitem
 
-%%% 30
+%%% 19
 \bibitem[\protect\citeauthoryear{Menne et~al.}{2012}]{Menne2012GHCND}
 \begin{barticle}
 \bauthor{\bsnm{Menne}, \binits{M.J.}},
@@ -514,32 +345,6 @@ Accessed 25 June 2026
 (\byear{2012})
 \doiurl{10.1175/JTECH-D-11-00103.1}
 \end{barticle}
-\endbibitem
-
-%%% 31
-\bibitem[\protect\citeauthoryear{{OpenStreetMap Wiki
-  Contributors}}{2026}]{OverpassAPI}
-\begin{botherref}
-\oauthor{\bsnm{{OpenStreetMap Wiki Contributors}}}:
-Overpass API.
-OpenStreetMap Wiki.
-Accessed 25 June 2026
-(2026).
-\url{https://wiki.openstreetmap.org/wiki/Overpass_API}
-\end{botherref}
-\endbibitem
-
-%%% 32
-\bibitem[\protect\citeauthoryear{{New York City Department of City
-  Planning}}{2026}]{NYCPLUTO}
-\begin{botherref}
-\oauthor{\bsnm{{New York City Department of City Planning}}}:
-Primary Land Use Tax Lot Output (PLUTO).
-NYC Open Data.
-Accessed 25 June 2026
-(2026).
-\url{https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks}
-\end{botherref}
 \endbibitem
 
 \end{thebibliography}

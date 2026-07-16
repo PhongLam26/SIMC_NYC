@@ -886,3 +886,45 @@ Reviewer status updates:
 - P1-1 target shortcut/SHAP circularity: PARTIAL but materially strengthened. The final-style explanation run removes formula-aligned target-construction predictors and documents the resulting SHAP structure.
 - P2-11 local SHAP case studies: PARTIAL. TP/FP/FN cases and waterfall plots now exist; manuscript integration and interpretation text remain.
 - P2-12 final decision explanation: PARTIAL/REDIRECTED. This pass explains the actual single LightGBM candidate and avoids an ensemble explanation proxy. The remaining manuscript decision is to freeze the single-model decision layer or implement a true ensemble explanation if the ensemble is retained.
+
+## Major Methodological Rebuild - Manuscript Integration Draft 1
+
+This pass rewrites the Overleaf manuscript around the major-revision evidence generated so far. It is a draft integration pass, not the final declaration that all 38 reviewer items are closed.
+
+Files changed:
+
+- `paper_overleaf/main.tex`
+- `paper_overleaf/main.bbl`
+- `paper_overleaf/main.pdf`
+- `paper_overleaf/figures/reliability_diagram.pdf`
+- `paper_overleaf/figures/shap_beeswarm_final.pdf`
+- `paper_overleaf/figures/shap_local_tp.pdf`
+- `paper_overleaf/figures/shap_local_fp.pdf`
+- `paper_overleaf/figures/shap_local_fn.pdf`
+
+Manuscript-level changes:
+
+- Title changed to `Explainable Early Warning for Next-Week Abnormal Reported 311 Demand`.
+- Main narrative now uses the T2 minimum-count target and no-shortcut LightGBM candidate rather than the previous category-aware ensemble framing.
+- OSM/PLUTO are removed from the main manuscript text and final-model claims.
+- The abstract now reports both source scale and model-panel scale, and emphasizes PR-AUC, F1, precision, recall, precision@1%, precision@5%, Brier score, bootstrap intervals, count baselines, calibration, and SHAP local explanations.
+- Data and code availability now includes the GitHub repository link directly and removes the earlier "will be released" style language.
+- The author email audit remains clean for Thu Le: `thulvm@fpt.edu.vn`.
+- SHAP beeswarm and three local TP/FP/FN waterfall figures are included in the manuscript.
+
+Build and QA:
+
+- Command: `paper_overleaf/build_paper.ps1 -Clean`
+- Output: `paper_overleaf/main.pdf`
+- Page count: 13 pages.
+- LaTeX log check: no undefined citations, no undefined references, no LaTeX errors, no fatal errors, and no overfull boxes in the final log search.
+- Text audit: no `Category-Aware`, no OSM/PLUTO manuscript text, no `leakage-safe`, no `will be released`, no `thulvn`, GitHub URL present.
+- Visual render QA: rendered all 13 pages with `pdftoppm`; title page, tables, reliability figure, beeswarm, and TP/FP/FN local SHAP figures are readable with no horizontal margin drift, clipping, or overlapping text. Figure-only pages have some Springer-class white space but stay within the 15-page limit.
+
+Reviewer status updates:
+
+- P1-3 title/category-aware/ensemble claim: PARTIAL. The manuscript title and main story now avoid the unsupported category-aware ensemble claim.
+- P2-8 OSM/PLUTO main-paper removal: PARTIAL/PASS for current `paper_overleaf/main.tex`. Main-text OSM/PLUTO references are removed; supplementary/repo archive wording still needs final reviewer-facing packaging.
+- P2-11 local SHAP case studies: PARTIAL but integrated into the draft manuscript.
+- P2-12 final decision explanation: PARTIAL but integrated through the single LightGBM candidate. This depends on freezing the final decision layer as the single calibrated LightGBM.
+- P3-3/P3-5 figure cleanup: PARTIAL. The old low-information workflow and old SHAP bar figures are no longer used in the current manuscript draft; final figure polish remains possible.
