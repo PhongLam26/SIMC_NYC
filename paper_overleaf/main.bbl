@@ -293,38 +293,38 @@ pp. \bfpage{4765}--\blpage{4774}
 
 %%% 16
 \bibitem[\protect\citeauthoryear{{City of New
-  York}}{2026a}]{NYC311HistoricalOpenData}
+  York}}{n.d.a}]{NYC311HistoricalOpenData}
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
 311 Service Requests from 2010 to 2019.
 NYC Open Data.
 Accessed 25 June 2026
-(2026).
+(n.d.).
 \url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-2019/76ig-c548}
 \end{botherref}
 \endbibitem
 
 %%% 17
-\bibitem[\protect\citeauthoryear{{City of New York}}{2026b}]{NYC311OpenData}
+\bibitem[\protect\citeauthoryear{{City of New York}}{n.d.b}]{NYC311OpenData}
 \begin{botherref}
 \oauthor{\bsnm{{City of New York}}}:
 311 Service Requests from 2020 to Present.
 NYC Open Data.
 Accessed 25 June 2026
-(2026).
+(n.d.).
 \url{https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9}
 \end{botherref}
 \endbibitem
 
 %%% 18
 \bibitem[\protect\citeauthoryear{{New York City Department of City
-  Planning}}{2026}]{NYCNTA2020}
+  Planning}}{n.d.}]{NYCNTA2020}
 \begin{botherref}
 \oauthor{\bsnm{{New York City Department of City Planning}}}:
 2020 Neighborhood Tabulation Areas (NTAs).
 NYC Open Data.
 Accessed 25 June 2026
-(2026).
+(n.d.).
 \url{https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-/9nt8-h7nd}
 \end{botherref}
 \endbibitem

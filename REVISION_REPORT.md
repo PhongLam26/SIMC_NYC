@@ -970,3 +970,27 @@ Reviewer status updates:
 - P2-7 weather: PARTIAL but now explicitly caveated in Results/Explainability.
 - P3-2 deployment feedback loop: PARTIAL/PASS for current manuscript text.
 - P3-13 compute reporting: PARTIAL. Fit time is now reported for the current final-style LightGBM pass; full production inference-latency benchmarking remains outside the current artifact set.
+
+## Major Methodological Rebuild - Reference Cleanup Pass 1
+
+This pass cleans the Overleaf bibliography after the manuscript rewrite so that reviewers see only references that are actively cited by the current paper draft.
+
+Files changed:
+
+- `paper_overleaf/references.bib`
+- `paper_overleaf/main.bbl`
+- `paper_overleaf/main.pdf`
+
+Reference-level changes:
+
+- Reduced `paper_overleaf/references.bib` to the 19 entries cited by `paper_overleaf/main.tex`.
+- Removed unused references tied to the old OSM/PLUTO, ensemble, and broader preliminary framing from the Overleaf manuscript bundle.
+- Updated living NYC Open Data sources from artificial `2026` publication years to `n.d.` entries with `Accessed 25 June 2026`.
+- Regenerated `main.bbl` and `main.pdf` from the cleaned bibliography.
+
+Build and QA:
+
+- Command: `paper_overleaf/build_paper.ps1 -Clean`, followed by one extra `pdflatex` pass.
+- Main PDF: 13 pages.
+- Final log search found no undefined citations, no undefined references, no LaTeX errors, no fatal errors, and no overfull boxes.
+- Bibliography audit confirms no stale `Kontokosta2017`, `Tussey`, `Shaveet`, `Powers`, `OpenStreetMap`, `PLUTO`, `2026a`, or `2026b` entries in `main.bbl`; NYC data sources now render as `n.d.` with the access date.
