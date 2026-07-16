@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "script": "major_revision_complaint_mapping_appendix.py",
+  "elapsed_seconds": 0.032,
+  "total_complaint_types": 320,
+  "total_requests": 30940129,
+  "other_complaint_types": 86,
+  "other_requests": 441648,
+  "other_request_share": 0.014274277912674507,
+  "outputs": [
+    "complaint_category_summary.csv",
+    "complaint_mapping_appendix_report.md",
+    "complaint_type_category_mapping_appendix.csv",
+    "other_category_composition.csv",
+    "other_category_top200.csv"
+  ]
+}

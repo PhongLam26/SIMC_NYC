@@ -774,3 +774,24 @@ Reviewer status updates:
 
 - P1-5 count/spatial baseline: PARTIAL but stronger. Full-data Poisson, Poisson + NTA FE, HGB Poisson count, and hurdle-style count baselines now exist. NB GLM is documented as blocked by missing `statsmodels`; a final attempt or explicit limitation is still needed before manuscript freeze.
 - T4 hurdle-style modeling: PARTIAL. A practical hurdle-style count baseline exists, but it is not a full target-definition/hurdle-event formulation for final selection.
+
+## Major Methodological Rebuild - Complaint Mapping Appendix Pass 1
+
+This pass addresses P2-10 by generating reviewer-facing complaint-type mapping artifacts and documenting the composition of the `other` category.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_complaint_mapping_appendix.py`
+- Reviewer-facing report: `complaint_mapping_appendix_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/complaint_mapping/`
+
+Evidence generated:
+
+- The current deterministic mapping contains 320 original complaint types mapped into nine analysis categories.
+- Category request shares: housing 26.06%, noise 21.70%, parking/traffic 21.08%, sanitation 9.99%, infrastructure 8.64%, public safety 5.16%, water/sewer 3.92%, environment 2.03%, and other 1.43%.
+- `other` contains 86 complaint types and 441,648 of 30,940,129 mapped requests.
+- The largest `other` complaint types are Encampment (191,408; 43.34% of `other`), Drug Activity (93,873; 21.26%), Animal in a Park (29,914; 6.77%), Vending (27,575; 6.24%), and Electronics Waste (26,487; 6.00%).
+
+Reviewer status updates:
+
+- P2-10 complaint mapping appendix: PARTIAL. The full mapping and `other` composition artifacts now exist and can be added to the appendix/supplement. Alternate grouping sensitivity remains open.
