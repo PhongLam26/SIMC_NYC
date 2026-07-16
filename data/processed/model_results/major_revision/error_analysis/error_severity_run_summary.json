@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "script": "major_revision_error_severity.py",
+  "prediction_rows": 245232,
+  "targets": [
+    "T0_current_reference",
+    "T2_min_count_3"
+  ],
+  "calibration_method": "platt",
+  "outputs": [
+    "error_severity_analysis.csv",
+    "error_severity_overall.csv",
+    "error_severity_report.md",
+    "error_severity_run_summary.json"
+  ]
+}

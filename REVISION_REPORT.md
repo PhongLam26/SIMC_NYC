@@ -613,3 +613,33 @@ Reviewer status updates:
 - P1-4 uncertainty: PARTIAL. Five seeds are now complete for final-style T0/T2 no-shortcut LightGBM candidates, in addition to cluster-bootstrap CIs. Still requires final manuscript-row CI coverage and multi-seed evidence for the final frozen configuration.
 - Multiple-seed requirement: PARTIAL. The required seed list has been run for these two candidate targets, but not yet for all ablation rows or every stochastic final candidate.
 - P1-2 target selection: still PARTIAL. T2 is stable across seeds, but final target selection remains open until the full ablation and final selection rule are applied.
+
+## Major Methodological Rebuild - Error Severity Pass 1
+
+This pass adds the requested error-severity analysis for P2-5 using final-style 2025 no-shortcut LightGBM prediction rows. It does not complete final Results text because final target/model selection remains open.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_error_severity.py`
+- Reviewer-facing report: `error_severity_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/error_analysis/`
+
+Protocol:
+
+- Prediction source: `data/processed/model_results/major_revision/bootstrap/bootstrap_prediction_rows.csv.gz`
+- Score: Platt-calibrated no-shortcut LightGBM.
+- Severity metric: `z = (target_next_week_count - rolling_8w_mean) / (rolling_8w_std + epsilon)`.
+- Additional severity checks: absolute increase, ratio increase, and target-count bands.
+
+Final-style 2025 severity evidence:
+
+- T0 current reference: 15,712 positives, 8,917 TP, 6,795 FN, recall = 0.5675.
+- T2 minimum count 3: 13,562 positives, 7,790 TP, 5,772 FN, recall = 0.5744.
+- T2 recall by z severity: 0.5038 for 1.5 <= z < 2, 0.5649 for 2 <= z < 3, and 0.6443 for z >= 3.
+- T2 still misses 1,716 positive rows in the z >= 3 group, so the manuscript must not imply that high-severity surges are reliably captured.
+- T2 recall by target count: 0.3969 for count = 3, 0.5797 for count 4-9, and 0.5828 for count >= 10.
+
+Reviewer status updates:
+
+- P2-5 error severity: PARTIAL. Required severity bins and FN counts are now generated for final-style 2025. Still needs integration into manuscript tables/figures and final frozen target/model.
+- P2-6 precision@k/capacity: still PARTIAL. Severity results complement capacity metrics but do not replace final workload analysis.
