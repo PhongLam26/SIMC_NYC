@@ -1,0 +1,48 @@
+{
+  "status": "done",
+  "script": "major_revision_count_extensions.py",
+  "elapsed_seconds": 63.297,
+  "target": "T2_min_count_3",
+  "seed": 42,
+  "fold": {
+    "fold_id": "final_style_2025",
+    "train_end_year": 2023,
+    "validation_year": 2024,
+    "test_year": 2025
+  },
+  "features": [
+    "complaint_category",
+    "boroname",
+    "complaint_count",
+    "lag_1w_count",
+    "lag_2w_count",
+    "lag_4w_count",
+    "lag_8w_count",
+    "lag_12w_count",
+    "lag_52w_count",
+    "rolling_4w_mean",
+    "rolling_4w_std",
+    "rolling_12w_mean",
+    "rolling_12w_std",
+    "history_weeks_available",
+    "month",
+    "quarter",
+    "week_of_year",
+    "year"
+  ],
+  "categorical_features": [
+    "complaint_category",
+    "boroname"
+  ],
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "count_model_extension_report.md",
+    "count_model_extension_results.csv",
+    "negative_binomial_status.csv"
+  ]
+}

@@ -1,0 +1,2 @@
+model_name,status,reason,next_action
+negative_binomial_glm,blocked_missing_statsmodels,statsmodels is not installed in the local environment; sklearn has no Negative Binomial GLM.,Document blocker or install statsmodels before final NB attempt.

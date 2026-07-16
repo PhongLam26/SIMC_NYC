@@ -734,3 +734,43 @@ Reviewer status updates:
 
 - P2-2 COVID/archive boundary: PARTIAL but materially strengthened. Schema, category drift, complaint-type overlap, yearly target composition, and exclude-2020-2021 sensitivity are now generated. Remaining work is manuscript integration and deciding whether to regenerate source provenance or state the archive-vintage limitation.
 - P2-3 data vintage/revision risk: still PARTIAL. This pass documents source-provenance limits, but it does not solve open-data revision/vintage lag because historical data vintages are not available in the workspace and should be discussed as a limitation.
+
+## Major Methodological Rebuild - Count Baseline Extension Pass 1
+
+This pass extends P1-5 beyond the earlier Poisson and Poisson + NTA fixed-effect baselines. It adds practical count-forecasting baselines on the final-style 2025 fold and documents the current Negative Binomial blocker.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_count_extensions.py`
+- Reviewer-facing report: `count_model_extension_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/count_extensions/`
+
+Protocol:
+
+- Target: T2 minimum-count abnormal event (`T2_min_count_3`).
+- Fold: final-style 2025 with train through 2023, validation 2024, and test 2025.
+- Features: count/history/calendar plus complaint category and borough; formula-aligned 8-week shortcut features are not used as model predictors.
+- Count predictions are converted to abnormal-event decisions using the original count-threshold formula and a validation-selected count-score threshold.
+
+Negative Binomial status:
+
+- `statsmodels` is not installed in the local environment, and scikit-learn does not provide a Negative Binomial GLM.
+- The NB GLM row is therefore documented as `blocked_missing_statsmodels`, not silently omitted.
+
+Held-out 2025 count-extension evidence:
+
+- HistGradientBoosting Poisson count model, formula-threshold decision: count MAE = 8.0211, Poisson deviance = 5.6952, PR-AUC = 0.1528, precision@5% = 0.1755, F1 = 0.1710, precision = 0.5129, recall = 0.1026.
+- HistGradientBoosting Poisson count model, validation-score threshold: PR-AUC = 0.1528, precision@5% = 0.1755, F1 = 0.2429, precision = 0.1404, recall = 0.9002, alert rate = 0.7091.
+- Hurdle HGB occurrence + positive-count model, formula-threshold decision: count MAE = 7.9377, Poisson deviance = 6.3093, PR-AUC = 0.1517, precision@5% = 0.1722, F1 = 0.1812, precision = 0.4967, recall = 0.1108.
+- Hurdle HGB occurrence + positive-count model, validation-score threshold: PR-AUC = 0.1517, precision@5% = 0.1722, F1 = 0.2437, precision = 0.1409, recall = 0.9030, alert rate = 0.7091.
+
+Interpretation:
+
+- The extra count baselines improve count MAE relative to the earlier linear Poisson baselines, but their event ranking remains weak.
+- These count-extension PR-AUC and precision@5% values are far below the current final-style no-shortcut LightGBM T2 diagnostic row (PR-AUC = 0.3165, precision@5% = 0.4180).
+- The manuscript can say count baselines are included and currently not competitive as event rankers, but final paired uncertainty against the frozen classifier is still required before making a strong dominance claim.
+
+Reviewer status updates:
+
+- P1-5 count/spatial baseline: PARTIAL but stronger. Full-data Poisson, Poisson + NTA FE, HGB Poisson count, and hurdle-style count baselines now exist. NB GLM is documented as blocked by missing `statsmodels`; a final attempt or explicit limitation is still needed before manuscript freeze.
+- T4 hurdle-style modeling: PARTIAL. A practical hurdle-style count baseline exists, but it is not a full target-definition/hurdle-event formulation for final selection.
