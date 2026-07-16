@@ -1052,3 +1052,33 @@ Reviewer status updates:
 - Primary selection rule: PARTIAL/PASS for the current draft. The rule now documents the selected target, score model, feature scope, calibration, threshold, and held-out reporting convention.
 - Ensemble removal: PARTIAL/PASS for the current draft. The decision record supports the manuscript's single-model framing.
 - Test-set isolation: PARTIAL/PASS for the current draft. The rule states that 2025 is used for reporting, while validation/backtest evidence drives selection.
+
+## Major Methodological Rebuild - Final Answers and Completion Checklist Pass 1
+
+This pass converts the external DOCX checklist and the 20 final required answers into repository artifacts. It deliberately distinguishes artifact-backed PASS items from OPEN/PARTIAL items; it is not a declaration that the entire goal is complete.
+
+Files added:
+
+- `major_revision_checklist_source_docx.txt`
+- `scripts/major_revision_completion_pack.py`
+- `major_revision_final_required_answers.md`
+- `major_revision_completion_checklist.md`
+
+Content added:
+
+- Extracted the Word checklist `Danh_sach_can_sua_SIMC_NYC.docx` to UTF-8 text so future audits do not depend on local Word rendering.
+- Generated answers for the 20 required final questions from existing artifacts, including low-baseline positive share, volume-decile performance, shortcut-removal metrics, count baselines, bootstrap CIs, rolling-origin yearly metrics, calibration, severity recall, workload, weather/NTA diagnostics, `other` composition, final target/model/title rationale, and external-data deferrals.
+- Generated a final checklist status table covering the requested PASS/PARTIAL/DEFERRED evidence items.
+- Marked tree-vs-count paired bootstrap CI, NTA-vs-borough paired CI, full five-seed ablation coverage, final SIMC submission PDF build/audit, and literal P1/P2/P3/R matrix expansion as remaining OPEN/PARTIAL items where evidence is not yet complete.
+
+Build and QA:
+
+- Command: `python scripts/major_revision_completion_pack.py`.
+- Output files: `major_revision_final_required_answers.md` and `major_revision_completion_checklist.md`.
+- QA search found no encoding artifacts, `nan`, or accidental FAIL status in the generated files.
+
+Reviewer status updates:
+
+- Final required answers: PARTIAL/PASS. All 20 questions now have artifact-backed answers or explicit OPEN notes where evidence is missing.
+- Final checklist: PARTIAL/PASS. The checklist now exists with evidence paths and conservative status labels.
+- Completion status: NOT COMPLETE. The repository now documents remaining blockers clearly rather than hiding them.

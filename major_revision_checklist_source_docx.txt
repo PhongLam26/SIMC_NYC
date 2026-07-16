@@ -1,0 +1,246 @@
+DANH SÁCH CẦN SỬA
+Category-Aware Explainable Machine Learning for Urban Service Demand Forecasting in Smart Cities
+Tổng hợp từ phản biện: 38 mục
+Ba nhóm ưu tiên. Nhóm P1 là các lỗi mà nếu không xử lý thì bài không thể qua vòng phản biện, bất kể sửa gì khác em nha. Nhóm P2 là các thiếu sót nghiêm trọng nhưng khắc phục được. Nhóm P3 là trình bày, hình bảng, câu chữ.
+Lưu ý: xử lý P1-1, P1-2 và P1-5 có thể làm thay đổi toàn bộ kết quả số. Nên chạy ba mục này trước khi động vào bất cứ thứ gì thuộc P3.
+P1 (6 mục)
+Không sửa được nhóm này thì không nên nộp.
+ID
+Vấn đề
+Hành động cần làm
+Vị trí
+Ưu tiên
+P1-1
+Nhãn được định nghĩa từ chính đặc trưng đầu vào (rolling_8w_mean/std, ratio_to_8w_mean). SHAP vì thế là vòng luẩn quẩn: mô hình học lại công thức ngưỡng.
+Chạy lại SHAP sau khi loại rolling_8w_* và ratio_to_8w_mean. Báo cáo cả hai cấu hình. Hoặc chuyển sang dự báo count_{t+1} (Poisson/NegBin) rồi áp ngưỡng.
+Mục 3.1, 3.2, 4.3; Hình 3, 4
+Cao
+P1-2
+Panel dense gồm cả ô (NTA, category) gần như luôn bằng 0. Khi mu8w ~ 0, nhãn suy biến thành "có >= 1 cuộc gọi"; ratio_to_8w_mean chia cho ~0.
+Báo cáo % positive test đến từ ô có mu8w < 1. Thêm ngưỡng đếm tối thiểu (vd. mu8w >= 2) hoặc xử lý zero-inflation. Bảng F1/PR-AUC phân tầng theo decile khối lượng.
+Mục 3.1, Bảng 1, Mục 4.1
+Cao
+P1-3
+Tiêu đề tự bác bỏ: category thresholds cho +0.0001 F1, ensemble cho +0.0000 so với XGBoost đơn (Bảng 4).
+Hoặc chứng minh giá trị bằng phân tích chi phí/lợi ích theo domain, hoặc bỏ "Category-Aware" và ensemble khỏi tiêu đề + abstract. Cân nhắc: "Explainable Forecasting of Abnormal Reported 311 Demand".
+Tiêu đề, Abstract, Bảng 4
+Cao
+P1-4
+Không có định lượng bất định: 1 seed, 1 split, không CI, nhưng báo cáo 4 chữ số thập phân và chọn model dựa trên chênh lệch 0.002.
+Bootstrap CI 95% trên test cho mọi dòng Bảng 4 và Bảng 5. Lặp >= 5 seed. Nếu CI chồng nhau, nói rõ trong Discussion.
+Bảng 3, 4, 5, 6
+Cao
+P1-5
+Thiếu baseline đúng đắn: không có count model, không có mô hình không-thời gian, dù trích dẫn khảo sát STGNN [6].
+Thêm Poisson/NegBin GLM dự báo count_{t+1} + cùng ngưỡng. Thêm ít nhất 1 baseline không gian (NTA fixed effects hoặc STGNN nhẹ).
+Mục 4.1
+Cao
+P1-6
+Ablation dùng "compact protocol" 300k dòng, tự khai là không so sánh được với mô hình cuối, nhưng lại dùng để biện minh cho feature set cuối. Weather làm giảm test F1 (0.3785 -> 0.3767) nhưng vẫn giữ.
+Chạy lại ablation trên full training. Thống nhất tiêu chí chọn (Val F1 hoặc Val PR-AUC, không lẫn lộn). Giải thích vì sao giữ weather.
+Bảng 3, Bảng 6
+Cao
+
+P2 Nghiêm trọng (12 mục)
+Reviewer sẽ chất vấn từng mục. Thiếu bất kỳ mục nào cũng đủ cho một vòng major revision nữa.
+ID
+Vấn đề
+Hành động cần làm
+Vị trí
+Ưu tiên
+P2-1
+Một split duy nhất; ngưỡng chọn trên 2023 (năm có sự kiện khói cháy rừng Canada gây tăng vọt 311) rồi áp cứng cho 2024-2025.
+Rolling-origin / expanding-window backtesting. Tách kết quả 2024 vs 2025 để kiểm tra drift.
+Mục 3.3, 4.1
+Cao
+P2-2
+COVID (2020-2021) và ranh giới ghép 2 archive (76ig-c548 / erm2-nwe9) nằm giữa tập train; lag_52w_count vắt qua giai đoạn này. Không một dòng thảo luận.
+Thêm mục về đứt gãy chế độ và schema. Kiểm tra tính nhất quán complaint type giữa 2 archive. Cân nhắc ablation loại 2020-2021.
+Mục 3.1, 5.2
+Cao
+P2-3
+Rò rỉ do data vintage: đặc trưng tuần t tính từ archive đã ổn định (trích 2026-06-25); trong vận hành, count tuần t chưa hoàn chỉnh (nhập trễ, phân loại lại, gộp trùng).
+Phân tích revision/vintage, hoặc tối thiểu là một đoạn thảo luận thẳng thắn trong Limitations.
+Mục 3.1, 5.2
+Cao
+P2-4
+Không hiệu chuẩn xác suất, dù toàn bộ lớp quyết định là ngưỡng trên score, và class weights (6.8726 / 2.6216) đảm bảo score bị lệch.
+Thêm isotonic hoặc Platt calibration trên validation. Báo cáo reliability diagram và Brier score. Kéo từ Future Work vào bài chính.
+Mục 3.2, 4.1
+Cao
+P2-5
+Không có phân tích lỗi theo độ lớn. Recall 0.5404 vô nghĩa nếu 14,511 FN tập trung ở các đợt tăng lớn nhất.
+Bảng recall phân tầng theo z thực hiện (vd. 1.5-2 sigma, 2-3 sigma, >3 sigma).
+Mục 4.1, 4.2
+Cao
+P2-6
+Điểm vận hành báo cáo sai chỗ: headline tạo ~560 cảnh báo/tuần (41,106 FP). Precision@1% = 0.5905, lift 4.63x mới là chế độ triển khai được.
+Đưa precision@k lên làm kết quả headline (abstract + conclusion). Giữ F1 làm chỉ số phụ.
+Abstract, 4.1, 6
+Cao
+P2-7
+Weather chỉ dùng 1 trạm Central Park cho cả 262 NTA (hằng số theo tuần) nhưng chiếm 5.87% SHAP, cao hơn spatial identifiers (1.23%). Loại weather t+1 là leakage hygiene máy móc.
+Giải thích con số 5.87%. Thêm cấu hình dùng weather dự báo tuần t+1 (NWS forecast khả dụng trong vận hành). Cân nhắc grid weather theo NTA.
+Mục 3.1, 4.3, 5.2
+Cao
+P2-8
+Mâu thuẫn xử lý không gian: có 262 NTA nhưng đặc trưng không gian duy nhất là borough (5 mức). OSM/PLUTO đóng góp +0.0016 F1 (vô nghĩa) nhưng chiếm nhiều đất giấy.
+Cắt hoàn toàn OSM/PLUTO (Related Work đoạn 2, nhánh B Bảng 3, khung nét đứt Hình 1, đoạn Discussion). Dùng chỗ đó cho NTA fixed effects hoặc target-encoded NTA history.
+Toàn bài
+Cao
+P2-9
+Trích dẫn văn liệu thiên lệch báo cáo 4 lần [1-4] nhưng không có một phân tích công bằng nào.
+Thêm phân bố alert rate / precision / recall theo decile thu nhập trung vị và thành phần dân cư của NTA. Lập luận vì sao chuẩn hoá theo baseline địa phương có (hoặc không) trung hoà chênh lệch.
+Mục mới 4.4 hoặc 5.x
+Cao
+P2-10
+Ánh xạ ~300 complaint type gốc -> 9 category không được trình bày, không kiểm chứng. "Other" chiếm 1/9 panel.
+Đưa bảng ánh xạ vào Appendix. Báo cáo khối lượng và thành phần của "Other". Kiểm tra độ nhạy với cách gộp khác.
+Mục 3.1, Appendix
+Cao
+P2-11
+Tuyên bố explainability rỗng: "Local SHAP cases support analyst review" - không hình, không case study, không đánh giá faithfulness.
+Hoặc thêm 2-3 case study cụ thể (TP/FP/FN) với waterfall plot, hoặc xoá câu này.
+Mục 4.3
+Cao
+P2-12
+SHAP tính cho thành phần LightGBM trong khi score triển khai là ensemble: lời giải thích không giải thích quyết định.
+Tính SHAP cho ensemble (Shapley có tính cộng tính; xử lý sigmoid ở margin space). Nếu không khả thi, bỏ ensemble (dù sao cũng cho +0.0000).
+Mục 3.3, 4.3
+Cao
+
+P3 Trình bày và câu chữ (13 mục)
+ID
+Vấn đề
+Hành động cần làm
+Vị trí
+Ưu tiên
+P3-1
+Danh sách đóng góp liệt kê vệ sinh thực nghiệm cơ bản (leakage control, chronological split, validation-only thresholds) như novelty.
+Viết lại đoạn contributions. Nêu rõ điểm khác biệt so với Wang et al. 2017 [1] và Kontokosta & Hong 2021 [3].
+Mục 1
+Trung bình
+P3-2
+Không thảo luận vòng phản hồi triển khai: alert -> phân bổ chú ý -> thay đổi hành vi báo cáo -> thay đổi nhãn tương lai.
+Thêm đoạn trong Discussion.
+Mục 5.1
+Trung bình
+P3-3
+Hình 1: sơ đồ hộp-mũi tên hàm lượng thông tin bằng không. Caption ghi "the revised early-warning framework" - dấu vết vòng phản biện trước.
+Xoá Hình 1 (nội dung đã có trong 3 câu văn), hoặc thay bằng sơ đồ timeline t -> t+1 thực sự có thông tin. Bỏ từ "revised".
+Hình 1
+Trung bình
+P3-4
+Hình 2: nhãn chồng lên legend ở hàng Sanitation; trục x cắt từ 0.100 -> phóng đại khác biệt thị giác. Nội dung trùng Bảng 5.
+Thay bằng PR curve theo category. Nếu giữ, sửa chồng lấn và cho trục x bắt đầu từ 0.
+Hình 2
+Trung bình
+P3-5
+Hình 3: 7 thanh, diễn đạt được bằng một câu. Hình 4: chỉ có |SHAP| trung bình, không beeswarm, không hướng tác động, không tương tác.
+Gộp Hình 3 vào một câu văn. Nâng Hình 4 thành beeswarm plot (có hướng và phân bố).
+Hình 3, 4
+Trung bình
+P3-6
+Bảng 1: 61 + 213 khác 252; các con số kế toán không được giải thích và không phục vụ người đọc.
+Rà lại số học hoặc bỏ các dòng đếm cột. Giữ lại thông tin thực sự có ý nghĩa.
+Bảng 1
+Trung bình
+P3-7
+Bảng 6: F1 biến thiên theo prevalence (0.0885 -> 0.1833), không phải bằng chứng robustness.
+Chuẩn hoá: báo cáo PR-AUC / base rate hoặc lift để so sánh được giữa các định nghĩa target.
+Bảng 6
+Trung bình
+P3-8
+Từ "prospective" xuất hiện ~30 lần; "excluded from prospective alerts" lặp 6+ lần. Bài đọc như rebuttal cho reviewer trước, không phải bài báo độc lập.
+Trình bày thiết kế một lần, đúng chỗ (Mục 3.1), rồi thôi. Cắt lặp trong Abstract, Intro, 3.2, 4.1, 5.1, 6.
+Toàn bài
+Trung bình
+P3-9
+Abstract khoe "30.9 million requests" trong khi mô hình chạy trên 1.3M dòng.
+Nêu cả hai con số, hoặc nêu con số panel. Bỏ thổi phồng quy mô.
+Abstract
+Trung bình
+P3-10
+"Demand Forecasting" trong tiêu đề: bài không dự báo demand mà phân loại exceedance nhị phân.
+Sửa tiêu đề cho khớp với bài toán thực tế.
+Tiêu đề
+Trung bình
+P3-11
+"Category-aware at the decision stage" nhập nhằng: category cũng là feature nên mô hình category-aware ở cả tầng score.
+Định nghĩa lại thuật ngữ hoặc bỏ.
+Mục 3.2
+Thấp
+P3-12
+Lỗi in: "512.7%" (số trang 5 dính vào text) ở cuối Mục 3.3.
+Sửa thành "12.7%".
+Mục 3.3
+Thấp
+P3-13
+Không báo cáo compute, thời gian huấn luyện, độ trễ suy luận - trong khi tuyên bố sản phẩm vận hành.
+Thêm một đoạn ngắn hoặc dòng trong Bảng 2.
+Mục 3.2
+Thấp
+
+R Tài liệu tham khảo và Declarations (7 mục)
+ID
+Vấn đề
+Hành động cần làm
+Vị trí
+Ưu tiên
+R-1
+4/32 tài liệu là preprint chưa bình duyệt: [2] Kontokosta 2017, [4] Tussey & Yan 2025, [9] Shaveet 2024, [10] Liu & Garg 2024. Nhiều khả năng đã xuất bản chính thức.
+Tra và cập nhật sang bản peer-reviewed. [2] từ 2017 gần như chắc chắn đã có bản chính thức.
+Refs
+Cao
+R-2
+[20] Powers 2011 - "Journal of Machine Learning Technologies" là venue có vấn đề về uy tín.
+Thay bằng bản arXiv của Powers, hoặc thay hẳn bằng nguồn khác (đã có [18], [19], [21] đủ mạnh).
+Ref [20]
+Cao
+R-3
+Style trích dẫn không nhất quán: [24] Lundberg & Lee dùng arXiv thay vì NeurIPS proceedings; [23] dùng URL papers.nips.cc; số khác dùng DOI.
+Thống nhất: ưu tiên bản proceedings chính thức + DOI cho tất cả.
+Refs [23], [24]
+Trung bình
+R-4
+[27]-[32] gán năm (2026) cho dataset cập nhật liên tục - sai quy ước trích dẫn.
+Dùng "accessed 2026-06-25" thay cho năm xuất bản.
+Refs [27]-[32]
+Trung bình
+R-5
+[31] trích Overpass API wiki làm nguồn dữ liệu, không có query, không tag list, không dump. Overpass là CSDL sống -> snapshot không tái lập được.
+Mất giá trị nếu cắt OSM (P2-8). Nếu giữ: đưa query Overpass đầy đủ vào Appendix + công bố dump.
+Ref [31], Mục 3.1
+Trung bình
+R-6
+Repo github.com/PhongLam26/SIMC_NYC lộ tên venue - vấn đề nếu submission ẩn danh. Corresponding author dùng Gmail thay vì email tổ chức.
+Đổi tên repo hoặc dùng anonymized link (anonymous.4open.science) khi nộp. Chuyển sang email FPT.
+Trang đầu, Declarations
+Cao
+R-7
+"Processed data release is subject to licensing, redistribution, and storage constraints" - nhưng TẤT CẢ nguồn đều là open data công cộng. Lý do không đứng vững và làm hỏng tuyên bố reproducibility.
+Bỏ câu này và phát hành processed panel (Zenodo). Nếu vướng dung lượng, nói thẳng là dung lượng và cung cấp script tái tạo.
+Declarations
+Cao
+
+Nếu chưa trả lời được bằng số liệu thì chưa nộp được.
+1. Trong 31,570 positive của test, bao nhiêu % đến từ ô có mu8w < 1? Cho bảng F1/precision/recall phân tầng theo decile khối lượng.
+2. Sau khi loại rolling_8w_mean/std và ratio_to_8w_mean, hiệu năng và cấu trúc SHAP thay đổi thế nào?
+3. Poisson/NegBin GLM dự báo count_{t+1} + cùng ngưỡng cho kết quả gì? Nếu ngang ensemble thì bài không còn lý do tồn tại.
+4. Bootstrap CI 95% trên test cho F1 của 4 dòng Bảng 4. Chúng có chồng nhau không?
+5. Alert rate phân bố thế nào theo decile thu nhập trung vị của NTA?
+6. Recall phân tầng theo độ lớn vượt ngưỡng thực tế ra sao?
+7. Thêm weather dự báo tuần t+1 (NWS, khả dụng trong vận hành) thay đổi gì?
+Cắt ra
+– Toàn bộ OSM/PLUTO: Related Work đoạn 2, nhánh B Bảng 3, khung nét đứt Hình 1, đoạn Discussion tương ứng.
+– Ensemble (đóng góp +0.0000 so với XGBoost đơn).
+– Hình 1 và Hình 3 (hàm lượng thông tin bằng không).
+– Các lần lặp thừa của "prospective" / "excluded from prospective alerts".
+Thêm vào
++ Baseline count model (Poisson/NegBin) + xử lý zero-inflation với ngưỡng đếm tối thiểu.
++ Rolling-origin backtesting + bootstrap CI.
++ Precision@k làm kết quả headline.
++ Một phân tích công bằng thực sự cho phần văn liệu [1-4] đã trích nhưng chưa dùng.
++ Calibration (isotonic/Platt) + reliability diagram.
++ Bảng ánh xạ complaint type -> 9 category trong Appendix.
++ Tiêu đề mới khớp với kết quả thực sự chống đỡ được.
