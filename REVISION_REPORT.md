@@ -79,6 +79,14 @@ The current Springer/SIMC upload PDF was rebuilt and audited after the final man
 - Visual PDF QA: rendered all 12 pages and inspected the contact sheet plus pages 5-9 where tables and SHAP figures are concentrated; no margin drift, clipping, overlap, or table spillover was observed.
 - Final LaTeX log audit: no undefined references/citations, no LaTeX fatal errors, and no overfull boxes.
 
+## Git Evidence
+
+- Final logic and presentation pass commit: `df501d5cdf67d6d2485b8b5e17aac9e97c5042bd`.
+- Clean rebuilt manuscript-PDF commit: `f8c928e5fbbe48af809aa3fbc08ced8a60652a47`.
+- Branch: `major-revision-methodological-rebuild`.
+- Remote: `https://github.com/PhongLam26/SIMC_NYC.git`.
+- The exact final branch HEAD is reported in the delivery response because a Git commit cannot contain its own SHA.
+
 ## Data and Code Availability
 
 The manuscript now includes the public repository link supplied by the author:
