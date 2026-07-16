@@ -1,0 +1,15 @@
+{
+  "status": "done",
+  "script": "major_revision_disparity_workload_audit.py",
+  "elapsed_seconds": 21.492,
+  "target": "T2_min_count_3",
+  "score_col": "platt_score",
+  "threshold_col": "platt_threshold",
+  "outputs": [
+    "disparity_workload_report.md",
+    "group_disparity_metrics.csv",
+    "weekly_workload.csv",
+    "weekly_workload_by_borough.csv",
+    "weekly_workload_summary.csv"
+  ]
+}

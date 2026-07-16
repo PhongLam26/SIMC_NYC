@@ -795,3 +795,49 @@ Evidence generated:
 Reviewer status updates:
 
 - P2-10 complaint mapping appendix: PARTIAL. The full mapping and `other` composition artifacts now exist and can be added to the appendix/supplement. Alternate grouping sensitivity remains open.
+
+## Major Methodological Rebuild - Disparity and Workload Pass 1
+
+This pass adds observable group performance and workload diagnostics for P2-6 and the feasible portion of P2-9. It does not use ACS/Census socioeconomic data because the current revision boundary forbids collecting new external demographic data.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_disparity_workload_audit.py`
+- Reviewer-facing report: `disparity_workload_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/disparity_workload/`
+
+Protocol:
+
+- Prediction source: final-style 2025 bootstrap prediction rows for T2.
+- Score/decision layer: Platt-calibrated score and validation-fitted Platt threshold.
+- Joined context: borough and `rolling_8w_mean` from the final modeling panel.
+- Groups audited: borough, complaint category, and historical-volume decile.
+
+Workload evidence:
+
+- The T2 Platt threshold produces 52 test weeks with mean 568.6 alerts/week, median 510.0, minimum 97, maximum 1,055, and mean alert rate 0.2411.
+- Mean positives per week are 260.8.
+
+Borough evidence:
+
+- Alert rates range from 0.2086 in Manhattan to 0.2592 in Brooklyn.
+- Precision ranges from 0.2452 in Staten Island to 0.3084 in Manhattan.
+- Recall ranges from 0.5075 in Manhattan to 0.6045 in Brooklyn.
+- Precision@5% ranges from 0.3581 in Staten Island to 0.4641 in the Bronx.
+
+Complaint-category evidence:
+
+- Noise has the highest alert rate (0.3442) and strongest category F1 (0.4213), with recall 0.7599.
+- Other has the lowest alert rate (0.1532), precision 0.2530, recall 0.4310, and F1 0.3188.
+- Sanitation remains weak: precision 0.2184, recall 0.4678, F1 0.2978.
+
+Historical-volume evidence:
+
+- D1 has near-zero baseline volume and almost no alerts: alert rate 0.0004 and precision/recall/F1 all 0.0000 under the selected threshold.
+- D10 has mean `rolling_8w_mean` 162.3, alert rate 0.2636, precision 0.3063, recall 0.5824, F1 0.4015, and precision@5% 0.5554.
+- These results reinforce that low-volume cells behave very differently and need explicit discussion.
+
+Reviewer status updates:
+
+- P2-6 precision@k/capacity/workload: PARTIAL. Weekly workload and group workload diagnostics are now generated, but final capacity policy still needs to be frozen in the manuscript.
+- P2-9 fairness: DEFERRED/PARTIAL. Borough, category, and historical-volume diagnostics are complete from available data; socioeconomic fairness by income/demographics is deferred to Future Work because ACS/Census data are external and not collected in this revision.
