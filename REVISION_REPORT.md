@@ -1029,3 +1029,26 @@ Reviewer status updates:
 
 - Numerical consistency audit: PARTIAL/PASS for available major-revision artifacts. It now covers confusion metrics, target composition, deciles, count baselines, rolling-origin, calibration, bootstrap, seed stability, workload, severity, and SHAP totals.
 - Leakage audit: PARTIAL/PASS for the current final-style candidate and manuscript direction. It does not claim to erase the archived dense-dataset OSM/PLUTO columns; it verifies they are not used in the final-style candidate.
+
+## Major Methodological Rebuild - Selection Rule Freeze Patch 1
+
+This pass updates the pre-registered revision selection rule with a post-experiment draft freeze so that the manuscript decisions are traceable and not implicitly selected from held-out 2025 test metrics.
+
+File changed:
+
+- `pre_registered_revision_selection_rule.md`
+
+Decision record:
+
+- Frozen task target for the current draft: `T2_min_count_3`, defined as the shifted 8-week abnormal threshold plus a minimum next-week count of three.
+- Frozen score model for the current draft: a single no-shortcut LightGBM classifier, not an ensemble.
+- Frozen main feature configuration for the current draft: `07_final_no_shortcut_borough`.
+- Explicitly excluded from the main candidate: the 8-week formula-aligned target-construction predictors and OSM/PLUTO/POI context features.
+- Platt calibration and the classification threshold are fit on validation year 2024 only; 2025 is reserved for held-out reporting.
+- Weather is retained only as a feature-week contextual control and is not claimed as a standalone contribution.
+
+Reviewer status updates:
+
+- Primary selection rule: PARTIAL/PASS for the current draft. The rule now documents the selected target, score model, feature scope, calibration, threshold, and held-out reporting convention.
+- Ensemble removal: PARTIAL/PASS for the current draft. The decision record supports the manuscript's single-model framing.
+- Test-set isolation: PARTIAL/PASS for the current draft. The rule states that 2025 is used for reporting, while validation/backtest evidence drives selection.
