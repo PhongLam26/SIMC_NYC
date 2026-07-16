@@ -1,0 +1,26 @@
+{
+  "status": "done",
+  "script": "major_revision_nta_borough_paired_ci.py",
+  "elapsed_seconds": 170.635,
+  "target": "T2_min_count_3",
+  "seed": 42,
+  "bootstrap_seed": 20260716,
+  "n_bootstrap": 1000,
+  "prediction_rows": 122616,
+  "feature_configs": [
+    "07_final_no_shortcut_borough",
+    "08_final_no_shortcut_nta_fe"
+  ],
+  "removed_formula_aligned_features": [
+    "ratio_to_8w_mean",
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum"
+  ],
+  "outputs": [
+    "nta_vs_borough_prediction_rows.csv.gz",
+    "nta_vs_borough_paired_ci.csv",
+    "nta_vs_borough_paired_ci_report.md",
+    "nta_vs_borough_paired_ci_run_summary.json"
+  ]
+}

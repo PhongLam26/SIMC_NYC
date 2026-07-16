@@ -325,7 +325,7 @@ def write_report(out_dir: Path, composition: pd.DataFrame, metrics: pd.DataFrame
         [
             "# Target Definition Selection Report",
             "",
-            "This first-pass report evaluates sparse-aware target definitions using the existing data only. It is not the final target-selection decision because the checklist requires rolling-origin validation and uncertainty intervals before freezing the manuscript.",
+            "This report evaluates sparse-aware target definitions using the existing data only. The later revision freeze selects T2 by construct validity plus validation/backtest evidence; the held-out diagnostics below are retained as supporting checks, not as the sole selection rule.",
             "",
             "All model rows below use the no-shortcut LightGBM feature set with `rolling_8w_mean`, `rolling_8w_std`, `rolling_8w_sum`, and `ratio_to_8w_mean` removed.",
             "",
@@ -406,8 +406,8 @@ def write_report(out_dir: Path, composition: pd.DataFrame, metrics: pd.DataFrame
             "",
             "- T1 and T2 reduce one-call positives by construction; this improves construct validity for sparse cells but changes the event being forecast.",
             "- T3 removes low-baseline rows from the risk set, so it is not directly comparable to T0/T1/T2 and may exclude low-volume neighborhoods or categories.",
-            "- T4 hurdle-style modeling is not completed in this pass and remains open.",
-            "- Final target selection must use construct validity plus rolling-origin validation/backtesting, not the 2024-2025 held-out test diagnostics.",
+            "- T4 hurdle-style modeling is addressed as count/hurdle baseline evidence in the count-model extension artifacts rather than as a separate final binary target label.",
+            "- The final manuscript selects T2 because it reduces one-call/two-call sparse-cell artifacts while retaining the full dense-panel risk set; this choice is documented in `pre_registered_revision_selection_rule.md` and should not be re-selected by held-out test metrics.",
             "",
         ]
     )

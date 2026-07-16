@@ -1,0 +1,27 @@
+{
+  "status": "done",
+  "script": "major_revision_key_ablation_seed_stability.py",
+  "elapsed_seconds": 725.348,
+  "target": "T2_min_count_3",
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "feature_configs": [
+    "03_history_calendar",
+    "04_history_calendar_weather",
+    "05_history_calendar_weather_borough",
+    "06_history_calendar_weather_nta_fe",
+    "07_final_no_shortcut_borough",
+    "08_final_no_shortcut_nta_fe"
+  ],
+  "outputs": [
+    "key_ablation_seed_stability_results.csv",
+    "key_ablation_seed_stability_summary.csv",
+    "key_ablation_seed_stability_report.md",
+    "key_ablation_seed_stability_run_summary.json"
+  ]
+}
