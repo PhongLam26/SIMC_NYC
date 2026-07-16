@@ -2,7 +2,7 @@
 
 Upload file: `main_SIMC_submission.pdf`
 
-- Pages: 12
+- Pages: 13
 - Paper size: A4
 - PDF bookmarks/outlines: 0
 - Clickable PDF links: 0
@@ -11,7 +11,9 @@ Upload file: `main_SIMC_submission.pdf`
 - Running headers: none
 - Footers: none
 - Authors: all four authors retained
-- URLs, DOIs, email addresses, citations, and cross-references: visible as ordinary non-clickable text
+- URLs, DOI strings, email addresses, citations, and cross-references: visible as ordinary non-clickable text
+- Current title: `Explainable Early Warning for Next-Week Abnormal Reported 311 Demand`
+- Repository link visible in Data and code availability: `https://github.com/PhongLam26/SIMC_NYC`
 
 Build command:
 
@@ -24,3 +26,5 @@ Output:
 ```text
 paper_springer/main_SIMC_submission.pdf
 ```
+
+Reviewer-facing source files are `main.tex`, `main_SIMC_submission.tex`, `references.bib`, `main.bbl`, and the files under `figures/` that are referenced by `main.tex`.

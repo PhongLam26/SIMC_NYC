@@ -1,16 +1,16 @@
 \begin{table}[t]
-\caption{Compact tuning and final-score protocol for gradient-boosted models.}\label{tab:tuning_protocol}
+\caption{Compact protocol for the final no-shortcut LightGBM candidate.}\label{tab:tuning_protocol}
 \centering
 \begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
 \toprule
 Item & Setting \\
 \midrule
-Feature set & 61-input prospective forecast-available subset; one-hot expansion to 73 model columns; OSM/PLUTO 2026 variables excluded from final alert models \\
-Tuning sample/seed & Stratified train sample, \(\texttt{max\_train\_rows}=300{,}000\), seed 42; selected candidates rebuilt on all 954,990 training rows for final reported scores \\
-LightGBM grid & Depth/leaf/lr: (8,63,0.05), (6,31,0.03), (10,127,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
-XGBoost grid & Depth/lr: (8,0.05), (6,0.03), (5,0.03); class weights none, square-root imbalance, half imbalance, and full balanced weight \\
-Selection & Validation F1; selected LightGBM depth 6, 31 leaves, lr 0.03, balanced weight; selected XGBoost depth 5, lr 0.03, square-root weight \\
-Thresholds & Validation grid 0.01--0.99 step 0.005 plus score quantiles; category fallback to global threshold if validation positives \(<30\) \\
+Feature set & 61 forecast-available inputs; one-hot expansion to 73 model columns; formula-aligned 8-week target-construction fields and contemporary built-environment snapshots are excluded \\
+Target & T2 abnormal next-week reported-demand event: shifted 8-week abnormality plus \(y_{t+1} \ge 3\) \\
+Temporal split & Train through 2023, validation on 2024, held-out test on 2025; rolling-origin folds are reported as robustness evidence \\
+Model & Single no-shortcut LightGBM candidate selected from validation/backtest evidence and interpretability considerations \\
+Calibration & Platt calibration fit on validation only and applied unchanged to the held-out 2025 test year \\
+Thresholds & Validation-selected operating threshold; precision@1\% and precision@5\% are reported for capacity-limited review budgets \\
 \bottomrule
 \end{tabular}
 \end{table}

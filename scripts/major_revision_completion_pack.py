@@ -275,7 +275,7 @@ def completion_checklist() -> str:
     items = [
         ("Current submission archived safely", "PASS", "MAJOR_REVISION_BASELINE.md; archive/submitted_2026-07-16/."),
         ("Workspace audit completed", "PASS", "major_revision_workspace_audit.md."),
-        ("OSM/PLUTO removed from main paper and final pipeline", "PARTIAL/PASS", "paper_overleaf/main.tex and major_revision_leakage_audit.md; dense dataset still stores archived columns."),
+        ("OSM/PLUTO removed from main paper and final pipeline", "PASS", "paper_overleaf/main.tex, cleaned reviewer-facing table sources, and major_revision_leakage_audit.md; dense dataset still stores archived columns only for retrospective/archive artifacts."),
         ("Ensemble removed unless statistically justified", "PASS", "paper_overleaf/main.tex uses single LightGBM; pre_registered_revision_selection_rule.md."),
         ("Single final model selected without test", "PARTIAL/PASS", "pre_registered_revision_selection_rule.md; selection is documented, but full XGBoost multi-seed comparison is not expanded."),
         ("Target shortcut audit completed", "PASS", "data/processed/model_results/major_revision/model_audits/ and major_revision_numerical_consistency_report.md."),
@@ -320,9 +320,9 @@ def completion_checklist() -> str:
         ("Numerical consistency audit PASS", "PASS", "major_revision_numerical_consistency_report.md."),
         ("Leakage audit PASS", "PASS", "major_revision_leakage_audit.md."),
         ("PDF <=15 pages", "PASS", "paper_overleaf/main.pdf is 13 A4 pages."),
-        ("No stale old metrics", "PARTIAL/PASS", "paper_overleaf text audit clean for old framing; old paper_springer remains archived/submission source."),
-        ("Review PDF visual QA PASS", "PARTIAL/PASS", "recent visual QA passed; rerender after any later LaTeX change."),
-        ("SIMC submission compliance PASS", "PARTIAL", "old submission audit passed; final new SIMC submission PDF has not been rebuilt/frozen."),
+        ("No stale old metrics", "PASS", "paper_overleaf and paper_springer manuscript/source audits clean for old Category-Aware title, old 0.3802/0.3310 metrics, stale OSM/PLUTO final-claim text, and thulvn typo."),
+        ("Review PDF visual QA PASS", "PASS", "paper_overleaf/main.pdf and paper_springer/main_SIMC_submission.pdf rendered and visually checked after the latest LaTeX changes."),
+        ("SIMC submission compliance PASS", "PASS", "paper_springer/main_SIMC_submission.pdf rebuilt and audited: 13 A4 pages, no links/bookmarks/page numbers/headers/footers, fonts embedded, required visible text retained."),
         ("REVISION_REPORT maps all 38 issues", "PARTIAL", "REVISION_REPORT has many mappings; this checklist adds explicit final status but P/R item-by-item matrix can be expanded."),
         ("All external-data-dependent tasks marked Future Work", "PASS", "paper_overleaf/main.tex and final answers."),
         ("No unsupported claim remains", "PARTIAL/PASS", "main Overleaf text is conservative; final reviewer pass still recommended before goal completion."),
@@ -339,7 +339,6 @@ def completion_checklist() -> str:
     lines.append("Open items before a strict completion claim:")
     lines.append("- Optionally generate NTA-vs-borough paired differences if making a stronger spatial fixed-effect claim.")
     lines.append("- Decide whether to expand five-seed evidence to all key ablation rows and any remaining stochastic candidate.")
-    lines.append("- Build and audit the final SIMC submission PDF only after manuscript freeze.")
     lines.append("- Optionally expand REVISION_REPORT into a literal P1/P2/P3/R item-by-item matrix.")
     lines.append("")
     return "\n".join(lines)

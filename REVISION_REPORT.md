@@ -1132,3 +1132,42 @@ Reviewer status updates:
 - P1-4 uncertainty: strengthened. Main tree-vs-count model differences now have paired cluster-bootstrap CIs.
 - Final required answer 5: PASS for tree-vs-count paired CI.
 - Final required answer 7: PARTIAL/PASS. Calibration and tree-vs-count differences now have paired CIs; NTA-vs-borough paired CI remains open because the NTA effect is kept as a small diagnostic rather than a main claim.
+
+## Major Methodological Rebuild - Springer/SIMC Submission Sync and Audit
+
+This pass removes the last reviewer-facing stale manuscript bundle by syncing `paper_springer/` to the current major-revision manuscript.
+
+Files changed:
+
+- `paper_springer/main.tex`
+- `paper_springer/references.bib`
+- `paper_springer/main.bbl`
+- `paper_springer/main.pdf`
+- `paper_springer/main_SIMC_submission.pdf`
+- `paper_springer/build_SIMC_submission.ps1`
+- `paper_springer/SUBMISSION_AUDIT.md`
+- `paper_springer/SUBMISSION_README.md`
+- `paper_springer/figures/reliability_diagram.pdf`
+- `paper_springer/figures/shap_beeswarm_final.pdf`
+- `paper_springer/figures/shap_local_tp.pdf`
+- `paper_springer/figures/shap_local_fp.pdf`
+- `paper_springer/figures/shap_local_fn.pdf`
+- `scripts/audit_submission_pdf.py`
+- `paper_overleaf/tables/*.tex`
+- `major_revision_final_required_answers.md`
+- `major_revision_completion_checklist.md`
+
+Submission audit:
+
+- Built with `powershell -ExecutionPolicy Bypass -File .\build_SIMC_submission.ps1 -Clean`.
+- Output: `paper_springer/main_SIMC_submission.pdf`, 13 A4 pages.
+- Automated audit PASS: no bookmarks/outlines, no link annotations, no page labels, no page-number footer, no running headers/footers, all fonts embedded, and required visible text retained.
+- Required visible text now checks the current title, correct emails, GitHub URL, dataset IDs, DOI, current LightGBM metrics, and tree-vs-count paired CI values.
+- Rebuilt normal `paper_springer/main.pdf` to 13 pages from the same current source.
+- Rendered `main_SIMC_submission.pdf` to PNG and visually checked the contact sheet plus pages 4--7; no horizontal margin drift, clipping, overlap, or table spillover observed.
+
+Reviewer-facing cleanup:
+
+- The old `Category-Aware` title, old 0.3802/0.3310 ensemble metrics, and old OSM/PLUTO bibliography entries no longer appear in the rebuilt Springer manuscript source, `.bbl`, or submission PDF audit targets.
+- Unused Overleaf table-source files were updated to current no-shortcut LightGBM evidence so the source bundle does not expose stale old tables if inspected.
+- Reviewer-facing files for SIMC are now `paper_springer/main_SIMC_submission.pdf` for upload and `main.tex`, `main_SIMC_submission.tex`, `references.bib`, `main.bbl`, and referenced `figures/` for source support.

@@ -19,7 +19,8 @@ from pypdf import PdfReader
 
 
 EXPECTED_STRINGS = [
-    "Category-Aware Explainable Machine Learning",
+    "Explainable Early Warning for Next-Week",
+    "Abnormal Reported 311 Demand",
     "Tran Dai Phong Lam",
     "Thu Le",
     "Nguyen Quoc Hung",
@@ -32,21 +33,24 @@ EXPECTED_STRINGS = [
     "10.1371/journal.pone.0186314",
     "76ig-c548",
     "erm2-nwe9",
+    "9nt8-h7nd",
+    "GHCND:USW00094728",
     "Figure 1",
     "[1]",
-    "F1 = 0.3802",
-    "precision = 0.2933",
-    "recall = 0.5404",
-    "PR-AUC = 0.3310",
-    "ROC-AUC = 0.7643",
-    "17,059",
-    "41,106",
-    "14,511",
-    "174,914",
+    "PR-AUC 0.3165",
+    "F1 0.3613",
+    "Precision 0.2635",
+    "Recall 0.5744",
+    "Precision@1% 0.5697",
+    "Precision@5% 0.4180",
+    "Brier score 0.0869",
+    "Five-seed PR-AUC 0.3185",
+    "PR-AUC difference 0.1637",
+    "precision@5% difference 0.2425",
 ]
 
 FORBIDDEN_EDGE_TEXT = [
-    "Category-Aware Explainable ML for Urban Service Demand",
+    "Explainable Early Warning for Next-Week Abnormal Reported 311 Demand",
     "Tran Dai Phong Lam",
     "Thu Le",
     "Nguyen Quoc Hung",
@@ -206,7 +210,7 @@ def check_fonts(pdf_path: Path, failures: list[str], report: list[str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", type=Path)
-    parser.add_argument("--expected-pages", type=int, default=12)
+    parser.add_argument("--expected-pages", type=int, default=13)
     args = parser.parse_args()
 
     if not args.pdf.exists():
