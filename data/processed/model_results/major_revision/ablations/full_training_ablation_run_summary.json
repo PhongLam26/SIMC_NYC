@@ -1,0 +1,31 @@
+{
+  "status": "done",
+  "script": "major_revision_full_ablation.py",
+  "elapsed_seconds": 261.944,
+  "target": "T2_min_count_3",
+  "fold": {
+    "fold_id": "final_style_2025",
+    "train_end_year": 2023,
+    "validation_year": 2024,
+    "test_year": 2025
+  },
+  "seed": 42,
+  "feature_configs": [
+    "01_history_lags_only",
+    "02_history_current_count",
+    "03_history_calendar",
+    "04_history_calendar_weather",
+    "05_history_calendar_weather_borough",
+    "06_history_calendar_weather_nta_fe",
+    "07_final_no_shortcut_borough",
+    "08_final_no_shortcut_nta_fe",
+    "09_calendar_only",
+    "10_weather_only",
+    "11_calendar_weather_only"
+  ],
+  "outputs": [
+    "full_training_ablation_feature_manifest.csv",
+    "full_training_ablation_report.md",
+    "full_training_ablation_results.csv"
+  ]
+}

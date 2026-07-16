@@ -643,3 +643,57 @@ Reviewer status updates:
 
 - P2-5 error severity: PARTIAL. Required severity bins and FN counts are now generated for final-style 2025. Still needs integration into manuscript tables/figures and final frozen target/model.
 - P2-6 precision@k/capacity: still PARTIAL. Severity results complement capacity metrics but do not replace final workload analysis.
+
+## Major Methodological Rebuild - Full-Training Ablation Pass 1
+
+This pass replaces the old compact 300k ablation evidence for P1-6 with a full-row final-style ablation on the current sparse-aware target candidate. It is still not the final Table 3 package because it uses one seed and the final model/target are not frozen.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_full_ablation.py`
+- Reviewer-facing report: `full_training_ablation_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/ablations/`
+
+Protocol:
+
+- Target: T2 minimum-count abnormal event (`T2_min_count_3`).
+- Fold: final-style 2025 with train through 2023, validation 2024, and test 2025.
+- Seed: 42.
+- All configurations exclude OSM/PLUTO and remove formula-aligned 8-week shortcut features.
+- Primary selection view: validation PR-AUC and precision@5%; 2025 test rows are diagnostic only.
+
+Validation evidence:
+
+- Final no-shortcut + NTA fixed effects: PR-AUC = 0.2951, precision@5% = 0.3924, F1 = 0.3618.
+- Final no-shortcut + borough: PR-AUC = 0.2939, precision@5% = 0.3906, F1 = 0.3611.
+- History + calendar: PR-AUC = 0.2754, precision@5% = 0.3633, F1 = 0.3436.
+- History + calendar + weather: PR-AUC = 0.2738, precision@5% = 0.3639, F1 = 0.3466.
+- History lags only: PR-AUC = 0.1848, precision@5% = 0.2352, F1 = 0.2616.
+- Weather only: PR-AUC = 0.1405, precision@5% = 0.1602, F1 = 0.2218.
+
+Held-out 2025 diagnostics:
+
+- Final no-shortcut + NTA fixed effects: PR-AUC = 0.3187, precision@5% = 0.4215, F1 = 0.3634.
+- Final no-shortcut + borough: PR-AUC = 0.3165, precision@5% = 0.4180, F1 = 0.3613.
+- History + calendar + weather: PR-AUC = 0.2955, precision@5% = 0.3887, F1 = 0.3537.
+- History + calendar: PR-AUC = 0.2861, precision@5% = 0.3804, F1 = 0.3446.
+
+Weather interpretation:
+
+- Weather does not improve validation PR-AUC over history + calendar in this pass: 0.2738 vs 0.2754, a delta of -0.0016.
+- Weather gives only tiny validation gains in precision@5% (+0.0006) and F1 (+0.0029).
+- Weather-only is weaker than calendar-only on validation PR-AUC: 0.1405 vs 0.1695.
+- The manuscript must not justify weather using 2025 test gains. Under the pre-registered rule, weather remains questionable unless rolling-origin or multi-seed validation evidence supports it.
+- The available weather variables are city-level observed feature-week Central Park exposures, not NTA-level weather and not t+1 operational forecasts. Historical NWS forecast archives and spatial weather grids remain Future Work because they require external data not collected here.
+
+NTA fixed-effect interpretation:
+
+- Adding NTA fixed effects to the final no-shortcut configuration improves validation PR-AUC from 0.2939 to 0.2951 and 2025 diagnostic PR-AUC from 0.3165 to 0.3187.
+- The gain is small and needs multi-seed and/or uncertainty evidence before the manuscript can claim a robust spatial improvement.
+
+Reviewer status updates:
+
+- P1-6 full-training ablation: PARTIAL. Full-row final-style T2 ablation is complete for seed 42 without OSM/PLUTO or formula-aligned 8-week shortcut features. Still requires five-seed evidence for key/final rows and final manuscript table generation.
+- P2-7 weather: PARTIAL. Full-data weather ablation is complete, but validation PR-AUC does not support keeping weather as a core final feature on this pass. Forecast-weather and spatial-grid weather are deferred to Future Work due external-data limits.
+- P2-8 spatial/NTA: PARTIAL. NTA fixed-effect evidence exists and slightly improves validation/test diagnostics, but the effect is not yet robustly established.
+- OSM/PLUTO removal from current ablation: PASS for this artifact. The CSV audit shows no ablation row contains OSM/PLUTO features.
