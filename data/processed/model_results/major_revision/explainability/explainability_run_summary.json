@@ -1,0 +1,47 @@
+{
+  "status": "done",
+  "script": "major_revision_explainability.py",
+  "elapsed_seconds": 71.562,
+  "target": "T2_min_count_3",
+  "seed": 42,
+  "fold": {
+    "fold_id": "final_style_2025",
+    "train_end_year": 2023,
+    "validation_year": 2024,
+    "test_year": 2025
+  },
+  "shap_rows": 8000,
+  "local_cases": 3,
+  "expected_value": -0.8442852004039143,
+  "local_expected_value": -0.8442852004039143,
+  "metrics": {
+    "validation_selected_threshold": 0.5451719983738332,
+    "validation_selected_f1": 0.36110129772250876,
+    "test_pr_auc": 0.3165151742185692,
+    "test_f1": 0.36125023186792804,
+    "test_precision": 0.26347831969153757,
+    "test_recall": 0.5743990561864032,
+    "fit_seconds": 20.104636669158936,
+    "raw_feature_count": 57,
+    "model_feature_count": 69
+  },
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "final_model_explainability_report.md",
+    "local_case_selection_report.md",
+    "shap_beeswarm.pdf",
+    "shap_global_importance.csv",
+    "shap_group_importance.csv",
+    "shap_local_case_feature_contributions.csv",
+    "shap_local_cases.csv",
+    "shap_local_fn.pdf",
+    "shap_local_fp.pdf",
+    "shap_local_tp.pdf",
+    "shap_sample_metadata.csv"
+  ]
+}

@@ -1,0 +1,4 @@
+original_index,target_week,nta2020,ntaname,boroname,complaint_category,complaint_category_label,rolling_8w_mean,rolling_8w_std,target_next_week_count,y_true,score,threshold,prediction,margin_over_threshold,z_exceedance,case_type,case_id
+508288,2025-10-20,BX0904,Parkchester,Bronx,housing,Housing & Building Conditions,52.375,16.177034,244.0,1,0.9753810020856081,0.5451719983738332,1,0.43020900371177484,11.845496523033827,tp_high_confidence,tp
+214432,2025-03-17,BK1204,Mapleton-Midwood (West),Brooklyn,noise,Noise & Disturbance,12.75,5.119989,12.0,0,0.9562757986913468,0.5451719983738332,1,0.4111038003175136,-0.14648468971320056,fp_high_confidence,fp
+898122,2025-06-30,QN0401,Elmhurst,Queens,other,Other / Administrative & Unclassified,11.0,4.8403068,426.0,1,0.3164556053166313,0.5451719983738332,0,-0.22871639305720193,85.73836683244956,fn_severe_missed,fn

@@ -841,3 +841,48 @@ Reviewer status updates:
 
 - P2-6 precision@k/capacity/workload: PARTIAL. Weekly workload and group workload diagnostics are now generated, but final capacity policy still needs to be frozen in the manuscript.
 - P2-9 fairness: DEFERRED/PARTIAL. Borough, category, and historical-volume diagnostics are complete from available data; socioeconomic fairness by income/demographics is deferred to Future Work because ACS/Census data are external and not collected in this revision.
+
+## Major Methodological Rebuild - Final-Style Explainability Pass 1
+
+This pass addresses the reviewer concern that the earlier SHAP narrative did not explain the actual deployed decision model and did not include local case studies.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_explainability.py`
+- Reviewer-facing report: `final_model_explainability_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/explainability/`
+- Figures: `shap_beeswarm.pdf`, `shap_local_tp.pdf`, `shap_local_fp.pdf`, and `shap_local_fn.pdf`
+
+Protocol:
+
+- Target: T2 minimum-count abnormal event (`T2_min_count_3`).
+- Fold: final-style 2025 with train through 2023, validation 2024, and test 2025.
+- Model explained: the same fitted LightGBM score model used for the current no-shortcut candidate. No ensemble proxy is used.
+- Formula-aligned 8-week target-construction predictors are excluded from the score model: `rolling_8w_mean`, `rolling_8w_std`, `rolling_8w_sum`, and `ratio_to_8w_mean`.
+- SHAP sample: 8,000 stratified held-out rows; local cases are selected from all held-out rows by pre-specified TP/FP/FN rules.
+
+Held-out 2025 score-model evidence:
+
+- Validation-selected threshold = 0.5452.
+- Test PR-AUC = 0.3165, F1 = 0.3613, precision = 0.2635, recall = 0.5744.
+- Raw feature count = 57; one-hot encoded model feature count = 69.
+- Fit time for this pass = 20.10 seconds.
+
+Global SHAP evidence:
+
+- Shifted history is the dominant feature group after removing the formula-aligned 8-week shortcut features: mean |SHAP| share = 72.59%.
+- Service category contributes 7.30%, current count 7.20%, feature-week weather 6.30%, calendar 5.54%, and borough 1.07%.
+- Top features are `rolling_12w_mean`, `ratio_to_12w_mean`, `rolling_4w_std`, `complaint_count`, and `rolling_12w_std`. None of the removed formula-aligned 8-week construction fields appear in the explained score model.
+
+Local case evidence:
+
+- TP case: 2025-10-20, Parkchester/Bronx, housing, score 0.9754, next-week count 244, z-exceedance 11.8455.
+- FP case: 2025-03-17, Mapleton-Midwood (West)/Brooklyn, noise, score 0.9563, next-week count 12, z-exceedance -0.1465.
+- FN case: 2025-06-30, Elmhurst/Queens, other, score 0.3165, next-week count 426, z-exceedance 85.7384.
+- Local contribution tables are saved in `shap_local_case_feature_contributions.csv`; waterfall PDFs are generated for each case.
+
+Reviewer status updates:
+
+- P1-1 target shortcut/SHAP circularity: PARTIAL but materially strengthened. The final-style explanation run removes formula-aligned target-construction predictors and documents the resulting SHAP structure.
+- P2-11 local SHAP case studies: PARTIAL. TP/FP/FN cases and waterfall plots now exist; manuscript integration and interpretation text remain.
+- P2-12 final decision explanation: PARTIAL/REDIRECTED. This pass explains the actual single LightGBM candidate and avoids an ensemble explanation proxy. The remaining manuscript decision is to freeze the single-model decision layer or implement a true ensemble explanation if the ensemble is retained.
