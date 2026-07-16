@@ -584,3 +584,32 @@ Reviewer status updates:
 - P1-4 uncertainty: PARTIAL. Cluster-bootstrap CIs now exist for final-style 2025 T0/T2 no-shortcut LightGBM rows and paired calibration differences. Still requires final Table 4/Table 5 row coverage and at least five stochastic seeds.
 - P2-4 calibration: PARTIAL but materially strengthened. Calibration has statistically clear Brier/log-loss improvement without a ranking claim.
 - Paired model-difference CI: PARTIAL. Calibration paired differences are complete; final tree-vs-baseline and final-model comparisons remain open until final model/target freeze.
+
+## Major Methodological Rebuild - Seed Stability Pass 1
+
+This pass adds the requested five stochastic seeds for the current final-style no-shortcut LightGBM candidates. It does not complete all seed requirements because the final target/model is not frozen and rolling-origin multi-seed evidence for every fold remains open.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_seed_stability.py`
+- Reviewer-facing report: `seed_stability_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/seeds/`
+
+Protocol:
+
+- Fold: final-style 2025 with train through 2023, validation 2024, and test 2025.
+- Seeds: 42, 123, 2026, 3407, 7777.
+- Targets: T0 current reference and T2 minimum-count target.
+- Model: no-shortcut LightGBM.
+- Thresholds and Platt calibrators are fitted only on validation 2024.
+
+Five-seed test evidence for Platt-calibrated scores:
+
+- T0 current reference: PR-AUC = 0.3115 +/- 0.0021, precision@5% = 0.4248 +/- 0.0037, F1 = 0.3549 +/- 0.0005, Brier = 0.1011 +/- 0.0001.
+- T2 minimum count 3: PR-AUC = 0.3185 +/- 0.0023, precision@5% = 0.4194 +/- 0.0034, F1 = 0.3638 +/- 0.0015, Brier = 0.0868 +/- 0.0001.
+
+Reviewer status updates:
+
+- P1-4 uncertainty: PARTIAL. Five seeds are now complete for final-style T0/T2 no-shortcut LightGBM candidates, in addition to cluster-bootstrap CIs. Still requires final manuscript-row CI coverage and multi-seed evidence for the final frozen configuration.
+- Multiple-seed requirement: PARTIAL. The required seed list has been run for these two candidate targets, but not yet for all ablation rows or every stochastic final candidate.
+- P1-2 target selection: still PARTIAL. T2 is stable across seeds, but final target selection remains open until the full ablation and final selection rule are applied.

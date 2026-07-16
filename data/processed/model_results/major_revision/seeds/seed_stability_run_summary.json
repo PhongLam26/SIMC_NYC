@@ -1,0 +1,38 @@
+{
+  "status": "done",
+  "script": "major_revision_seed_stability.py",
+  "elapsed_seconds": 353.522,
+  "fold": {
+    "fold_id": "final_style_2025",
+    "train_end_year": 2023,
+    "validation_year": 2024,
+    "test_year": 2025
+  },
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    7777
+  ],
+  "targets": [
+    "T0_current_reference",
+    "T2_min_count_3"
+  ],
+  "feature_set": "B_no_8w_formula_features",
+  "calibration_methods": [
+    "uncalibrated",
+    "platt"
+  ],
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "seed_stability_report.md",
+    "seed_stability_results.csv",
+    "seed_stability_summary.csv"
+  ]
+}
