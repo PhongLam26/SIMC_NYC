@@ -511,3 +511,38 @@ Reviewer status updates:
 - P2-1 rolling-origin evaluation: PARTIAL. Five expanding-window folds are complete and 2024/2025 are reported separately. Still requires multiple seeds, calibration drift, category drift, and COVID-exclusion sensitivity.
 - P1-2 target selection: still PARTIAL. T1/T2 improve construct validity by removing one-call positives; T2 gives the strongest comparable validation/backtest PR-AUC among T0/T1/T2, but final target selection remains open until uncertainty and calibration are added.
 - P1-4 uncertainty: still OPEN. The `+/-` values above are fold standard deviations, not bootstrap confidence intervals.
+
+## Major Methodological Rebuild - Calibration Pass 1
+
+This pass adds fold-specific probability calibration for P2-4. It does not freeze the final probability model, because target/model selection, bootstrap intervals, and the final manuscript tables remain open.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_calibration.py`
+- Reviewer-facing report: `calibration_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/calibration/`
+- Reliability diagram: `data/processed/model_results/major_revision/calibration/reliability_diagram.pdf`
+
+Calibration protocol:
+
+- All folds use the no-shortcut LightGBM feature set.
+- Platt and isotonic calibrators are fit only on each fold's validation year.
+- Test-year metrics are evaluated with the fold-specific validation-fitted calibrator.
+- Metrics include Brier score, log loss, ECE, MCE, calibration slope/intercept, ranking metrics, and threshold metrics.
+
+Mean test-year calibration evidence across five rolling-origin folds:
+
+- T0 current reference: uncalibrated Brier = 0.1955 and ECE = 0.2820; Platt Brier = 0.1023 and ECE = 0.0083; isotonic Brier = 0.1023 and ECE = 0.0078.
+- T2 minimum count 3: uncalibrated Brier = 0.1852 and ECE = 0.2701; Platt Brier = 0.0877 and ECE = 0.0085; isotonic Brier = 0.0876 and ECE = 0.0070.
+- T3 eligible rows: uncalibrated Brier = 0.1912 and ECE = 0.2644; Platt Brier = 0.1081 and ECE = 0.0104; isotonic Brier = 0.1082 and ECE = 0.0097.
+
+Final-style 2025 test evidence:
+
+- T0: uncalibrated Brier = 0.1742 and ECE = 0.2522; Platt Brier = 0.1011 and ECE = 0.0059; isotonic Brier = 0.1011 and ECE = 0.0056.
+- T2: uncalibrated Brier = 0.1676 and ECE = 0.2493; Platt Brier = 0.0869 and ECE = 0.0057; isotonic Brier = 0.0868 and ECE = 0.0044.
+
+Reviewer status updates:
+
+- P2-4 calibration: PARTIAL. Platt and isotonic calibration are complete across rolling-origin folds, Brier/ECE/log loss are reported, and a reliability diagram is generated. Final calibration choice remains open until final target/model freeze and uncertainty intervals.
+- P1-4 uncertainty: still OPEN. Calibration does not replace bootstrap CIs or multi-seed stability.
+- P2-1 rolling-origin: still PARTIAL. Calibration is now folded into rolling-origin evidence, but category drift and COVID-exclusion sensitivity remain open.

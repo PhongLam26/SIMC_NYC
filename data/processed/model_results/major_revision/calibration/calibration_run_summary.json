@@ -1,0 +1,64 @@
+{
+  "status": "done",
+  "script": "major_revision_calibration.py",
+  "elapsed_seconds": 452.793,
+  "targets": [
+    "T0_current_reference",
+    "T1_min_count_2",
+    "T2_min_count_3",
+    "T3_mu8w_ge_1_eligible"
+  ],
+  "folds": [
+    {
+      "fold_id": "fold_2021",
+      "train_end_year": 2019,
+      "validation_year": 2020,
+      "test_year": 2021
+    },
+    {
+      "fold_id": "fold_2022",
+      "train_end_year": 2020,
+      "validation_year": 2021,
+      "test_year": 2022
+    },
+    {
+      "fold_id": "fold_2023",
+      "train_end_year": 2021,
+      "validation_year": 2022,
+      "test_year": 2023
+    },
+    {
+      "fold_id": "fold_2024",
+      "train_end_year": 2022,
+      "validation_year": 2023,
+      "test_year": 2024
+    },
+    {
+      "fold_id": "final_style_2025",
+      "train_end_year": 2023,
+      "validation_year": 2024,
+      "test_year": 2025
+    }
+  ],
+  "n_bins": 10,
+  "calibration_methods": [
+    "uncalibrated",
+    "platt",
+    "isotonic"
+  ],
+  "calibrator_fit_split": "validation",
+  "feature_set": "B_no_8w_formula_features",
+  "removed_formula_aligned_features": [
+    "rolling_8w_mean",
+    "rolling_8w_std",
+    "rolling_8w_sum",
+    "ratio_to_8w_mean"
+  ],
+  "outputs": [
+    "calibration_report.md",
+    "calibration_results.csv",
+    "calibration_summary.csv",
+    "reliability_bins.csv",
+    "reliability_diagram.pdf"
+  ]
+}
