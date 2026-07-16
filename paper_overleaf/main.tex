@@ -1,5 +1,5 @@
 % Springer Nature manuscript draft for SIMC NYC.
-% Major-revision draft generated from local SIMC_project evidence files.
+% Manuscript draft generated from local SIMC_project evidence files.
 
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
 
@@ -50,7 +50,7 @@
 
 \affil*[1]{\orgname{FPT University}, \orgaddress{\city{Ho Chi Minh City}, \country{Vietnam}}}
 
-\abstract{Urban 311 systems provide large-scale traces of reported municipal demand, but they do not directly measure all underlying service need. We frame NYC 311 modeling as a leakage-controlled early-warning problem: for each neighborhood, feature week, and complaint category, predict whether the next week will exceed its recent local baseline by at least 1.5 standard deviations and at least three requests. The study uses 30.9 million NTA-matched requests to construct a 1.33 million-row modeling panel. The final candidate is a no-shortcut LightGBM model that excludes the 8-week statistics used to construct the target, uses only information available by the end of week \(t\), applies Platt calibration on validation year 2024, and evaluates unchanged on held-out test year 2025. On 2025 test rows, the model obtains PR-AUC 0.3165, F1 0.3613, precision 0.2635, recall 0.5744, precision@1\% 0.5697, precision@5\% 0.4180, and Brier score 0.0869; cluster-bootstrap 95\% intervals are reported for the main metrics. Count-forecasting baselines and sparse-target diagnostics show that the task is substantially harder than simple count extrapolation. SHAP beeswarm and local TP/FP/FN waterfall explanations are computed for the same fitted LightGBM score model, showing that shifted historical demand dominates while service category, current count, calendar, weather, and borough features refine the alert ranking.}
+\abstract{Urban 311 systems provide large-scale traces of reported municipal demand, but they do not directly measure all underlying service need. We frame NYC 311 modeling as a leakage-controlled early-warning problem: for each neighborhood, feature week, and complaint category, predict whether the next week will exceed its recent local baseline by at least 1.5 standard deviations and at least three requests. The study uses 30.9 million NTA-matched requests to construct a 1.33 million-row modeling panel. The selected no-shortcut LightGBM model excludes the 8-week statistics used to construct the target, uses only information available by the end of week \(t\), applies Platt calibration on validation year 2024, and evaluates unchanged on held-out test year 2025. On 2025 test rows, the model obtains PR-AUC 0.317, F1 0.361, precision 0.263, recall 0.574, precision@1\% 0.570, precision@5\% 0.418, and Brier score 0.087; cluster-bootstrap 95\% intervals are reported for the main metrics. Count-forecasting baselines and sparse-target diagnostics show that the task is substantially harder than simple count extrapolation. SHAP beeswarm and local TP/FP/FN waterfall explanations are computed on the LightGBM raw-margin scale before Platt calibration, showing that shifted historical demand dominates while service category, current count, calendar, weather, and borough features refine the alert ranking.}
 
 \keywords{urban computing, 311 service requests, early warning, reported demand, explainable machine learning, calibration, SHAP}
 
@@ -99,13 +99,13 @@ The reference abnormal event is \(\text{count}_{n,t+1,c}>\mu^{8w}_{n,t,c}+1.5\si
 \[
 y_{n,t,c}=\mathbf{1}\{\text{count}_{n,t+1,c}>\mu^{8w}_{n,t,c}+1.5\sigma^{8w}_{n,t,c}\ \wedge\ \text{count}_{n,t+1,c}\ge3\}.
 \]
-The 8-week mean, standard deviation, sum, and ratio used in this target construction are not used as model predictors. On the 2025 held-out test year, this T2 target has 27,277 positives across 247,590 rows in the two-year diagnostic split and reduces the share of positives from cells with \(\mu^{8w}<1\) from 17.96\% under the original target to 5.10\%.
+The 8-week mean, standard deviation, sum, and ratio used in this target construction are not used as model predictors. Across the 2024--2025 two-year diagnostic period, the T2 target yields 27,277 positives among 247,590 rows and reduces the share of positives from cells with \(\mu^{8w}<1\) from 17.96\% under the original target to 5.10\%.
 
 \subsection{Models and Evaluation}\label{subsec:models_eval}
 
-The final candidate uses shifted 311 history, current feature-week count, ratios to non-target 12-week history, calendar variables, feature-week weather, service category, and borough identifiers. Weather is a city-level observed exposure for week \(t\); it is not a forecast of week \(t+1\). Contemporary built-environment snapshots are not used in the final candidate.
+The final model uses shifted 311 history, current feature-week count, ratios to non-target 12-week history, calendar variables, feature-week weather, service category, and borough identifiers. Weather is a city-level observed exposure for week \(t\); it is not a forecast of week \(t+1\). Contemporary built-environment snapshots are not used in the final model.
 
-The main classifier is LightGBM with the same no-shortcut feature design across folds. A Platt calibrator is fit only on the validation year and then applied unchanged to the test year. The final-style fold trains through 2023, validates on 2024, and tests on 2025. We also report five expanding-window rolling-origin folds, five stochastic seeds for the final-style fold, and cluster-bootstrap confidence intervals that resample NTA-category clusters. The final-style seed-42 LightGBM fit used for the explainability pass trains in 20.1 seconds on the local workstation; this is a reproducibility diagnostic, not a staffing or deployment latency estimate.
+The main classifier is LightGBM with the same no-shortcut feature design across folds. A Platt calibrator is fit only on the validation year and then applied unchanged to the test year. The held-out 2025 evaluation trains through 2023, validates on 2024, and tests on 2025. We also report five expanding-window rolling-origin folds, five stochastic seeds for the held-out 2025 configuration, and cluster-bootstrap confidence intervals that resample NTA-category clusters. The seed-42 LightGBM fit used for the explainability pass trains in 20.1 seconds on the local workstation; this is a reproducibility diagnostic, not a staffing or deployment latency estimate.
 
 Metrics include PR-AUC, F1, precision, recall, precision@1\%, precision@5\%, Brier score, log loss, expected calibration error (ECE), and alert rate. Precision@k is reported because agencies can review only a fraction of scored rows. Thresholds are fit on validation only. The resulting alerts should be interpreted as a ranking and triage signal rather than an automatic allocation rule.
 
@@ -113,7 +113,7 @@ Metrics include PR-AUC, F1, precision, recall, precision@1\%, precision@5\%, Bri
 
 \subsection{Target, Calibration, and Uncertainty}\label{subsec:main_results}
 
-Table \ref{tab:main_metrics} summarizes the final-style 2025 evidence for the no-shortcut LightGBM candidate. The Platt-calibrated score improves calibration sharply while preserving the ranking metrics, as expected for a monotone score transformation.
+Table \ref{tab:main_metrics} summarizes the held-out 2025 evidence for the selected no-shortcut LightGBM model. The Platt-calibrated score improves calibration sharply while preserving the ranking metrics, as expected for a monotone score transformation.
 
 \begin{table*}[!htbp]
 \caption{Held-out 2025 performance for the final no-shortcut LightGBM candidate. Confidence intervals are cluster-bootstrap 95\% intervals over NTA-category clusters.}\label{tab:main_metrics}
@@ -122,53 +122,53 @@ Table \ref{tab:main_metrics} summarizes the final-style 2025 evidence for the no
 \toprule
 Metric & Estimate & 95\% CI or stability \\
 \midrule
-PR-AUC & 0.3165 & [0.3080, 0.3252] \\
-F1 & 0.3613 & [0.3551, 0.3676] \\
-Precision & 0.2635 & [0.2582, 0.2690] \\
-Recall & 0.5744 & [0.5645, 0.5845] \\
-Precision@1\% & 0.5697 & [0.5428, 0.6023] \\
-Precision@5\% & 0.4180 & [0.4035, 0.4324] \\
-Lift@1\% & 5.1506 & [4.8934, 5.4603] \\
-Brier score & 0.0869 & [0.0852, 0.0888] \\
-Log loss & 0.2933 & [0.2881, 0.2991] \\
-Five-seed PR-AUC & 0.3185 & SD 0.0023 \\
-Five-seed F1 & 0.3638 & SD 0.0015 \\
+PR-AUC & 0.317 & [0.308, 0.325] \\
+F1 & 0.361 & [0.355, 0.368] \\
+Precision & 0.263 & [0.258, 0.269] \\
+Recall & 0.574 & [0.564, 0.585] \\
+Precision@1\% & 0.570 & [0.543, 0.602] \\
+Precision@5\% & 0.418 & [0.404, 0.432] \\
+Lift@1\% & 5.151 & [4.893, 5.460] \\
+Brier score & 0.087 & [0.085, 0.089] \\
+Log loss & 0.293 & [0.288, 0.299] \\
+Five-seed PR-AUC & 0.319 & SD 0.002 \\
+Five-seed F1 & 0.364 & SD 0.002 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Across five rolling-origin folds, the T2 target has mean PR-AUC 0.2997, precision@5\% 0.4015, and F1 0.3583. In the final-style 2025 fold, Platt calibration reduces Brier score from 0.1676 to 0.0869 and ECE from 0.2493 to 0.0057. Figure \ref{fig:reliability} shows the resulting reliability curve.
+Across five rolling-origin folds, the T2 target has mean PR-AUC 0.300, precision@5\% 0.402, and F1 0.358. PR-AUC was 0.308 in 2024 and 0.317 in 2025, while precision@5\% increased from 0.408 to 0.418. Performance was broadly similar across the two most recent folds, although year-specific monitoring remains necessary. In the held-out 2025 evaluation, Platt calibration reduces Brier score from 0.168 to 0.087 and ECE from 0.249 to 0.006. Figure \ref{fig:reliability} shows the resulting reliability curve.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.78\linewidth]{figures/reliability_diagram.pdf}
-\caption{Reliability diagram for the final-style calibrated LightGBM candidate. Calibration is fit on validation year 2024 and evaluated unchanged on held-out year 2025.}
+\caption{Reliability diagrams for the original T0 target (left) and the final minimum-count T2 target (right). Platt and isotonic calibration are fitted on 2024 validation data and evaluated on held-out 2025 data. T2 is used for the final model.}
 \label{fig:reliability}
 \end{figure}
 
 \subsection{Baselines and Ablation}\label{subsec:ablation}
 
-Count-model baselines are substantially weaker event rankers than the classification model (Table \ref{tab:baselines}). They remain useful as a sanity check: the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap comparing the final LightGBM with the HGB Poisson count baseline gives PR-AUC difference 0.1637 [0.1559, 0.1722] and precision@5\% difference 0.2425 [0.2269, 0.2575]; against the hurdle count baseline, the corresponding differences are 0.1648 [0.1565, 0.1733] and 0.2458 [0.2296, 0.2610].
+Count-model baselines are substantially weaker event rankers than the classification model (Table \ref{tab:baselines}). They remain useful as a sanity check: the classifier is not merely reproducing a count forecast with a threshold. A paired NTA-category bootstrap comparing the final LightGBM with the HGB Poisson count baseline gives PR-AUC difference 0.164 [0.156, 0.172] and precision@5\% difference 0.243 [0.227, 0.258]; against the hurdle count baseline, the corresponding differences are 0.165 [0.156, 0.173] and 0.246 [0.230, 0.261].
 
 \begin{table*}[!htbp]
-\caption{Baseline comparison on the held-out 2025 fold. Formula-threshold count decisions apply the same abnormal-event threshold to predicted counts.}\label{tab:baselines}
+\caption{Baseline comparison on held-out data. Each row reports one decision rule. Formula-threshold count decisions apply the abnormal-event threshold to predicted counts; the HGB and hurdle rows use the final T2 target, while Poisson GLM rows are retained as original-threshold count diagnostics.}\label{tab:baselines}
 \centering
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lrrrrr@{}}
+\begin{tabular}{@{}llrrrrrr@{}}
 \toprule
-Method & Count MAE & PR-AUC & Precision@5\% & F1 & Recall \\
+Method & Decision & Count MAE & PR-AUC & P@5\% & Precision & Recall & F1 \\
 \midrule
-Poisson GLM, no NTA FE & 8.6680 & 0.1400 & -- & 0.1460 & -- \\
-Poisson GLM + NTA fixed effects & 8.6839 & 0.1400 & -- & 0.1492 & -- \\
-HGB Poisson count, formula threshold & 8.0211 & 0.1528 & 0.1755 & 0.1710 & 0.1026 \\
-Hurdle HGB count, formula threshold & 7.9377 & 0.1517 & 0.1722 & 0.1812 & 0.1108 \\
-No-shortcut LightGBM classifier & -- & 0.3165 & 0.4180 & 0.3613 & 0.5744 \\
+Poisson GLM, no NTA FE & Formula threshold & 8.668 & 0.140 & 0.144 & 0.116 & 0.198 & 0.146 \\
+Poisson GLM + NTA fixed effects & Formula threshold & 8.684 & 0.140 & 0.145 & 0.117 & 0.204 & 0.149 \\
+HGB Poisson count & T2 formula threshold & 8.021 & 0.153 & 0.176 & 0.513 & 0.103 & 0.171 \\
+Hurdle HGB count & T2 formula threshold & 7.938 & 0.152 & 0.172 & 0.497 & 0.111 & 0.181 \\
+No-shortcut LightGBM classifier & Validation threshold & -- & 0.317 & 0.418 & 0.263 & 0.574 & 0.361 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table*}
 
-Full-row ablations show that history and current count provide most of the signal, while calendar and weather add smaller increments (Table \ref{tab:ablation}). Weather does not improve validation PR-AUC over history plus calendar in this pass, so the weather variables should be read as contextual controls rather than a core contribution. In a five-seed rerun of the key ablation rows, the final borough model has mean test PR-AUC 0.3185 (SD 0.0023) and the NTA fixed-effect variant has 0.3188 (SD 0.0011), so the spatial fixed-effect gain remains too small to change the simpler final-model claim.
+Full-row ablations show that history and current count provide most of the signal, while calendar and weather add smaller increments (Table \ref{tab:ablation}). Weather did not improve validation PR-AUC over history plus calendar in the isolated ablation, although validation precision@5\% and F1 increased slightly. It is retained as a documented contextual covariate and is not treated as a core source of ranking performance. In a five-seed rerun of the key ablation rows, the final borough model has mean test PR-AUC 0.319 (SD 0.002) and the NTA-indicator variant has 0.319 (SD 0.001), so the gain from NTA indicators remains too small to change the simpler final-model claim.
 
 \begin{table*}[!htbp]
 \caption{Full-training ablation for the T2 no-shortcut target. Selection uses validation metrics; 2025 test metrics are diagnostic.}\label{tab:ablation}
@@ -178,12 +178,12 @@ Full-row ablations show that history and current count provide most of the signa
 \toprule
 Feature configuration & Val PR-AUC & Val P@5\% & Val F1 & Test PR-AUC & Test P@5\% & Test F1 \\
 \midrule
-History lags only & 0.1848 & 0.2352 & 0.2616 & 0.1857 & 0.2381 & 0.2672 \\
-History + current count & 0.2464 & 0.3287 & 0.3152 & 0.2528 & 0.3383 & 0.3173 \\
-History + calendar & 0.2754 & 0.3633 & 0.3436 & 0.2861 & 0.3804 & 0.3446 \\
-History + calendar + weather & 0.2738 & 0.3639 & 0.3466 & 0.2955 & 0.3887 & 0.3537 \\
-Final + borough & 0.2939 & 0.3906 & 0.3611 & 0.3165 & 0.4180 & 0.3613 \\
-Final + NTA fixed effects & 0.2951 & 0.3924 & 0.3618 & 0.3187 & 0.4215 & 0.3634 \\
+History lags only & 0.185 & 0.235 & 0.262 & 0.186 & 0.238 & 0.267 \\
+History + current count & 0.246 & 0.329 & 0.315 & 0.253 & 0.338 & 0.317 \\
+History + calendar & 0.275 & 0.363 & 0.344 & 0.286 & 0.380 & 0.345 \\
+History + calendar + weather & 0.274 & 0.364 & 0.347 & 0.295 & 0.389 & 0.354 \\
+Final + borough & 0.294 & 0.391 & 0.361 & 0.317 & 0.418 & 0.361 \\
+Final + NTA indicators & 0.295 & 0.392 & 0.362 & 0.319 & 0.422 & 0.363 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -191,9 +191,9 @@ Final + NTA fixed effects & 0.2951 & 0.3924 & 0.3618 & 0.3187 & 0.4215 & 0.3634 
 
 \subsection{Workload, Groups, and Error Severity}\label{subsec:workload}
 
-At the validation-selected Platt threshold, the 2025 test year produces a mean of 568.6 alerts per week, with a median of 510 and a range of 97 to 1,055. This volume is high for manual review, so precision@1\% and precision@5\% are more operationally meaningful than F1 alone. Borough alert rates range from 0.2086 in Manhattan to 0.2592 in Brooklyn; borough precision ranges from 0.2452 in Staten Island to 0.3084 in Manhattan.
+At the validation-selected Platt threshold, the 2025 test year produces a mean of 568.6 alerts per week, with a median of 510 and a range of 97 to 1,055. This volume is high for manual review, so precision@1\% and precision@5\% are more operationally meaningful than F1 alone. Borough alert rates range from 0.209 in Manhattan to 0.259 in Brooklyn; borough precision ranges from 0.245 in Staten Island to 0.308 in Manhattan.
 
-Complaint categories differ sharply (Table \ref{tab:category_metrics}). Noise has the highest alert rate and strongest category F1, while sanitation and other remain weaker. These differences are descriptive performance diagnostics, not a socioeconomic fairness audit. We do not collect new ACS/Census demographic variables in this revision; demographic fairness is therefore a limitation and future-work item rather than a completed result.
+Complaint categories differ sharply (Table \ref{tab:category_metrics}). Noise has the highest alert rate and strongest category F1, while sanitation and other remain weaker. These differences are descriptive performance diagnostics, not a socioeconomic fairness audit. ACS/Census demographic variables are not included, so the reported group diagnostics do not constitute a socioeconomic fairness audit.
 
 \begin{table*}[!htbp]
 \caption{Held-out 2025 calibrated LightGBM metrics by complaint category.}\label{tab:category_metrics}
@@ -201,55 +201,55 @@ Complaint categories differ sharply (Table \ref{tab:category_metrics}). Noise ha
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Category & Positive share & Alert rate & Precision & Recall & F1 & PR-AUC \\
+Category & Event prevalence & Alert rate & Precision & Recall & F1 & PR-AUC \\
 \midrule
-Noise & 0.1320 & 0.3442 & 0.2915 & 0.7599 & 0.4213 & 0.4127 \\
-Water/sewer & 0.1091 & 0.2383 & 0.2779 & 0.6070 & 0.3812 & 0.3643 \\
-Public safety & 0.1095 & 0.2319 & 0.2824 & 0.5979 & 0.3836 & 0.2996 \\
-Housing & 0.1216 & 0.2140 & 0.2949 & 0.5193 & 0.3762 & 0.3816 \\
-Parking/traffic & 0.1229 & 0.2677 & 0.2605 & 0.5672 & 0.3570 & 0.3035 \\
-Infrastructure & 0.1236 & 0.2766 & 0.2470 & 0.5529 & 0.3415 & 0.2599 \\
-Environment & 0.0911 & 0.2392 & 0.2301 & 0.6044 & 0.3333 & 0.2748 \\
-Other & 0.0899 & 0.1532 & 0.2530 & 0.4310 & 0.3188 & 0.2596 \\
-Sanitation & 0.0957 & 0.2050 & 0.2184 & 0.4678 & 0.2978 & 0.2339 \\
+Noise & 0.132 & 0.344 & 0.292 & 0.760 & 0.421 & 0.413 \\
+Water/sewer & 0.109 & 0.238 & 0.278 & 0.607 & 0.381 & 0.364 \\
+Public safety & 0.109 & 0.232 & 0.282 & 0.598 & 0.384 & 0.300 \\
+Housing & 0.122 & 0.214 & 0.295 & 0.519 & 0.376 & 0.382 \\
+Parking/traffic & 0.123 & 0.268 & 0.260 & 0.567 & 0.357 & 0.303 \\
+Infrastructure & 0.124 & 0.277 & 0.247 & 0.553 & 0.342 & 0.260 \\
+Environment & 0.091 & 0.239 & 0.230 & 0.604 & 0.333 & 0.275 \\
+Other & 0.090 & 0.153 & 0.253 & 0.431 & 0.319 & 0.260 \\
+Sanitation & 0.096 & 0.205 & 0.218 & 0.468 & 0.298 & 0.234 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table*}
 
-Error-severity analysis shows that the final T2 model recalls 57.44\% of positives overall. Recall increases with realized severity: 50.38\% for 1.5--2 standard-deviation exceedances, 56.49\% for 2--3 standard deviations, and 64.43\% for exceedances of at least 3 standard deviations. False negatives therefore still occur in severe events and must be discussed as an operational risk.
+Error-severity analysis shows that the final T2 model recalls 57.4\% of positives overall. Recall increases with realized severity: 50.4\% for 1.5--2 standard-deviation exceedances, 56.5\% for 2--3 standard deviations, and 64.4\% for exceedances of at least 3 standard deviations. False negatives therefore still occur in severe events and must be discussed as an operational risk.
 
 \subsection{Explainability}\label{subsec:explainability}
 
-SHAP is computed for the same fitted no-shortcut LightGBM score model used in the final-style 2025 candidate. It is not an ensemble proxy and it is not a causal explanation. The beeswarm in Figure \ref{fig:shap_beeswarm} shows both direction and dispersion of feature effects. Shifted history dominates the global explanation with 72.59\% of summed mean absolute SHAP importance, followed by service category (7.30\%), current count (7.20\%), feature-week weather (6.30\%), calendar (5.54\%), and borough (1.07\%). The weather share reflects citywide feature-week exposure and seasonal correlation in reported demand, not neighborhood microclimate or a forecast of next week's weather. The highest-ranked individual predictors are \texttt{rolling\_12w\_mean}, \texttt{ratio\_to\_12w\_mean}, \texttt{rolling\_4w\_std}, \texttt{complaint\_count}, and \texttt{rolling\_12w\_std}. The formula-aligned 8-week target-construction fields do not appear as predictors.
+SHAP is computed for the same fitted no-shortcut LightGBM score model used in the held-out 2025 evaluation. It is not an ensemble proxy and it is not a causal explanation. TreeSHAP values are computed on the LightGBM raw-margin scale before Platt calibration. Platt scaling is monotonic for the audited score range and therefore preserves score ordering, but waterfall values and uncalibrated LightGBM probabilities should not be interpreted as calibrated probabilities. The beeswarm in Figure \ref{fig:shap_beeswarm} shows both direction and dispersion of feature effects. Shifted history dominates the global explanation with 72.6\% of summed mean absolute SHAP importance, followed by service category (7.3\%), current count (7.2\%), feature-week weather (6.3\%), calendar (5.5\%), and borough (1.1\%). The weather share reflects citywide feature-week exposure and seasonal correlation in reported demand, not neighborhood microclimate or a forecast of next week's weather. The highest-ranked individual predictors are \texttt{rolling\_12w\_mean}, \texttt{ratio\_to\_12w\_mean}, \texttt{rolling\_4w\_std}, \texttt{complaint\_count}, and \texttt{rolling\_12w\_std}. The formula-aligned 8-week target-construction fields do not appear as predictors.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/shap_beeswarm_final.pdf}
-\caption{SHAP beeswarm for the final-style no-shortcut LightGBM score model on a stratified sample of 8,000 held-out 2025 rows. The explanation model and score model are the same fitted LightGBM.}
+\includegraphics[width=0.95\textwidth]{figures/shap_beeswarm_final.pdf}
+\caption{SHAP beeswarm for the selected no-shortcut LightGBM score model on a stratified sample of 8,000 held-out 2025 rows. The explanation model and score model are the same fitted LightGBM; SHAP values are on the pre-calibration raw-margin scale.}
 \label{fig:shap_beeswarm}
 \end{figure*}
 
-Local cases were selected before interpretation: the highest-score true positive, the highest-score false positive, and the missed positive with the largest realized z-exceedance. The TP is a Parkchester/Bronx housing case on 2025-10-20 with score 0.9754 and 244 next-week requests. The FP is a Mapleton-Midwood/Brooklyn noise case on 2025-03-17 with score 0.9563 but no abnormal event. The FN is an Elmhurst/Queens other-category case on 2025-06-30 with score 0.3165 and 426 next-week requests, illustrating that large rare shocks can be missed when recent history and category patterns do not support a high pre-event score.
+Local cases were selected before interpretation: the highest-probability true positive, the highest-probability false positive, and the missed positive with the largest realized z-exceedance. The Platt-calibrated alert threshold is 0.167. The TP is a Parkchester/Bronx housing case on 2025-10-20 with uncalibrated LightGBM probability 0.975, calibrated probability 0.625, and 244 next-week requests. The FP is a Mapleton-Midwood/Brooklyn noise case on 2025-03-17 with uncalibrated probability 0.956 and calibrated probability 0.603 but no abnormal event. The FN is an Elmhurst/Queens other-category case on 2025-06-30 with uncalibrated probability 0.316, calibrated probability 0.061, and 426 next-week requests, illustrating that large rare shocks can be missed when recent history and category patterns do not support a high pre-event probability.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.76\textwidth]{figures/shap_local_tp.pdf}
-\caption{Local SHAP waterfall explanation for the pre-specified high-confidence true-positive case. The plot explains LightGBM score contributions for the selected row and should not be read as causal attribution.}
+\includegraphics[width=0.90\textwidth]{figures/shap_local_tp.pdf}
+\caption{Local SHAP waterfall explanation for the pre-specified high-confidence true-positive case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
 \label{fig:local_shap_tp}
 \end{figure*}
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.76\textwidth]{figures/shap_local_fp.pdf}
-\caption{Local SHAP waterfall explanation for the pre-specified high-confidence false-positive case. The plot explains LightGBM score contributions for the selected row and should not be read as causal attribution.}
+\includegraphics[width=0.90\textwidth]{figures/shap_local_fp.pdf}
+\caption{Local SHAP waterfall explanation for the pre-specified high-confidence false-positive case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
 \label{fig:local_shap_fp}
 \end{figure*}
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.76\textwidth]{figures/shap_local_fn.pdf}
-\caption{Local SHAP waterfall explanation for the pre-specified severe false-negative case. The plot explains LightGBM score contributions for the selected row and should not be read as causal attribution.}
+\includegraphics[width=0.90\textwidth]{figures/shap_local_fn.pdf}
+\caption{Local SHAP waterfall explanation for the pre-specified severe false-negative case. The waterfall decomposes the LightGBM raw margin before Platt calibration and should not be interpreted as a decomposition of the calibrated probability or as causal attribution.}
 \label{fig:local_shap_fn}
 \end{figure*}
 
@@ -257,21 +257,21 @@ Local cases were selected before interpretation: the highest-score true positive
 
 \section{Discussion}\label{sec:discussion}
 
-The revised evidence supports a narrower claim than the original manuscript. The model can rank next-week abnormal reported-demand risk better than count baselines and simple history-only configurations, but it is best viewed as a triage aid. Precision remains modest at the validation-selected alert threshold, while precision@1\% and precision@5\% show stronger concentration when analyst capacity is limited. Any deployment could also create feedback: alerts may change agency attention, resident reporting behavior, and future labels, so prospective monitoring after deployment would be required.
+The evidence supports a focused claim: the model ranks next-week abnormal reported-demand events more effectively than the evaluated count baselines and history-only configurations, but it should be viewed as a triage aid rather than an automated allocation system. Precision remains modest at the validation-selected alert threshold, while precision@1\% and precision@5\% show stronger concentration when analyst capacity is limited. Any deployment could also create feedback: alerts may change agency attention, resident reporting behavior, and future labels, so prospective monitoring after deployment would be required.
 
-The target redesign improves construct validity in sparse panel cells. Under the original threshold, nearly 18\% of test positives came from cells with \(\mu^{8w}<1\); the T2 target reduces this to 5.10\% by requiring at least three next-week requests. This change also narrows the paper's claim: the task is not raw demand forecasting but early warning for abnormal reported-demand events with a minimum count. A COVID/archive-boundary sensitivity check found visible 2020--2021 prevalence and category-mix shifts; excluding 2020--2021 from training changed 2025 PR-AUC from 0.3165 to 0.3137 and precision@5\% from 0.4180 to 0.4122, so the retained training window is treated as a documented sensitivity rather than a homogeneous time series.
+The target redesign improves construct validity in sparse panel cells. Under the original threshold, nearly 18\% of diagnostic-period positives came from cells with \(\mu^{8w}<1\); the T2 target reduces this to 5.10\% by requiring at least three next-week requests. This change also narrows the paper's claim: the task is not raw demand forecasting but early warning for abnormal reported-demand events with a minimum count. A COVID/archive-boundary sensitivity check found visible 2020--2021 prevalence and category-mix shifts; excluding 2020--2021 from training changed 2025 PR-AUC from 0.317 to 0.314 and precision@5\% from 0.418 to 0.412, so the retained training window is treated as a documented sensitivity rather than a homogeneous time series.
 
-Several limitations remain. 311 data reflect reported demand and can reproduce spatial and social reporting inequities. Weather is city-level observed exposure for week \(t\), not a spatial forecast for week \(t+1\). Historical source vintages are unavailable, the modeling panel does not retain row-level archive-source identifiers, and weekly counts may be affected by late entry, reclassification, deduplication, or open-data revision. We therefore cannot fully measure production-time data delay or archive-boundary provenance from the current panel. We do not collect new demographic, staffing, cost, or operational outcome data in this revision, so socioeconomic fairness, cost-sensitive thresholds, and downstream service impact remain future work. The current NTA fixed-effect gain is small and should be treated as suggestive rather than definitive.
+Several limitations remain. 311 data reflect reported demand and can reproduce spatial and social reporting inequities. Weather is city-level observed exposure for week \(t\), not a spatial forecast for week \(t+1\). Historical source vintages are unavailable, the modeling panel does not retain row-level archive-source identifiers, and weekly counts may be affected by late entry, reclassification, deduplication, or open-data updates. We therefore cannot fully measure production-time data delay or archive-boundary provenance from the modeling panel. New demographic, staffing, cost, and operational outcome variables are outside the data scope, so socioeconomic fairness, cost-sensitive thresholds, and downstream service impact remain future work. The gain from NTA indicators is small and should be treated as suggestive rather than definitive.
 
 \section{Conclusion}\label{sec:conclusion}
 
-We present a leakage-controlled early-warning study for next-week abnormal reported NYC 311 demand. The final candidate uses a minimum-count target, removes target-construction shortcut predictors, evaluates chronologically, calibrates probabilities on validation only, and reports uncertainty, seed stability, workload, and local explanations. On held-out 2025 rows, the Platt-calibrated no-shortcut LightGBM model reaches PR-AUC 0.3165, F1 0.3613, recall 0.5744, precision@1\% 0.5697, and precision@5\% 0.4180. The strongest practical use is not automatic dispatch, but capacity-aware prioritization of analyst attention toward reported-demand risks that merit review.
+We present a leakage-controlled early-warning study for next-week abnormal reported NYC 311 demand. The final model uses a minimum-count target, removes target-construction shortcut predictors, evaluates chronologically, calibrates probabilities on validation only, and reports uncertainty, seed stability, workload, and local explanations. On held-out 2025 rows, the Platt-calibrated no-shortcut LightGBM model reaches PR-AUC 0.317, F1 0.361, recall 0.574, precision@1\% 0.570, and precision@5\% 0.418. The strongest practical use is not automatic dispatch, but capacity-aware prioritization of analyst attention toward reported-demand risks that merit review.
 
 \section*{Declarations}
 
 \begingroup
 \setlength{\parskip}{1pt}
-\noindent\textbf{Data and code availability.} Source data include NYC Open Data 311 archives \texttt{76ig-c548} and \texttt{erm2-nwe9}, 2020 NTA boundaries \texttt{9nt8-h7nd}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728}. Scripts, complaint-type mappings, configurations, evaluation code, and compact reviewer-facing outputs are available at \texttt{https://github.com/PhongLam26/SIMC\_NYC}. Large intermediate panels can be rebuilt from the public sources using the repository scripts.\par
+\noindent\textbf{Data and code availability.} Source data include NYC Open Data 311 archives \texttt{76ig-c548} and \texttt{erm2-nwe9}, 2020 NTA boundaries \texttt{9nt8-h7nd}, and NOAA GHCN-Daily observations from Central Park station \texttt{GHCND:USW00094728}. Scripts, complaint-type mappings, configurations, evaluation code, and compact result outputs are available at \texttt{https://github.com/PhongLam26/SIMC\_NYC}. Large intermediate panels can be rebuilt from the public sources using the repository scripts.\par
 \noindent\textbf{Competing interests.} The authors declare no competing interests.\par
 \noindent\textbf{Funding.} No specific funding was received.\par
 \noindent\textbf{Author contributions.} Tran Dai Phong Lam led data processing, modeling, analysis, and drafting; Thu Le served as academic advisor and supervised the study design, methodology, and manuscript editing; Nguyen Quoc Hung and Nguyen Trung Trinh contributed validation and review.

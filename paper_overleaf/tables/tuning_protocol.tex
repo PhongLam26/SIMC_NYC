@@ -1,5 +1,5 @@
 \begin{table}[t]
-\caption{Compact protocol for the final no-shortcut LightGBM candidate.}\label{tab:tuning_protocol}
+\caption{Compact protocol for the final no-shortcut LightGBM model.}\label{tab:tuning_protocol}
 \centering
 \begin{tabular}{@{}p{0.22\linewidth}p{0.68\linewidth}@{}}
 \toprule
@@ -8,7 +8,7 @@ Item & Setting \\
 Feature set & 61 forecast-available inputs; one-hot expansion to 73 model columns; formula-aligned 8-week target-construction fields and contemporary built-environment snapshots are excluded \\
 Target & T2 abnormal next-week reported-demand event: shifted 8-week abnormality plus \(y_{t+1} \ge 3\) \\
 Temporal split & Train through 2023, validation on 2024, held-out test on 2025; rolling-origin folds are reported as robustness evidence \\
-Model & Single no-shortcut LightGBM candidate selected from validation/backtest evidence and interpretability considerations \\
+Model & Single no-shortcut LightGBM model selected from validation/backtest evidence and interpretability considerations \\
 Calibration & Platt calibration fit on validation only and applied unchanged to the held-out 2025 test year \\
 Thresholds & Validation-selected operating threshold; precision@1\% and precision@5\% are reported for capacity-limited review budgets \\
 \bottomrule

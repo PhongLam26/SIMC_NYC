@@ -1,6 +1,6 @@
 # Local Case Selection Report
 
-Cases are selected by pre-specified rules from the final-style 2025 T2 no-shortcut LightGBM candidate:
+Cases are selected by pre-specified rules from the held-out 2025 T2 no-shortcut LightGBM model:
 
 - TP: highest-score true positive.
 - FP: highest-score false positive.

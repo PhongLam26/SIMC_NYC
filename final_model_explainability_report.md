@@ -1,12 +1,12 @@
-# Final-Style Explainability Report
+# Final Model Explainability Report
 
-This pass explains the actual single LightGBM score model used for the current `T2_min_count_3` no-shortcut candidate on the final-style 2025 fold. The explanation model and score model are the same fitted LightGBM; no ensemble explanation proxy is used.
+This pass explains the actual single LightGBM score model used for the selected `T2_min_count_3` no-shortcut model on the held-out 2025 fold. The explanation model and score model are the same fitted LightGBM; no ensemble explanation proxy is used.
 
 ## Model and Decision Context
 
 | validation_selected_threshold | test_pr_auc | test_f1 | test_precision | test_recall | raw_feature_count | model_feature_count | fit_seconds |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0.5452 | 0.3165 | 0.3613 | 0.2635 | 0.5744 | 57 | 69 | 20.1046 |
+| 0.5452 | 0.3165 | 0.3613 | 0.2635 | 0.5744 | 57 | 69 | 23.7198 |
 
 Formula-aligned 8-week target-construction predictors are removed: `rolling_8w_mean`, `rolling_8w_std`, `rolling_8w_sum`, and `ratio_to_8w_mean`.
 
@@ -68,6 +68,6 @@ Formula-aligned 8-week target-construction predictors are removed: `rolling_8w_m
 
 ## Guardrails
 
-- SHAP values explain fitted LightGBM score contributions, not causal effects.
-- This pass supports the current candidate model; final manuscript claims still need final target/model freeze.
-- Calibration is monotonic and fitted on validation, so these SHAP values explain the underlying score ranking used by the calibrated decision layer.
+- TreeSHAP values are computed on the fitted LightGBM raw-margin scale before Platt calibration.
+- Waterfall values should not be interpreted as calibrated probabilities or as causal effects.
+- Platt calibration is fit on validation scores and is monotone here, so it preserves the ranking used by the calibrated decision layer but does not make SHAP values a decomposition of calibrated probability.

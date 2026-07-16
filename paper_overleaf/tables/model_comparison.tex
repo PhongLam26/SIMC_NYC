@@ -1,16 +1,16 @@
 \begin{table*}[t]
-\caption{Baseline comparison on the held-out 2025 fold. Formula-threshold count decisions apply the same abnormal-event threshold to predicted counts.}\label{tab:model_comparison}
+\caption{Baseline comparison on held-out data. Each row reports one decision rule. Formula-threshold count decisions apply the abnormal-event threshold to predicted counts; the HGB and hurdle rows use the final T2 target, while Poisson GLM rows are retained as original-threshold count diagnostics.}\label{tab:model_comparison}
 \centering
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}lrrrrr@{}}
+\begin{tabular}{@{}llrrrrrr@{}}
 \toprule
-Method & Count MAE & PR-AUC & Precision@5\% & F1 & Recall \\
+Method & Decision & Count MAE & PR-AUC & P@5\% & Precision & Recall & F1 \\
 \midrule
-Poisson GLM, no NTA FE & 8.6680 & 0.1400 & -- & 0.1460 & -- \\
-Poisson GLM + NTA fixed effects & 8.6839 & 0.1400 & -- & 0.1492 & -- \\
-HGB Poisson count, formula threshold & 8.0211 & 0.1528 & 0.1755 & 0.1710 & 0.1026 \\
-Hurdle HGB count, formula threshold & 7.9377 & 0.1517 & 0.1722 & 0.1812 & 0.1108 \\
-No-shortcut LightGBM classifier & -- & 0.3165 & 0.4180 & 0.3613 & 0.5744 \\
+Poisson GLM, no NTA FE & Formula threshold & 8.668 & 0.140 & 0.144 & 0.116 & 0.198 & 0.146 \\
+Poisson GLM + NTA fixed effects & Formula threshold & 8.684 & 0.140 & 0.145 & 0.117 & 0.204 & 0.149 \\
+HGB Poisson count & T2 formula threshold & 8.021 & 0.153 & 0.176 & 0.513 & 0.103 & 0.171 \\
+Hurdle HGB count & T2 formula threshold & 7.938 & 0.152 & 0.172 & 0.497 & 0.111 & 0.181 \\
+No-shortcut LightGBM classifier & Validation threshold & -- & 0.317 & 0.418 & 0.263 & 0.574 & 0.361 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

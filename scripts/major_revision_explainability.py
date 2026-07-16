@@ -9,6 +9,7 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -38,9 +39,12 @@ OUT_DIR = ROOT / "data/processed/model_results/major_revision/explainability"
 ROOT_REPORT = ROOT / "final_model_explainability_report.md"
 FINAL_FOLD = {"fold_id": "final_style_2025", "train_end_year": 2023, "validation_year": 2024, "test_year": 2025}
 
+mpl.rcParams["pdf.fonttype"] = 42
+mpl.rcParams["ps.fonttype"] = 42
+
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run final-style SHAP explainability for the major revision candidate.")
+    parser = argparse.ArgumentParser(description="Run held-out SHAP explainability for the selected model.")
     parser.add_argument("--output-dir", default=str(OUT_DIR))
     parser.add_argument("--target", default="T2_min_count_3")
     parser.add_argument("--seed", type=int, default=42)
@@ -260,9 +264,9 @@ def local_contrib(cases: pd.DataFrame, X_local: pd.DataFrame, values: np.ndarray
 
 def save_beeswarm(values: np.ndarray, X: pd.DataFrame, out: Path, top_n: int) -> None:
     plt.figure()
-    shap.summary_plot(values, X, max_display=top_n, show=False, plot_size=(8, 8))
+    shap.summary_plot(values, X, max_display=top_n, show=False, plot_size=(8.6, 7.8))
     plt.tight_layout()
-    plt.savefig(out, bbox_inches="tight")
+    plt.savefig(out, bbox_inches="tight", pad_inches=0.03)
     plt.close()
 
 
@@ -270,8 +274,9 @@ def save_waterfall(case_id: str, explanation: shap.Explanation, out_dir: Path, t
     path = out_dir / f"shap_local_{case_id}.pdf"
     plt.figure()
     shap.plots.waterfall(explanation, max_display=top_n, show=False)
+    plt.gcf().set_size_inches(8.4, 4.8)
     plt.tight_layout()
-    plt.savefig(path, bbox_inches="tight")
+    plt.savefig(path, bbox_inches="tight", pad_inches=0.03)
     plt.close()
     return str(path)
 
@@ -280,7 +285,7 @@ def write_case_report(cases: pd.DataFrame, contrib: pd.DataFrame, out_dir: Path)
     lines = [
         "# Local Case Selection Report",
         "",
-        "Cases are selected by pre-specified rules from the final-style 2025 T2 no-shortcut LightGBM candidate:",
+        "Cases are selected by pre-specified rules from the held-out 2025 T2 no-shortcut LightGBM model:",
         "",
         "- TP: highest-score true positive.",
         "- FP: highest-score false positive.",
@@ -314,9 +319,9 @@ def write_case_report(cases: pd.DataFrame, contrib: pd.DataFrame, out_dir: Path)
 
 def write_report(out_dir: Path, metrics: dict[str, object], global_imp: pd.DataFrame, group_imp: pd.DataFrame, cases: pd.DataFrame, args: argparse.Namespace) -> None:
     lines = [
-        "# Final-Style Explainability Report",
+        "# Final Model Explainability Report",
         "",
-        f"This pass explains the actual single LightGBM score model used for the current `{args.target}` no-shortcut candidate on the final-style 2025 fold. The explanation model and score model are the same fitted LightGBM; no ensemble explanation proxy is used.",
+        f"This pass explains the actual single LightGBM score model used for the selected `{args.target}` no-shortcut model on the held-out 2025 fold. The explanation model and score model are the same fitted LightGBM; no ensemble explanation proxy is used.",
         "",
         "## Model and Decision Context",
         "",
@@ -345,9 +350,9 @@ def write_report(out_dir: Path, metrics: dict[str, object], global_imp: pd.DataF
         "",
         "## Guardrails",
         "",
-        "- SHAP values explain fitted LightGBM score contributions, not causal effects.",
-        "- This pass supports the current candidate model; final manuscript claims still need final target/model freeze.",
-        "- Calibration is monotonic and fitted on validation, so these SHAP values explain the underlying score ranking used by the calibrated decision layer.",
+        "- TreeSHAP values are computed on the fitted LightGBM raw-margin scale before Platt calibration.",
+        "- Waterfall values should not be interpreted as calibrated probabilities or as causal effects.",
+        "- Platt calibration is fit on validation scores and is monotone here, so it preserves the ranking used by the calibrated decision layer but does not make SHAP values a decomposition of calibrated probability.",
         "",
     ]
     report = "\n".join(lines)
@@ -363,7 +368,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     start = time.time()
     if args.progress:
-        print("[explainability] train current final-style candidate")
+        print("[explainability] train selected model")
     _, X_test, model, model_features, scored, metrics = train_model(args)
     X_sample, sample_meta = sample_for_shap(X_test, scored, args.max_shap_rows, args.seed)
     shap_values, expected_value, _ = compute_shap(model, X_sample, args.progress)

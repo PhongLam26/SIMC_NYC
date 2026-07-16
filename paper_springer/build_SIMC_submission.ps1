@@ -68,7 +68,7 @@ if ($blg -notmatch 'warning\$ -- 0') {
     throw 'BibTeX did not report warning$ -- 0'
 }
 
-Invoke-Step "automated SIMC PDF audit" @("python", "..\scripts\audit_submission_pdf.py", "$job.pdf", "--expected-pages", "13")
+Invoke-Step "automated SIMC PDF audit" @("python", "..\scripts\audit_submission_pdf.py", "$job.pdf", "--expected-pages", "12")
 
 $pageLine = Select-String -Path "$job.log" -Pattern "Output written on $job.pdf" | Select-Object -Last 1
 Write-Host $pageLine.Line

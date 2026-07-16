@@ -37,16 +37,18 @@ EXPECTED_STRINGS = [
     "GHCND:USW00094728",
     "Figure 1",
     "[1]",
-    "PR-AUC 0.3165",
-    "F1 0.3613",
-    "Precision 0.2635",
-    "Recall 0.5744",
-    "Precision@1% 0.5697",
-    "Precision@5% 0.4180",
-    "Brier score 0.0869",
-    "Five-seed PR-AUC 0.3185",
-    "PR-AUC difference 0.1637",
-    "precision@5% difference 0.2425",
+    "PR-AUC 0.317",
+    "F1 0.361",
+    "precision 0.263",
+    "recall 0.574",
+    "precision@1% 0.570",
+    "precision@5% 0.418",
+    "Brier score 0.087",
+    "Five-seed PR-AUC",
+    "PR-AUC difference 0.164",
+    "precision@5% difference 0.243",
+    "Platt-calibrated alert threshold is 0.167",
+    "calibrated probability 0.625",
 ]
 
 FORBIDDEN_EDGE_TEXT = [
@@ -196,21 +198,28 @@ def check_fonts(pdf_path: Path, failures: list[str], report: list[str]) -> None:
     )
 
     unembedded = []
+    type3 = []
     for line in result.stdout.splitlines():
         match = re.search(r"\s(yes|no)\s+(yes|no)\s+(yes|no)\s+\d+\s+\d+\s*$", line)
         if match and match.group(1) != "yes":
             unembedded.append(line.strip())
+        if " Type 3 " in f" {line} ":
+            type3.append(line.strip())
 
     if unembedded:
         failures.append("Unembedded fonts detected: " + " | ".join(unembedded))
     else:
         report.append("PASS all fonts reported by pdffonts are embedded")
+    if type3:
+        failures.append("Type 3 fonts detected: " + " | ".join(type3))
+    else:
+        report.append("PASS no Type 3 fonts detected")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", type=Path)
-    parser.add_argument("--expected-pages", type=int, default=13)
+    parser.add_argument("--expected-pages", type=int, default=12)
     args = parser.parse_args()
 
     if not args.pdf.exists():

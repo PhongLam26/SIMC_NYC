@@ -9,6 +9,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -51,6 +52,9 @@ from major_revision_target_selection import (  # noqa: E402
 
 OUT_DIR = ROOT / "data/processed/model_results/major_revision/calibration"
 ROOT_REPORT = ROOT / "calibration_report.md"
+
+mpl.rcParams["pdf.fonttype"] = 42
+mpl.rcParams["ps.fonttype"] = 42
 
 
 def parse_args() -> argparse.Namespace:
@@ -357,21 +361,25 @@ def plot_reliability(bins: pd.DataFrame, out_path: Path) -> None:
         & bins["target_definition"].isin(["T0_current_reference", "T2_min_count_3"])
     ].copy()
     fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.2), sharex=True, sharey=True)
+    titles = {
+        "T0_current_reference": "T0 original target",
+        "T2_min_count_3": "T2 minimum-count target",
+    }
     for ax, target in zip(axes, ["T0_current_reference", "T2_min_count_3"]):
         sub_target = final_bins[final_bins["target_definition"].eq(target)]
         ax.plot([0, 1], [0, 1], color="0.55", linestyle="--", linewidth=1.0, label="perfect")
         for method, style in [("uncalibrated", "o-"), ("platt", "s-"), ("isotonic", "^-")]:
             sub = sub_target[sub_target["calibration_method"].eq(method) & sub_target["rows"].gt(0)]
             ax.plot(sub["mean_score"], sub["observed_rate"], style, linewidth=1.2, markersize=4, label=method)
-        ax.set_title(target.replace("_", " "))
+        ax.set_title(titles[target])
         ax.set_xlabel("Mean predicted probability")
         ax.grid(True, alpha=0.25)
     axes[0].set_ylabel("Observed event rate")
     axes[1].legend(loc="lower right", fontsize=8)
-    fig.suptitle("Reliability diagram, final-style 2025 test fold")
+    fig.suptitle("Reliability diagrams, held-out 2025 evaluation")
     fig.tight_layout()
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path)
+    fig.savefig(out_path, bbox_inches="tight", pad_inches=0.03)
     plt.close(fig)
 
 

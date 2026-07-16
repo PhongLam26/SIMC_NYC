@@ -2,7 +2,7 @@
 
 Upload file: `main_SIMC_submission.pdf`
 
-- Pages: 13
+- Pages: 12
 - Paper size: A4
 - PDF bookmarks/outlines: 0
 - Clickable PDF links: 0
@@ -27,4 +27,4 @@ Output:
 paper_springer/main_SIMC_submission.pdf
 ```
 
-Reviewer-facing source files are `main.tex`, `main_SIMC_submission.tex`, `references.bib`, `main.bbl`, and the files under `figures/` that are referenced by `main.tex`.
+Submission source files are `main.tex`, `main_SIMC_submission.tex`, `references.bib`, `main.bbl`, and the files under `figures/` that are referenced by `main.tex`.
