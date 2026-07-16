@@ -697,3 +697,40 @@ Reviewer status updates:
 - P2-7 weather: PARTIAL. Full-data weather ablation is complete, but validation PR-AUC does not support keeping weather as a core final feature on this pass. Forecast-weather and spatial-grid weather are deferred to Future Work due external-data limits.
 - P2-8 spatial/NTA: PARTIAL. NTA fixed-effect evidence exists and slightly improves validation/test diagnostics, but the effect is not yet robustly established.
 - OSM/PLUTO removal from current ablation: PASS for this artifact. The CSV audit shows no ablation row contains OSM/PLUTO features.
+
+## Major Methodological Rebuild - COVID and Archive Boundary Pass 1
+
+This pass addresses P2-2 with an explicit COVID/archive-boundary audit. It uses only local workspace data and does not collect new external data.
+
+New script and outputs:
+
+- Script: `scripts/major_revision_covid_archive_audit.py`
+- Reviewer-facing report: `covid_archive_report.md`
+- Detailed outputs: `data/processed/model_results/major_revision/covid_archive/`
+
+Evidence generated:
+
+- Raw 311 schema header scan covers all 682 local raw 311 parts: 261 files for 2015-2019 and 421 files for 2020-2025.
+- No raw 311 part is missing the required columns used by the pipeline (`unique_key`, `created_date`, `closed_date`, `complaint_type`, `borough`, `latitude`, `longitude`).
+- Ordered column sequences vary slightly, but unordered raw 311 column sets are consistent within both periods: one unordered set in 2015-2019 and one unordered set in 2020-2025.
+- Processed rows increase over time: 2,494,267 rows after cleaning in 2019, 2,862,967 in 2020, 3,148,082 in 2021, and 3,604,196 in 2025.
+- COVID-period prevalence is visibly higher: T0 positive share is 0.1462 in 2020 and 0.1338 in 2021, versus 0.1222 in 2019 and 0.1281 in 2025. T2 positive share is 0.1250 in 2020 and 0.1140 in 2021, versus 0.1039 in 2019 and 0.1106 in 2025.
+- Category mix shifts strongly in 2020: noise rises from 18.95% of 2019 observed requests to 27.99% in 2020, while housing falls from 23.84% to 18.34%.
+- Raw complaint-type scan finds 197 complaint types present in both 2015-2019 and 2020-2025, 55 types observed only in 2015-2019, and 68 types observed only in 2020-2025.
+
+Final-style 2025 sensitivity:
+
+- Reference T2 no-shortcut LightGBM trained through 2023: PR-AUC = 0.3165, precision@5% = 0.4180, F1 = 0.3613, precision = 0.2635, recall = 0.5744.
+- Excluding 2020-2021 from training reduces training rows from 1,077,606 to 832,374. Test PR-AUC = 0.3137, precision@5% = 0.4122, F1 = 0.3629, precision = 0.2725, recall = 0.5432.
+- Relative to the reference, excluding 2020-2021 changes PR-AUC by -0.0028, precision@5% by -0.0059, and F1 by +0.0017. The higher F1 comes with lower recall and a lower alert rate, so this should be described as a sensitivity result rather than a clear improvement.
+
+Provenance guardrail:
+
+- `code_pulldata/pull_nyc_311.py` currently declares `DATASET_ID = erm2-nwe9`.
+- The final modeling panel does not retain a row-level `source_dataset` or archive identifier.
+- Therefore, the audit can compare 2015-2019 versus 2020-2025 periods and raw schema consistency, but it cannot prove row-level provenance from `76ig-c548` versus `erm2-nwe9` unless the data pull/pipeline is regenerated with source-id retention.
+
+Reviewer status updates:
+
+- P2-2 COVID/archive boundary: PARTIAL but materially strengthened. Schema, category drift, complaint-type overlap, yearly target composition, and exclude-2020-2021 sensitivity are now generated. Remaining work is manuscript integration and deciding whether to regenerate source provenance or state the archive-vintage limitation.
+- P2-3 data vintage/revision risk: still PARTIAL. This pass documents source-provenance limits, but it does not solve open-data revision/vintage lag because historical data vintages are not available in the workspace and should be discussed as a limitation.

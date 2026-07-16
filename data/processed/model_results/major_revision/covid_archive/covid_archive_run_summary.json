@@ -1,0 +1,21 @@
+{
+  "status": "done",
+  "script": "major_revision_covid_archive_audit.py",
+  "elapsed_seconds": 194.185,
+  "target": "T2_min_count_3",
+  "seed": 42,
+  "scan_raw_types": true,
+  "outputs": [
+    "category_year_counts.csv",
+    "complaint_type_period_overlap.csv",
+    "complaint_type_period_overlap_summary.csv",
+    "complaint_type_year_counts.csv",
+    "covid_archive_report.md",
+    "covid_archive_run_summary.json",
+    "covid_exclusion_sensitivity.csv",
+    "final_yearly_target_diagnostics.csv",
+    "raw_311_file_rows_by_year.csv",
+    "raw_311_schema_detail.csv",
+    "raw_311_schema_summary.csv"
+  ]
+}

@@ -1,0 +1,2135 @@
+year,complaint_type,rows,period
+2015,HEAT/HOT WATER,225665,2015-2019
+2015,Noise - Residential,206460,2015-2019
+2015,Street Condition,118597,2015-2019
+2015,Blocked Driveway,100503,2015-2019
+2015,Illegal Parking,91103,2015-2019
+2015,UNSANITARY CONDITION,82866,2015-2019
+2015,PAINT/PLASTER,69684,2015-2019
+2015,Water System,69447,2015-2019
+2015,Street Light Condition,58691,2015-2019
+2015,Noise,56685,2015-2019
+2015,PLUMBING,55403,2015-2019
+2015,Noise - Street/Sidewalk,50837,2015-2019
+2015,Noise - Commercial,43655,2015-2019
+2015,DOOR/WINDOW,39995,2015-2019
+2015,WATER LEAK,35561,2015-2019
+2015,Dirty Conditions,33805,2015-2019
+2015,Sanitation Condition,31226,2015-2019
+2015,Sewer,30852,2015-2019
+2015,ELECTRIC,30118,2015-2019
+2015,General Construction/Plumbing,30110,2015-2019
+2015,Rodent,29208,2015-2019
+2015,FLOORING/STAIRS,27811,2015-2019
+2015,GENERAL,26752,2015-2019
+2015,Sidewalk Condition,26608,2015-2019
+2015,Traffic Signal Condition,25572,2015-2019
+2015,Missed Collection (All Materials),25262,2015-2019
+2015,Building/Use,24946,2015-2019
+2015,Broken Muni Meter,22437,2015-2019
+2015,Derelict Vehicle,21432,2015-2019
+2015,Noise - Vehicle,19127,2015-2019
+2015,Derelict Vehicles,18834,2015-2019
+2015,Damaged Tree,17645,2015-2019
+2015,Consumer Complaint,17035,2015-2019
+2015,Taxi Complaint,16867,2015-2019
+2015,Overgrown Tree/Branches,15040,2015-2019
+2015,New Tree Request,14890,2015-2019
+2015,Graffiti,13389,2015-2019
+2015,Snow,12698,2015-2019
+2015,APPLIANCE,11232,2015-2019
+2015,Animal Abuse,10503,2015-2019
+2015,Dead Tree,10312,2015-2019
+2015,Root/Sewer/Sidewalk Condition,9951,2015-2019
+2015,SAFETY,9847,2015-2019
+2015,Food Establishment,9588,2015-2019
+2015,Elevator,9572,2015-2019
+2015,Air Quality,8387,2015-2019
+2015,Non-Emergency Police Matter,7469,2015-2019
+2015,Construction,7005,2015-2019
+2015,Other Enforcement,6381,2015-2019
+2015,Homeless Person Assistance,6296,2015-2019
+2015,Street Sign - Damaged,5978,2015-2019
+2015,Water Conservation,5970,2015-2019
+2015,Traffic,5170,2015-2019
+2015,Homeless Encampment,4830,2015-2019
+2015,Street Sign - Missing,4809,2015-2019
+2015,Indoor Air Quality,4797,2015-2019
+2015,Highway Condition,4686,2015-2019
+2015,Plumbing,4587,2015-2019
+2015,Curb Condition,4426,2015-2019
+2015,Vending,4165,2015-2019
+2015,Noise - Park,3996,2015-2019
+2015,Miscellaneous Categories,3994,2015-2019
+2015,For Hire Vehicle Complaint,3884,2015-2019
+2015,Emergency Response Team (ERT),3670,2015-2019
+2015,Construction Safety Enforcement,3647,2015-2019
+2015,Maintenance or Facility,3412,2015-2019
+2015,Special Projects Inspection Team (SPIT),3274,2015-2019
+2015,Taxi Report,3027,2015-2019
+2015,Food Poisoning,3021,2015-2019
+2015,Hazardous Materials,3016,2015-2019
+2015,Electrical,2761,2015-2019
+2015,Illegal Tree Damage,2555,2015-2019
+2015,Litter Basket / Request,2495,2015-2019
+2015,Asbestos,2344,2015-2019
+2015,Unsanitary Animal Pvt Property,2328,2015-2019
+2015,Lead,2312,2015-2019
+2015,Street Sign - Dangling,2190,2015-2019
+2015,BEST/Site Safety,2069,2015-2019
+2015,Vacant Lot,1960,2015-2019
+2015,Smoking,1730,2015-2019
+2015,OUTSIDE BUILDING,1680,2015-2019
+2015,Standing Water,1652,2015-2019
+2015,School Maintenance,1511,2015-2019
+2015,Noise - Helicopter,1495,2015-2019
+2015,Overflowing Litter Baskets,1474,2015-2019
+2015,Industrial Waste,1419,2015-2019
+2015,Drinking,1400,2015-2019
+2015,Boilers,1397,2015-2019
+2015,Non-Residential Heat,1334,2015-2019
+2015,Bus Stop Shelter Complaint,1289,2015-2019
+2015,Sweeping/Missed,1259,2015-2019
+2015,Derelict Bicycle,1258,2015-2019
+2015,Water Quality,1230,2015-2019
+2015,Indoor Sewage,1209,2015-2019
+2015,ELEVATOR,1095,2015-2019
+2015,Noise - House of Worship,1061,2015-2019
+2015,Investigations and Discipline (IAD),987,2015-2019
+2015,Recycling Enforcement,980,2015-2019
+2015,Broken Parking Meter,775,2015-2019
+2015,Posting Advertisement,680,2015-2019
+2015,DPR Internal,643,2015-2019
+2015,Urinating in Public,641,2015-2019
+2015,Unleashed Dog,639,2015-2019
+2015,Unsanitary Pigeon Condition,612,2015-2019
+2015,Violation of Park Rules,518,2015-2019
+2015,Building Marshals office,479,2015-2019
+2015,Bike/Roller/Skate Chronic,463,2015-2019
+2015,Public Payphone Complaint,426,2015-2019
+2015,Animal in a Park,422,2015-2019
+2015,Sweeping/Inadequate,395,2015-2019
+2015,Facades,368,2015-2019
+2015,For Hire Vehicle Report,356,2015-2019
+2015,Mold,344,2015-2019
+2015,Bridge Condition,332,2015-2019
+2015,Panhandling,320,2015-2019
+2015,Found Property,315,2015-2019
+2015,Disorderly Youth,314,2015-2019
+2015,City Vehicle Placard Complaint,313,2015-2019
+2015,Illegal Animal Kept as Pet,283,2015-2019
+2015,Senior Center Complaint,266,2015-2019
+2015,Adopt-A-Basket,250,2015-2019
+2015,Cranes and Derricks,248,2015-2019
+2015,Scaffold Safety,245,2015-2019
+2015,Plant,235,2015-2019
+2015,Harboring Bees/Wasps,223,2015-2019
+2015,Quality of Life,201,2015-2019
+2015,Bus Stop Shelter Placement,192,2015-2019
+2015,Beach/Pool/Sauna Complaint,180,2015-2019
+2015,Collection Truck Noise,178,2015-2019
+2015,Illegal Fireworks,167,2015-2019
+2015,Drinking Water,142,2015-2019
+2015,Bike Rack Condition,133,2015-2019
+2015,Poison Ivy,131,2015-2019
+2015,Municipal Parking Facility,97,2015-2019
+2015,Tattooing,96,2015-2019
+2015,Unsanitary Animal Facility,89,2015-2019
+2015,Literature Request,88,2015-2019
+2015,Animal Facility - No Permit,74,2015-2019
+2015,Special Natural Area District (SNAD),65,2015-2019
+2015,Forensic Engineering,62,2015-2019
+2015,Public Toilet,54,2015-2019
+2015,Window Guard,52,2015-2019
+2015,Illegal Animal Sold,51,2015-2019
+2015,ATF,49,2015-2019
+2015,Stalled Sites,43,2015-2019
+2015,Overflowing Recycling Baskets,36,2015-2019
+2015,FATF,35,2015-2019
+2015,Day Care,24,2015-2019
+2015,Transportation Provider Complaint,17,2015-2019
+2015,Lifeguard,16,2015-2019
+2015,Bottled Water,16,2015-2019
+2015,Foam Ban Enforcement,15,2015-2019
+2015,Legal Services Provider Complaint,12,2015-2019
+2015,Calorie Labeling,11,2015-2019
+2015,X-Ray Machine/Equipment,8,2015-2019
+2015,SRDE,7,2015-2019
+2015,Tanning,5,2015-2019
+2015,Radioactive Material,5,2015-2019
+2015,Squeegee,4,2015-2019
+2015,Interior Demo,4,2015-2019
+2015,Building Condition,3,2015-2019
+2015,VACANT APARTMENT,2,2015-2019
+2015,AGENCY,1,2015-2019
+2016,HEAT/HOT WATER,227893,2015-2019
+2016,Noise - Residential,221022,2015-2019
+2016,Illegal Parking,120217,2015-2019
+2016,Blocked Driveway,118577,2015-2019
+2016,Street Condition,86516,2015-2019
+2016,UNSANITARY CONDITION,80436,2015-2019
+2016,Water System,71518,2015-2019
+2016,Noise - Street/Sidewalk,60372,2015-2019
+2016,PAINT/PLASTER,60326,2015-2019
+2016,Noise,57623,2015-2019
+2016,Street Light Condition,54580,2015-2019
+2016,PLUMBING,52565,2015-2019
+2016,Noise - Commercial,48755,2015-2019
+2016,Homeless Person Assistance,44725,2015-2019
+2016,DOOR/WINDOW,37506,2015-2019
+2016,Dirty Conditions,33190,2015-2019
+2016,Sanitation Condition,33018,2015-2019
+2016,General Construction/Plumbing,32069,2015-2019
+2016,WATER LEAK,31949,2015-2019
+2016,Sewer,31576,2015-2019
+2016,Rodent,31256,2015-2019
+2016,Missed Collection (All Materials),30036,2015-2019
+2016,Derelict Vehicle,28723,2015-2019
+2016,ELECTRIC,27991,2015-2019
+2016,Derelict Vehicles,27921,2015-2019
+2016,Building/Use,27010,2015-2019
+2016,GENERAL,26801,2015-2019
+2016,Sidewalk Condition,26277,2015-2019
+2016,FLOORING/STAIRS,24804,2015-2019
+2016,Broken Muni Meter,23727,2015-2019
+2016,Noise - Vehicle,23568,2015-2019
+2016,Damaged Tree,23550,2015-2019
+2016,Traffic Signal Condition,22424,2015-2019
+2016,New Tree Request,18058,2015-2019
+2016,Consumer Complaint,15960,2015-2019
+2016,Taxi Complaint,14889,2015-2019
+2016,APPLIANCE,12897,2015-2019
+2016,Overgrown Tree/Branches,12512,2015-2019
+2016,Elevator,12446,2015-2019
+2016,Graffiti,12377,2015-2019
+2016,Lead,11439,2015-2019
+2016,Food Establishment,10377,2015-2019
+2016,Dead/Dying Tree,10133,2015-2019
+2016,Animal Abuse,10033,2015-2019
+2016,Non-Emergency Police Matter,9156,2015-2019
+2016,Air Quality,8712,2015-2019
+2016,SAFETY,8567,2015-2019
+2016,Root/Sewer/Sidewalk Condition,7988,2015-2019
+2016,Street Sign - Damaged,7827,2015-2019
+2016,Other Enforcement,6892,2015-2019
+2016,Curb Condition,6178,2015-2019
+2016,Standing Water,5780,2015-2019
+2016,For Hire Vehicle Complaint,5702,2015-2019
+2016,Traffic,5576,2015-2019
+2016,Snow,5376,2015-2019
+2016,Miscellaneous Categories,5300,2015-2019
+2016,Street Sign - Missing,5299,2015-2019
+2016,Plumbing,5167,2015-2019
+2016,Homeless Encampment,5111,2015-2019
+2016,Vending,4693,2015-2019
+2016,Indoor Air Quality,4354,2015-2019
+2016,Water Conservation,4137,2015-2019
+2016,Emergency Response Team (ERT),3829,2015-2019
+2016,Noise - Park,3797,2015-2019
+2016,Maintenance or Facility,3735,2015-2019
+2016,Electronics Waste,3548,2015-2019
+2016,Special Projects Inspection Team (SPIT),3433,2015-2019
+2016,Food Poisoning,3413,2015-2019
+2016,Construction Safety Enforcement,3300,2015-2019
+2016,Electrical,3220,2015-2019
+2016,Hazardous Materials,3043,2015-2019
+2016,Illegal Tree Damage,2918,2015-2019
+2016,Taxi Report,2576,2015-2019
+2016,Street Sign - Dangling,2574,2015-2019
+2016,Litter Basket / Request,2485,2015-2019
+2016,Highway Condition,2420,2015-2019
+2016,Unsanitary Animal Pvt Property,2178,2015-2019
+2016,BEST/Site Safety,2151,2015-2019
+2016,Asbestos,2067,2015-2019
+2016,Vacant Lot,1978,2015-2019
+2016,Boilers,1765,2015-2019
+2016,Derelict Bicycle,1726,2015-2019
+2016,Smoking,1623,2015-2019
+2016,School Maintenance,1608,2015-2019
+2016,Drinking,1524,2015-2019
+2016,Water Quality,1449,2015-2019
+2016,Industrial Waste,1321,2015-2019
+2016,Indoor Sewage,1247,2015-2019
+2016,Sustainability Enforcement,1211,2015-2019
+2016,Building Marshals office,1197,2015-2019
+2016,Non-Residential Heat,1114,2015-2019
+2016,Posting Advertisement,1100,2015-2019
+2016,OUTSIDE BUILDING,1098,2015-2019
+2016,Overflowing Litter Baskets,1039,2015-2019
+2016,Noise - Helicopter,1009,2015-2019
+2016,Broken Parking Meter,968,2015-2019
+2016,ELEVATOR,967,2015-2019
+2016,Mosquitoes,955,2015-2019
+2016,Bus Stop Shelter Complaint,948,2015-2019
+2016,Noise - House of Worship,915,2015-2019
+2016,Sweeping/Missed,652,2015-2019
+2016,Unsanitary Pigeon Condition,644,2015-2019
+2016,Recycling Enforcement,633,2015-2019
+2016,DRIE,623,2015-2019
+2016,Unleashed Dog,612,2015-2019
+2016,Day Care,540,2015-2019
+2016,DPR Internal,521,2015-2019
+2016,Urinating in Public,470,2015-2019
+2016,Panhandling,462,2015-2019
+2016,Investigations and Discipline (IAD),430,2015-2019
+2016,Adopt-A-Basket,429,2015-2019
+2016,Animal in a Park,400,2015-2019
+2016,Violation of Park Rules,395,2015-2019
+2016,For Hire Vehicle Report,378,2015-2019
+2016,Drug Activity,370,2015-2019
+2016,Cranes and Derricks,347,2015-2019
+2016,Bike/Roller/Skate Chronic,344,2015-2019
+2016,Dead Tree,342,2015-2019
+2016,City Vehicle Placard Complaint,342,2015-2019
+2016,Facades,335,2015-2019
+2016,Senior Center Complaint,326,2015-2019
+2016,Public Payphone Complaint,313,2015-2019
+2016,Mold,312,2015-2019
+2016,Found Property,288,2015-2019
+2016,Illegal Animal Kept as Pet,284,2015-2019
+2016,Scaffold Safety,280,2015-2019
+2016,Sweeping/Inadequate,246,2015-2019
+2016,Disorderly Youth,229,2015-2019
+2016,Bridge Condition,219,2015-2019
+2016,Illegal Fireworks,209,2015-2019
+2016,Quality of Life,206,2015-2019
+2016,Plant,205,2015-2019
+2016,Bus Stop Shelter Placement,188,2015-2019
+2016,Harboring Bees/Wasps,177,2015-2019
+2016,Collection Truck Noise,172,2015-2019
+2016,Beach/Pool/Sauna Complaint,168,2015-2019
+2016,Drinking Water,148,2015-2019
+2016,Poison Ivy,131,2015-2019
+2016,Bike Rack Condition,108,2015-2019
+2016,Special Natural Area District (SNAD),90,2015-2019
+2016,Tattooing,81,2015-2019
+2016,Literature Request,73,2015-2019
+2016,Municipal Parking Facility,67,2015-2019
+2016,Unsanitary Animal Facility,65,2015-2019
+2016,Animal Facility - No Permit,60,2015-2019
+2016,Illegal Animal Sold,54,2015-2019
+2016,Window Guard,53,2015-2019
+2016,LinkNYC,52,2015-2019
+2016,OEM Disabled Vehicle,43,2015-2019
+2016,Public Toilet,38,2015-2019
+2016,Overflowing Recycling Baskets,32,2015-2019
+2016,FATF,23,2015-2019
+2016,ATF,17,2015-2019
+2016,Bottled Water,15,2015-2019
+2016,Lifeguard,13,2015-2019
+2016,Legal Services Provider Complaint,12,2015-2019
+2016,X-Ray Machine/Equipment,12,2015-2019
+2016,Tanning,12,2015-2019
+2016,Calorie Labeling,9,2015-2019
+2016,Radioactive Material,9,2015-2019
+2016,Transportation Provider Complaint,8,2015-2019
+2016,SRDE,7,2015-2019
+2016,Forensic Engineering,5,2015-2019
+2016,Squeegee,5,2015-2019
+2016,Advocate-Commercial Exemptions,4,2015-2019
+2016,Request Xmas Tree Collection,3,2015-2019
+2016,Interior Demo,3,2015-2019
+2016,Trans Fat,3,2015-2019
+2016,Taxpayer Advocate Inquiry,3,2015-2019
+2016,Construction,2,2015-2019
+2016,ZTESTINT,2,2015-2019
+2016,AGENCY,2,2015-2019
+2016,VACANT APARTMENT,2,2015-2019
+2016,Advocate-Business Tax,2,2015-2019
+2016,Asbestos/Garbage Nuisance,1,2015-2019
+2016,Advocate - Other,1,2015-2019
+2016,Building Condition,1,2015-2019
+2016,Advocate-UBT,1,2015-2019
+2016,Trapping Pigeon,1,2015-2019
+2016,LEAD,1,2015-2019
+2016,MOLD,1,2015-2019
+2016,Stalled Sites,1,2015-2019
+2017,Noise - Residential,229715,2015-2019
+2017,HEAT/HOT WATER,213477,2015-2019
+2017,Illegal Parking,145281,2015-2019
+2017,Blocked Driveway,135667,2015-2019
+2017,Street Condition,89396,2015-2019
+2017,UNSANITARY CONDITION,79260,2015-2019
+2017,Noise - Street/Sidewalk,72694,2015-2019
+2017,Water System,63451,2015-2019
+2017,Noise,59154,2015-2019
+2017,PAINT/PLASTER,57069,2015-2019
+2017,Street Light Condition,49980,2015-2019
+2017,PLUMBING,49958,2015-2019
+2017,Noise - Commercial,47318,2015-2019
+2017,Request Large Bulky Item Collection,46604,2015-2019
+2017,Sanitation Condition,37017,2015-2019
+2017,Missed Collection (All Materials),36057,2015-2019
+2017,Dirty Conditions,35239,2015-2019
+2017,DOOR/WINDOW,35003,2015-2019
+2017,Rodent,34869,2015-2019
+2017,Derelict Vehicle,34528,2015-2019
+2017,Derelict Vehicles,33402,2015-2019
+2017,WATER LEAK,32173,2015-2019
+2017,General Construction/Plumbing,31440,2015-2019
+2017,Sewer,31374,2015-2019
+2017,Noise - Vehicle,29232,2015-2019
+2017,Sidewalk Condition,28869,2015-2019
+2017,Building/Use,28590,2015-2019
+2017,ELECTRIC,25915,2015-2019
+2017,GENERAL,24961,2015-2019
+2017,Damaged Tree,24022,2015-2019
+2017,FLOORING/STAIRS,23923,2015-2019
+2017,Homeless Person Assistance,22973,2015-2019
+2017,Traffic Signal Condition,21085,2015-2019
+2017,Graffiti,18786,2015-2019
+2017,New Tree Request,16947,2015-2019
+2017,Consumer Complaint,16575,2015-2019
+2017,Overgrown Tree/Branches,14390,2015-2019
+2017,Taxi Complaint,13769,2015-2019
+2017,Electronics Waste,13467,2015-2019
+2017,Elevator,13170,2015-2019
+2017,APPLIANCE,12607,2015-2019
+2017,Snow,11599,2015-2019
+2017,Dead/Dying Tree,11119,2015-2019
+2017,Food Establishment,10385,2015-2019
+2017,Non-Emergency Police Matter,9967,2015-2019
+2017,Broken Muni Meter,9400,2015-2019
+2017,Animal Abuse,9155,2015-2019
+2017,Root/Sewer/Sidewalk Condition,8673,2015-2019
+2017,SAFETY,8647,2015-2019
+2017,For Hire Vehicle Complaint,8279,2015-2019
+2017,Plumbing,8053,2015-2019
+2017,Street Sign - Damaged,7936,2015-2019
+2017,Lead,7930,2015-2019
+2017,Other Enforcement,7730,2015-2019
+2017,Air Quality,7590,2015-2019
+2017,Curb Condition,6012,2015-2019
+2017,Street Sign - Missing,5863,2015-2019
+2017,Traffic,5549,2015-2019
+2017,Vending,5096,2015-2019
+2017,Homeless Encampment,4924,2015-2019
+2017,Noise - Park,4503,2015-2019
+2017,Indoor Air Quality,4402,2015-2019
+2017,Emergency Response Team (ERT),4351,2015-2019
+2017,Construction Safety Enforcement,4025,2015-2019
+2017,Miscellaneous Categories,3879,2015-2019
+2017,Electrical,3775,2015-2019
+2017,Special Projects Inspection Team (SPIT),3624,2015-2019
+2017,Maintenance or Facility,3590,2015-2019
+2017,Food Poisoning,3264,2015-2019
+2017,Illegal Tree Damage,3052,2015-2019
+2017,Water Conservation,2933,2015-2019
+2017,Hazardous Materials,2902,2015-2019
+2017,Litter Basket / Request,2768,2015-2019
+2017,Standing Water,2646,2015-2019
+2017,Street Sign - Dangling,2552,2015-2019
+2017,Sustainability Enforcement,2465,2015-2019
+2017,Smoking,2381,2015-2019
+2017,Highway Condition,2371,2015-2019
+2017,Unsanitary Animal Pvt Property,2282,2015-2019
+2017,BEST/Site Safety,2169,2015-2019
+2017,Vacant Lot,2148,2015-2019
+2017,Drug Activity,2131,2015-2019
+2017,Taxi Report,2070,2015-2019
+2017,Building Marshals office,2041,2015-2019
+2017,School Maintenance,2040,2015-2019
+2017,Derelict Bicycle,1923,2015-2019
+2017,Broken Parking Meter,1896,2015-2019
+2017,Asbestos,1804,2015-2019
+2017,Boilers,1532,2015-2019
+2017,Water Quality,1522,2015-2019
+2017,Drinking,1498,2015-2019
+2017,Industrial Waste,1375,2015-2019
+2017,DRIE,1299,2015-2019
+2017,ELEVATOR,1277,2015-2019
+2017,OUTSIDE BUILDING,1273,2015-2019
+2017,Request Xmas Tree Collection,1254,2015-2019
+2017,Indoor Sewage,1144,2015-2019
+2017,Bus Stop Shelter Complaint,1127,2015-2019
+2017,Non-Residential Heat,1116,2015-2019
+2017,Noise - Helicopter,1053,2015-2019
+2017,Overflowing Litter Baskets,1007,2015-2019
+2017,Noise - House of Worship,904,2015-2019
+2017,Sweeping/Missed,883,2015-2019
+2017,Recycling Enforcement,830,2015-2019
+2017,Unleashed Dog,764,2015-2019
+2017,Borough Office,736,2015-2019
+2017,Panhandling,667,2015-2019
+2017,Mosquitoes,659,2015-2019
+2017,Unsanitary Pigeon Condition,624,2015-2019
+2017,Urinating in Public,516,2015-2019
+2017,Day Care,510,2015-2019
+2017,DPR Internal,474,2015-2019
+2017,For Hire Vehicle Report,471,2015-2019
+2017,Violation of Park Rules,443,2015-2019
+2017,Facades,423,2015-2019
+2017,Animal in a Park,417,2015-2019
+2017,Bike/Roller/Skate Chronic,409,2015-2019
+2017,Mold,346,2015-2019
+2017,Public Payphone Complaint,326,2015-2019
+2017,Quality of Life,326,2015-2019
+2017,Cranes and Derricks,317,2015-2019
+2017,Adopt-A-Basket,317,2015-2019
+2017,Senior Center Complaint,295,2015-2019
+2017,Investigations and Discipline (IAD),289,2015-2019
+2017,Found Property,286,2015-2019
+2017,Sweeping/Inadequate,276,2015-2019
+2017,Illegal Animal Kept as Pet,260,2015-2019
+2017,Executive Inspections,255,2015-2019
+2017,Scaffold Safety,244,2015-2019
+2017,Illegal Fireworks,239,2015-2019
+2017,Bridge Condition,232,2015-2019
+2017,LinkNYC,222,2015-2019
+2017,Bus Stop Shelter Placement,218,2015-2019
+2017,FATF,214,2015-2019
+2017,Collection Truck Noise,196,2015-2019
+2017,Harboring Bees/Wasps,187,2015-2019
+2017,Beach/Pool/Sauna Complaint,165,2015-2019
+2017,Disorderly Youth,160,2015-2019
+2017,Poison Ivy,160,2015-2019
+2017,Posting Advertisement,138,2015-2019
+2017,Plant,126,2015-2019
+2017,Pet Shop,121,2015-2019
+2017,Drinking Water,120,2015-2019
+2017,Electronics Waste Appointment,104,2015-2019
+2017,Bike Rack Condition,102,2015-2019
+2017,Tattooing,100,2015-2019
+2017,Special Natural Area District (SNAD),97,2015-2019
+2017,City Vehicle Placard Complaint,86,2015-2019
+2017,Municipal Parking Facility,85,2015-2019
+2017,Unsanitary Animal Facility,74,2015-2019
+2017,FCST,58,2015-2019
+2017,Illegal Animal Sold,57,2015-2019
+2017,Animal Facility - No Permit,57,2015-2019
+2017,Public Toilet,56,2015-2019
+2017,Cooling Tower,32,2015-2019
+2017,Lifeguard,30,2015-2019
+2017,Window Guard,25,2015-2019
+2017,Overflowing Recycling Baskets,22,2015-2019
+2017,Transportation Provider Complaint,19,2015-2019
+2017,Calorie Labeling,13,2015-2019
+2017,Bottled Water,11,2015-2019
+2017,Legal Services Provider Complaint,11,2015-2019
+2017,Tanning,11,2015-2019
+2017,Taxpayer Advocate Inquiry,9,2015-2019
+2017,ATF,7,2015-2019
+2017,X-Ray Machine/Equipment,7,2015-2019
+2017,Radioactive Material,6,2015-2019
+2017,Forensic Engineering,5,2015-2019
+2017,Interior Demo,5,2015-2019
+2017,Trans Fat,3,2015-2019
+2017,Building Condition,3,2015-2019
+2017,Stalled Sites,3,2015-2019
+2017,Advocate-Commercial Exemptions,3,2015-2019
+2017,AGENCY,3,2015-2019
+2017,Squeegee,2,2015-2019
+2017,DOF Property - Reduction Issue,2,2015-2019
+2017,VACANT APARTMENT,2,2015-2019
+2017,Special Enforcement,2,2015-2019
+2017,SRDE,1,2015-2019
+2017,ZSYSTEST,1,2015-2019
+2017,Advocate - Lien,1,2015-2019
+2017,Advocate-Business Tax,1,2015-2019
+2017,ZTESTINT,1,2015-2019
+2017,Advocate - Levy,1,2015-2019
+2018,Noise - Residential,217486,2015-2019
+2018,HEAT/HOT WATER,217025,2015-2019
+2018,Request Large Bulky Item Collection,178975,2015-2019
+2018,Illegal Parking,162450,2015-2019
+2018,Blocked Driveway,136793,2015-2019
+2018,Street Condition,100108,2015-2019
+2018,UNSANITARY CONDITION,86230,2015-2019
+2018,Water System,74556,2015-2019
+2018,Noise - Street/Sidewalk,73772,2015-2019
+2018,Noise,59664,2015-2019
+2018,PAINT/PLASTER,59376,2015-2019
+2018,PLUMBING,53186,2015-2019
+2018,Street Light Condition,46911,2015-2019
+2018,Noise - Commercial,44695,2015-2019
+2018,Sanitation Condition,41735,2015-2019
+2018,Missed Collection (All Materials),40435,2015-2019
+2018,WATER LEAK,39162,2015-2019
+2018,Derelict Vehicle,38955,2015-2019
+2018,Dirty Conditions,38111,2015-2019
+2018,DOOR/WINDOW,38019,2015-2019
+2018,Damaged Tree,37718,2015-2019
+2018,Sewer,36454,2015-2019
+2018,Derelict Vehicles,36302,2015-2019
+2018,General Construction/Plumbing,36040,2015-2019
+2018,Noise - Vehicle,33744,2015-2019
+2018,Rodent,32356,2015-2019
+2018,Sidewalk Condition,29361,2015-2019
+2018,Building/Use,28700,2015-2019
+2018,ELECTRIC,27480,2015-2019
+2018,Traffic Signal Condition,26142,2015-2019
+2018,GENERAL,26078,2015-2019
+2018,FLOORING/STAIRS,25138,2015-2019
+2018,New Tree Request,20589,2015-2019
+2018,Graffiti,19991,2015-2019
+2018,Homeless Person Assistance,19455,2015-2019
+2018,Consumer Complaint,15429,2015-2019
+2018,Overgrown Tree/Branches,15179,2015-2019
+2018,Elevator,15024,2015-2019
+2018,APPLIANCE,14694,2015-2019
+2018,Electronics Waste Appointment,13719,2015-2019
+2018,Taxi Complaint,13705,2015-2019
+2018,Broken Parking Meter,12701,2015-2019
+2018,For Hire Vehicle Complaint,11609,2015-2019
+2018,Dead/Dying Tree,11230,2015-2019
+2018,Food Establishment,10661,2015-2019
+2018,SAFETY,9542,2015-2019
+2018,Electronics Waste,9455,2015-2019
+2018,DOF Property - Payment Issue,9033,2015-2019
+2018,Lead,8837,2015-2019
+2018,Animal Abuse,8661,2015-2019
+2018,Root/Sewer/Sidewalk Condition,8441,2015-2019
+2018,Plumbing,8306,2015-2019
+2018,Non-Emergency Police Matter,8301,2015-2019
+2018,Other Enforcement,8249,2015-2019
+2018,Air Quality,7265,2015-2019
+2018,Street Sign - Damaged,6822,2015-2019
+2018,Curb Condition,6802,2015-2019
+2018,Special Projects Inspection Team (SPIT),6198,2015-2019
+2018,Street Sign - Missing,5659,2015-2019
+2018,Water Conservation,5483,2015-2019
+2018,Traffic,4690,2015-2019
+2018,Vending,4686,2015-2019
+2018,Homeless Encampment,4597,2015-2019
+2018,Indoor Air Quality,4564,2015-2019
+2018,Snow,4485,2015-2019
+2018,Emergency Response Team (ERT),4263,2015-2019
+2018,Noise - Park,4138,2015-2019
+2018,Electrical,3662,2015-2019
+2018,Borough Office,3573,2015-2019
+2018,Maintenance or Facility,3535,2015-2019
+2018,Illegal Tree Damage,3370,2015-2019
+2018,Food Poisoning,3288,2015-2019
+2018,Construction Safety Enforcement,3271,2015-2019
+2018,Litter Basket / Request,3074,2015-2019
+2018,Hazardous Materials,2912,2015-2019
+2018,Highway Condition,2766,2015-2019
+2018,Street Sign - Dangling,2703,2015-2019
+2018,Smoking,2682,2015-2019
+2018,Derelict Bicycle,2559,2015-2019
+2018,Standing Water,2512,2015-2019
+2018,School Maintenance,2470,2015-2019
+2018,Asbestos,2057,2015-2019
+2018,BEST/Site Safety,2041,2015-2019
+2018,Vacant Lot,2015,2015-2019
+2018,Water Quality,2008,2015-2019
+2018,Drug Activity,1979,2015-2019
+2018,Sustainability Enforcement,1961,2015-2019
+2018,Taxi Report,1923,2015-2019
+2018,Unsanitary Animal Pvt Property,1838,2015-2019
+2018,Building Marshals office,1808,2015-2019
+2018,Boilers,1576,2015-2019
+2018,ELEVATOR,1568,2015-2019
+2018,Drinking,1549,2015-2019
+2018,DRIE,1444,2015-2019
+2018,Non-Residential Heat,1302,2015-2019
+2018,Industrial Waste,1225,2015-2019
+2018,Indoor Sewage,1134,2015-2019
+2018,Sweeping/Missed,1097,2015-2019
+2018,OUTSIDE BUILDING,1064,2015-2019
+2018,Bus Stop Shelter Complaint,1027,2015-2019
+2018,Noise - Helicopter,1022,2015-2019
+2018,Overflowing Litter Baskets,890,2015-2019
+2018,Mobile Food Vendor,850,2015-2019
+2018,Noise - House of Worship,750,2015-2019
+2018,Executive Inspections,736,2015-2019
+2018,Unleashed Dog,729,2015-2019
+2018,Recycling Enforcement,706,2015-2019
+2018,Mosquitoes,657,2015-2019
+2018,DPR Internal,643,2015-2019
+2018,Unsanitary Pigeon Condition,637,2015-2019
+2018,Violation of Park Rules,616,2015-2019
+2018,Day Care,613,2015-2019
+2018,For Hire Vehicle Report,526,2015-2019
+2018,Urinating in Public,508,2015-2019
+2018,Miscellaneous Categories,475,2015-2019
+2018,Animal in a Park,445,2015-2019
+2018,Bike/Roller/Skate Chronic,441,2015-2019
+2018,Mold,436,2015-2019
+2018,Panhandling,422,2015-2019
+2018,Quality of Life,407,2015-2019
+2018,Facades,361,2015-2019
+2018,Senior Center Complaint,313,2015-2019
+2018,Sweeping/Inadequate,299,2015-2019
+2018,Bus Stop Shelter Placement,290,2015-2019
+2018,Public Payphone Complaint,290,2015-2019
+2018,Bridge Condition,275,2015-2019
+2018,Cranes and Derricks,269,2015-2019
+2018,LinkNYC,257,2015-2019
+2018,Illegal Fireworks,247,2015-2019
+2018,Scaffold Safety,240,2015-2019
+2018,Investigations and Discipline (IAD),226,2015-2019
+2018,Illegal Animal Kept as Pet,214,2015-2019
+2018,Found Property,206,2015-2019
+2018,Beach/Pool/Sauna Complaint,204,2015-2019
+2018,Poison Ivy,185,2015-2019
+2018,Harboring Bees/Wasps,176,2015-2019
+2018,Adopt-A-Basket,175,2015-2019
+2018,Posting Advertisement,151,2015-2019
+2018,Pet Shop,141,2015-2019
+2018,Collection Truck Noise,138,2015-2019
+2018,Unsanitary Condition,134,2015-2019
+2018,FCST,122,2015-2019
+2018,Bike Rack Condition,120,2015-2019
+2018,Drinking Water,119,2015-2019
+2018,Tattooing,105,2015-2019
+2018,Special Natural Area District (SNAD),101,2015-2019
+2018,FATF,99,2015-2019
+2018,Disorderly Youth,77,2015-2019
+2018,Plant,75,2015-2019
+2018,Illegal Animal Sold,66,2015-2019
+2018,Unsanitary Animal Facility,65,2015-2019
+2018,General,64,2015-2019
+2018,Animal Facility - No Permit,57,2015-2019
+2018,Cooling Tower,50,2015-2019
+2018,Public Toilet,43,2015-2019
+2018,Unlicensed Dog,36,2015-2019
+2018,Municipal Parking Facility,34,2015-2019
+2018,Window Guard,29,2015-2019
+2018,Calorie Labeling,18,2015-2019
+2018,Lifeguard,17,2015-2019
+2018,DOF Property - Reduction Issue,17,2015-2019
+2018,Fire Alarm - Reinspection,16,2015-2019
+2018,Special Enforcement,15,2015-2019
+2018,Overflowing Recycling Baskets,13,2015-2019
+2018,Bottled Water,12,2015-2019
+2018,Transportation Provider Complaint,11,2015-2019
+2018,Public Assembly,11,2015-2019
+2018,Special Operations,10,2015-2019
+2018,Fire Alarm - New System,9,2015-2019
+2018,Rangehood,9,2015-2019
+2018,Interior Demo,8,2015-2019
+2018,Tanning,8,2015-2019
+2018,Advocate - Lien,8,2015-2019
+2018,Safety,8,2015-2019
+2018,Legal Services Provider Complaint,7,2015-2019
+2018,Radioactive Material,7,2015-2019
+2018,Dispatched Taxi Complaint,7,2015-2019
+2018,X-Ray Machine/Equipment,6,2015-2019
+2018,Taxpayer Advocate Inquiry,5,2015-2019
+2018,Request Xmas Tree Collection,5,2015-2019
+2018,Lost Property,5,2015-2019
+2018,Advocate-Commercial Exemptions,4,2015-2019
+2018,Fire Alarm - Modification,4,2015-2019
+2018,Dept of Investigations,4,2015-2019
+2018,Sprinkler - Mechanical,3,2015-2019
+2018,Stalled Sites,2,2015-2019
+2018,Homebound Evacuation 4,2,2015-2019
+2018,Trans Fat,2,2015-2019
+2018,Advocate-Business Tax,2,2015-2019
+2018,Hazmat Storage/Use,2,2015-2019
+2018,ZTESTINT,2,2015-2019
+2018,Gas Station Discharge Lines,2,2015-2019
+2018,Building Condition,2,2015-2019
+2018,Injured Wildlife,1,2015-2019
+2018,Illegal Animal - Sold/Kept,1,2015-2019
+2018,Advocate - Levy,1,2015-2019
+2018,Open Flame Permit,1,2015-2019
+2018,Advocate-Personal Exemptions,1,2015-2019
+2018,Public Assembly - Temporary,1,2015-2019
+2018,ZSYSTEST,1,2015-2019
+2018,Squeegee,1,2015-2019
+2019,Noise - Residential,230757,2015-2019
+2019,Request Large Bulky Item Collection,214774,2015-2019
+2019,HEAT/HOT WATER,212479,2015-2019
+2019,Illegal Parking,194816,2015-2019
+2019,Blocked Driveway,137419,2015-2019
+2019,Noise - Street/Sidewalk,95686,2015-2019
+2019,Street Condition,83178,2015-2019
+2019,Water System,62793,2015-2019
+2019,UNSANITARY CONDITION,57810,2015-2019
+2019,Noise,55637,2015-2019
+2019,General Construction/Plumbing,44981,2015-2019
+2019,Sidewalk Condition,42303,2015-2019
+2019,Missed Collection (All Materials),41826,2015-2019
+2019,Noise - Vehicle,41793,2015-2019
+2019,Electronics Waste Appointment,41253,2015-2019
+2019,Street Light Condition,40639,2015-2019
+2019,Noise - Commercial,40203,2015-2019
+2019,Sanitation Condition,39011,2015-2019
+2019,PLUMBING,35955,2015-2019
+2019,Derelict Vehicles,35247,2015-2019
+2019,PAINT/PLASTER,34280,2015-2019
+2019,Dirty Conditions,32109,2015-2019
+2019,Sewer,31277,2015-2019
+2019,Rodent,31108,2015-2019
+2019,Damaged Tree,25318,2015-2019
+2019,WATER LEAK,24668,2015-2019
+2019,DOOR/WINDOW,24579,2015-2019
+2019,Traffic Signal Condition,23825,2015-2019
+2019,Abandoned Vehicle,23460,2015-2019
+2019,Building/Use,23262,2015-2019
+2019,Graffiti,21734,2015-2019
+2019,Homeless Person Assistance,20955,2015-2019
+2019,GENERAL,18171,2015-2019
+2019,Derelict Vehicle,17722,2015-2019
+2019,ELECTRIC,17155,2015-2019
+2019,New Tree Request,16953,2015-2019
+2019,Elevator,16312,2015-2019
+2019,For Hire Vehicle Complaint,16187,2015-2019
+2019,FLOORING/STAIRS,14101,2015-2019
+2019,Overgrown Tree/Branches,13991,2015-2019
+2019,Consumer Complaint,13841,2015-2019
+2019,Broken Parking Meter,13152,2015-2019
+2019,APPLIANCE,10207,2015-2019
+2019,Root/Sewer/Sidewalk Condition,9944,2015-2019
+2019,Food Establishment,9902,2015-2019
+2019,Non-Emergency Police Matter,9844,2015-2019
+2019,Taxi Complaint,9671,2015-2019
+2019,Dead/Dying Tree,9665,2015-2019
+2019,Lead,8766,2015-2019
+2019,Maintenance or Facility,8636,2015-2019
+2019,Air Quality,7938,2015-2019
+2019,Other Enforcement,7231,2015-2019
+2019,Curb Condition,7211,2015-2019
+2019,SAFETY,7122,2015-2019
+2019,Homeless Encampment,6807,2015-2019
+2019,Lost Property,6708,2015-2019
+2019,Construction Safety Enforcement,6000,2015-2019
+2019,Street Sign - Damaged,5976,2015-2019
+2019,Unsanitary Condition,5353,2015-2019
+2019,Special Projects Inspection Team (SPIT),5258,2015-2019
+2019,Plumbing,5010,2015-2019
+2019,Street Sign - Missing,4984,2015-2019
+2019,Vending,4669,2015-2019
+2019,Traffic,4257,2015-2019
+2019,Water Conservation,4202,2015-2019
+2019,Animal-Abuse,4128,2015-2019
+2019,Emergency Response Team (ERT),4022,2015-2019
+2019,Indoor Air Quality,3781,2015-2019
+2019,Animal Abuse,3711,2015-2019
+2019,Borough Office,3598,2015-2019
+2019,Noise - Park,3515,2015-2019
+2019,Illegal Tree Damage,3422,2015-2019
+2019,Street Sign - Dangling,3285,2015-2019
+2019,Noise - Helicopter,2967,2015-2019
+2019,Hazardous Materials,2874,2015-2019
+2019,Food Poisoning,2716,2015-2019
+2019,Drug Activity,2541,2015-2019
+2019,Smoking,2463,2015-2019
+2019,Litter Basket / Request,2430,2015-2019
+2019,Boilers,2400,2015-2019
+2019,Derelict Bicycle,2385,2015-2019
+2019,DOF Property - Payment Issue,2381,2015-2019
+2019,Electrical,2377,2015-2019
+2019,Water Quality,2053,2015-2019
+2019,Standing Water,2028,2015-2019
+2019,Asbestos,1943,2015-2019
+2019,Violation of Park Rules,1919,2015-2019
+2019,Panhandling,1919,2015-2019
+2019,Vacant Lot,1908,2015-2019
+2019,Unsanitary Animal Pvt Property,1836,2015-2019
+2019,Mobile Food Vendor,1779,2015-2019
+2019,Snow,1738,2015-2019
+2019,Drinking,1630,2015-2019
+2019,School Maintenance,1455,2015-2019
+2019,Highway Condition,1396,2015-2019
+2019,Taxi Report,1380,2015-2019
+2019,Animal in a Park,1313,2015-2019
+2019,Building Marshals office,1293,2015-2019
+2019,Indoor Sewage,1292,2015-2019
+2019,BEST/Site Safety,1204,2015-2019
+2019,Industrial Waste,1116,2015-2019
+2019,General,1093,2015-2019
+2019,Non-Residential Heat,1076,2015-2019
+2019,ELEVATOR,1047,2015-2019
+2019,Overflowing Litter Baskets,932,2015-2019
+2019,Sweeping/Missed,916,2015-2019
+2019,Illegal Fireworks,883,2015-2019
+2019,Bus Stop Shelter Complaint,854,2015-2019
+2019,Investigations and Discipline (IAD),849,2015-2019
+2019,Sustainability Enforcement,743,2015-2019
+2019,Noise - House of Worship,734,2015-2019
+2019,DRIE,657,2015-2019
+2019,Bike/Roller/Skate Chronic,642,2015-2019
+2019,Recycling Enforcement,640,2015-2019
+2019,Unleashed Dog,615,2015-2019
+2019,Unsanitary Pigeon Condition,609,2015-2019
+2019,For Hire Vehicle Report,585,2015-2019
+2019,OUTSIDE BUILDING,581,2015-2019
+2019,Urinating in Public,580,2015-2019
+2019,Day Care,512,2015-2019
+2019,Mosquitoes,426,2015-2019
+2019,Safety,416,2015-2019
+2019,Mold,412,2015-2019
+2019,Adopt-A-Basket,387,2015-2019
+2019,Executive Inspections,289,2015-2019
+2019,DEP Street Condition,288,2015-2019
+2019,Facades,279,2015-2019
+2019,Sweeping/Inadequate,278,2015-2019
+2019,Public Payphone Complaint,273,2015-2019
+2019,Special Operations,249,2015-2019
+2019,DPR Internal,242,2015-2019
+2019,Illegal Animal Kept as Pet,225,2015-2019
+2019,Poison Ivy,220,2015-2019
+2019,Scaffold Safety,208,2015-2019
+2019,Beach/Pool/Sauna Complaint,206,2015-2019
+2019,Cranes and Derricks,184,2015-2019
+2019,Quality of Life,183,2015-2019
+2019,Bus Stop Shelter Placement,174,2015-2019
+2019,Collection Truck Noise,172,2015-2019
+2019,Drinking Water,170,2015-2019
+2019,Found Property,159,2015-2019
+2019,Green Taxi Complaint,156,2015-2019
+2019,Pet Shop,144,2015-2019
+2019,Bike Rack Condition,144,2015-2019
+2019,Harboring Bees/Wasps,134,2015-2019
+2019,Bridge Condition,111,2015-2019
+2019,Special Natural Area District (SNAD),106,2015-2019
+2019,Posting Advertisement,104,2015-2019
+2019,LinkNYC,102,2015-2019
+2019,Tattooing,101,2015-2019
+2019,Construction Lead Dust,100,2015-2019
+2019,Disorderly Youth,93,2015-2019
+2019,Taxi Compliment,93,2015-2019
+2019,Senior Center Complaint,89,2015-2019
+2019,Miscellaneous Categories,83,2015-2019
+2019,Plant,83,2015-2019
+2019,FATF,64,2015-2019
+2019,Animal Facility - No Permit,63,2015-2019
+2019,Unsanitary Animal Facility,62,2015-2019
+2019,Foam Ban Enforcement,56,2015-2019
+2019,Snow Removal,54,2015-2019
+2019,Municipal Parking Facility,50,2015-2019
+2019,Single Occupancy Bathroom,39,2015-2019
+2019,Unlicensed Dog,38,2015-2019
+2019,Illegal Animal Sold,36,2015-2019
+2019,Public Toilet,34,2015-2019
+2019,Window Guard,34,2015-2019
+2019,Cooling Tower,21,2015-2019
+2019,Lifeguard,20,2015-2019
+2019,Ferry Inquiry,19,2015-2019
+2019,Dispatched Taxi Complaint,16,2015-2019
+2019,Electronics Waste,15,2015-2019
+2019,Green Taxi Report,14,2015-2019
+2019,Ferry Complaint,14,2015-2019
+2019,Overflowing Recycling Baskets,11,2015-2019
+2019,Radioactive Material,11,2015-2019
+2019,Dept of Investigations,10,2015-2019
+2019,DOF Property - Reduction Issue,9,2015-2019
+2019,X-Ray Machine/Equipment,9,2015-2019
+2019,Bottled Water,8,2015-2019
+2019,Squeegee,8,2015-2019
+2019,Missed Collection,7,2015-2019
+2019,FHV Licensee Complaint,7,2015-2019
+2019,Highway Sign - Damaged,7,2015-2019
+2019,Taxpayer Advocate Inquiry,6,2015-2019
+2019,Calorie Labeling,6,2015-2019
+2019,Outside Building,6,2015-2019
+2019,Forensic Engineering,5,2015-2019
+2019,DEP Sidewalk Condition,5,2015-2019
+2019,Peeling Paint,5,2015-2019
+2019,Advocate - Lien,4,2015-2019
+2019,Tanning,4,2015-2019
+2019,Appliance,4,2015-2019
+2019,Highway Sign - Missing,4,2015-2019
+2019,Request Xmas Tree Collection,3,2015-2019
+2019,Transportation Provider Complaint,3,2015-2019
+2019,Advocate-Business Tax,3,2015-2019
+2019,SRDE,3,2015-2019
+2019,Internal Code,3,2015-2019
+2019,Advocate-Commercial Exemptions,2,2015-2019
+2019,Building Condition,2,2015-2019
+2019,Dirty Condition,2,2015-2019
+2019,Construction,2,2015-2019
+2019,Employee Behavior,2,2015-2019
+2019,Advocate-Foreclosure,1,2015-2019
+2019,Stalled Sites,1,2015-2019
+2019,MSOTHER,1,2015-2019
+2019,Water Leak,1,2015-2019
+2019,Electric,1,2015-2019
+2019,Request Changes - A.S.P.,1,2015-2019
+2019,Fire Alarm - Replacement,1,2015-2019
+2019,Dispatched Taxi Compliment,1,2015-2019
+2019,Taxi Licensee Complaint,1,2015-2019
+2019,SRGOVG,1,2015-2019
+2019,Ferry Permit,1,2015-2019
+2019,Highway Sign - Dangling,1,2015-2019
+2020,Noise - Residential,406165,2020-2025
+2020,Request Large Bulky Item Collection,282081,2020-2025
+2020,Noise - Street/Sidewalk,205425,2020-2025
+2020,Illegal Parking,192123,2020-2025
+2020,HEAT/HOT WATER,164990,2020-2025
+2020,Blocked Driveway,116593,2020-2025
+2020,Non-Emergency Police Matter,82924,2020-2025
+2020,Noise - Vehicle,80490,2020-2025
+2020,Damaged Tree,69370,2020-2025
+2020,UNSANITARY CONDITION,62096,2020-2025
+2020,NonCompliance with Phased Reopening,51960,2020-2025
+2020,Water System,50345,2020-2025
+2020,Street Condition,50095,2020-2025
+2020,Illegal Fireworks,48855,2020-2025
+2020,Noise,44709,2020-2025
+2020,Noise - Commercial,43665,2020-2025
+2020,Missed Collection (All Materials),41437,2020-2025
+2020,Street Light Condition,37997,2020-2025
+2020,PLUMBING,37152,2020-2025
+2020,General Construction/Plumbing,35255,2020-2025
+2020,Consumer Complaint,34606,2020-2025
+2020,Abandoned Vehicle,33212,2020-2025
+2020,PAINT/PLASTER,33063,2020-2025
+2020,Sanitation Condition,33058,2020-2025
+2020,Derelict Vehicles,29375,2020-2025
+2020,Dirty Conditions,29167,2020-2025
+2020,Sidewalk Condition,27774,2020-2025
+2020,Rodent,27280,2020-2025
+2020,Homeless Person Assistance,26658,2020-2025
+2020,Sewer,24594,2020-2025
+2020,DOOR/WINDOW,24446,2020-2025
+2020,WATER LEAK,21811,2020-2025
+2020,Traffic Signal Condition,19131,2020-2025
+2020,GENERAL,18100,2020-2025
+2020,ELECTRIC,17518,2020-2025
+2020,Overgrown Tree/Branches,17195,2020-2025
+2020,Building/Use,16318,2020-2025
+2020,Maintenance or Facility,15191,2020-2025
+2020,FLOORING/STAIRS,14406,2020-2025
+2020,Homeless Street Condition,14089,2020-2025
+2020,APPLIANCE,13779,2020-2025
+2020,New Tree Request,13660,2020-2025
+2020,Elevator,13420,2020-2025
+2020,Electronics Waste Appointment,10927,2020-2025
+2020,Noise - Helicopter,10341,2020-2025
+2020,Dead/Dying Tree,8922,2020-2025
+2020,Root/Sewer/Sidewalk Condition,8428,2020-2025
+2020,Food Establishment,8107,2020-2025
+2020,Noise - Park,7385,2020-2025
+2020,Violation of Park Rules,7078,2020-2025
+2020,For Hire Vehicle Complaint,7068,2020-2025
+2020,Broken Parking Meter,7053,2020-2025
+2020,Animal-Abuse,6844,2020-2025
+2020,Lead,6734,2020-2025
+2020,Graffiti,6730,2020-2025
+2020,COVID-19 Non-essential Construction,6635,2020-2025
+2020,Air Quality,6372,2020-2025
+2020,Other Enforcement,6322,2020-2025
+2020,SAFETY,5980,2020-2025
+2020,Curb Condition,5111,2020-2025
+2020,Street Sign - Damaged,4662,2020-2025
+2020,Street Sign - Missing,4483,2020-2025
+2020,Drug Activity,4345,2020-2025
+2020,Vending,4173,2020-2025
+2020,Outdoor Dining,4085,2020-2025
+2020,Indoor Air Quality,3954,2020-2025
+2020,Street Sign - Dangling,3678,2020-2025
+2020,Traffic,3587,2020-2025
+2020,Emergency Response Team (ERT),3557,2020-2025
+2020,Illegal Tree Damage,3427,2020-2025
+2020,Lost Property,3391,2020-2025
+2020,Taxi Complaint,3372,2020-2025
+2020,Water Conservation,3235,2020-2025
+2020,Drinking,3186,2020-2025
+2020,Snow,2906,2020-2025
+2020,Smoking,2816,2020-2025
+2020,Special Projects Inspection Team (SPIT),2810,2020-2025
+2020,Animal in a Park,2672,2020-2025
+2020,Overflowing Litter Baskets,2548,2020-2025
+2020,Mass Gathering Complaint,2383,2020-2025
+2020,Plumbing,2360,2020-2025
+2020,Boilers,2142,2020-2025
+2020,Hazardous Materials,2039,2020-2025
+2020,Vacant Lot,1965,2020-2025
+2020,Water Quality,1849,2020-2025
+2020,Unsanitary Animal Pvt Property,1842,2020-2025
+2020,Litter Basket / Request,1838,2020-2025
+2020,Food Poisoning,1764,2020-2025
+2020,Mobile Food Vendor,1722,2020-2025
+2020,Electrical,1694,2020-2025
+2020,Derelict Bicycle,1488,2020-2025
+2020,Panhandling,1460,2020-2025
+2020,Real Time Enforcement,1389,2020-2025
+2020,ELEVATOR,1255,2020-2025
+2020,Asbestos,1208,2020-2025
+2020,Sweeping/Missed,1202,2020-2025
+2020,Indoor Sewage,1201,2020-2025
+2020,Day Care,1196,2020-2025
+2020,Urinating in Public,1088,2020-2025
+2020,School Maintenance,1010,2020-2025
+2020,Private or Charter School Reopening,839,2020-2025
+2020,Unleashed Dog,830,2020-2025
+2020,Unsanitary Pigeon Condition,808,2020-2025
+2020,Bike/Roller/Skate Chronic,785,2020-2025
+2020,Bus Stop Shelter Complaint,767,2020-2025
+2020,Construction Lead Dust,720,2020-2025
+2020,Snow Removal,709,2020-2025
+2020,Industrial Waste,618,2020-2025
+2020,Standing Water,615,2020-2025
+2020,Noise - House of Worship,614,2020-2025
+2020,Non-Residential Heat,557,2020-2025
+2020,OUTSIDE BUILDING,518,2020-2025
+2020,Illegal Animal Kept as Pet,475,2020-2025
+2020,Investigations and Discipline (IAD),414,2020-2025
+2020,Taxi Report,412,2020-2025
+2020,Recycling Enforcement,396,2020-2025
+2020,Mosquitoes,362,2020-2025
+2020,Collection Truck Noise,301,2020-2025
+2020,Harboring Bees/Wasps,264,2020-2025
+2020,For Hire Vehicle Report,254,2020-2025
+2020,Sweeping/Inadequate,243,2020-2025
+2020,BEST/Site Safety,232,2020-2025
+2020,Drinking Water,216,2020-2025
+2020,Mold,188,2020-2025
+2020,Homeless Encampment,172,2020-2025
+2020,Public Payphone Complaint,169,2020-2025
+2020,Beach/Pool/Sauna Complaint,145,2020-2025
+2020,Scaffold Safety,142,2020-2025
+2020,Bike Rack Condition,139,2020-2025
+2020,Poison Ivy,130,2020-2025
+2020,Green Taxi Complaint,123,2020-2025
+2020,Bus Stop Shelter Placement,116,2020-2025
+2020,Pet Shop,115,2020-2025
+2020,Disorderly Youth,112,2020-2025
+2020,Cranes and Derricks,106,2020-2025
+2020,AHV Inspection Unit,101,2020-2025
+2020,Tattooing,98,2020-2025
+2020,Unsanitary Animal Facility,85,2020-2025
+2020,Peeling Paint,84,2020-2025
+2020,LinkNYC,78,2020-2025
+2020,Adopt-A-Basket,76,2020-2025
+2020,Illegal Animal Sold,66,2020-2025
+2020,X-Ray Machine/Equipment,65,2020-2025
+2020,DEP Street Condition,64,2020-2025
+2020,Animal Facility - No Permit,59,2020-2025
+2020,Plant,58,2020-2025
+2020,Taxi Compliment,55,2020-2025
+2020,Posting Advertisement,53,2020-2025
+2020,Wood Pile Remaining,51,2020-2025
+2020,Uprooted Stump,41,2020-2025
+2020,Special Natural Area District (SNAD),40,2020-2025
+2020,Found Property,36,2020-2025
+2020,Highway Condition,31,2020-2025
+2020,Public Toilet,28,2020-2025
+2020,Cooling Tower,25,2020-2025
+2020,Borough Office,21,2020-2025
+2020,Bottled Water,21,2020-2025
+2020,Lifeguard,21,2020-2025
+2020,Window Guard,19,2020-2025
+2020,Green Taxi Report,15,2020-2025
+2020,Squeegee,14,2020-2025
+2020,Construction Safety Enforcement,14,2020-2025
+2020,Dept of Investigations,13,2020-2025
+2020,Radioactive Material,12,2020-2025
+2020,Overflowing Recycling Baskets,12,2020-2025
+2020,Building Marshals office,9,2020-2025
+2020,Highway Sign - Damaged,7,2020-2025
+2020,Foam Ban Enforcement,7,2020-2025
+2020,Missed Collection,6,2020-2025
+2020,Municipal Parking Facility,5,2020-2025
+2020,Miscellaneous Categories,5,2020-2025
+2020,Building Condition,5,2020-2025
+2020,FHV Licensee Complaint,4,2020-2025
+2020,Encampment,4,2020-2025
+2020,Employee Behavior,4,2020-2025
+2020,DSNY Spillage,4,2020-2025
+2020,Internal Code,3,2020-2025
+2020,Calorie Labeling,3,2020-2025
+2020,Bridge Condition,3,2020-2025
+2020,Executive Inspections,2,2020-2025
+2020,Ferry Complaint,2,2020-2025
+2020,Highway Sign - Dangling,2,2020-2025
+2020,Electronics Waste,2,2020-2025
+2020,Ferry Inquiry,2,2020-2025
+2020,SRGOVG,2,2020-2025
+2020,Dispatched Taxi Complaint,2,2020-2025
+2020,Facades,1,2020-2025
+2020,Tunnel Condition,1,2020-2025
+2020,Tanning,1,2020-2025
+2020,Building Marshal's Office,1,2020-2025
+2020,DEP Sidewalk Condition,1,2020-2025
+2020,Trans Fat,1,2020-2025
+2021,Noise - Residential,361621,2020-2025
+2021,Illegal Parking,315128,2020-2025
+2021,Request Large Bulky Item Collection,302995,2020-2025
+2021,HEAT/HOT WATER,199547,2020-2025
+2021,Noise - Street/Sidewalk,183582,2020-2025
+2021,Blocked Driveway,152425,2020-2025
+2021,UNSANITARY CONDITION,90369,2020-2025
+2021,Noise - Vehicle,84570,2020-2025
+2021,Street Condition,64205,2020-2025
+2021,Water System,55003,2020-2025
+2021,Noise - Commercial,54003,2020-2025
+2021,PAINT/PLASTER,52367,2020-2025
+2021,PLUMBING,51903,2020-2025
+2021,Abandoned Vehicle,48109,2020-2025
+2021,Noise,44446,2020-2025
+2021,Missed Collection (All Materials),41009,2020-2025
+2021,Derelict Vehicles,39159,2020-2025
+2021,Rodent,38410,2020-2025
+2021,Sewer,36740,2020-2025
+2021,WATER LEAK,36549,2020-2025
+2021,DOOR/WINDOW,36498,2020-2025
+2021,Street Light Condition,36211,2020-2025
+2021,Dirty Conditions,33849,2020-2025
+2021,General Construction/Plumbing,33735,2020-2025
+2021,Homeless Person Assistance,33728,2020-2025
+2021,Missed Collection,32903,2020-2025
+2021,GENERAL,26099,2020-2025
+2021,Encampment,25944,2020-2025
+2021,Damaged Tree,25927,2020-2025
+2021,Noise - Helicopter,25911,2020-2025
+2021,Sanitation Condition,24684,2020-2025
+2021,ELECTRIC,23547,2020-2025
+2021,Traffic Signal Condition,22923,2020-2025
+2021,FLOORING/STAIRS,22576,2020-2025
+2021,Sidewalk Condition,22531,2020-2025
+2021,Illegal Fireworks,21682,2020-2025
+2021,Non-Emergency Police Matter,20012,2020-2025
+2021,Consumer Complaint,19980,2020-2025
+2021,APPLIANCE,18221,2020-2025
+2021,Building/Use,17471,2020-2025
+2021,Maintenance or Facility,17303,2020-2025
+2021,Overgrown Tree/Branches,17029,2020-2025
+2021,New Tree Request,15517,2020-2025
+2021,Elevator,14910,2020-2025
+2021,NonCompliance with Phased Reopening,14336,2020-2025
+2021,Dirty Condition,12313,2020-2025
+2021,Noise - Park,9334,2020-2025
+2021,SAFETY,9274,2020-2025
+2021,Root/Sewer/Sidewalk Condition,9155,2020-2025
+2021,Air Quality,9129,2020-2025
+2021,Dead/Dying Tree,9019,2020-2025
+2021,Food Establishment,8488,2020-2025
+2021,For Hire Vehicle Complaint,8224,2020-2025
+2021,Broken Parking Meter,7536,2020-2025
+2021,Graffiti,7483,2020-2025
+2021,Lead,6828,2020-2025
+2021,Animal-Abuse,6779,2020-2025
+2021,Vaccine Mandate Non-Compliance,6158,2020-2025
+2021,Curb Condition,6011,2020-2025
+2021,Illegal Dumping,5935,2020-2025
+2021,Indoor Air Quality,5919,2020-2025
+2021,Snow,5744,2020-2025
+2021,Traffic,5609,2020-2025
+2021,Drug Activity,5168,2020-2025
+2021,Lost Property,5164,2020-2025
+2021,Taxi Complaint,5102,2020-2025
+2021,Street Sign - Damaged,5055,2020-2025
+2021,Other Enforcement,4992,2020-2025
+2021,Real Time Enforcement,4741,2020-2025
+2021,Street Sign - Missing,4597,2020-2025
+2021,Outdoor Dining,4388,2020-2025
+2021,Electronics Waste Appointment,4207,2020-2025
+2021,Violation of Park Rules,4013,2020-2025
+2021,Animal in a Park,3688,2020-2025
+2021,Boilers,3538,2020-2025
+2021,Illegal Tree Damage,3487,2020-2025
+2021,Panhandling,3481,2020-2025
+2021,Smoking,3442,2020-2025
+2021,Street Sign - Dangling,3345,2020-2025
+2021,Water Conservation,3308,2020-2025
+2021,Mobile Food Vendor,3290,2020-2025
+2021,Drinking,3207,2020-2025
+2021,Storm,3003,2020-2025
+2021,Special Projects Inspection Team (SPIT),2932,2020-2025
+2021,Emergency Response Team (ERT),2842,2020-2025
+2021,Plumbing,2827,2020-2025
+2021,Dead Animal,2588,2020-2025
+2021,Water Quality,2464,2020-2025
+2021,Noise - House of Worship,2218,2020-2025
+2021,Residential Disposal Complaint,2213,2020-2025
+2021,Food Poisoning,2129,2020-2025
+2021,Hazardous Materials,2042,2020-2025
+2021,Unsanitary Animal Pvt Property,1921,2020-2025
+2021,Snow Removal,1920,2020-2025
+2021,Litter Basket / Request,1849,2020-2025
+2021,Overflowing Litter Baskets,1768,2020-2025
+2021,ELEVATOR,1740,2020-2025
+2021,Vacant Lot,1692,2020-2025
+2021,Electrical,1689,2020-2025
+2021,Obstruction,1654,2020-2025
+2021,Standing Water,1596,2020-2025
+2021,Day Care,1591,2020-2025
+2021,Homeless Street Condition,1360,2020-2025
+2021,Bike/Roller/Skate Chronic,1326,2020-2025
+2021,Asbestos,1319,2020-2025
+2021,Mass Gathering Complaint,1262,2020-2025
+2021,Derelict Bicycle,1255,2020-2025
+2021,Sweeping/Missed,1236,2020-2025
+2021,Urinating in Public,1181,2020-2025
+2021,Street Sweeping Complaint,1176,2020-2025
+2021,Private or Charter School Reopening,1168,2020-2025
+2021,Bus Stop Shelter Complaint,1066,2020-2025
+2021,Unleashed Dog,1030,2020-2025
+2021,School Maintenance,999,2020-2025
+2021,OUTSIDE BUILDING,947,2020-2025
+2021,Non-Residential Heat,904,2020-2025
+2021,Unsanitary Pigeon Condition,852,2020-2025
+2021,Litter Basket Request,840,2020-2025
+2021,Industrial Waste,722,2020-2025
+2021,Face Covering Violation,712,2020-2025
+2021,COVID-19 Non-essential Construction,678,2020-2025
+2021,Construction Lead Dust,672,2020-2025
+2021,Illegal Posting,667,2020-2025
+2021,Sanitation Worker or Vehicle Complaint,638,2020-2025
+2021,Uprooted Stump,636,2020-2025
+2021,Wood Pile Remaining,614,2020-2025
+2021,Indoor Sewage,603,2020-2025
+2021,Illegal Animal Kept as Pet,576,2020-2025
+2021,Litter Basket Complaint,575,2020-2025
+2021,Taxi Report,558,2020-2025
+2021,Mosquitoes,476,2020-2025
+2021,Dumpster Complaint,448,2020-2025
+2021,Abandoned Bike,441,2020-2025
+2021,Lot Condition,435,2020-2025
+2021,Investigations and Discipline (IAD),420,2020-2025
+2021,BEST/Site Safety,386,2020-2025
+2021,Harboring Bees/Wasps,319,2020-2025
+2021,For Hire Vehicle Report,292,2020-2025
+2021,Mold,289,2020-2025
+2021,AHV Inspection Unit,284,2020-2025
+2021,Recycling Enforcement,243,2020-2025
+2021,Sweeping/Inadequate,235,2020-2025
+2021,Drinking Water,232,2020-2025
+2021,Bike Rack Condition,206,2020-2025
+2021,Pet Shop,191,2020-2025
+2021,Green Taxi Complaint,185,2020-2025
+2021,Tattooing,181,2020-2025
+2021,E-Scooter,164,2020-2025
+2021,Commercial Disposal Complaint,163,2020-2025
+2021,Beach/Pool/Sauna Complaint,154,2020-2025
+2021,Poison Ivy,147,2020-2025
+2021,Scaffold Safety,145,2020-2025
+2021,Adopt-A-Basket,140,2020-2025
+2021,Disorderly Youth,138,2020-2025
+2021,Bus Stop Shelter Placement,120,2020-2025
+2021,Collection Truck Noise,117,2020-2025
+2021,LinkNYC,99,2020-2025
+2021,Vending,97,2020-2025
+2021,Seasonal Collection,83,2020-2025
+2021,Squeegee,79,2020-2025
+2021,Unsanitary Animal Facility,77,2020-2025
+2021,Cranes and Derricks,74,2020-2025
+2021,Taxi Compliment,71,2020-2025
+2021,Found Property,71,2020-2025
+2021,Incorrect Data,68,2020-2025
+2021,Animal Facility - No Permit,67,2020-2025
+2021,Plant,64,2020-2025
+2021,DEP Street Condition,57,2020-2025
+2021,Posting Advertisement,55,2020-2025
+2021,Illegal Animal Sold,52,2020-2025
+2021,Public Payphone Complaint,49,2020-2025
+2021,Snow or Ice,46,2020-2025
+2021,Peeling Paint,36,2020-2025
+2021,Special Natural Area District (SNAD),36,2020-2025
+2021,Window Guard,35,2020-2025
+2021,X-Ray Machine/Equipment,34,2020-2025
+2021,Institution Disposal Complaint,33,2020-2025
+2021,Public Toilet,29,2020-2025
+2021,Dept of Investigations,29,2020-2025
+2021,Cooling Tower,22,2020-2025
+2021,Lifeguard,19,2020-2025
+2021,Borough Office,18,2020-2025
+2021,Miscellaneous Categories,16,2020-2025
+2021,Radioactive Material,14,2020-2025
+2021,Green Taxi Report,12,2020-2025
+2021,Private School Vaccine Mandate Non-Compliance,12,2020-2025
+2021,Bottled Water,11,2020-2025
+2021,Transfer Station Complaint,11,2020-2025
+2021,Building Condition,7,2020-2025
+2021,FHV Licensee Complaint,7,2020-2025
+2021,Internal Code,7,2020-2025
+2021,Retailer Complaint,7,2020-2025
+2021,Calorie Labeling,6,2020-2025
+2021,Overflowing Recycling Baskets,6,2020-2025
+2021,Highway Condition,6,2020-2025
+2021,Taxi Licensee Complaint,5,2020-2025
+2021,Dispatched Taxi Complaint,5,2020-2025
+2021,Foam Ban Enforcement,4,2020-2025
+2021,Highway Sign - Damaged,4,2020-2025
+2021,Municipal Parking Facility,4,2020-2025
+2021,Executive Inspections,4,2020-2025
+2021,Tanning,3,2020-2025
+2021,SRDE,3,2020-2025
+2021,DSNY Internal,3,2020-2025
+2021,Recycling Basket Complaint,3,2020-2025
+2021,DEP Sidewalk Condition,2,2020-2025
+2021,DEP Highway Condition,2,2020-2025
+2021,Building Marshals office,1,2020-2025
+2021,Bridge Condition,1,2020-2025
+2021,Unlicensed Dog,1,2020-2025
+2021,Facades,1,2020-2025
+2021,SRGOVG,1,2020-2025
+2021,Change Collection Schedule,1,2020-2025
+2021,Special Operations,1,2020-2025
+2021,Forensic Engineering,1,2020-2025
+2022,Illegal Parking,403013,2020-2025
+2022,Noise - Residential,376159,2020-2025
+2022,HEAT/HOT WATER,264380,2020-2025
+2022,Blocked Driveway,155658,2020-2025
+2022,Noise - Street/Sidewalk,151753,2020-2025
+2022,UNSANITARY CONDITION,99240,2020-2025
+2022,Noise - Vehicle,63939,2020-2025
+2022,Water System,62222,2020-2025
+2022,Abandoned Vehicle,61830,2020-2025
+2022,Noise - Commercial,60966,2020-2025
+2022,Street Condition,60197,2020-2025
+2022,PLUMBING,57544,2020-2025
+2022,Missed Collection,55440,2020-2025
+2022,Street Light Condition,54711,2020-2025
+2022,PAINT/PLASTER,51770,2020-2025
+2022,Noise,47312,2020-2025
+2022,Request Large Bulky Item Collection,47002,2020-2025
+2022,Derelict Vehicles,44295,2020-2025
+2022,Encampment,42826,2020-2025
+2022,Dirty Condition,42078,2020-2025
+2022,DOOR/WINDOW,41727,2020-2025
+2022,Rodent,40791,2020-2025
+2022,Traffic Signal Condition,39485,2020-2025
+2022,General Construction/Plumbing,38165,2020-2025
+2022,Homeless Person Assistance,35789,2020-2025
+2022,WATER LEAK,35676,2020-2025
+2022,Illegal Dumping,28781,2020-2025
+2022,Sewer,28065,2020-2025
+2022,GENERAL,28024,2020-2025
+2022,ELECTRIC,26971,2020-2025
+2022,Noise - Helicopter,26216,2020-2025
+2022,Damaged Tree,24304,2020-2025
+2022,FLOORING/STAIRS,23293,2020-2025
+2022,Consumer Complaint,23256,2020-2025
+2022,Sidewalk Condition,22126,2020-2025
+2022,APPLIANCE,19378,2020-2025
+2022,New Tree Request,19295,2020-2025
+2022,Maintenance or Facility,18250,2020-2025
+2022,Overgrown Tree/Branches,17957,2020-2025
+2022,Building/Use,17623,2020-2025
+2022,Graffiti,15892,2020-2025
+2022,Non-Emergency Police Matter,14853,2020-2025
+2022,Elevator,14663,2020-2025
+2022,For Hire Vehicle Complaint,14074,2020-2025
+2022,Obstruction,11984,2020-2025
+2022,Air Quality,11961,2020-2025
+2022,SAFETY,11280,2020-2025
+2022,Food Establishment,10175,2020-2025
+2022,Electronics Waste Appointment,9272,2020-2025
+2022,Dead Animal,9213,2020-2025
+2022,Dead/Dying Tree,9160,2020-2025
+2022,Illegal Fireworks,8857,2020-2025
+2022,Lead,8660,2020-2025
+2022,Root/Sewer/Sidewalk Condition,8387,2020-2025
+2022,Noise - Park,8262,2020-2025
+2022,Residential Disposal Complaint,7834,2020-2025
+2022,Street Sweeping Complaint,7436,2020-2025
+2022,Animal-Abuse,7431,2020-2025
+2022,Lost Property,7232,2020-2025
+2022,Drug Activity,6941,2020-2025
+2022,Taxi Complaint,6670,2020-2025
+2022,Panhandling,6570,2020-2025
+2022,Curb Condition,6488,2020-2025
+2022,Indoor Air Quality,5999,2020-2025
+2022,Snow or Ice,5683,2020-2025
+2022,Outdoor Dining,5258,2020-2025
+2022,Real Time Enforcement,5005,2020-2025
+2022,Street Sign - Damaged,4994,2020-2025
+2022,Broken Parking Meter,4648,2020-2025
+2022,Animal in a Park,4430,2020-2025
+2022,Traffic,4273,2020-2025
+2022,Smoking,4261,2020-2025
+2022,Street Sign - Missing,4185,2020-2025
+2022,Illegal Tree Damage,3779,2020-2025
+2022,Violation of Park Rules,3759,2020-2025
+2022,Water Conservation,3627,2020-2025
+2022,Street Sign - Dangling,3552,2020-2025
+2022,Boilers,3532,2020-2025
+2022,Special Projects Inspection Team (SPIT),3498,2020-2025
+2022,Emergency Response Team (ERT),3120,2020-2025
+2022,Drinking,3050,2020-2025
+2022,Mobile Food Vendor,3049,2020-2025
+2022,Sanitation Worker or Vehicle Complaint,2836,2020-2025
+2022,Litter Basket Request,2772,2020-2025
+2022,Plumbing,2770,2020-2025
+2022,Illegal Posting,2536,2020-2025
+2022,Food Poisoning,2420,2020-2025
+2022,Unsanitary Animal Pvt Property,2033,2020-2025
+2022,Lot Condition,1946,2020-2025
+2022,Electrical,1805,2020-2025
+2022,Hazardous Materials,1792,2020-2025
+2022,ELEVATOR,1766,2020-2025
+2022,Abandoned Bike,1649,2020-2025
+2022,Unleashed Dog,1627,2020-2025
+2022,Dumpster Complaint,1603,2020-2025
+2022,Commercial Disposal Complaint,1535,2020-2025
+2022,Bike/Roller/Skate Chronic,1519,2020-2025
+2022,Noise - House of Worship,1503,2020-2025
+2022,Day Care,1469,2020-2025
+2022,Litter Basket Complaint,1412,2020-2025
+2022,Asbestos,1393,2020-2025
+2022,Non-Residential Heat,1251,2020-2025
+2022,Vaccine Mandate Non-Compliance,1241,2020-2025
+2022,Standing Water,1236,2020-2025
+2022,Bus Stop Shelter Complaint,1207,2020-2025
+2022,School Maintenance,1198,2020-2025
+2022,Water Quality,1157,2020-2025
+2022,Face Covering Violation,1085,2020-2025
+2022,Unsanitary Pigeon Condition,968,2020-2025
+2022,Construction Lead Dust,810,2020-2025
+2022,Urinating in Public,789,2020-2025
+2022,OUTSIDE BUILDING,766,2020-2025
+2022,Taxi Report,754,2020-2025
+2022,Industrial Waste,736,2020-2025
+2022,Uprooted Stump,550,2020-2025
+2022,Harboring Bees/Wasps,461,2020-2025
+2022,Illegal Animal Kept as Pet,447,2020-2025
+2022,Investigations and Discipline (IAD),444,2020-2025
+2022,BEST/Site Safety,442,2020-2025
+2022,Indoor Sewage,439,2020-2025
+2022,Wood Pile Remaining,438,2020-2025
+2022,Adopt-A-Basket,365,2020-2025
+2022,Mosquitoes,365,2020-2025
+2022,For Hire Vehicle Report,308,2020-2025
+2022,Drinking Water,306,2020-2025
+2022,Mold,281,2020-2025
+2022,Green Taxi Complaint,234,2020-2025
+2022,E-Scooter,230,2020-2025
+2022,Bike Rack Condition,227,2020-2025
+2022,Tattooing,216,2020-2025
+2022,Beach/Pool/Sauna Complaint,211,2020-2025
+2022,Private School Vaccine Mandate Non-Compliance,205,2020-2025
+2022,Seasonal Collection,205,2020-2025
+2022,Bus Stop Shelter Placement,196,2020-2025
+2022,Scaffold Safety,190,2020-2025
+2022,Disorderly Youth,154,2020-2025
+2022,Pet Shop,153,2020-2025
+2022,AHV Inspection Unit,153,2020-2025
+2022,Animal Facility - No Permit,144,2020-2025
+2022,Poison Ivy,130,2020-2025
+2022,Plant,119,2020-2025
+2022,Incorrect Data,103,2020-2025
+2022,Cranes and Derricks,96,2020-2025
+2022,Found Property,96,2020-2025
+2022,Private or Charter School Reopening,93,2020-2025
+2022,Unsanitary Animal Facility,93,2020-2025
+2022,Illegal Animal Sold,87,2020-2025
+2022,Squeegee,86,2020-2025
+2022,Taxi Compliment,85,2020-2025
+2022,LinkNYC,81,2020-2025
+2022,Posting Advertisement,80,2020-2025
+2022,DEP Street Condition,78,2020-2025
+2022,Recycling Basket Complaint,76,2020-2025
+2022,Institution Disposal Complaint,57,2020-2025
+2022,Special Natural Area District (SNAD),53,2020-2025
+2022,Building Drinking Water Tank,48,2020-2025
+2022,X-Ray Machine/Equipment,38,2020-2025
+2022,Municipal Parking Facility,37,2020-2025
+2022,Public Toilet,35,2020-2025
+2022,Lifeguard,32,2020-2025
+2022,Borough Office,30,2020-2025
+2022,Dept of Investigations,30,2020-2025
+2022,Window Guard,24,2020-2025
+2022,Cooling Tower,24,2020-2025
+2022,Radioactive Material,23,2020-2025
+2022,Green Taxi Report,22,2020-2025
+2022,Public Payphone Complaint,20,2020-2025
+2022,Bottled Water,17,2020-2025
+2022,FHV Licensee Complaint,17,2020-2025
+2022,Highway Condition,16,2020-2025
+2022,Retailer Complaint,14,2020-2025
+2022,Taxi Licensee Complaint,13,2020-2025
+2022,Dispatched Taxi Complaint,11,2020-2025
+2022,Calorie Labeling,10,2020-2025
+2022,Building Condition,7,2020-2025
+2022,Internal Code,7,2020-2025
+2022,Transfer Station Complaint,5,2020-2025
+2022,ZTESTINT,5,2020-2025
+2022,Special Operations,5,2020-2025
+2022,Oil or Gas Spill,4,2020-2025
+2022,DEP Sidewalk Condition,3,2020-2025
+2022,Dispatched Taxi Compliment,2,2020-2025
+2022,Mass Gathering Complaint,2,2020-2025
+2022,Tanning,2,2020-2025
+2022,DSNY Internal,2,2020-2025
+2022,Facade Insp Safety Pgm,1,2020-2025
+2022,Building Marshals office,1,2020-2025
+2022,MOLD,1,2020-2025
+2022,COVID-19 Non-essential Construction,1,2020-2025
+2022,Facades,1,2020-2025
+2022,DEP Highway Condition,1,2020-2025
+2022,Trans Fat,1,2020-2025
+2023,Illegal Parking,473532,2020-2025
+2023,Noise - Residential,297479,2020-2025
+2023,HEAT/HOT WATER,229496,2020-2025
+2023,Blocked Driveway,166081,2020-2025
+2023,Noise - Street/Sidewalk,145891,2020-2025
+2023,UNSANITARY CONDITION,115423,2020-2025
+2023,Noise - Commercial,67559,2020-2025
+2023,Abandoned Vehicle,64160,2020-2025
+2023,PLUMBING,61338,2020-2025
+2023,PAINT/PLASTER,59205,2020-2025
+2023,Noise - Helicopter,59124,2020-2025
+2023,Missed Collection,55895,2020-2025
+2023,Water System,52942,2020-2025
+2023,Noise,51998,2020-2025
+2023,Noise - Vehicle,50482,2020-2025
+2023,Dirty Condition,49162,2020-2025
+2023,Derelict Vehicles,46916,2020-2025
+2023,Street Condition,46826,2020-2025
+2023,DOOR/WINDOW,44229,2020-2025
+2023,WATER LEAK,43128,2020-2025
+2023,Rodent,41563,2020-2025
+2023,Homeless Person Assistance,39173,2020-2025
+2023,General Construction/Plumbing,37840,2020-2025
+2023,Traffic Signal Condition,35757,2020-2025
+2023,Illegal Dumping,34836,2020-2025
+2023,Encampment,33252,2020-2025
+2023,Street Light Condition,32647,2020-2025
+2023,GENERAL,29765,2020-2025
+2023,Sewer,29734,2020-2025
+2023,Damaged Tree,28732,2020-2025
+2023,ELECTRIC,28113,2020-2025
+2023,FLOORING/STAIRS,25674,2020-2025
+2023,Non-Emergency Police Matter,22848,2020-2025
+2023,Sidewalk Condition,22732,2020-2025
+2023,New Tree Request,22372,2020-2025
+2023,APPLIANCE,21698,2020-2025
+2023,Overgrown Tree/Branches,20817,2020-2025
+2023,Consumer Complaint,20647,2020-2025
+2023,Maintenance or Facility,20288,2020-2025
+2023,For Hire Vehicle Complaint,20160,2020-2025
+2023,Drug Activity,19170,2020-2025
+2023,Building/Use,18535,2020-2025
+2023,Elevator,18392,2020-2025
+2023,Obstruction,16858,2020-2025
+2023,Graffiti,14559,2020-2025
+2023,Vendor Enforcement,13871,2020-2025
+2023,Residential Disposal Complaint,13189,2020-2025
+2023,SAFETY,12361,2020-2025
+2023,Air Quality,11633,2020-2025
+2023,Food Establishment,11122,2020-2025
+2023,Dead/Dying Tree,10820,2020-2025
+2023,Lead,10819,2020-2025
+2023,Dead Animal,10220,2020-2025
+2023,Illegal Fireworks,9278,2020-2025
+2023,Root/Sewer/Sidewalk Condition,9179,2020-2025
+2023,Electronics Waste Appointment,8465,2020-2025
+2023,Street Sweeping Complaint,8395,2020-2025
+2023,Noise - Park,8261,2020-2025
+2023,Animal-Abuse,7931,2020-2025
+2023,Panhandling,7506,2020-2025
+2023,Indoor Air Quality,7028,2020-2025
+2023,Lost Property,6794,2020-2025
+2023,Taxi Complaint,6430,2020-2025
+2023,Outdoor Dining,6203,2020-2025
+2023,Curb Condition,6118,2020-2025
+2023,Bike/Roller/Skate Chronic,5889,2020-2025
+2023,Real Time Enforcement,5561,2020-2025
+2023,Animal in a Park,5320,2020-2025
+2023,Special Projects Inspection Team (SPIT),5318,2020-2025
+2023,Street Sign - Damaged,4901,2020-2025
+2023,Plumbing,4780,2020-2025
+2023,Illegal Tree Damage,4568,2020-2025
+2023,Traffic,4542,2020-2025
+2023,Smoking,4227,2020-2025
+2023,Mobile Food Vendor,4223,2020-2025
+2023,Commercial Disposal Complaint,4002,2020-2025
+2023,Violation of Park Rules,3949,2020-2025
+2023,Illegal Posting,3914,2020-2025
+2023,Litter Basket Request,3913,2020-2025
+2023,Street Sign - Missing,3621,2020-2025
+2023,Emergency Response Team (ERT),3612,2020-2025
+2023,Water Conservation,3510,2020-2025
+2023,Sanitation Worker or Vehicle Complaint,3343,2020-2025
+2023,Broken Parking Meter,3274,2020-2025
+2023,Street Sign - Dangling,3259,2020-2025
+2023,Boilers,3191,2020-2025
+2023,Drinking,3117,2020-2025
+2023,Water Leak,3071,2020-2025
+2023,Food Poisoning,2935,2020-2025
+2023,Sewer Maintenance,2777,2020-2025
+2023,Electrical,2525,2020-2025
+2023,Unsanitary Animal Pvt Property,2321,2020-2025
+2023,Paint/Plaster,2187,2020-2025
+2023,Abandoned Bike,2085,2020-2025
+2023,Lot Condition,1999,2020-2025
+2023,Dumpster Complaint,1938,2020-2025
+2023,Hazardous Materials,1824,2020-2025
+2023,Heat/Hot Water,1814,2020-2025
+2023,ELEVATOR,1803,2020-2025
+2023,Unleashed Dog,1579,2020-2025
+2023,Litter Basket Complaint,1448,2020-2025
+2023,Day Care,1438,2020-2025
+2023,Asbestos,1380,2020-2025
+2023,School Maintenance,1376,2020-2025
+2023,Standing Water,1305,2020-2025
+2023,Unsanitary Condition,1263,2020-2025
+2023,Door/Window,1258,2020-2025
+2023,Noise - House of Worship,1236,2020-2025
+2023,Water Quality,1067,2020-2025
+2023,Unsanitary Pigeon Condition,1059,2020-2025
+2023,OUTSIDE BUILDING,1036,2020-2025
+2023,Bus Stop Shelter Complaint,1008,2020-2025
+2023,Construction Lead Dust,929,2020-2025
+2023,Urinating in Public,929,2020-2025
+2023,Industrial Waste,840,2020-2025
+2023,Investigations and Discipline (IAD),794,2020-2025
+2023,Taxi Report,753,2020-2025
+2023,Flooring/Stairs,695,2020-2025
+2023,Non-Residential Heat,639,2020-2025
+2023,General,635,2020-2025
+2023,Harboring Bees/Wasps,591,2020-2025
+2023,Appliance,559,2020-2025
+2023,Uprooted Stump,555,2020-2025
+2023,Wood Pile Remaining,551,2020-2025
+2023,BEST/Site Safety,492,2020-2025
+2023,Illegal Animal Kept as Pet,463,2020-2025
+2023,Indoor Sewage,437,2020-2025
+2023,For Hire Vehicle Report,390,2020-2025
+2023,Water Maintenance,382,2020-2025
+2023,Green Taxi Complaint,366,2020-2025
+2023,Seasonal Collection,361,2020-2025
+2023,Mosquitoes,354,2020-2025
+2023,Mold,346,2020-2025
+2023,Safety,307,2020-2025
+2023,Drinking Water,305,2020-2025
+2023,Electric,289,2020-2025
+2023,Bike Rack Condition,277,2020-2025
+2023,DEP Street Condition,240,2020-2025
+2023,Scaffold Safety,221,2020-2025
+2023,Disorderly Youth,218,2020-2025
+2023,Tattooing,197,2020-2025
+2023,Beach/Pool/Sauna Complaint,197,2020-2025
+2023,E-Scooter,188,2020-2025
+2023,Pet Shop,187,2020-2025
+2023,Snow or Ice,179,2020-2025
+2023,Smoking or Vaping,167,2020-2025
+2023,Adopt-A-Basket,155,2020-2025
+2023,LinkNYC,154,2020-2025
+2023,Bus Stop Shelter Placement,152,2020-2025
+2023,Unsanitary Animal Facility,136,2020-2025
+2023,Water Drainage,136,2020-2025
+2023,Poison Ivy,135,2020-2025
+2023,AHV Inspection Unit,125,2020-2025
+2023,Posting Advertisement,115,2020-2025
+2023,Plant,104,2020-2025
+2023,Incorrect Data,99,2020-2025
+2023,Cranes and Derricks,92,2020-2025
+2023,Found Property,87,2020-2025
+2023,Taxi Compliment,86,2020-2025
+2023,Recycling Basket Complaint,86,2020-2025
+2023,Unstable Building,85,2020-2025
+2023,Animal Facility - No Permit,83,2020-2025
+2023,Special Natural Area District (SNAD),71,2020-2025
+2023,Illegal Animal Sold,70,2020-2025
+2023,Building Drinking Water Tank,55,2020-2025
+2023,Institution Disposal Complaint,51,2020-2025
+2023,Dept of Investigations,45,2020-2025
+2023,Borough Office,44,2020-2025
+2023,Special Operations,43,2020-2025
+2023,Green Taxi Report,42,2020-2025
+2023,Boiler,41,2020-2025
+2023,Public Toilet,40,2020-2025
+2023,Building Condition,33,2020-2025
+2023,Squeegee,30,2020-2025
+2023,Municipal Parking Facility,27,2020-2025
+2023,Dispatched Taxi Complaint,25,2020-2025
+2023,Lifeguard,24,2020-2025
+2023,Retailer Complaint,21,2020-2025
+2023,Radioactive Material,20,2020-2025
+2023,Taxi Licensee Complaint,19,2020-2025
+2023,Public Payphone Complaint,17,2020-2025
+2023,Window Guard,15,2020-2025
+2023,Cooling Tower,13,2020-2025
+2023,Highway Condition,12,2020-2025
+2023,X-Ray Machine/Equipment,11,2020-2025
+2023,Transfer Station Complaint,10,2020-2025
+2023,Calorie Labeling,9,2020-2025
+2023,FHV Licensee Complaint,9,2020-2025
+2023,Bottled Water,7,2020-2025
+2023,Oil or Gas Spill,7,2020-2025
+2023,DSNY Internal,6,2020-2025
+2023,DOB Posted Notice or Order,5,2020-2025
+2023,Ferry Inquiry,4,2020-2025
+2023,Ferry Complaint,4,2020-2025
+2023,DEP Sidewalk Condition,4,2020-2025
+2023,Building Marshals office,3,2020-2025
+2023,Internal Code,2,2020-2025
+2023,ZTESTINT,2,2020-2025
+2023,Private School Vaccine Mandate Non-Compliance,2,2020-2025
+2023,Peeling Paint,2,2020-2025
+2023,Construction Safety Enforcement,2,2020-2025
+2023,Tanning,2,2020-2025
+2023,Outside Building,2,2020-2025
+2023,Bridge Condition,2,2020-2025
+2023,SRDE,1,2020-2025
+2023,DEP Highway Condition,1,2020-2025
+2023,Executive Inspections,1,2020-2025
+2023,Dispatched Taxi Compliment,1,2020-2025
+2023,Face Covering Violation,1,2020-2025
+2023,Trans Fat,1,2020-2025
+2023,Quality of Life,1,2020-2025
+2023,Unlicensed Dog,1,2020-2025
+2024,Illegal Parking,502788,2020-2025
+2024,Noise - Residential,378525,2020-2025
+2024,HEAT/HOT WATER,264719,2020-2025
+2024,Blocked Driveway,169926,2020-2025
+2024,Noise - Street/Sidewalk,161576,2020-2025
+2024,UNSANITARY CONDITION,120837,2020-2025
+2024,Abandoned Vehicle,69578,2020-2025
+2024,Noise - Commercial,68200,2020-2025
+2024,PLUMBING,65884,2020-2025
+2024,Water System,64740,2020-2025
+2024,PAINT/PLASTER,64376,2020-2025
+2024,Dirty Condition,58606,2020-2025
+2024,Noise,54829,2020-2025
+2024,Street Condition,50835,2020-2025
+2024,Noise - Vehicle,48195,2020-2025
+2024,DOOR/WINDOW,46353,2020-2025
+2024,WATER LEAK,45166,2020-2025
+2024,Derelict Vehicles,44773,2020-2025
+2024,Encampment,42218,2020-2025
+2024,Traffic Signal Condition,40070,2020-2025
+2024,Rodent,39475,2020-2025
+2024,Homeless Person Assistance,39328,2020-2025
+2024,Illegal Dumping,38221,2020-2025
+2024,General Construction/Plumbing,36743,2020-2025
+2024,Missed Collection,32932,2020-2025
+2024,GENERAL,31787,2020-2025
+2024,Damaged Tree,31477,2020-2025
+2024,Street Light Condition,28772,2020-2025
+2024,Noise - Helicopter,28684,2020-2025
+2024,ELECTRIC,28123,2020-2025
+2024,FLOORING/STAIRS,27797,2020-2025
+2024,Maintenance or Facility,26154,2020-2025
+2024,Sewer,25988,2020-2025
+2024,Vendor Enforcement,25809,2020-2025
+2024,Lead,25662,2020-2025
+2024,Sidewalk Condition,25045,2020-2025
+2024,Non-Emergency Police Matter,23617,2020-2025
+2024,Drug Activity,23277,2020-2025
+2024,APPLIANCE,22577,2020-2025
+2024,For Hire Vehicle Complaint,22554,2020-2025
+2024,Graffiti,22119,2020-2025
+2024,Overgrown Tree/Branches,21958,2020-2025
+2024,New Tree Request,20958,2020-2025
+2024,Building/Use,20885,2020-2025
+2024,Elevator,20845,2020-2025
+2024,Obstruction,19852,2020-2025
+2024,Consumer Complaint,19708,2020-2025
+2024,SAFETY,13219,2020-2025
+2024,Food Establishment,12418,2020-2025
+2024,Panhandling,12160,2020-2025
+2024,Residential Disposal Complaint,11973,2020-2025
+2024,Illegal Fireworks,11087,2020-2025
+2024,Root/Sewer/Sidewalk Condition,10528,2020-2025
+2024,Dead/Dying Tree,9948,2020-2025
+2024,Animal-Abuse,9636,2020-2025
+2024,Dead Animal,9603,2020-2025
+2024,Air Quality,9194,2020-2025
+2024,Traffic,9011,2020-2025
+2024,Indoor Air Quality,8326,2020-2025
+2024,Noise - Park,8218,2020-2025
+2024,Street Sweeping Complaint,7943,2020-2025
+2024,Mobile Food Vendor,7085,2020-2025
+2024,Curb Condition,7038,2020-2025
+2024,Taxi Complaint,6516,2020-2025
+2024,Lost Property,6276,2020-2025
+2024,Outdoor Dining,6179,2020-2025
+2024,Real Time Enforcement,6150,2020-2025
+2024,Animal in a Park,5557,2020-2025
+2024,Illegal Tree Damage,5107,2020-2025
+2024,Snow or Ice,5084,2020-2025
+2024,Violation of Park Rules,4849,2020-2025
+2024,Street Sign - Damaged,4741,2020-2025
+2024,Illegal Posting,4509,2020-2025
+2024,Drinking,4439,2020-2025
+2024,Special Projects Inspection Team (SPIT),4398,2020-2025
+2024,Bike/Roller/Skate Chronic,4320,2020-2025
+2024,Water Conservation,3909,2020-2025
+2024,Litter Basket Request,3785,2020-2025
+2024,Smoking or Vaping,3590,2020-2025
+2024,Street Sign - Dangling,3425,2020-2025
+2024,Street Sign - Missing,3372,2020-2025
+2024,Emergency Response Team (ERT),3343,2020-2025
+2024,Commercial Disposal Complaint,3268,2020-2025
+2024,Food Poisoning,3183,2020-2025
+2024,Plumbing,3126,2020-2025
+2024,Boilers,2801,2020-2025
+2024,Sanitation Worker or Vehicle Complaint,2708,2020-2025
+2024,Broken Parking Meter,2602,2020-2025
+2024,Abandoned Bike,2508,2020-2025
+2024,Unsanitary Animal Pvt Property,2380,2020-2025
+2024,Electrical,2324,2020-2025
+2024,Hazardous Materials,1909,2020-2025
+2024,Dumpster Complaint,1822,2020-2025
+2024,Lot Condition,1813,2020-2025
+2024,School Maintenance,1734,2020-2025
+2024,ELEVATOR,1681,2020-2025
+2024,Unleashed Dog,1612,2020-2025
+2024,Day Care,1536,2020-2025
+2024,Unsanitary Pigeon Condition,1444,2020-2025
+2024,Asbestos,1435,2020-2025
+2024,Standing Water,1419,2020-2025
+2024,Litter Basket Complaint,1376,2020-2025
+2024,Construction Lead Dust,1335,2020-2025
+2024,OUTSIDE BUILDING,1301,2020-2025
+2024,Noise - House of Worship,1290,2020-2025
+2024,Water Quality,1279,2020-2025
+2024,Urinating in Public,1151,2020-2025
+2024,Bus Stop Shelter Complaint,1079,2020-2025
+2024,Smoking,970,2020-2025
+2024,Wood Pile Remaining,887,2020-2025
+2024,Non-Residential Heat,865,2020-2025
+2024,Industrial Waste,861,2020-2025
+2024,Disorderly Youth,826,2020-2025
+2024,E-Scooter,786,2020-2025
+2024,Investigations and Discipline (IAD),774,2020-2025
+2024,Taxi Report,641,2020-2025
+2024,Illegal Animal Kept as Pet,532,2020-2025
+2024,Indoor Sewage,505,2020-2025
+2024,Harboring Bees/Wasps,486,2020-2025
+2024,For Hire Vehicle Report,475,2020-2025
+2024,BEST/Site Safety,451,2020-2025
+2024,Mosquitoes,430,2020-2025
+2024,Mold,381,2020-2025
+2024,Green Taxi Complaint,369,2020-2025
+2024,Drinking Water,359,2020-2025
+2024,Uprooted Stump,312,2020-2025
+2024,Plant,256,2020-2025
+2024,Beach/Pool/Sauna Complaint,211,2020-2025
+2024,Bus Stop Shelter Placement,194,2020-2025
+2024,Tattooing,191,2020-2025
+2024,DEP Street Condition,190,2020-2025
+2024,Pet Shop,177,2020-2025
+2024,Scaffold Safety,172,2020-2025
+2024,LinkNYC,153,2020-2025
+2024,Illegal Animal Sold,142,2020-2025
+2024,Bike Rack Condition,141,2020-2025
+2024,Seasonal Collection,140,2020-2025
+2024,Poison Ivy,137,2020-2025
+2024,Bike Rack,134,2020-2025
+2024,Posting Advertisement,130,2020-2025
+2024,Taxi Compliment,89,2020-2025
+2024,Recycling Basket Complaint,88,2020-2025
+2024,Cranes and Derricks,83,2020-2025
+2024,Animal Facility - No Permit,76,2020-2025
+2024,Unsanitary Animal Facility,72,2020-2025
+2024,Found Property,70,2020-2025
+2024,AHV Inspection Unit,58,2020-2025
+2024,Institution Disposal Complaint,47,2020-2025
+2024,Building Drinking Water Tank,46,2020-2025
+2024,Incorrect Data,41,2020-2025
+2024,Special Natural Area District (SNAD),41,2020-2025
+2024,Public Toilet,39,2020-2025
+2024,Bench,38,2020-2025
+2024,Borough Office,36,2020-2025
+2024,Green Taxi Report,35,2020-2025
+2024,Dept of Investigations,33,2020-2025
+2024,Lifeguard,32,2020-2025
+2024,Dispatched Taxi Complaint,22,2020-2025
+2024,Adopt-A-Basket,19,2020-2025
+2024,Squeegee,17,2020-2025
+2024,Calorie Labeling,16,2020-2025
+2024,Cooling Tower,14,2020-2025
+2024,Window Guard,13,2020-2025
+2024,Taxi Licensee Complaint,13,2020-2025
+2024,Wayfinding,13,2020-2025
+2024,Retailer Complaint,11,2020-2025
+2024,Oil or Gas Spill,8,2020-2025
+2024,Radioactive Material,7,2020-2025
+2024,SNW,7,2020-2025
+2024,Highway Condition,7,2020-2025
+2024,Special Operations,7,2020-2025
+2024,FHV Licensee Complaint,7,2020-2025
+2024,Tobacco or Non-Tobacco Sale,7,2020-2025
+2024,Transfer Station Complaint,6,2020-2025
+2024,Leaning Bar,6,2020-2025
+2024,X-Ray Machine/Equipment,5,2020-2025
+2024,Building Marshal's Office,5,2020-2025
+2024,Building Condition,4,2020-2025
+2024,DEP Sidewalk Condition,4,2020-2025
+2024,Public Payphone Complaint,4,2020-2025
+2024,Building Marshals office,2,2020-2025
+2024,Tanning,2,2020-2025
+2024,Executive Inspections,2,2020-2025
+2024,Peeling Paint,2,2020-2025
+2024,DSNY Internal,1,2020-2025
+2024,Highway Sign - Damaged,1,2020-2025
+2024,Sustainability Enforcement,1,2020-2025
+2024,DEP Highway Condition,1,2020-2025
+2024,Municipal Parking Facility,1,2020-2025
+2024,Stalled Sites,1,2020-2025
+2024,Bridge Condition,1,2020-2025
+2024,Facade Insp Safety Pgm,1,2020-2025
+2025,Illegal Parking,574074,2020-2025
+2025,Noise - Residential,462660,2020-2025
+2025,HEAT/HOT WATER,315920,2020-2025
+2025,Blocked Driveway,172486,2020-2025
+2025,Noise - Street/Sidewalk,171894,2020-2025
+2025,UNSANITARY CONDITION,117739,2020-2025
+2025,Water System,76358,2020-2025
+2025,PLUMBING,69542,2020-2025
+2025,Abandoned Vehicle,67238,2020-2025
+2025,Noise - Commercial,63822,2020-2025
+2025,Dirty Condition,60631,2020-2025
+2025,PAINT/PLASTER,59239,2020-2025
+2025,Noise,55130,2020-2025
+2025,Street Condition,50728,2020-2025
+2025,Encampment,47244,2020-2025
+2025,DOOR/WINDOW,45451,2020-2025
+2025,Traffic Signal Condition,44917,2020-2025
+2025,Missed Collection,42977,2020-2025
+2025,Noise - Vehicle,42785,2020-2025
+2025,Derelict Vehicles,39637,2020-2025
+2025,Illegal Dumping,38518,2020-2025
+2025,WATER LEAK,38396,2020-2025
+2025,Homeless Person Assistance,36903,2020-2025
+2025,General Construction/Plumbing,35027,2020-2025
+2025,GENERAL,33182,2020-2025
+2025,Street Light Condition,32197,2020-2025
+2025,Rodent,31247,2020-2025
+2025,ELECTRIC,30589,2020-2025
+2025,Damaged Tree,29913,2020-2025
+2025,Vendor Enforcement,29009,2020-2025
+2025,Drug Activity,27953,2020-2025
+2025,FLOORING/STAIRS,26599,2020-2025
+2025,Sewer,25876,2020-2025
+2025,Sidewalk Condition,25693,2020-2025
+2025,Non-Emergency Police Matter,24594,2020-2025
+2025,Maintenance or Facility,23970,2020-2025
+2025,APPLIANCE,22493,2020-2025
+2025,Elevator,21410,2020-2025
+2025,Building/Use,20710,2020-2025
+2025,Noise - Helicopter,20553,2020-2025
+2025,Obstruction,19529,2020-2025
+2025,Overgrown Tree/Branches,18950,2020-2025
+2025,Graffiti,18584,2020-2025
+2025,Lead,18494,2020-2025
+2025,Consumer Complaint,18081,2020-2025
+2025,For Hire Vehicle Complaint,17950,2020-2025
+2025,Snow or Ice,16469,2020-2025
+2025,Residential Disposal Complaint,16342,2020-2025
+2025,Food Establishment,12801,2020-2025
+2025,SAFETY,12751,2020-2025
+2025,Panhandling,12450,2020-2025
+2025,Traffic,11537,2020-2025
+2025,Illegal Fireworks,11254,2020-2025
+2025,Animal-Abuse,10488,2020-2025
+2025,Root/Sewer/Sidewalk Condition,10434,2020-2025
+2025,Dead/Dying Tree,10426,2020-2025
+2025,Dead Animal,10313,2020-2025
+2025,Noise - Park,10043,2020-2025
+2025,Air Quality,9714,2020-2025
+2025,Taxi Complaint,9306,2020-2025
+2025,Indoor Air Quality,8614,2020-2025
+2025,Curb Condition,8066,2020-2025
+2025,Street Sweeping Complaint,6867,2020-2025
+2025,Lost Property,6373,2020-2025
+2025,Smoking or Vaping,6273,2020-2025
+2025,Real Time Enforcement,5635,2020-2025
+2025,Animal in a Park,5407,2020-2025
+2025,Illegal Tree Damage,5360,2020-2025
+2025,Illegal Posting,5303,2020-2025
+2025,Street Sign - Damaged,5199,2020-2025
+2025,Mobile Food Vendor,4902,2020-2025
+2025,Drinking,4852,2020-2025
+2025,Boilers,3996,2020-2025
+2025,Violation of Park Rules,3974,2020-2025
+2025,Outdoor Dining,3940,2020-2025
+2025,Litter Basket Request,3928,2020-2025
+2025,Special Projects Inspection Team (SPIT),3890,2020-2025
+2025,Water Conservation,3842,2020-2025
+2025,Street Sign - Dangling,3753,2020-2025
+2025,Street Sign - Missing,3305,2020-2025
+2025,Emergency Response Team (ERT),3159,2020-2025
+2025,Plumbing,3092,2020-2025
+2025,Noise - House of Worship,3061,2020-2025
+2025,Sanitation Worker or Vehicle Complaint,3030,2020-2025
+2025,Food Poisoning,2981,2020-2025
+2025,Broken Parking Meter,2753,2020-2025
+2025,Unsanitary Animal Pvt Property,2626,2020-2025
+2025,Hazardous Materials,2221,2020-2025
+2025,Construction Safety Enforcement,2111,2020-2025
+2025,Abandoned Bike,2108,2020-2025
+2025,Electrical,2090,2020-2025
+2025,Dumpster Complaint,1903,2020-2025
+2025,Unsanitary Pigeon Condition,1755,2020-2025
+2025,School Maintenance,1722,2020-2025
+2025,Commercial Disposal Complaint,1715,2020-2025
+2025,Unleashed Dog,1687,2020-2025
+2025,ELEVATOR,1642,2020-2025
+2025,Bike/Roller/Skate Chronic,1619,2020-2025
+2025,Day Care,1612,2020-2025
+2025,Asbestos,1509,2020-2025
+2025,Lot Condition,1504,2020-2025
+2025,Urinating in Public,1405,2020-2025
+2025,Litter Basket Complaint,1347,2020-2025
+2025,Construction Lead Dust,1332,2020-2025
+2025,Water Quality,1324,2020-2025
+2025,Standing Water,1261,2020-2025
+2025,Bus Stop Shelter Complaint,1196,2020-2025
+2025,Non-Residential Heat,1172,2020-2025
+2025,Cannabis Retailer,1111,2020-2025
+2025,OUTSIDE BUILDING,911,2020-2025
+2025,Wood Pile Remaining,892,2020-2025
+2025,Industrial Waste,845,2020-2025
+2025,New Tree Request,783,2020-2025
+2025,Taxi Report,760,2020-2025
+2025,Illegal Animal Kept as Pet,693,2020-2025
+2025,Investigations and Discipline (IAD),659,2020-2025
+2025,Bike Rack,620,2020-2025
+2025,Harboring Bees/Wasps,547,2020-2025
+2025,Indoor Sewage,511,2020-2025
+2025,E-Scooter,498,2020-2025
+2025,BEST/Site Safety,490,2020-2025
+2025,For Hire Vehicle Report,408,2020-2025
+2025,Mold,398,2020-2025
+2025,Green Taxi Complaint,367,2020-2025
+2025,Drinking Water,363,2020-2025
+2025,Mosquitoes,327,2020-2025
+2025,Bus Stop Shelter Placement,260,2020-2025
+2025,Uprooted Stump,249,2020-2025
+2025,Beach/Pool/Sauna Complaint,232,2020-2025
+2025,Tattooing,214,2020-2025
+2025,LinkNYC,208,2020-2025
+2025,Disorderly Youth,206,2020-2025
+2025,Plant,191,2020-2025
+2025,Pet Sale,189,2020-2025
+2025,Scaffold Safety,146,2020-2025
+2025,Posting Advertisement,139,2020-2025
+2025,Illegal Animal Sold,137,2020-2025
+2025,Poison Ivy,136,2020-2025
+2025,Bike/Roller/Skate,130,2020-2025
+2025,Special Operations,125,2020-2025
+2025,Recycling Basket Complaint,119,2020-2025
+2025,Bench,118,2020-2025
+2025,Tobacco or Non-Tobacco Sale,116,2020-2025
+2025,Animal Facility - No Permit,108,2020-2025
+2025,Found Property,89,2020-2025
+2025,Taxi Compliment,88,2020-2025
+2025,Cranes and Derricks,76,2020-2025
+2025,Unsanitary Animal Facility,76,2020-2025
+2025,Building Drinking Water Tank,67,2020-2025
+2025,Pet Shop,53,2020-2025
+2025,Institution Disposal Complaint,53,2020-2025
+2025,Green Taxi Report,52,2020-2025
+2025,Incorrect Data,45,2020-2025
+2025,Special Natural Area District (SNAD),43,2020-2025
+2025,Unspecified,42,2020-2025
+2025,Public Toilet,42,2020-2025
+2025,Lifeguard,37,2020-2025
+2025,Cooling Tower,30,2020-2025
+2025,AHV Inspection Unit,28,2020-2025
+2025,Borough Office,23,2020-2025
+2025,Dept of Investigations,22,2020-2025
+2025,Radioactive Material,20,2020-2025
+2025,Window Guard,20,2020-2025
+2025,Wayfinding,19,2020-2025
+2025,DEP Street Condition,11,2020-2025
+2025,X-Ray Machine/Equipment,9,2020-2025
+2025,Oil or Gas Spill,8,2020-2025
+2025,Highway Condition,7,2020-2025
+2025,Transfer Station Complaint,7,2020-2025
+2025,Calorie Labeling,6,2020-2025
+2025,Public Payphone Complaint,6,2020-2025
+2025,Building Condition,5,2020-2025
+2025,SNW,5,2020-2025
+2025,Squeegee,5,2020-2025
+2025,Tanning,5,2020-2025
+2025,Taxi Licensee Complaint,4,2020-2025
+2025,Bridge Condition,4,2020-2025
+2025,Leaning Bar,3,2020-2025
+2025,FHV Licensee Complaint,3,2020-2025
+2025,Ferry Complaint,2,2020-2025
+2025,Municipal Parking Facility,2,2020-2025
+2025,ASBESTOS,1,2020-2025
+2025,DSNY Internal,1,2020-2025
+2025,DEP Sidewalk Condition,1,2020-2025
+2025,Building Marshal's Office,1,2020-2025
