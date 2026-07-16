@@ -1,0 +1,62 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+\title{Supplementary Complaint-Type Mapping for NYC 311 Early-Warning Panel}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+This supplementary note documents the deterministic mapping from original NYC 311 complaint types to the nine analysis categories used in the main manuscript. The full 320-row mapping is provided in \texttt{tables/complaint\_type\_category\_mapping\_appendix.csv}. The full composition of the residual \texttt{other} category is provided in \texttt{tables/other\_category\_composition.csv}. These files include request counts and request-share fields computed from the NTA-matched 2015--2025 311 request corpus.
+
+\section*{Category Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Category & Complaint types & Requests & Share \\
+\midrule
+Housing & 57 & 8,061,962 & 26.06\% \\
+Noise & 9 & 6,713,922 & 21.70\% \\
+Parking/traffic & 39 & 6,521,679 & 21.08\% \\
+Sanitation & 36 & 3,090,901 & 9.99\% \\
+Infrastructure & 28 & 2,673,125 & 8.64\% \\
+Public safety & 38 & 1,597,023 & 5.16\% \\
+Water/sewer & 10 & 1,212,939 & 3.92\% \\
+Environment & 17 & 626,930 & 2.03\% \\
+Other & 86 & 441,648 & 1.43\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Largest Complaint Types in Other}
+
+The \texttt{other} category is not semantically homogeneous. It is retained as a residual category for low-volume or cross-cutting complaint types and should be interpreted with caution.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Complaint type & Requests & Share of other \\
+\midrule
+Encampment & 191,408 & 43.34\% \\
+Drug Activity & 93,873 & 21.26\% \\
+Animal in a Park & 29,914 & 6.77\% \\
+Vending & 27,575 & 6.24\% \\
+Electronics Waste & 26,487 & 6.00\% \\
+Miscellaneous Categories & 13,752 & 3.11\% \\
+Unleashed Dog & 11,718 & 2.65\% \\
+DOF Property - Payment Issue & 11,414 & 2.58\% \\
+DRIE & 4,023 & 0.91\% \\
+Storm & 3,003 & 0.68\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

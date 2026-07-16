@@ -928,3 +928,45 @@ Reviewer status updates:
 - P2-11 local SHAP case studies: PARTIAL but integrated into the draft manuscript.
 - P2-12 final decision explanation: PARTIAL but integrated through the single LightGBM candidate. This depends on freezing the final decision layer as the single calibrated LightGBM.
 - P3-3/P3-5 figure cleanup: PARTIAL. The old low-information workflow and old SHAP bar figures are no longer used in the current manuscript draft; final figure polish remains possible.
+
+## Major Methodological Rebuild - Manuscript Reviewer-Gap Patch 1
+
+This pass closes additional manuscript-level gaps that were still visible after Draft 1, using artifacts already generated in the major-revision pipeline.
+
+Files changed or added:
+
+- `paper_overleaf/main.tex`
+- `paper_overleaf/main.pdf`
+- `paper_overleaf/supplementary_complaint_mapping.tex`
+- `paper_overleaf/supplementary_complaint_mapping.pdf`
+- `paper_overleaf/tables/complaint_type_category_mapping_appendix.csv`
+- `paper_overleaf/tables/other_category_composition.csv`
+
+Manuscript additions:
+
+- Added the complaint-type mapping size and category request shares to the Methods text: 320 original complaint types mapped to nine analysis categories.
+- Added the full complaint mapping and `other` composition as supplementary CSV files, plus a one-page supplementary mapping PDF.
+- Added the local final-style LightGBM fit time used for the explainability pass: 20.1 seconds.
+- Clarified weather evidence: citywide feature-week weather is a contextual control, not neighborhood microclimate and not a next-week weather forecast; validation PR-AUC does not support weather as a core standalone contribution.
+- Added deployment feedback-loop language: alerts can change agency attention, reporting behavior, and future labels.
+- Added COVID/archive-boundary sensitivity text: excluding 2020-2021 from training changes 2025 PR-AUC from 0.3165 to 0.3137 and precision@5% from 0.4180 to 0.4122.
+- Strengthened data-vintage limitation language: historical source vintages are unavailable, row-level archive-source identifiers are not retained, and late entry/reclassification/deduplication/revision cannot be fully measured from the current panel.
+- Data and code availability now explicitly names complaint-type mappings as available in the repository.
+
+Build and QA:
+
+- Main build command: `paper_overleaf/build_paper.ps1 -Clean`, followed by one extra `pdflatex` pass.
+- Supplementary build command: `pdflatex -interaction=nonstopmode -halt-on-error supplementary_complaint_mapping.tex`.
+- Main PDF: 13 pages.
+- Supplementary mapping PDF: 1 page.
+- Final log search found no undefined citations, no undefined references, no LaTeX errors, no fatal errors, and no overfull boxes.
+- PDF text audit confirms: no `Category-Aware`, no OSM/PLUTO manuscript text, no `will be released`, no `thulvn`, and GitHub URL present.
+
+Reviewer status updates:
+
+- P2-10 complaint mapping appendix: PARTIAL/PASS for current artifact package. The mapping and `other` composition are now in Overleaf supplementary files; alternate grouping sensitivity remains open.
+- P2-2 COVID/archive boundary: PARTIAL but now integrated into Discussion.
+- P2-3 data vintage/revision risk: PARTIAL but now explicitly integrated into Limitations.
+- P2-7 weather: PARTIAL but now explicitly caveated in Results/Explainability.
+- P3-2 deployment feedback loop: PARTIAL/PASS for current manuscript text.
+- P3-13 compute reporting: PARTIAL. Fit time is now reported for the current final-style LightGBM pass; full production inference-latency benchmarking remains outside the current artifact set.
